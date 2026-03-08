@@ -40,6 +40,13 @@
     </section>
 
     <section class="card">
+      <h2>Conditions outlook</h2>
+      <p class="muted">Consensus signals for rain, snow, and thunderstorms over the next 7 days.</p>
+      <div id="conditionsSummary"></div>
+      <div id="conditionsTable"></div>
+    </section>
+
+    <section class="card">
       <h2>Leaderboard</h2>
       <div id="meta" class="muted"></div>
       <div id="leaderboard"></div>
@@ -67,6 +74,7 @@
         <li><b>Backfill</b>: Open-Meteo only, comparing archived forecasts vs historical weather (reanalysis).</li>
         <li><b>Blend</b>: simple average of available sources at each date/time.</li>
         <li><b>Disagreement</b>: spread between provider forecasts for each upcoming day.</li>
+        <li><b>Conditions</b>: each source is normalized into simple buckets like rain, snow, thunder, precip chance, and summary.</li>
       </ul>
     </section>
 
