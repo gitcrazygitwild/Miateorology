@@ -4,24 +4,15 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-03-08T18:56:13.066-04:00",
+  "generatedAt": "2026-03-08T19:12:33.651-04:00",
   "hours": [
     {
-      "timeISO": "2026-03-08T18:00:00.000-04:00",
-      "blendedTempF": 73,
-      "sources": {
-        "nws": 73,
-        "openMeteo": null,
-        "metNo": null
-      }
-    },
-    {
       "timeISO": "2026-03-08T19:00:00.000-04:00",
-      "blendedTempF": 66.9,
+      "blendedTempF": 71,
       "sources": {
         "nws": 71,
-        "openMeteo": 62.9,
-        "metNo": 66.9
+        "openMeteo": null,
+        "metNo": null
       }
     },
     {
@@ -436,6 +427,15 @@
         "nws": 80,
         "openMeteo": 71.5,
         "metNo": 80.1
+      }
+    },
+    {
+      "timeISO": "2026-03-10T18:00:00.000-04:00",
+      "blendedTempF": 75.2,
+      "sources": {
+        "nws": 78,
+        "openMeteo": 70,
+        "metNo": 77.5
       }
     }
   ]
