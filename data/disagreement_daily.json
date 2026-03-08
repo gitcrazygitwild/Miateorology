@@ -1,15 +1,12 @@
 {
-  "location": {
-    "name": "Richmond, VA",
-    "lat": 37.5407,
-    "lon": -77.436
-  },
   "generatedAt": "2026-03-08T18:20:20.786-04:00",
   "days": [
     {
       "date": "2026-03-08",
-      "blendedHighF": 72.7,
-      "blendedLowF": 58.8,
+      "overallSpreadF": 9.7,
+      "highSpreadF": 7.3,
+      "lowSpreadF": 12.1,
+      "confidence": "low",
       "sources": {
         "nws": {
           "highF": 76,
@@ -27,8 +24,10 @@
     },
     {
       "date": "2026-03-09",
-      "blendedHighF": 75.5,
-      "blendedLowF": 51.9,
+      "overallSpreadF": 1.9,
+      "highSpreadF": 1.6,
+      "lowSpreadF": 2.2,
+      "confidence": "high",
       "sources": {
         "nws": {
           "highF": 76,
@@ -46,8 +45,10 @@
     },
     {
       "date": "2026-03-10",
-      "blendedHighF": 81.3,
-      "blendedLowF": 53.4,
+      "overallSpreadF": 5.3,
+      "highSpreadF": 1.1,
+      "lowSpreadF": 9.5,
+      "confidence": "low",
       "sources": {
         "nws": {
           "highF": 82,
@@ -65,8 +66,10 @@
     },
     {
       "date": "2026-03-11",
-      "blendedHighF": 81.3,
-      "blendedLowF": 60.9,
+      "overallSpreadF": 3.5,
+      "highSpreadF": 5.4,
+      "lowSpreadF": 1.5,
+      "confidence": "medium",
       "sources": {
         "nws": {
           "highF": 84,
@@ -84,8 +87,10 @@
     },
     {
       "date": "2026-03-12",
-      "blendedHighF": 69.8,
-      "blendedLowF": 40.6,
+      "overallSpreadF": 10,
+      "highSpreadF": 9.7,
+      "lowSpreadF": 10.2,
+      "confidence": "low",
       "sources": {
         "nws": {
           "highF": 64,
@@ -103,8 +108,10 @@
     },
     {
       "date": "2026-03-13",
-      "blendedHighF": 60.1,
-      "blendedLowF": 40.2,
+      "overallSpreadF": 9.5,
+      "highSpreadF": 7.4,
+      "lowSpreadF": 11.5,
+      "confidence": "low",
       "sources": {
         "nws": {
           "highF": 63,
@@ -122,8 +129,10 @@
     },
     {
       "date": "2026-03-14",
-      "blendedHighF": 65.1,
-      "blendedLowF": 47,
+      "overallSpreadF": 5.5,
+      "highSpreadF": 4.7,
+      "lowSpreadF": 6.2,
+      "confidence": "low",
       "sources": {
         "nws": {
           "highF": 65,
