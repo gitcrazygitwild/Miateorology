@@ -179,35 +179,44 @@ async function loadLive(meta) {
 }
 
 async function loadBackfill(meta) {
-  const lb = await fetchJson("./data/leaderboard_openmeteo_year.json");
-  const latest = await fetchJson("./data/latest_openmeteo_year.json");
+  try {
+    const lb = await fetchJson("./data/leaderboard_openmeteo_year.json");
+    const latest = await fetchJson("./data/latest_openmeteo_year.json");
 
-  document.getElementById("meta").textContent = `Location: ${meta.location.name} • Window: ${lb.windowDays} days`;
-  renderLeaderboard(document.getElementById("leaderboard"), lb);
+    document.getElementById("meta").textContent =
+      `Location: ${meta.location.name} • Window: ${lb.windowDays} days`;
 
-  const converted = {
-    targetDate: latest.targetDate,
-    observedFromStation: "Open-Meteo historical weather (reanalysis)",
-    observationCount: null,
-    observed: { highF: latest.actual?.highF ?? null, lowF: latest.actual?.lowF ?? null },
-    snapshotUsed: "Open-Meteo historical forecast (archive)",
-    scores: [
-      {
-        provider: "openMeteo",
-        predicted: latest.forecast,
-        errors: {
-          highAbsF: latest.errors?.highAbsF ?? null,
-          lowAbsF: latest.errors?.lowAbsF ?? null,
-          overallAbsF: latest.errors?.overallAbsF ?? null
+    renderLeaderboard(document.getElementById("leaderboard"), lb);
+
+    const converted = {
+      targetDate: latest.targetDate,
+      observedFromStation: "Open-Meteo historical weather (reanalysis)",
+      observationCount: null,
+      observed: { highF: latest.actual?.highF ?? null, lowF: latest.actual?.lowF ?? null },
+      snapshotUsed: "Open-Meteo historical forecast (archive)",
+      scores: [
+        {
+          provider: "openMeteo",
+          predicted: latest.forecast,
+          errors: {
+            highAbsF: latest.errors?.highAbsF ?? null,
+            lowAbsF: latest.errors?.lowAbsF ?? null,
+            overallAbsF: latest.errors?.overallAbsF ?? null
+          }
         }
-      }
-    ]
-  };
+      ]
+    };
 
-  renderLatest(document.getElementById("latest"), converted);
+    renderLatest(document.getElementById("latest"), converted);
 
-  document.getElementById("viewNote").textContent =
-    "Backfill is Open-Meteo only: archived forecasts vs historical weather (reanalysis) for the past year.";
+    document.getElementById("viewNote").textContent =
+      "Backfill is Open-Meteo only: archived forecasts vs historical weather (reanalysis) for the past year.";
+  } catch (e) {
+    document.getElementById("viewNote").textContent =
+      "Backfill data not generated yet. Run the 'Backfill Open-Meteo (1 year)' GitHub Action once.";
+    document.getElementById("leaderboard").textContent = "—";
+    document.getElementById("latest").textContent = "—";
+  }
 }
 
 async function main() {
