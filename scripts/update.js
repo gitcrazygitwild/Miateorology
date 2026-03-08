@@ -5,7 +5,6 @@ import path from "node:path";
 const TZ = "America/New_York";
 const RICHMOND = { name: "Richmond, VA", lat: 37.5407, lon: -77.4360 };
 
-// ---- Helpers ----
 function ensureDir(p) { fs.mkdirSync(p, { recursive: true }); }
 
 function writeJson(filePath, obj) {
@@ -27,12 +26,35 @@ async function fetchJson(url, { headers = {} } = {}) {
   return res.json();
 }
 
-function fFromC(c) { return (c == null || Number.isNaN(c)) ? null : (c * 9) / 5 + 32; }
-function round1(x) { return x == null ? null : Math.round(x * 10) / 10; }
+function fFromC(c) {
+  return (c == null || Number.isNaN(c)) ? null : (c * 9) / 5 + 32;
+}
+
+function round1(x) {
+  return x == null ? null : Math.round(x * 10) / 10;
+}
+
 function mean(nums) {
   const v = nums.filter(n => typeof n === "number" && !Number.isNaN(n));
   if (!v.length) return null;
   return v.reduce((a, b) => a + b, 0) / v.length;
+}
+
+function minVal(nums) {
+  const v = nums.filter(n => typeof n === "number" && !Number.isNaN(n));
+  return v.length ? Math.min(...v) : null;
+}
+
+function maxVal(nums) {
+  const v = nums.filter(n => typeof n === "number" && !Number.isNaN(n));
+  return v.length ? Math.max(...v) : null;
+}
+
+function classifySpread(spreadF) {
+  if (spreadF == null) return "unknown";
+  if (spreadF <= 2) return "high";
+  if (spreadF <= 5) return "medium";
+  return "low";
 }
 
 // ---- NWS ----
@@ -95,7 +117,7 @@ function obsHighLowF(observationFeatures, dayStart, dayEnd) {
   const tempsF = [];
   for (const f of observationFeatures) {
     const t = f?.properties?.timestamp;
-    const c = f?.properties?.temperature?.value; // Celsius
+    const c = f?.properties?.temperature?.value;
     if (!t || c == null) continue;
     const ts = DateTime.fromISO(t).setZone(TZ);
     if (ts < dayStart || ts >= dayEnd) continue;
@@ -103,7 +125,11 @@ function obsHighLowF(observationFeatures, dayStart, dayEnd) {
     if (tf != null) tempsF.push(tf);
   }
   if (!tempsF.length) return { obsHighF: null, obsLowF: null, n: 0 };
-  return { obsHighF: Math.max(...tempsF), obsLowF: Math.min(...tempsF), n: tempsF.length };
+  return {
+    obsHighF: Math.max(...tempsF),
+    obsLowF: Math.min(...tempsF),
+    n: tempsF.length
+  };
 }
 
 // ---- Open-Meteo ----
@@ -121,7 +147,11 @@ async function getOpenMeteoDailyHighLow(lat, lon, startDate, endDate) {
   const dates = daily.time || [];
   const maxArr = daily.temperature_2m_max || [];
   const minArr = daily.temperature_2m_min || [];
-  return dates.map((d, i) => ({ date: d, highF: maxArr[i] ?? null, lowF: minArr[i] ?? null }));
+  return dates.map((d, i) => ({
+    date: d,
+    highF: maxArr[i] ?? null,
+    lowF: minArr[i] ?? null
+  }));
 }
 
 async function getOpenMeteoHourlyTemps(lat, lon, hours = 48) {
@@ -198,7 +228,11 @@ async function getMetNoDailyHighLow(lat, lon, days = 7) {
   const out = [];
   for (const day of sortedDays.slice(0, days)) {
     const temps = byDay.get(day);
-    out.push({ date: day, highF: round1(Math.max(...temps)), lowF: round1(Math.min(...temps)) });
+    out.push({
+      date: day,
+      highF: round1(Math.max(...temps)),
+      lowF: round1(Math.min(...temps))
+    });
   }
   return out;
 }
@@ -209,6 +243,7 @@ function indexByTime(arr) {
   for (const x of arr) m.set(x.timeISO, x.tempF);
   return m;
 }
+
 function indexByDate(arr) {
   const m = new Map();
   for (const x of arr) m.set(x.date, { highF: x.highF, lowF: x.lowF });
@@ -229,7 +264,11 @@ function blendHourly(nws, om, met) {
     return {
       timeISO: row.timeISO,
       blendedTempF: blended == null ? null : round1(blended),
-      sources: { nws: a ?? null, openMeteo: b ?? null, metNo: c ?? null }
+      sources: {
+        nws: a ?? null,
+        openMeteo: b ?? null,
+        metNo: c ?? null
+      }
     };
   });
 }
@@ -253,12 +292,65 @@ function blendDaily(nwsArr, omArr, metArr) {
       date: d,
       blendedHighF: hi == null ? null : round1(hi),
       blendedLowF: lo == null ? null : round1(lo),
-      sources: { nws: a ?? null, openMeteo: b ?? null, metNo: c ?? null }
+      sources: {
+        nws: a ?? null,
+        openMeteo: b ?? null,
+        metNo: c ?? null
+      }
     };
   });
 }
 
-// ---- Main ----
+// ---- New summary builders ----
+function buildLiveChartData(days) {
+  return {
+    generatedAt: DateTime.now().setZone(TZ).toISO(),
+    series: {
+      nws: [],
+      openMeteo: [],
+      metNo: []
+    }
+  };
+}
+
+function buildDisagreementData(blendedDaily) {
+  return blendedDaily.map(day => {
+    const highs = [
+      day.sources.nws?.highF,
+      day.sources.openMeteo?.highF,
+      day.sources.metNo?.highF
+    ];
+    const lows = [
+      day.sources.nws?.lowF,
+      day.sources.openMeteo?.lowF,
+      day.sources.metNo?.lowF
+    ];
+
+    const highSpread = (() => {
+      const lo = minVal(highs);
+      const hi = maxVal(highs);
+      return (lo == null || hi == null) ? null : round1(hi - lo);
+    })();
+
+    const lowSpread = (() => {
+      const lo = minVal(lows);
+      const hi = maxVal(lows);
+      return (lo == null || hi == null) ? null : round1(hi - lo);
+    })();
+
+    const overallSpread = mean([highSpread, lowSpread]);
+
+    return {
+      date: day.date,
+      overallSpreadF: overallSpread == null ? null : round1(overallSpread),
+      highSpreadF: highSpread,
+      lowSpreadF: lowSpread,
+      confidence: classifySpread(overallSpread),
+      sources: day.sources
+    };
+  });
+}
+
 async function main() {
   const now = DateTime.now().setZone(TZ);
   const tomorrow = now.plus({ days: 1 }).startOf("day");
@@ -280,7 +372,12 @@ async function main() {
   const forecastSnapshotPath = `${dataDir}/snapshots/${issueDate}_for_${tomorrow.toISODate()}.json`;
 
   const nwsTomorrow = await getNwsDailyHighLowForDate(links.forecastUrl, tomorrow);
-  const omTomorrowArr = await getOpenMeteoDailyHighLow(RICHMOND.lat, RICHMOND.lon, tomorrow.toISODate(), tomorrow.toISODate());
+  const omTomorrowArr = await getOpenMeteoDailyHighLow(
+    RICHMOND.lat,
+    RICHMOND.lon,
+    tomorrow.toISODate(),
+    tomorrow.toISODate()
+  );
   const omTomorrow = omTomorrowArr[0] || { highF: null, lowF: null };
   const metDaily = await getMetNoDailyHighLow(RICHMOND.lat, RICHMOND.lon, 7);
   const metTomorrow = metDaily.find(x => x.date === tomorrow.toISODate()) || { highF: null, lowF: null };
@@ -297,7 +394,7 @@ async function main() {
     }
   });
 
-  // 2) Score yesterday (live) if snapshot exists
+  // 2) Score yesterday
   const scoringSnapshotIssued = yesterday.minus({ days: 1 }).toISODate();
   const scoringSnapshotPath = `${dataDir}/snapshots/${scoringSnapshotIssued}_for_${yesterday.toISODate()}.json`;
   const scoreOutPath = `${dataDir}/scores/${yesterday.toISODate()}.json`;
@@ -353,7 +450,11 @@ async function main() {
     ? fs.readdirSync(scoresDir).filter(f => f.endsWith(".json")).sort()
     : [];
 
-  const last30 = files.slice(-30).map(f => readJsonIfExists(path.join(scoresDir, f))).filter(Boolean);
+  const allLiveDays = files
+    .map(f => readJsonIfExists(path.join(scoresDir, f)))
+    .filter(Boolean);
+
+  const last30 = allLiveDays.slice(-30);
 
   const providerAgg = {};
   for (const day of last30) {
@@ -378,7 +479,7 @@ async function main() {
     leaderboard
   });
 
-  // 4) Blended forecasts (daily 7d + hourly 48h)
+  // 4) Blended forecasts
   const start = now.toISODate();
   const end = now.plus({ days: 6 }).toISODate();
 
@@ -410,24 +511,25 @@ async function main() {
     hours: blendedHourly
   });
 
-  // 5) Open-Meteo 1-year backfill summaries (only if backfill files exist)
+  // 5) Open-Meteo 1-year backfill summaries
   const omDir = `${dataDir}/scores_openmeteo`;
+  let backfillDays = [];
   if (fs.existsSync(omDir)) {
     const omFiles = fs.readdirSync(omDir).filter(f => f.endsWith(".json")).sort();
     const omLast365Files = omFiles.slice(-365);
-    const omDays = omLast365Files
+    backfillDays = omLast365Files
       .map(f => readJsonIfExists(path.join(omDir, f)))
       .filter(Boolean);
 
-    const omLatest = omDays.length ? omDays[omDays.length - 1] : null;
+    const omLatest = backfillDays.length ? backfillDays[backfillDays.length - 1] : null;
     if (omLatest) writeJson(`${dataDir}/latest_openmeteo_year.json`, omLatest);
 
-    const errors = omDays
+    const errors = backfillDays
       .map(d => d?.errors?.overallAbsF)
       .filter(v => typeof v === "number" && !Number.isNaN(v));
 
     writeJson(`${dataDir}/leaderboard_openmeteo_year.json`, {
-      windowDays: Math.min(365, omDays.length),
+      windowDays: Math.min(365, backfillDays.length),
       asOf: now.toISO(),
       leaderboard: [
         {
@@ -438,6 +540,78 @@ async function main() {
       ]
     });
   }
+
+  // 6) Chart data (live)
+  const liveChart = {
+    generatedAt: now.toISO(),
+    series: {
+      nws: [],
+      openMeteo: [],
+      metNo: []
+    }
+  };
+
+  for (const day of last30) {
+    const row = { date: day.targetDate };
+    for (const score of day.scores) {
+      if (score.provider === "nws") {
+        liveChart.series.nws.push({ date: day.targetDate, value: score.errors.overallAbsF });
+      } else if (score.provider === "openMeteo") {
+        liveChart.series.openMeteo.push({ date: day.targetDate, value: score.errors.overallAbsF });
+      } else if (score.provider === "metNo") {
+        liveChart.series.metNo.push({ date: day.targetDate, value: score.errors.overallAbsF });
+      }
+    }
+  }
+
+  writeJson(`${dataDir}/chart_live.json`, liveChart);
+
+  // 7) Chart data (backfill)
+  if (backfillDays.length) {
+    writeJson(`${dataDir}/chart_backfill_openmeteo_year.json`, {
+      generatedAt: now.toISO(),
+      series: {
+        openMeteo: backfillDays.map(d => ({
+          date: d.targetDate,
+          value: d?.errors?.overallAbsF ?? null
+        }))
+      }
+    });
+  }
+
+  // 8) Monthly winner (live current month)
+  const currentMonth = now.toFormat("yyyy-MM");
+  const monthDays = allLiveDays.filter(d => (d.targetDate || "").startsWith(currentMonth));
+
+  const monthlyAgg = {};
+  for (const day of monthDays) {
+    for (const s of day.scores) {
+      if (typeof s?.errors?.overallAbsF !== "number") continue;
+      if (!monthlyAgg[s.provider]) monthlyAgg[s.provider] = [];
+      monthlyAgg[s.provider].push(s.errors.overallAbsF);
+    }
+  }
+
+  const monthlyStandings = Object.entries(monthlyAgg)
+    .map(([provider, arr]) => ({
+      provider,
+      daysScored: arr.length,
+      meanOverallAbsF: round1(mean(arr))
+    }))
+    .sort((a, b) => (a.meanOverallAbsF ?? 1e9) - (b.meanOverallAbsF ?? 1e9));
+
+  writeJson(`${dataDir}/monthly_winner_live.json`, {
+    month: currentMonth,
+    generatedAt: now.toISO(),
+    leader: monthlyStandings[0] || null,
+    standings: monthlyStandings
+  });
+
+  // 9) Disagreement
+  writeJson(`${dataDir}/disagreement_daily.json`, {
+    generatedAt: now.toISO(),
+    days: buildDisagreementData(blendedDaily)
+  });
 }
 
 main().catch(err => {
