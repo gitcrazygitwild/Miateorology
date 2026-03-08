@@ -24,6 +24,22 @@
     </section>
 
     <section class="card">
+      <h2>Current monthly leader</h2>
+      <div id="monthlyWinner"></div>
+    </section>
+
+    <section class="card">
+      <h2>Accuracy trend</h2>
+      <div id="chartWrap"></div>
+    </section>
+
+    <section class="card">
+      <h2>Forecast disagreement</h2>
+      <p class="muted">Lower spread between sources = higher confidence.</p>
+      <div id="disagreement"></div>
+    </section>
+
+    <section class="card">
       <h2>Leaderboard</h2>
       <div id="meta" class="muted"></div>
       <div id="leaderboard"></div>
@@ -50,6 +66,7 @@
         <li><b>Live</b>: scores = average absolute error of daily high/low (°F), against recent NWS station observations.</li>
         <li><b>Backfill</b>: Open-Meteo only, comparing archived forecasts vs historical weather (reanalysis).</li>
         <li><b>Blend</b>: simple average of available sources at each date/time.</li>
+        <li><b>Disagreement</b>: spread between provider forecasts for each upcoming day.</li>
       </ul>
     </section>
 
