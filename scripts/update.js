@@ -304,25 +304,31 @@ function openMeteoSummaryFromCode(code) {
   return map[code] || "—";
 }
 
-async function getOpenMeteoDailyHighLow(lat, lon, startDate, endDate) {
+async function getOpenMeteoDailyConditions(lat, lon, startDate, endDate) {
   const url =
     `https://api.open-meteo.com/v1/forecast` +
     `?latitude=${lat}&longitude=${lon}` +
-    `&daily=temperature_2m_max,temperature_2m_min` +
-    `&temperature_unit=fahrenheit` +
+    `&daily=weather_code,precipitation_probability_max` +
     `&timezone=${encodeURIComponent(TZ)}` +
     `&start_date=${startDate}&end_date=${endDate}`;
 
   const data = await fetchJson(url);
-  const daily = data?.daily || {};
-  const dates = daily.time || [];
-  const maxArr = daily.temperature_2m_max || [];
-  const minArr = daily.temperature_2m_min || [];
-  return dates.map((d, i) => ({
-    date: d,
-    highF: maxArr[i] ?? null,
-    lowF: minArr[i] ?? null
-  }));
+  const dates = data?.daily?.time || [];
+  const codes = data?.daily?.weather_code || [];
+  const precipMax = data?.daily?.precipitation_probability_max || [];
+
+  return dates.map((date, i) => {
+    const code = codes[i];
+    const decoded = decodeOpenMeteoWeatherCode(code);
+    return {
+      date,
+      summary: openMeteoSummaryFromCode(code),
+      precipProbability: typeof precipMax[i] === "number" ? precipMax[i] : null,
+      rain: decoded.rain,
+      snow: decoded.snow,
+      thunder: decoded.thunder
+    };
+  });
 }
 
 async function getOpenMeteoDailyConditions(lat, lon, startDate, endDate) {
