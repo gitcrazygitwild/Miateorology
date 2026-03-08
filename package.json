@@ -1,0 +1,12 @@
+{
+  "name": "mia-teorology",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "update": "node scripts/update.js",
+    "backfill:openmeteo:year": "node scripts/backfill_openmeteo_year.js"
+  },
+  "dependencies": {
+    "luxon": "^3.5.0"
+  }
+}
