@@ -1,0 +1,33 @@
+name: Backfill Open-Meteo (1 year)
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps
+        run: npm ci || npm i
+
+      - name: Run backfill script
+        run: npm run backfill:openmeteo:year
+
+      - name: Commit backfill data
+        run: |
+          git config user.name "gitcrazygitwild"
+          git config user.email "hr.schwartz23@gmail.com"
+          git add data/scores_openmeteo
+          git commit -m "Backfill Open-Meteo 1-year data" || echo "No changes to commit"
+          git push
