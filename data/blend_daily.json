@@ -1,0 +1,143 @@
+{
+  "location": {
+    "name": "Richmond, VA",
+    "lat": 37.5407,
+    "lon": -77.436
+  },
+  "generatedAt": "2026-03-08T16:36:56.584-04:00",
+  "days": [
+    {
+      "date": "2026-03-08",
+      "blendedHighF": 73.3,
+      "blendedLowF": 58.9,
+      "sources": {
+        "nws": {
+          "highF": 76,
+          "lowF": 51
+        },
+        "openMeteo": {
+          "highF": 74.1,
+          "lowF": 63.4
+        },
+        "metNo": {
+          "highF": 69.8,
+          "lowF": 62.2
+        }
+      }
+    },
+    {
+      "date": "2026-03-09",
+      "blendedHighF": 75.5,
+      "blendedLowF": 51.9,
+      "sources": {
+        "nws": {
+          "highF": 76,
+          "lowF": 51
+        },
+        "openMeteo": {
+          "highF": 76.1,
+          "lowF": 53
+        },
+        "metNo": {
+          "highF": 74.5,
+          "lowF": 51.6
+        }
+      }
+    },
+    {
+      "date": "2026-03-10",
+      "blendedHighF": 81.3,
+      "blendedLowF": 53.4,
+      "sources": {
+        "nws": {
+          "highF": 82,
+          "lowF": 59
+        },
+        "openMeteo": {
+          "highF": 80.9,
+          "lowF": 49.5
+        },
+        "metNo": {
+          "highF": 81,
+          "lowF": 51.6
+        }
+      }
+    },
+    {
+      "date": "2026-03-11",
+      "blendedHighF": 81.3,
+      "blendedLowF": 60.9,
+      "sources": {
+        "nws": {
+          "highF": 84,
+          "lowF": 60
+        },
+        "openMeteo": {
+          "highF": 81.3,
+          "lowF": 61.5
+        },
+        "metNo": {
+          "highF": 78.6,
+          "lowF": 61.3
+        }
+      }
+    },
+    {
+      "date": "2026-03-12",
+      "blendedHighF": 69.8,
+      "blendedLowF": 40.6,
+      "sources": {
+        "nws": {
+          "highF": 64,
+          "lowF": 34
+        },
+        "openMeteo": {
+          "highF": 73.7,
+          "lowF": 44.2
+        },
+        "metNo": {
+          "highF": 71.6,
+          "lowF": 43.7
+        }
+      }
+    },
+    {
+      "date": "2026-03-13",
+      "blendedHighF": 60.1,
+      "blendedLowF": 40.2,
+      "sources": {
+        "nws": {
+          "highF": 63,
+          "lowF": 46
+        },
+        "openMeteo": {
+          "highF": 61.8,
+          "lowF": 40
+        },
+        "metNo": {
+          "highF": 55.6,
+          "lowF": 34.5
+        }
+      }
+    },
+    {
+      "date": "2026-03-14",
+      "blendedHighF": 65.1,
+      "blendedLowF": 47,
+      "sources": {
+        "nws": {
+          "highF": 65,
+          "lowF": 43
+        },
+        "openMeteo": {
+          "highF": 67.5,
+          "lowF": 49.2
+        },
+        "metNo": {
+          "highF": 62.8,
+          "lowF": 48.7
+        }
+      }
+    }
+  ]
+}
