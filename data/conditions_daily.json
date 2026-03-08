@@ -1,0 +1,262 @@
+{
+  "location": {
+    "name": "Richmond, VA",
+    "lat": 37.5407,
+    "lon": -77.436
+  },
+  "generatedAt": "2026-03-08T18:56:13.066-04:00",
+  "days": [
+    {
+      "date": "2026-03-08",
+      "sources": {
+        "nws": {
+          "date": "2026-03-08",
+          "summary": "Slight Chance Rain Showers then Mostly Cloudy",
+          "precipProbability": 18,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        },
+        "openMeteo": {
+          "date": "2026-03-08",
+          "summary": "Light drizzle",
+          "precipProbability": 37,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-03-08",
+          "summary": "Partlycloudy Night",
+          "precipProbability": null,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "medium",
+        "snowSignal": "off",
+        "thunderSignal": "off",
+        "avgPrecipProbability": 27.5,
+        "summary": "Rain signal present"
+      }
+    },
+    {
+      "date": "2026-03-09",
+      "sources": {
+        "nws": {
+          "date": "2026-03-09",
+          "summary": "Sunny",
+          "precipProbability": 6,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "openMeteo": {
+          "date": "2026-03-09",
+          "summary": "Partly cloudy",
+          "precipProbability": 3,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-03-09",
+          "summary": "Partlycloudy Night",
+          "precipProbability": null,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "off",
+        "snowSignal": "off",
+        "thunderSignal": "off",
+        "avgPrecipProbability": 4.5,
+        "summary": "Mostly quiet signal"
+      }
+    },
+    {
+      "date": "2026-03-10",
+      "sources": {
+        "nws": {
+          "date": "2026-03-10",
+          "summary": "Sunny",
+          "precipProbability": 5,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "openMeteo": {
+          "date": "2026-03-10",
+          "summary": "Overcast",
+          "precipProbability": 2,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-03-10",
+          "summary": "Clearsky Night",
+          "precipProbability": null,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "off",
+        "snowSignal": "off",
+        "thunderSignal": "off",
+        "avgPrecipProbability": 3.5,
+        "summary": "Mostly quiet signal"
+      }
+    },
+    {
+      "date": "2026-03-11",
+      "sources": {
+        "nws": {
+          "date": "2026-03-11",
+          "summary": "Partly Sunny",
+          "precipProbability": 43,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        },
+        "openMeteo": {
+          "date": "2026-03-11",
+          "summary": "Light drizzle",
+          "precipProbability": 17,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-03-11",
+          "summary": "Partlycloudy Night",
+          "precipProbability": null,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "medium",
+        "snowSignal": "off",
+        "thunderSignal": "off",
+        "avgPrecipProbability": 30,
+        "summary": "Rain signal present"
+      }
+    },
+    {
+      "date": "2026-03-12",
+      "sources": {
+        "nws": {
+          "date": "2026-03-12",
+          "summary": "Rain Showers Likely",
+          "precipProbability": 63,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        },
+        "openMeteo": {
+          "date": "2026-03-12",
+          "summary": "Light rain",
+          "precipProbability": 58,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-03-12",
+          "summary": "Cloudy",
+          "precipProbability": null,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "strong",
+        "snowSignal": "off",
+        "thunderSignal": "off",
+        "avgPrecipProbability": 60.5,
+        "summary": "Rain signal present"
+      }
+    },
+    {
+      "date": "2026-03-13",
+      "sources": {
+        "nws": {
+          "date": "2026-03-13",
+          "summary": "Mostly Sunny",
+          "precipProbability": 8,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "openMeteo": {
+          "date": "2026-03-13",
+          "summary": "Overcast",
+          "precipProbability": 8,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-03-13",
+          "summary": "Clearsky Night",
+          "precipProbability": null,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "off",
+        "snowSignal": "off",
+        "thunderSignal": "off",
+        "avgPrecipProbability": 8,
+        "summary": "Mostly quiet signal"
+      }
+    },
+    {
+      "date": "2026-03-14",
+      "sources": {
+        "nws": {
+          "date": "2026-03-14",
+          "summary": "Partly Sunny",
+          "precipProbability": 8,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "openMeteo": {
+          "date": "2026-03-14",
+          "summary": "Overcast",
+          "precipProbability": 5,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-03-14",
+          "summary": "Partlycloudy Night",
+          "precipProbability": null,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "off",
+        "snowSignal": "off",
+        "thunderSignal": "off",
+        "avgPrecipProbability": 6.5,
+        "summary": "Mostly quiet signal"
+      }
+    }
+  ]
+}

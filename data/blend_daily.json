@@ -4,20 +4,20 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-03-08T18:20:20.786-04:00",
+  "generatedAt": "2026-03-08T18:56:13.066-04:00",
   "days": [
     {
       "date": "2026-03-08",
-      "blendedHighF": 72.7,
-      "blendedLowF": 58.8,
+      "blendedHighF": 71.1,
+      "blendedLowF": 58.7,
       "sources": {
         "nws": {
-          "highF": 76,
+          "highF": null,
           "lowF": 51
         },
         "openMeteo": {
           "highF": 73.5,
-          "lowF": 63.1
+          "lowF": 62.9
         },
         "metNo": {
           "highF": 68.7,
@@ -36,7 +36,7 @@
         },
         "openMeteo": {
           "highF": 76.1,
-          "lowF": 53.2
+          "lowF": 53
         },
         "metNo": {
           "highF": 74.5,

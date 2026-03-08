@@ -1,0 +1,49 @@
+{
+  "location": {
+    "name": "Richmond, VA",
+    "lat": 37.5407,
+    "lon": -77.436
+  },
+  "generatedAt": "2026-03-08T18:56:13.066-04:00",
+  "today": {
+    "date": "2026-03-08",
+    "sources": {
+      "nws": {
+        "date": "2026-03-08",
+        "summary": "Slight Chance Rain Showers then Mostly Cloudy",
+        "precipProbability": 18,
+        "rain": true,
+        "snow": false,
+        "thunder": false
+      },
+      "openMeteo": {
+        "date": "2026-03-08",
+        "summary": "Light drizzle",
+        "precipProbability": 37,
+        "rain": true,
+        "snow": false,
+        "thunder": false
+      },
+      "metNo": {
+        "date": "2026-03-08",
+        "summary": "Partlycloudy Night",
+        "precipProbability": null,
+        "rain": false,
+        "snow": false,
+        "thunder": false
+      }
+    },
+    "consensus": {
+      "rainSignal": "medium",
+      "snowSignal": "off",
+      "thunderSignal": "off",
+      "avgPrecipProbability": 27.5,
+      "summary": "Rain signal present"
+    }
+  },
+  "next7Summary": {
+    "rainDays": 3,
+    "snowDays": 0,
+    "thunderDays": 0
+  }
+}

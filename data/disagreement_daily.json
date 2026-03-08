@@ -1,152 +1,54 @@
 {
-  "generatedAt": "2026-03-08T18:20:20.786-04:00",
+  "generatedAt": "2026-03-08T18:56:13.066-04:00",
   "days": [
     {
       "date": "2026-03-08",
-      "overallSpreadF": 9.7,
-      "highSpreadF": 7.3,
-      "lowSpreadF": 12.1,
-      "confidence": "low",
-      "sources": {
-        "nws": {
-          "highF": 76,
-          "lowF": 51
-        },
-        "openMeteo": {
-          "highF": 73.5,
-          "lowF": 63.1
-        },
-        "metNo": {
-          "highF": 68.7,
-          "lowF": 62.2
-        }
-      }
+      "overallSpreadF": 8.4,
+      "highSpreadF": 4.8,
+      "lowSpreadF": 11.9,
+      "confidence": "low"
     },
     {
       "date": "2026-03-09",
-      "overallSpreadF": 1.9,
+      "overallSpreadF": 1.8,
       "highSpreadF": 1.6,
-      "lowSpreadF": 2.2,
-      "confidence": "high",
-      "sources": {
-        "nws": {
-          "highF": 76,
-          "lowF": 51
-        },
-        "openMeteo": {
-          "highF": 76.1,
-          "lowF": 53.2
-        },
-        "metNo": {
-          "highF": 74.5,
-          "lowF": 51.6
-        }
-      }
+      "lowSpreadF": 2,
+      "confidence": "high"
     },
     {
       "date": "2026-03-10",
       "overallSpreadF": 5.3,
       "highSpreadF": 1.1,
       "lowSpreadF": 9.5,
-      "confidence": "low",
-      "sources": {
-        "nws": {
-          "highF": 82,
-          "lowF": 59
-        },
-        "openMeteo": {
-          "highF": 80.9,
-          "lowF": 49.5
-        },
-        "metNo": {
-          "highF": 81,
-          "lowF": 51.6
-        }
-      }
+      "confidence": "low"
     },
     {
       "date": "2026-03-11",
       "overallSpreadF": 3.5,
       "highSpreadF": 5.4,
       "lowSpreadF": 1.5,
-      "confidence": "medium",
-      "sources": {
-        "nws": {
-          "highF": 84,
-          "lowF": 60
-        },
-        "openMeteo": {
-          "highF": 81.3,
-          "lowF": 61.5
-        },
-        "metNo": {
-          "highF": 78.6,
-          "lowF": 61.3
-        }
-      }
+      "confidence": "medium"
     },
     {
       "date": "2026-03-12",
       "overallSpreadF": 10,
       "highSpreadF": 9.7,
       "lowSpreadF": 10.2,
-      "confidence": "low",
-      "sources": {
-        "nws": {
-          "highF": 64,
-          "lowF": 34
-        },
-        "openMeteo": {
-          "highF": 73.7,
-          "lowF": 44.2
-        },
-        "metNo": {
-          "highF": 71.6,
-          "lowF": 43.7
-        }
-      }
+      "confidence": "low"
     },
     {
       "date": "2026-03-13",
       "overallSpreadF": 9.5,
       "highSpreadF": 7.4,
       "lowSpreadF": 11.5,
-      "confidence": "low",
-      "sources": {
-        "nws": {
-          "highF": 63,
-          "lowF": 46
-        },
-        "openMeteo": {
-          "highF": 61.8,
-          "lowF": 40
-        },
-        "metNo": {
-          "highF": 55.6,
-          "lowF": 34.5
-        }
-      }
+      "confidence": "low"
     },
     {
       "date": "2026-03-14",
       "overallSpreadF": 5.5,
       "highSpreadF": 4.7,
       "lowSpreadF": 6.2,
-      "confidence": "low",
-      "sources": {
-        "nws": {
-          "highF": 65,
-          "lowF": 43
-        },
-        "openMeteo": {
-          "highF": 67.5,
-          "lowF": 49.2
-        },
-        "metNo": {
-          "highF": 62.8,
-          "lowF": 48.7
-        }
-      }
+      "confidence": "low"
     }
   ]
 }
