@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mia-teorology</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="wrap">
+    <h1>Mia-teorology</h1>
+    <p class="sub">Forecast accuracy scoreboard + blended forecast (Richmond default)</p>
+  </header>
+
+  <main class="wrap">
+
+    <section class="card">
+      <h2>Accuracy view</h2>
+      <div class="toggleRow">
+        <button id="btnLive" class="toggleBtn active" type="button">Live accuracy (all 3)</button>
+        <button id="btnBackfill" class="toggleBtn" type="button">1-year backfill (Open-Meteo only)</button>
+      </div>
+      <p id="viewNote" class="muted" style="margin-top:10px;"></p>
+    </section>
+
+    <section class="card">
+      <h2>Leaderboard</h2>
+      <div id="meta" class="muted"></div>
+      <div id="leaderboard"></div>
+    </section>
+
+    <section class="card">
+      <h2>Latest scored day</h2>
+      <div id="latest"></div>
+    </section>
+
+    <section class="card">
+      <h2>Blended daily forecast (next 7 days)</h2>
+      <div id="blendDaily"></div>
+    </section>
+
+    <section class="card">
+      <h2>Blended hourly forecast (next 48 hours)</h2>
+      <div id="blendHourly"></div>
+    </section>
+
+    <section class="card">
+      <h2>Method (MVP)</h2>
+      <ul>
+        <li><b>Live</b>: scores = average absolute error of daily high/low (°F), against recent NWS station observations.</li>
+        <li><b>Backfill</b>: Open-Meteo only, comparing archived forecasts vs historical weather (reanalysis).</li>
+        <li><b>Blend</b>: simple average of available sources at each date/time.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="wrap muted">
+    <span id="updated"></span>
+  </footer>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
