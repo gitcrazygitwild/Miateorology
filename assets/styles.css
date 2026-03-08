@@ -4,6 +4,7 @@
   --text: #e8eefc;
   --muted: #a8b3d6;
   --border: rgba(255,255,255,.08);
+  --soft: rgba(255,255,255,.04);
 }
 
 * { box-sizing: border-box; }
@@ -15,10 +16,25 @@ body {
   color: var(--text);
 }
 
-.wrap { max-width: 950px; margin: 0 auto; padding: 18px; }
+.wrap {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 18px;
+}
 
-h1 { margin: 10px 0 4px; font-size: 28px; }
-.sub { margin: 0 0 10px; color: var(--muted); }
+h1 {
+  margin: 10px 0 4px;
+  font-size: 28px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.sub {
+  margin: 0 0 10px;
+  color: var(--muted);
+}
 
 .card {
   background: var(--card);
@@ -28,7 +44,9 @@ h1 { margin: 10px 0 4px; font-size: 28px; }
   margin: 14px 0;
 }
 
-.muted { color: var(--muted); }
+.muted {
+  color: var(--muted);
+}
 
 table {
   width: 100%;
@@ -40,9 +58,13 @@ th, td {
   text-align: left;
   padding: 10px 8px;
   border-bottom: 1px solid var(--border);
+  vertical-align: top;
 }
 
-th { color: var(--muted); font-weight: 600; }
+th {
+  color: var(--muted);
+  font-weight: 600;
+}
 
 .badge {
   display: inline-block;
@@ -70,4 +92,94 @@ th { color: var(--muted); font-weight: 600; }
 
 .toggleBtn.active {
   background: rgba(255,255,255,.08);
+}
+
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.statCard {
+  background: var(--soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.statValue {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.statSub {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.chartBox {
+  background: var(--soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.chartLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legendSwatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.swatchNws { background: #7dd3fc; }
+.swatchOm { background: #86efac; }
+.swatchMet { background: #fca5a5; }
+.swatchBackfill { background: #c4b5fd; }
+
+.chartSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.disagreementPill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 12px;
+}
+
+.confHigh {
+  background: rgba(34,197,94,.12);
+}
+
+.confMedium {
+  background: rgba(250,204,21,.12);
+}
+
+.confLow {
+  background: rgba(239,68,68,.12);
 }
