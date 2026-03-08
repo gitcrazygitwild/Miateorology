@@ -1,0 +1,23 @@
+{
+  "targetDate": "2026-02-08",
+  "location": {
+    "name": "Richmond, VA",
+    "lat": 37.5407,
+    "lon": -77.436
+  },
+  "note": "Backfill uses Open-Meteo Historical Forecast (archived forecasts) vs Open-Meteo Historical Weather (reanalysis) for actuals.",
+  "forecast": {
+    "highF": 29.2,
+    "lowF": 12.6
+  },
+  "actual": {
+    "highF": 29.8,
+    "lowF": 13.2
+  },
+  "errors": {
+    "highAbsF": 0.6,
+    "lowAbsF": 0.6,
+    "overallAbsF": 0.6
+  },
+  "computedAt": "2026-03-08T16:31:11.112-04:00"
+}
