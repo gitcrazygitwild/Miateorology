@@ -57,7 +57,79 @@ function classifySpread(spreadF) {
   return "low";
 }
 
-// ---- NWS ----
+function truthyCount(arr) {
+  return arr.filter(Boolean).length;
+}
+
+function signalStrength(count) {
+  if (count >= 3) return "strong";
+  if (count === 2) return "medium";
+  if (count === 1) return "weak";
+  return "off";
+}
+
+function normalizeText(s) {
+  return String(s || "").toLowerCase();
+}
+
+function textHasAny(text, words) {
+  const t = normalizeText(text);
+  return words.some(w => t.includes(w));
+}
+
+// ---------- Condition parsing ----------
+function inferRainFromText(text) {
+  return textHasAny(text, ["rain", "showers", "drizzle", "sprinkles"]);
+}
+
+function inferSnowFromText(text) {
+  return textHasAny(text, ["snow", "flurries", "sleet", "wintry mix", "freezing rain", "ice pellets"]);
+}
+
+function inferThunderFromText(text) {
+  return textHasAny(text, ["thunder", "t-storm", "storm", "thunderstorm"]);
+}
+
+function summarizeConsensus(day) {
+  const rainCount = truthyCount([
+    day.sources.nws?.rain,
+    day.sources.openMeteo?.rain,
+    day.sources.metNo?.rain
+  ]);
+
+  const snowCount = truthyCount([
+    day.sources.nws?.snow,
+    day.sources.openMeteo?.snow,
+    day.sources.metNo?.snow
+  ]);
+
+  const thunderCount = truthyCount([
+    day.sources.nws?.thunder,
+    day.sources.openMeteo?.thunder,
+    day.sources.metNo?.thunder
+  ]);
+
+  const avgPrecip = mean([
+    day.sources.nws?.precipProbability,
+    day.sources.openMeteo?.precipProbability,
+    day.sources.metNo?.precipProbability
+  ]);
+
+  return {
+    rainSignal: signalStrength(rainCount),
+    snowSignal: signalStrength(snowCount),
+    thunderSignal: signalStrength(thunderCount),
+    avgPrecipProbability: avgPrecip == null ? null : round1(avgPrecip),
+    summary:
+      thunderCount >= 2 ? "Thunder signal present" :
+      snowCount >= 2 ? "Snow signal present" :
+      rainCount >= 2 ? "Rain signal present" :
+      avgPrecip != null && avgPrecip >= 50 ? "Some precipitation possible" :
+      "Mostly quiet signal"
+  };
+}
+
+// ---------- NWS ----------
 async function getNwsLinks(lat, lon) {
   const url = `https://api.weather.gov/points/${lat},${lon}`;
   const data = await fetchJson(url, { headers: { "User-Agent": "mia-teorology (github actions)" } });
@@ -69,8 +141,12 @@ async function getNwsLinks(lat, lon) {
   };
 }
 
+async function getNwsForecastData(forecastUrl) {
+  return fetchJson(forecastUrl, { headers: { "User-Agent": "mia-teorology (github actions)" } });
+}
+
 async function getNwsDailyHighLowForDate(forecastUrl, targetDate) {
-  const data = await fetchJson(forecastUrl, { headers: { "User-Agent": "mia-teorology (github actions)" } });
+  const data = await getNwsForecastData(forecastUrl);
   const periods = data?.properties?.periods || [];
   let highF = null, lowF = null;
 
@@ -81,6 +157,55 @@ async function getNwsDailyHighLowForDate(forecastUrl, targetDate) {
     if (!p.isDaytime && typeof p.temperature === "number") lowF = p.temperature;
   }
   return { highF, lowF };
+}
+
+async function getNwsDailyConditions(forecastUrl, days = 7) {
+  const data = await getNwsForecastData(forecastUrl);
+  const periods = data?.properties?.periods || [];
+
+  const byDate = new Map();
+
+  for (const p of periods) {
+    const start = DateTime.fromISO(p.startTime).setZone(TZ);
+    const date = start.toISODate();
+    if (!byDate.has(date)) {
+      byDate.set(date, {
+        date,
+        dayPeriod: null,
+        nightPeriod: null
+      });
+    }
+    const row = byDate.get(date);
+    if (p.isDaytime) row.dayPeriod = p;
+    else row.nightPeriod = p;
+  }
+
+  const out = [];
+  for (const date of Array.from(byDate.keys()).sort().slice(0, days)) {
+    const row = byDate.get(date);
+    const texts = [
+      row.dayPeriod?.shortForecast,
+      row.dayPeriod?.detailedForecast,
+      row.nightPeriod?.shortForecast,
+      row.nightPeriod?.detailedForecast
+    ].filter(Boolean).join(" ");
+
+    const precipVals = [
+      row.dayPeriod?.probabilityOfPrecipitation?.value,
+      row.nightPeriod?.probabilityOfPrecipitation?.value
+    ].filter(v => typeof v === "number");
+
+    out.push({
+      date,
+      summary: row.dayPeriod?.shortForecast || row.nightPeriod?.shortForecast || "—",
+      precipProbability: precipVals.length ? Math.max(...precipVals) : null,
+      rain: inferRainFromText(texts),
+      snow: inferSnowFromText(texts),
+      thunder: inferThunderFromText(texts)
+    });
+  }
+
+  return out;
 }
 
 async function getNwsHourlyTemps(forecastHourlyUrl, hours = 48) {
@@ -132,7 +257,53 @@ function obsHighLowF(observationFeatures, dayStart, dayEnd) {
   };
 }
 
-// ---- Open-Meteo ----
+// ---------- Open-Meteo ----------
+function decodeOpenMeteoWeatherCode(code) {
+  const rainCodes = new Set([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82]);
+  const snowCodes = new Set([71, 73, 75, 77, 85, 86]);
+  const thunderCodes = new Set([95, 96, 99]);
+
+  return {
+    rain: rainCodes.has(code),
+    snow: snowCodes.has(code),
+    thunder: thunderCodes.has(code)
+  };
+}
+
+function openMeteoSummaryFromCode(code) {
+  const map = {
+    0: "Clear",
+    1: "Mainly clear",
+    2: "Partly cloudy",
+    3: "Overcast",
+    45: "Fog",
+    48: "Rime fog",
+    51: "Light drizzle",
+    53: "Drizzle",
+    55: "Dense drizzle",
+    56: "Freezing drizzle",
+    57: "Dense freezing drizzle",
+    61: "Light rain",
+    63: "Rain",
+    65: "Heavy rain",
+    66: "Freezing rain",
+    67: "Heavy freezing rain",
+    71: "Light snow",
+    73: "Snow",
+    75: "Heavy snow",
+    77: "Snow grains",
+    80: "Rain showers",
+    81: "Heavy rain showers",
+    82: "Violent rain showers",
+    85: "Snow showers",
+    86: "Heavy snow showers",
+    95: "Thunderstorm",
+    96: "Thunderstorm with hail",
+    99: "Severe thunderstorm"
+  };
+  return map[code] || "—";
+}
+
 async function getOpenMeteoDailyHighLow(lat, lon, startDate, endDate) {
   const url =
     `https://api.open-meteo.com/v1/forecast` +
@@ -152,6 +323,33 @@ async function getOpenMeteoDailyHighLow(lat, lon, startDate, endDate) {
     highF: maxArr[i] ?? null,
     lowF: minArr[i] ?? null
   }));
+}
+
+async function getOpenMeteoDailyConditions(lat, lon, startDate, endDate) {
+  const url =
+    `https://api.open-meteo.com/v1/forecast` +
+    `?latitude=${lat}&longitude=${lon}` +
+    `&daily=weathercode,precipitation_probability_max` +
+    `&timezone=${encodeURIComponent(TZ)}` +
+    `&start_date=${startDate}&end_date=${endDate}`;
+
+  const data = await fetchJson(url);
+  const dates = data?.daily?.time || [];
+  const codes = data?.daily?.weathercode || [];
+  const precipMax = data?.daily?.precipitation_probability_max || [];
+
+  return dates.map((date, i) => {
+    const code = codes[i];
+    const decoded = decodeOpenMeteoWeatherCode(code);
+    return {
+      date,
+      summary: openMeteoSummaryFromCode(code),
+      precipProbability: typeof precipMax[i] === "number" ? precipMax[i] : null,
+      rain: decoded.rain,
+      snow: decoded.snow,
+      thunder: decoded.thunder
+    };
+  });
 }
 
 async function getOpenMeteoHourlyTemps(lat, lon, hours = 48) {
@@ -180,7 +378,14 @@ async function getOpenMeteoHourlyTemps(lat, lon, hours = 48) {
   return out.slice(0, hours);
 }
 
-// ---- MET Norway ----
+// ---------- MET Norway ----------
+function metNoSummaryFromSymbol(symbol) {
+  if (!symbol) return "—";
+  return symbol
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, c => c.toUpperCase());
+}
+
 async function getMetNoTimeseries(lat, lon) {
   const ua = process.env.METNO_USER_AGENT;
   if (!ua || ua.trim().length < 10) {
@@ -237,7 +442,69 @@ async function getMetNoDailyHighLow(lat, lon, days = 7) {
   return out;
 }
 
-// ---- Blending ----
+async function getMetNoDailyConditions(lat, lon, days = 7) {
+  const series = await getMetNoTimeseries(lat, lon);
+  const byDay = new Map();
+
+  for (const item of series) {
+    const ts = DateTime.fromISO(item?.time || "").setZone(TZ);
+    if (!ts.isValid) continue;
+    const date = ts.toISODate();
+
+    if (!byDay.has(date)) {
+      byDay.set(date, {
+        date,
+        summaries: [],
+        precips: [],
+        rain: false,
+        snow: false,
+        thunder: false
+      });
+    }
+
+    const row = byDay.get(date);
+    const next1 = item?.data?.next_1_hours || {};
+    const next6 = item?.data?.next_6_hours || {};
+    const next12 = item?.data?.next_12_hours || {};
+
+    const symbol =
+      next6?.summary?.symbol_code ||
+      next1?.summary?.symbol_code ||
+      next12?.summary?.symbol_code ||
+      null;
+
+    const precip =
+      next6?.details?.probability_of_precipitation ??
+      next1?.details?.probability_of_precipitation ??
+      next12?.details?.probability_of_precipitation ??
+      null;
+
+    if (symbol) row.summaries.push(symbol);
+    if (typeof precip === "number") row.precips.push(precip);
+
+    const txt = normalizeText(symbol);
+    if (txt.includes("rain") || txt.includes("drizzle") || txt.includes("sleet")) row.rain = true;
+    if (txt.includes("snow") || txt.includes("sleet")) row.snow = true;
+    if (txt.includes("thunder")) row.thunder = true;
+  }
+
+  const out = [];
+  for (const date of Array.from(byDay.keys()).sort().slice(0, days)) {
+    const row = byDay.get(date);
+    out.push({
+      date,
+      summary: row.summaries.length ? metNoSummaryFromSymbol(row.summaries[0]) : "—",
+      precipProbability: row.precips.length ? Math.max(...row.precips) : null,
+      rain: row.rain,
+      snow: row.snow,
+      thunder: row.thunder
+    });
+  }
+
+  return out;
+}
+
+// ---------- Blending ----------
 function indexByTime(arr) {
   const m = new Map();
   for (const x of arr) m.set(x.timeISO, x.tempF);
@@ -246,7 +513,7 @@ function indexByTime(arr) {
 
 function indexByDate(arr) {
   const m = new Map();
-  for (const x of arr) m.set(x.date, { highF: x.highF, lowF: x.lowF });
+  for (const x of arr) m.set(x.date, x);
   return m;
 }
 
@@ -273,7 +540,7 @@ function blendHourly(nws, om, met) {
   });
 }
 
-function blendDaily(nwsArr, omArr, metArr) {
+function blendDailyTemps(nwsArr, omArr, metArr) {
   const spine = nwsArr?.length ? nwsArr : (omArr?.length ? omArr : metArr);
   const nws = indexByDate(nwsArr || []);
   const om = indexByDate(omArr || []);
@@ -293,64 +560,43 @@ function blendDaily(nwsArr, omArr, metArr) {
       blendedHighF: hi == null ? null : round1(hi),
       blendedLowF: lo == null ? null : round1(lo),
       sources: {
-        nws: a ?? null,
-        openMeteo: b ?? null,
-        metNo: c ?? null
+        nws: a ? { highF: a.highF, lowF: a.lowF } : null,
+        openMeteo: b ? { highF: b.highF, lowF: b.lowF } : null,
+        metNo: c ? { highF: c.highF, lowF: c.lowF } : null
       }
     };
   });
 }
 
-// ---- New summary builders ----
-function buildLiveChartData(days) {
-  return {
-    generatedAt: DateTime.now().setZone(TZ).toISO(),
-    series: {
-      nws: [],
-      openMeteo: [],
-      metNo: []
-    }
-  };
-}
+function blendDailyConditions(nwsArr, omArr, metArr) {
+  const spine = nwsArr?.length ? nwsArr : (omArr?.length ? omArr : metArr);
+  const nws = indexByDate(nwsArr || []);
+  const om = indexByDate(omArr || []);
+  const met = indexByDate(metArr || []);
 
-function buildDisagreementData(blendedDaily) {
-  return blendedDaily.map(day => {
-    const highs = [
-      day.sources.nws?.highF,
-      day.sources.openMeteo?.highF,
-      day.sources.metNo?.highF
-    ];
-    const lows = [
-      day.sources.nws?.lowF,
-      day.sources.openMeteo?.lowF,
-      day.sources.metNo?.lowF
-    ];
+  return spine.map(row => {
+    const d = row.date;
+    const a = nws.get(d);
+    const b = om.get(d);
+    const c = met.get(d);
 
-    const highSpread = (() => {
-      const lo = minVal(highs);
-      const hi = maxVal(highs);
-      return (lo == null || hi == null) ? null : round1(hi - lo);
-    })();
-
-    const lowSpread = (() => {
-      const lo = minVal(lows);
-      const hi = maxVal(lows);
-      return (lo == null || hi == null) ? null : round1(hi - lo);
-    })();
-
-    const overallSpread = mean([highSpread, lowSpread]);
+    const day = {
+      date: d,
+      sources: {
+        nws: a || null,
+        openMeteo: b || null,
+        metNo: c || null
+      }
+    };
 
     return {
-      date: day.date,
-      overallSpreadF: overallSpread == null ? null : round1(overallSpread),
-      highSpreadF: highSpread,
-      lowSpreadF: lowSpread,
-      confidence: classifySpread(overallSpread),
-      sources: day.sources
+      ...day,
+      consensus: summarizeConsensus(day)
     };
   });
 }
 
+// ---------- Main ----------
 async function main() {
   const now = DateTime.now().setZone(TZ);
   const tomorrow = now.plus({ days: 1 }).startOf("day");
@@ -442,7 +688,7 @@ async function main() {
     }
   }
 
-  // 3) Live leaderboard (last 30)
+  // 3) Live leaderboard
   const scoresDir = `${dataDir}/scores`;
   ensureDir(scoresDir);
 
@@ -483,16 +729,16 @@ async function main() {
   const start = now.toISODate();
   const end = now.plus({ days: 6 }).toISODate();
 
-  const nwsDaily = [];
+  const nwsDailyTemps = [];
   for (let i = 0; i < 7; i++) {
     const d = now.plus({ days: i }).startOf("day");
     const r = await getNwsDailyHighLowForDate(links.forecastUrl, d);
-    nwsDaily.push({ date: d.toISODate(), highF: r.highF, lowF: r.lowF });
+    nwsDailyTemps.push({ date: d.toISODate(), highF: r.highF, lowF: r.lowF });
   }
 
-  const omDaily = await getOpenMeteoDailyHighLow(RICHMOND.lat, RICHMOND.lon, start, end);
-  const metDaily7 = await getMetNoDailyHighLow(RICHMOND.lat, RICHMOND.lon, 7);
-  const blendedDaily = blendDaily(nwsDaily, omDaily, metDaily7);
+  const omDailyTemps = await getOpenMeteoDailyHighLow(RICHMOND.lat, RICHMOND.lon, start, end);
+  const metDailyTemps = await getMetNoDailyHighLow(RICHMOND.lat, RICHMOND.lon, 7);
+  const blendedDaily = blendDailyTemps(nwsDailyTemps, omDailyTemps, metDailyTemps);
 
   writeJson(`${dataDir}/blend_daily.json`, {
     location: RICHMOND,
@@ -511,15 +757,13 @@ async function main() {
     hours: blendedHourly
   });
 
-  // 5) Open-Meteo 1-year backfill summaries
+  // 5) Backfill summaries
   const omDir = `${dataDir}/scores_openmeteo`;
   let backfillDays = [];
   if (fs.existsSync(omDir)) {
     const omFiles = fs.readdirSync(omDir).filter(f => f.endsWith(".json")).sort();
     const omLast365Files = omFiles.slice(-365);
-    backfillDays = omLast365Files
-      .map(f => readJsonIfExists(path.join(omDir, f)))
-      .filter(Boolean);
+    backfillDays = omLast365Files.map(f => readJsonIfExists(path.join(omDir, f))).filter(Boolean);
 
     const omLatest = backfillDays.length ? backfillDays[backfillDays.length - 1] : null;
     if (omLatest) writeJson(`${dataDir}/latest_openmeteo_year.json`, omLatest);
@@ -541,7 +785,7 @@ async function main() {
     });
   }
 
-  // 6) Chart data (live)
+  // 6) Chart data
   const liveChart = {
     generatedAt: now.toISO(),
     series: {
@@ -552,7 +796,6 @@ async function main() {
   };
 
   for (const day of last30) {
-    const row = { date: day.targetDate };
     for (const score of day.scores) {
       if (score.provider === "nws") {
         liveChart.series.nws.push({ date: day.targetDate, value: score.errors.overallAbsF });
@@ -566,7 +809,6 @@ async function main() {
 
   writeJson(`${dataDir}/chart_live.json`, liveChart);
 
-  // 7) Chart data (backfill)
   if (backfillDays.length) {
     writeJson(`${dataDir}/chart_backfill_openmeteo_year.json`, {
       generatedAt: now.toISO(),
@@ -579,7 +821,7 @@ async function main() {
     });
   }
 
-  // 8) Monthly winner (live current month)
+  // 7) Monthly winner
   const currentMonth = now.toFormat("yyyy-MM");
   const monthDays = allLiveDays.filter(d => (d.targetDate || "").startsWith(currentMonth));
 
@@ -607,10 +849,71 @@ async function main() {
     standings: monthlyStandings
   });
 
-  // 9) Disagreement
+  // 8) Disagreement
+  const disagreementDays = blendedDaily.map(day => {
+    const highs = [
+      day.sources.nws?.highF,
+      day.sources.openMeteo?.highF,
+      day.sources.metNo?.highF
+    ];
+    const lows = [
+      day.sources.nws?.lowF,
+      day.sources.openMeteo?.lowF,
+      day.sources.metNo?.lowF
+    ];
+
+    const highSpread = (() => {
+      const lo = minVal(highs);
+      const hi = maxVal(highs);
+      return (lo == null || hi == null) ? null : round1(hi - lo);
+    })();
+
+    const lowSpread = (() => {
+      const lo = minVal(lows);
+      const hi = maxVal(lows);
+      return (lo == null || hi == null) ? null : round1(hi - lo);
+    })();
+
+    const overallSpread = mean([highSpread, lowSpread]);
+
+    return {
+      date: day.date,
+      overallSpreadF: overallSpread == null ? null : round1(overallSpread),
+      highSpreadF: highSpread,
+      lowSpreadF: lowSpread,
+      confidence: classifySpread(overallSpread)
+    };
+  });
+
   writeJson(`${dataDir}/disagreement_daily.json`, {
     generatedAt: now.toISO(),
-    days: buildDisagreementData(blendedDaily)
+    days: disagreementDays
+  });
+
+  // 9) Conditions
+  const nwsConditions = await getNwsDailyConditions(links.forecastUrl, 7);
+  const omConditions = await getOpenMeteoDailyConditions(RICHMOND.lat, RICHMOND.lon, start, end);
+  const metConditions = await getMetNoDailyConditions(RICHMOND.lat, RICHMOND.lon, 7);
+  const blendedConditions = blendDailyConditions(nwsConditions, omConditions, metConditions);
+
+  writeJson(`${dataDir}/conditions_daily.json`, {
+    location: RICHMOND,
+    generatedAt: now.toISO(),
+    days: blendedConditions
+  });
+
+  const todayConditions = blendedConditions[0] || null;
+  const next7 = blendedConditions;
+
+  writeJson(`${dataDir}/conditions_summary.json`, {
+    location: RICHMOND,
+    generatedAt: now.toISO(),
+    today: todayConditions,
+    next7Summary: {
+      rainDays: next7.filter(d => d.consensus.rainSignal === "strong" || d.consensus.rainSignal === "medium").length,
+      snowDays: next7.filter(d => d.consensus.snowSignal === "strong" || d.consensus.snowSignal === "medium").length,
+      thunderDays: next7.filter(d => d.consensus.thunderSignal === "strong" || d.consensus.thunderSignal === "medium").length
+    }
   });
 }
 
