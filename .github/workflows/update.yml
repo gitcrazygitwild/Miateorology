@@ -1,0 +1,39 @@
+name: Update forecast accuracy data
+
+on:
+  schedule:
+    # Daily at 10:15 UTC (~5:15am ET in standard time; ~6:15am ET in DST)
+    - cron: "15 10 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps
+        run: npm ci || npm i
+
+      - name: Run update script
+        env:
+          # Required by met.no: use a descriptive User-Agent.
+          METNO_USER_AGENT: "mia-teorology (github: YOUR_GITHUB_USERNAME; contact: you@example.com)"
+        run: npm run update
+
+      - name: Commit data updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data
+          git commit -m "Update forecast accuracy data" || echo "No changes to commit"
+          git push
