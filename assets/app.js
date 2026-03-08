@@ -154,12 +154,219 @@ function renderBlendHourly(container, data) {
   container.replaceChildren(table);
 }
 
+function renderMonthlyWinner(container, data) {
+  if (!data?.leader) {
+    container.textContent = "Not enough scored days yet this month.";
+    return;
+  }
+
+  const leader = data.leader;
+  const standings = data.standings || [];
+
+  const grid = el("div", { class: "statGrid" }, [
+    el("div", { class: "statCard" }, [
+      el("div", { class: "statLabel" }, ["Leader"]),
+      el("div", { class: "statValue" }, [leader.provider]),
+      el("div", { class: "statSub" }, [`${leader.meanOverallAbsF.toFixed(1)}° mean error`])
+    ]),
+    el("div", { class: "statCard" }, [
+      el("div", { class: "statLabel" }, ["Month"]),
+      el("div", { class: "statValue" }, [data.month]),
+      el("div", { class: "statSub" }, [`${leader.daysScored} scored day${leader.daysScored === 1 ? "" : "s"}`])
+    ])
+  ]);
+
+  const table = el("table");
+  table.append(
+    el("thead", {}, [
+      el("tr", {}, [
+        el("th", {}, ["Rank"]),
+        el("th", {}, ["Source"]),
+        el("th", {}, ["Mean error"]),
+        el("th", {}, ["Days"])
+      ])
+    ])
+  );
+
+  const tbody = el("tbody");
+  standings.forEach((row, i) => {
+    tbody.append(
+      el("tr", {}, [
+        el("td", {}, [String(i + 1)]),
+        el("td", {}, [row.provider]),
+        el("td", {}, [row.meanOverallAbsF == null ? "—" : `${row.meanOverallAbsF.toFixed(1)}°`]),
+        el("td", {}, [String(row.daysScored)])
+      ])
+    );
+  });
+  table.append(tbody);
+
+  container.replaceChildren(grid, table);
+}
+
+function renderDisagreement(container, data) {
+  const table = el("table");
+  table.append(
+    el("thead", {}, [
+      el("tr", {}, [
+        el("th", {}, ["Date"]),
+        el("th", {}, ["Confidence"]),
+        el("th", {}, ["Overall spread"]),
+        el("th", {}, ["High spread"]),
+        el("th", {}, ["Low spread"])
+      ])
+    ])
+  );
+
+  const tbody = el("tbody");
+  for (const row of data.days) {
+    const cls =
+      row.confidence === "high" ? "disagreementPill confHigh" :
+      row.confidence === "medium" ? "disagreementPill confMedium" :
+      row.confidence === "low" ? "disagreementPill confLow" :
+      "disagreementPill";
+
+    const label =
+      row.confidence === "high" ? "High confidence" :
+      row.confidence === "medium" ? "Mixed" :
+      row.confidence === "low" ? "Low confidence" :
+      "Unknown";
+
+    tbody.append(
+      el("tr", {}, [
+        el("td", {}, [row.date]),
+        el("td", {}, [el("span", { class: cls }, [label])]),
+        el("td", {}, [row.overallSpreadF == null ? "—" : `${row.overallSpreadF.toFixed(1)}°`]),
+        el("td", {}, [row.highSpreadF == null ? "—" : `${row.highSpreadF.toFixed(1)}°`]),
+        el("td", {}, [row.lowSpreadF == null ? "—" : `${row.lowSpreadF.toFixed(1)}°`])
+      ])
+    );
+  }
+
+  table.append(tbody);
+  container.replaceChildren(table);
+}
+
+function renderLineChart(container, chartData, mode) {
+  const seriesEntries = Object.entries(chartData.series || {})
+    .map(([name, arr]) => [name, (arr || []).filter(p => typeof p.value === "number")])
+    .filter(([, arr]) => arr.length);
+
+  if (!seriesEntries.length) {
+    container.textContent = "Not enough chart data yet.";
+    return;
+  }
+
+  const allPoints = seriesEntries.flatMap(([, arr]) => arr);
+  const values = allPoints.map(p => p.value);
+  const minY = Math.min(...values);
+  const maxY = Math.max(...values);
+  const rangeY = Math.max(1, maxY - minY);
+
+  const width = 820;
+  const height = 280;
+  const padL = 44;
+  const padR = 16;
+  const padT = 16;
+  const padB = 30;
+  const innerW = width - padL - padR;
+  const innerH = height - padT - padB;
+
+  const palette = {
+    nws: "#7dd3fc",
+    openMeteo: mode === "backfill" ? "#c4b5fd" : "#86efac",
+    metNo: "#fca5a5"
+  };
+
+  const pointCount = Math.max(...seriesEntries.map(([, arr]) => arr.length));
+
+  const xAt = (i, n) => padL + (n <= 1 ? innerW / 2 : (i * innerW) / (n - 1));
+  const yAt = (v) => padT + innerH - ((v - minY) / rangeY) * innerH;
+
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  svg.setAttribute("class", "chartSvg");
+
+  // Grid lines
+  for (let i = 0; i < 4; i++) {
+    const y = padT + (innerH * i) / 3;
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", padL);
+    line.setAttribute("x2", width - padR);
+    line.setAttribute("y1", y);
+    line.setAttribute("y2", y);
+    line.setAttribute("stroke", "rgba(255,255,255,.08)");
+    line.setAttribute("stroke-width", "1");
+    svg.appendChild(line);
+
+    const labelVal = (maxY - ((maxY - minY) * i) / 3).toFixed(1);
+    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    text.setAttribute("x", 4);
+    text.setAttribute("y", y + 4);
+    text.setAttribute("fill", "#a8b3d6");
+    text.setAttribute("font-size", "12");
+    text.textContent = `${labelVal}°`;
+    svg.appendChild(text);
+  }
+
+  // Series paths
+  for (const [name, arr] of seriesEntries) {
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    const d = arr.map((p, i) => `${i === 0 ? "M" : "L"} ${xAt(i, arr.length)} ${yAt(p.value)}`).join(" ");
+    path.setAttribute("d", d);
+    path.setAttribute("fill", "none");
+    path.setAttribute("stroke", palette[name] || "#fff");
+    path.setAttribute("stroke-width", "3");
+    path.setAttribute("stroke-linecap", "round");
+    path.setAttribute("stroke-linejoin", "round");
+    svg.appendChild(path);
+  }
+
+  // X-axis labels (start + end)
+  const firstPoint = allPoints[0];
+  const lastPoint = allPoints[allPoints.length - 1];
+  if (firstPoint && lastPoint) {
+    const leftText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    leftText.setAttribute("x", padL);
+    leftText.setAttribute("y", height - 6);
+    leftText.setAttribute("fill", "#a8b3d6");
+    leftText.setAttribute("font-size", "12");
+    leftText.textContent = firstPoint.date;
+    svg.appendChild(leftText);
+
+    const rightText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    rightText.setAttribute("x", width - padR);
+    rightText.setAttribute("y", height - 6);
+    rightText.setAttribute("text-anchor", "end");
+    rightText.setAttribute("fill", "#a8b3d6");
+    rightText.setAttribute("font-size", "12");
+    rightText.textContent = lastPoint.date;
+    svg.appendChild(rightText);
+  }
+
+  const legend = el("div", { class: "chartLegend" });
+  if (mode === "live") {
+    legend.append(
+      el("span", { class: "legendItem" }, [el("span", { class: "legendSwatch swatchNws" }), "NWS"]),
+      el("span", { class: "legendItem" }, [el("span", { class: "legendSwatch swatchOm" }), "Open-Meteo"]),
+      el("span", { class: "legendItem" }, [el("span", { class: "legendSwatch swatchMet" }), "MET.no"])
+    );
+  } else {
+    legend.append(
+      el("span", { class: "legendItem" }, [el("span", { class: "legendSwatch swatchBackfill" }), "Open-Meteo backfill"])
+    );
+  }
+
+  const wrapper = el("div", { class: "chartBox" }, [legend]);
+  wrapper.append(svg);
+  container.replaceChildren(wrapper);
+}
+
 async function loadLive(meta) {
   const lb = await fetchJson("./data/leaderboard.json");
   document.getElementById("meta").textContent = `Location: ${meta.location.name} • Window: ${lb.windowDays} days`;
   renderLeaderboard(document.getElementById("leaderboard"), lb);
 
-  // Find newest recent live score file (probe last ~40 days)
   const today = new Date();
   let latest = null;
   for (let i = 0; i < 40; i++) {
@@ -176,6 +383,20 @@ async function loadLive(meta) {
 
   document.getElementById("viewNote").textContent =
     "Live leaderboard uses daily snapshots from all three sources, scored against recent NWS station observations.";
+
+  try {
+    const monthly = await fetchJson("./data/monthly_winner_live.json");
+    renderMonthlyWinner(document.getElementById("monthlyWinner"), monthly);
+  } catch {
+    document.getElementById("monthlyWinner").textContent = "Monthly standings not ready yet.";
+  }
+
+  try {
+    const chart = await fetchJson("./data/chart_live.json");
+    renderLineChart(document.getElementById("chartWrap"), chart, "live");
+  } catch {
+    document.getElementById("chartWrap").textContent = "Chart not ready yet.";
+  }
 }
 
 async function loadBackfill(meta) {
@@ -183,17 +404,17 @@ async function loadBackfill(meta) {
     const lb = await fetchJson("./data/leaderboard_openmeteo_year.json");
     const latest = await fetchJson("./data/latest_openmeteo_year.json");
 
-    document.getElementById("meta").textContent =
-      `Location: ${meta.location.name} • Window: ${lb.windowDays} days`;
-
+    document.getElementById("meta").textContent = `Location: ${meta.location.name} • Window: ${lb.windowDays} days`;
     renderLeaderboard(document.getElementById("leaderboard"), lb);
 
     const converted = {
       targetDate: latest.targetDate,
       observedFromStation: "Open-Meteo historical weather (reanalysis)",
       observationCount: null,
-      observed: { highF: latest.actual?.highF ?? null, lowF: latest.actual?.lowF ?? null },
-      snapshotUsed: "Open-Meteo historical forecast (archive)",
+      observed: {
+        highF: latest.actual?.highF ?? null,
+        lowF: latest.actual?.lowF ?? null
+      },
       scores: [
         {
           provider: "openMeteo",
@@ -211,11 +432,31 @@ async function loadBackfill(meta) {
 
     document.getElementById("viewNote").textContent =
       "Backfill is Open-Meteo only: archived forecasts vs historical weather (reanalysis) for the past year.";
-  } catch (e) {
+
+    document.getElementById("monthlyWinner").innerHTML = "";
+    document.getElementById("monthlyWinner").append(
+      el("div", { class: "statGrid" }, [
+        el("div", { class: "statCard" }, [
+          el("div", { class: "statLabel" }, ["Mode"]),
+          el("div", { class: "statValue" }, ["Backfill"]),
+          el("div", { class: "statSub" }, ["Monthly winner card only applies to live scoring."])
+        ])
+      ])
+    );
+
+    try {
+      const chart = await fetchJson("./data/chart_backfill_openmeteo_year.json");
+      renderLineChart(document.getElementById("chartWrap"), chart, "backfill");
+    } catch {
+      document.getElementById("chartWrap").textContent = "Backfill chart not ready yet.";
+    }
+  } catch {
     document.getElementById("viewNote").textContent =
       "Backfill data not generated yet. Run the 'Backfill Open-Meteo (1 year)' GitHub Action once.";
     document.getElementById("leaderboard").textContent = "—";
     document.getElementById("latest").textContent = "—";
+    document.getElementById("chartWrap").textContent = "—";
+    document.getElementById("monthlyWinner").textContent = "—";
   }
 }
 
@@ -245,7 +486,13 @@ async function main() {
   const pref = localStorage.getItem("accuracyView") || "live";
   await setMode(pref);
 
-  // Blended forecasts (always show if present)
+  try {
+    const disagreement = await fetchJson("./data/disagreement_daily.json");
+    renderDisagreement(document.getElementById("disagreement"), disagreement);
+  } catch {
+    document.getElementById("disagreement").textContent = "Disagreement data not ready yet.";
+  }
+
   try {
     const blendDaily = await fetchJson("./data/blend_daily.json");
     renderBlendDaily(document.getElementById("blendDaily"), blendDaily);
