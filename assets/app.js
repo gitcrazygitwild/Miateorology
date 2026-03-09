@@ -410,12 +410,21 @@ function renderConditionsSummary(container, data) {
   container.replaceChildren(grid);
 }
 
+function formatDayLabel(dateStr) {
+  const d = new Date(`${dateStr}T12:00:00`);
+  const weekday = d.toLocaleDateString(undefined, { weekday: "short" });
+  const monthDay = d.toLocaleDateString(undefined, { month: "numeric", day: "numeric" });
+  return { weekday, monthDay };
+}
+
 function renderConditionsTable(container, data) {
-  const table = el("table");
+  const outer = el("div", { class: "tableScroll" });
+  const table = el("table", { class: "conditionsTable" });
+
   table.append(
     el("thead", {}, [
       el("tr", {}, [
-        el("th", {}, ["Date"]),
+        el("th", {}, ["Day"]),
         el("th", {}, ["Consensus"]),
         el("th", {}, ["Rain"]),
         el("th", {}, ["Snow"]),
@@ -424,6 +433,57 @@ function renderConditionsTable(container, data) {
       ])
     ])
   );
+
+  const tbody = el("tbody");
+
+  for (const day of data.days || []) {
+    const c = day.consensus || {};
+    const s = day.sources || {};
+    const { weekday, monthDay } = formatDayLabel(day.date);
+
+    const dateCell = el("div", { class: "dayCell" }, [
+      el("div", { class: "dayWeek" }, [weekday]),
+      el("div", { class: "dayDate" }, [monthDay])
+    ]);
+
+    const consensusCell = el("div", { class: "consensusCell" }, [
+      el("div", { class: "consensusMain" }, [c.summary || "—"]),
+      el("div", { class: "smallMuted" }, [
+        c.avgPrecipProbability == null ? "Avg precip: —" : `Avg precip: ${c.avgPrecipProbability.toFixed(0)}%`
+      ])
+    ]);
+
+    const sourceCell = el("div", { class: "conditionSources" }, [
+      el("div", { class: "sourceLine" }, [
+        el("span", { class: "sourceName" }, ["NWS"]),
+        document.createTextNode(` ${s.nws?.summary || "—"}${s.nws?.precipProbability != null ? ` (${s.nws.precipProbability}%)` : ""}`)
+      ]),
+      el("div", { class: "sourceLine smallMuted" }, [
+        el("span", { class: "sourceName" }, ["Open-Meteo"]),
+        document.createTextNode(` ${s.openMeteo?.summary || "—"}${s.openMeteo?.precipProbability != null ? ` (${s.openMeteo.precipProbability}%)` : ""}`)
+      ]),
+      el("div", { class: "sourceLine smallMuted" }, [
+        el("span", { class: "sourceName" }, ["MET.no"]),
+        document.createTextNode(` ${s.metNo?.summary || "—"}${s.metNo?.precipProbability != null ? ` (${s.metNo.precipProbability}%)` : ""}`)
+      ])
+    ]);
+
+    tbody.append(
+      el("tr", {}, [
+        el("td", {}, [dateCell]),
+        el("td", {}, [consensusCell]),
+        el("td", {}, [el("span", { class: pillClassForSignal(c.rainSignal) }, [pillLabelForSignal(c.rainSignal)])]),
+        el("td", {}, [el("span", { class: pillClassForSignal(c.snowSignal) }, [pillLabelForSignal(c.snowSignal)])]),
+        el("td", {}, [el("span", { class: pillClassForSignal(c.thunderSignal) }, [pillLabelForSignal(c.thunderSignal)])]),
+        el("td", {}, [sourceCell])
+      ])
+    );
+  }
+
+  table.append(tbody);
+  outer.append(table);
+  container.replaceChildren(outer);
+}
 
   const tbody = el("tbody");
   for (const day of data.days || []) {
