@@ -286,3 +286,100 @@ th {
   }
 }
 
+.dailyOutlookGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+}
+
+.outlookCard {
+  background: var(--soft);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.outlookTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.outlookDayWrap {
+  min-width: 0;
+}
+
+.outlookWeekday {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.outlookDate {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.outlookIcon {
+  font-size: 30px;
+  line-height: 1;
+}
+
+.outlookTemp {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.outlookTempSub {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.outlookSummary {
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.outlookMeta {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.outlookPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.outlookSectionSpacer {
+  margin-top: 10px;
+}
+
+.outlookSourcesMini {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+@media (max-width: 700px) {
+  .dailyOutlookGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .outlookTemp {
+    font-size: 22px;
+  }
+
+  .outlookIcon {
+    font-size: 28px;
+  }
+}
+
