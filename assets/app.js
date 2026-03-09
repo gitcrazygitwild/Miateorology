@@ -14,6 +14,34 @@ function el(tag, attrs = {}, children = []) {
   return n;
 }
 
+function pillClassForConfidence(conf) {
+  if (conf === "high") return "disagreementPill confHigh";
+  if (conf === "medium") return "disagreementPill confMedium";
+  if (conf === "low") return "disagreementPill confLow";
+  return "disagreementPill";
+}
+
+function pillLabelForConfidence(conf) {
+  if (conf === "high") return "High confidence";
+  if (conf === "medium") return "Mixed";
+  if (conf === "low") return "Low confidence";
+  return "Unknown";
+}
+
+function pillClassForSignal(signal) {
+  if (signal === "strong") return "conditionPill signalStrong";
+  if (signal === "medium") return "conditionPill signalMedium";
+  if (signal === "weak") return "conditionPill signalWeak";
+  return "conditionPill signalOff";
+}
+
+function pillLabelForSignal(signal) {
+  if (signal === "strong") return "Strong";
+  if (signal === "medium") return "Moderate";
+  if (signal === "weak") return "Weak";
+  return "None";
+}
+
 function renderLeaderboard(container, data) {
   const table = el("table");
   table.append(
@@ -220,22 +248,10 @@ function renderDisagreement(container, data) {
 
   const tbody = el("tbody");
   for (const row of data.days) {
-    const cls =
-      row.confidence === "high" ? "disagreementPill confHigh" :
-      row.confidence === "medium" ? "disagreementPill confMedium" :
-      row.confidence === "low" ? "disagreementPill confLow" :
-      "disagreementPill";
-
-    const label =
-      row.confidence === "high" ? "High confidence" :
-      row.confidence === "medium" ? "Mixed" :
-      row.confidence === "low" ? "Low confidence" :
-      "Unknown";
-
     tbody.append(
       el("tr", {}, [
         el("td", {}, [row.date]),
-        el("td", {}, [el("span", { class: cls }, [label])]),
+        el("td", {}, [el("span", { class: pillClassForConfidence(row.confidence) }, [pillLabelForConfidence(row.confidence)])]),
         el("td", {}, [row.overallSpreadF == null ? "—" : `${row.overallSpreadF.toFixed(1)}°`]),
         el("td", {}, [row.highSpreadF == null ? "—" : `${row.highSpreadF.toFixed(1)}°`]),
         el("td", {}, [row.lowSpreadF == null ? "—" : `${row.lowSpreadF.toFixed(1)}°`])
@@ -278,8 +294,6 @@ function renderLineChart(container, chartData, mode) {
     metNo: "#fca5a5"
   };
 
-  const pointCount = Math.max(...seriesEntries.map(([, arr]) => arr.length));
-
   const xAt = (i, n) => padL + (n <= 1 ? innerW / 2 : (i * innerW) / (n - 1));
   const yAt = (v) => padT + innerH - ((v - minY) / rangeY) * innerH;
 
@@ -287,7 +301,6 @@ function renderLineChart(container, chartData, mode) {
   svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
   svg.setAttribute("class", "chartSvg");
 
-  // Grid lines
   for (let i = 0; i < 4; i++) {
     const y = padT + (innerH * i) / 3;
     const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -309,7 +322,6 @@ function renderLineChart(container, chartData, mode) {
     svg.appendChild(text);
   }
 
-  // Series paths
   for (const [name, arr] of seriesEntries) {
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     const d = arr.map((p, i) => `${i === 0 ? "M" : "L"} ${xAt(i, arr.length)} ${yAt(p.value)}`).join(" ");
@@ -322,7 +334,6 @@ function renderLineChart(container, chartData, mode) {
     svg.appendChild(path);
   }
 
-  // X-axis labels (start + end)
   const firstPoint = allPoints[0];
   const lastPoint = allPoints[allPoints.length - 1];
   if (firstPoint && lastPoint) {
@@ -360,6 +371,90 @@ function renderLineChart(container, chartData, mode) {
   const wrapper = el("div", { class: "chartBox" }, [legend]);
   wrapper.append(svg);
   container.replaceChildren(wrapper);
+}
+
+function renderConditionsSummary(container, data) {
+  if (!data?.today) {
+    container.textContent = "Conditions summary not ready yet.";
+    return;
+  }
+
+  const today = data.today;
+  const next7 = data.next7Summary || {};
+
+  const grid = el("div", { class: "statGrid" }, [
+    el("div", { class: "statCard" }, [
+      el("div", { class: "statLabel" }, ["Today"]),
+      el("div", { class: "statValue" }, [today.consensus?.summary || "—"]),
+      el("div", { class: "statSub" }, [
+        `Avg precip chance: ${today.consensus?.avgPrecipProbability == null ? "—" : `${today.consensus.avgPrecipProbability.toFixed(0)}%`}`
+      ])
+    ]),
+    el("div", { class: "statCard" }, [
+      el("div", { class: "statLabel" }, ["Rain signal"]),
+      el("div", { class: "statValue" }, [String(next7.rainDays ?? 0)]),
+      el("div", { class: "statSub" }, ["days in next 7 with moderate/strong rain signal"])
+    ]),
+    el("div", { class: "statCard" }, [
+      el("div", { class: "statLabel" }, ["Snow signal"]),
+      el("div", { class: "statValue" }, [String(next7.snowDays ?? 0)]),
+      el("div", { class: "statSub" }, ["days in next 7 with moderate/strong snow signal"])
+    ]),
+    el("div", { class: "statCard" }, [
+      el("div", { class: "statLabel" }, ["Thunder signal"]),
+      el("div", { class: "statValue" }, [String(next7.thunderDays ?? 0)]),
+      el("div", { class: "statSub" }, ["days in next 7 with moderate/strong thunder signal"])
+    ])
+  ]);
+
+  container.replaceChildren(grid);
+}
+
+function renderConditionsTable(container, data) {
+  const table = el("table");
+  table.append(
+    el("thead", {}, [
+      el("tr", {}, [
+        el("th", {}, ["Date"]),
+        el("th", {}, ["Consensus"]),
+        el("th", {}, ["Rain"]),
+        el("th", {}, ["Snow"]),
+        el("th", {}, ["Thunder"]),
+        el("th", {}, ["Sources"])
+      ])
+    ])
+  );
+
+  const tbody = el("tbody");
+  for (const day of data.days || []) {
+    const c = day.consensus || {};
+    const s = day.sources || {};
+
+    const sourceCell = el("div", { class: "conditionCell" }, [
+      el("div", {}, [`NWS: ${s.nws?.summary || "—"}${s.nws?.precipProbability != null ? ` (${s.nws.precipProbability}%)` : ""}`]),
+      el("div", { class: "smallMuted" }, [`Open-Meteo: ${s.openMeteo?.summary || "—"}${s.openMeteo?.precipProbability != null ? ` (${s.openMeteo.precipProbability}%)` : ""}`]),
+      el("div", { class: "smallMuted" }, [`MET.no: ${s.metNo?.summary || "—"}${s.metNo?.precipProbability != null ? ` (${s.metNo.precipProbability}%)` : ""}`])
+    ]);
+
+    tbody.append(
+      el("tr", {}, [
+        el("td", {}, [day.date]),
+        el("td", {}, [
+          el("div", {}, [c.summary || "—"]),
+          el("div", { class: "smallMuted" }, [
+            c.avgPrecipProbability == null ? "Avg precip: —" : `Avg precip: ${c.avgPrecipProbability.toFixed(0)}%`
+          ])
+        ]),
+        el("td", {}, [el("span", { class: pillClassForSignal(c.rainSignal) }, [pillLabelForSignal(c.rainSignal)])]),
+        el("td", {}, [el("span", { class: pillClassForSignal(c.snowSignal) }, [pillLabelForSignal(c.snowSignal)])]),
+        el("td", {}, [el("span", { class: pillClassForSignal(c.thunderSignal) }, [pillLabelForSignal(c.thunderSignal)])]),
+        el("td", {}, [sourceCell])
+      ])
+    );
+  }
+
+  table.append(tbody);
+  container.replaceChildren(table);
 }
 
 async function loadLive(meta) {
@@ -491,6 +586,20 @@ async function main() {
     renderDisagreement(document.getElementById("disagreement"), disagreement);
   } catch {
     document.getElementById("disagreement").textContent = "Disagreement data not ready yet.";
+  }
+
+  try {
+    const condSummary = await fetchJson("./data/conditions_summary.json");
+    renderConditionsSummary(document.getElementById("conditionsSummary"), condSummary);
+  } catch {
+    document.getElementById("conditionsSummary").textContent = "Conditions summary not ready yet.";
+  }
+
+  try {
+    const conditions = await fetchJson("./data/conditions_daily.json");
+    renderConditionsTable(document.getElementById("conditionsTable"), conditions);
+  } catch {
+    document.getElementById("conditionsTable").textContent = "Conditions table not ready yet.";
   }
 
   try {
