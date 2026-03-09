@@ -49,6 +49,41 @@ function formatDayLabel(dateStr) {
   return { weekday, monthDay };
 }
 
+function pickWeatherIcon(day) {
+  const c = day.consensus || {};
+  const summary = String(c.summary || "").toLowerCase();
+
+  if (c.thunderSignal === "strong" || c.thunderSignal === "medium" || summary.includes("thunder")) return "⛈️";
+  if (c.snowSignal === "strong" || c.snowSignal === "medium" || summary.includes("snow")) return "🌨️";
+  if (c.rainSignal === "strong" || c.rainSignal === "medium" || summary.includes("rain")) return "🌧️";
+  if (summary.includes("cloud")) return "☁️";
+  if (summary.includes("overcast")) return "☁️";
+  if (summary.includes("partly")) return "⛅";
+  if (summary.includes("clear")) return "☀️";
+  if (summary.includes("quiet")) return "☀️";
+  return "🌤️";
+}
+
+function mergeOutlookData(blendDaily, conditionsDaily, disagreementDaily) {
+  const byDate = new Map();
+
+  for (const d of blendDaily?.days || []) {
+    byDate.set(d.date, { date: d.date, blend: d });
+  }
+
+  for (const d of conditionsDaily?.days || []) {
+    if (!byDate.has(d.date)) byDate.set(d.date, { date: d.date });
+    byDate.get(d.date).conditions = d;
+  }
+
+  for (const d of disagreementDaily?.days || []) {
+    if (!byDate.has(d.date)) byDate.set(d.date, { date: d.date });
+    byDate.get(d.date).disagreement = d;
+  }
+
+  return Array.from(byDate.values()).sort((a, b) => a.date.localeCompare(b.date));
+}
+
 function renderLeaderboard(container, data) {
   const table = el("table");
   table.append(
@@ -485,6 +520,58 @@ function renderConditionsTable(container, data) {
   container.replaceChildren(outer);
 }
 
+function renderDailyOutlook(container, mergedDays) {
+  const grid = el("div", { class: "dailyOutlookGrid" });
+
+  for (const row of mergedDays) {
+    const blend = row.blend || {};
+    const conditions = row.conditions || {};
+    const disagreement = row.disagreement || {};
+    const consensus = conditions.consensus || {};
+    const { weekday, monthDay } = formatDayLabel(row.date);
+    const icon = pickWeatherIcon(conditions);
+
+    const card = el("div", { class: "outlookCard" }, [
+      el("div", { class: "outlookTop" }, [
+        el("div", { class: "outlookDayWrap" }, [
+          el("div", { class: "outlookWeekday" }, [weekday]),
+          el("div", { class: "outlookDate" }, [monthDay])
+        ]),
+        el("div", { class: "outlookIcon", "aria-hidden": "true" }, [icon])
+      ]),
+
+      el("div", { class: "outlookTemp" }, [
+        `${blend.blendedHighF ?? "—"}° / ${blend.blendedLowF ?? "—"}°`
+      ]),
+
+      el("div", { class: "outlookTempSub" }, ["Blended high / low"]),
+
+      el("div", { class: "outlookSummary" }, [consensus.summary || "—"]),
+
+      el("div", { class: "outlookMeta" }, [
+        consensus.avgPrecipProbability == null
+          ? "Avg precip: —"
+          : `Avg precip: ${consensus.avgPrecipProbability.toFixed(0)}%`
+      ]),
+
+      el("div", { class: "outlookPills" }, [
+        el("span", { class: pillClassForSignal(consensus.rainSignal) }, [`Rain: ${pillLabelForSignal(consensus.rainSignal)}`]),
+        el("span", { class: pillClassForSignal(consensus.snowSignal) }, [`Snow: ${pillLabelForSignal(consensus.snowSignal)}`]),
+        el("span", { class: pillClassForSignal(consensus.thunderSignal) }, [`Thunder: ${pillLabelForSignal(consensus.thunderSignal)}`]),
+        el("span", { class: pillClassForConfidence(disagreement.confidence) }, [pillLabelForConfidence(disagreement.confidence)])
+      ]),
+
+      el("div", { class: "outlookSourcesMini" }, [
+        `Spread: ${disagreement.overallSpreadF == null ? "—" : `${disagreement.overallSpreadF.toFixed(1)}°`}`
+      ])
+    ]);
+
+    grid.append(card);
+  }
+
+  container.replaceChildren(grid);
+}
+
 async function loadLive(meta) {
   const lb = await fetchJson("./data/leaderboard.json");
   document.getElementById("meta").textContent = `Location: ${meta.location.name} • Window: ${lb.windowDays} days`;
@@ -609,8 +696,12 @@ async function main() {
   const pref = localStorage.getItem("accuracyView") || "live";
   await setMode(pref);
 
+  let disagreement = null;
+  let conditions = null;
+  let blendDaily = null;
+
   try {
-    const disagreement = await fetchJson("./data/disagreement_daily.json");
+    disagreement = await fetchJson("./data/disagreement_daily.json");
     renderDisagreement(document.getElementById("disagreement"), disagreement);
   } catch {
     document.getElementById("disagreement").textContent = "Disagreement data not ready yet.";
@@ -624,14 +715,14 @@ async function main() {
   }
 
   try {
-    const conditions = await fetchJson("./data/conditions_daily.json");
+    conditions = await fetchJson("./data/conditions_daily.json");
     renderConditionsTable(document.getElementById("conditionsTable"), conditions);
   } catch {
     document.getElementById("conditionsTable").textContent = "Conditions table not ready yet.";
   }
 
   try {
-    const blendDaily = await fetchJson("./data/blend_daily.json");
+    blendDaily = await fetchJson("./data/blend_daily.json");
     renderBlendDaily(document.getElementById("blendDaily"), blendDaily);
 
     const blendHourly = await fetchJson("./data/blend_hourly.json");
@@ -639,6 +730,17 @@ async function main() {
   } catch {
     document.getElementById("blendDaily").textContent = "Blend not generated yet (wait for action).";
     document.getElementById("blendHourly").textContent = "Blend not generated yet (wait for action).";
+  }
+
+  try {
+    if (blendDaily && conditions && disagreement) {
+      const merged = mergeOutlookData(blendDaily, conditions, disagreement);
+      renderDailyOutlook(document.getElementById("dailyOutlook"), merged);
+    } else {
+      document.getElementById("dailyOutlook").textContent = "7-day outlook not ready yet.";
+    }
+  } catch {
+    document.getElementById("dailyOutlook").textContent = "7-day outlook not ready yet.";
   }
 
   document.getElementById("updated").textContent = `Last updated: ${meta.updatedAt}`;
