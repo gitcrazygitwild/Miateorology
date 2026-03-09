@@ -42,6 +42,13 @@ function pillLabelForSignal(signal) {
   return "None";
 }
 
+function formatDayLabel(dateStr) {
+  const d = new Date(`${dateStr}T12:00:00`);
+  const weekday = d.toLocaleDateString(undefined, { weekday: "short" });
+  const monthDay = d.toLocaleDateString(undefined, { month: "numeric", day: "numeric" });
+  return { weekday, monthDay };
+}
+
 function renderLeaderboard(container, data) {
   const table = el("table");
   table.append(
@@ -410,13 +417,6 @@ function renderConditionsSummary(container, data) {
   container.replaceChildren(grid);
 }
 
-function formatDayLabel(dateStr) {
-  const d = new Date(`${dateStr}T12:00:00`);
-  const weekday = d.toLocaleDateString(undefined, { weekday: "short" });
-  const monthDay = d.toLocaleDateString(undefined, { month: "numeric", day: "numeric" });
-  return { weekday, monthDay };
-}
-
 function renderConditionsTable(container, data) {
   const outer = el("div", { class: "tableScroll" });
   const table = el("table", { class: "conditionsTable" });
@@ -456,15 +456,15 @@ function renderConditionsTable(container, data) {
     const sourceCell = el("div", { class: "conditionSources" }, [
       el("div", { class: "sourceLine" }, [
         el("span", { class: "sourceName" }, ["NWS"]),
-        document.createTextNode(` ${s.nws?.summary || "—"}${s.nws?.precipProbability != null ? ` (${s.nws.precipProbability}%)` : ""}`)
+        document.createTextNode(`: ${s.nws?.summary || "—"}${s.nws?.precipProbability != null ? ` (${s.nws.precipProbability}%)` : ""}`)
       ]),
       el("div", { class: "sourceLine smallMuted" }, [
         el("span", { class: "sourceName" }, ["Open-Meteo"]),
-        document.createTextNode(` ${s.openMeteo?.summary || "—"}${s.openMeteo?.precipProbability != null ? ` (${s.openMeteo.precipProbability}%)` : ""}`)
+        document.createTextNode(`: ${s.openMeteo?.summary || "—"}${s.openMeteo?.precipProbability != null ? ` (${s.openMeteo.precipProbability}%)` : ""}`)
       ]),
       el("div", { class: "sourceLine smallMuted" }, [
         el("span", { class: "sourceName" }, ["MET.no"]),
-        document.createTextNode(` ${s.metNo?.summary || "—"}${s.metNo?.precipProbability != null ? ` (${s.metNo.precipProbability}%)` : ""}`)
+        document.createTextNode(`: ${s.metNo?.summary || "—"}${s.metNo?.precipProbability != null ? ` (${s.metNo.precipProbability}%)` : ""}`)
       ])
     ]);
 
@@ -483,38 +483,6 @@ function renderConditionsTable(container, data) {
   table.append(tbody);
   outer.append(table);
   container.replaceChildren(outer);
-}
-
-  const tbody = el("tbody");
-  for (const day of data.days || []) {
-    const c = day.consensus || {};
-    const s = day.sources || {};
-
-    const sourceCell = el("div", { class: "conditionCell" }, [
-      el("div", {}, [`NWS: ${s.nws?.summary || "—"}${s.nws?.precipProbability != null ? ` (${s.nws.precipProbability}%)` : ""}`]),
-      el("div", { class: "smallMuted" }, [`Open-Meteo: ${s.openMeteo?.summary || "—"}${s.openMeteo?.precipProbability != null ? ` (${s.openMeteo.precipProbability}%)` : ""}`]),
-      el("div", { class: "smallMuted" }, [`MET.no: ${s.metNo?.summary || "—"}${s.metNo?.precipProbability != null ? ` (${s.metNo.precipProbability}%)` : ""}`])
-    ]);
-
-    tbody.append(
-      el("tr", {}, [
-        el("td", {}, [day.date]),
-        el("td", {}, [
-          el("div", {}, [c.summary || "—"]),
-          el("div", { class: "smallMuted" }, [
-            c.avgPrecipProbability == null ? "Avg precip: —" : `Avg precip: ${c.avgPrecipProbability.toFixed(0)}%`
-          ])
-        ]),
-        el("td", {}, [el("span", { class: pillClassForSignal(c.rainSignal) }, [pillLabelForSignal(c.rainSignal)])]),
-        el("td", {}, [el("span", { class: pillClassForSignal(c.snowSignal) }, [pillLabelForSignal(c.snowSignal)])]),
-        el("td", {}, [el("span", { class: pillClassForSignal(c.thunderSignal) }, [pillLabelForSignal(c.thunderSignal)])]),
-        el("td", {}, [sourceCell])
-      ])
-    );
-  }
-
-  table.append(tbody);
-  container.replaceChildren(table);
 }
 
 async function loadLive(meta) {
