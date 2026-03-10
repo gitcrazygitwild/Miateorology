@@ -1,5 +1,5 @@
 {
-  "issuedAt": "2026-03-10T01:13:37.902-04:00",
+  "issuedAt": "2026-03-10T07:50:30.598-04:00",
   "issuedDate": "2026-03-10",
   "targetDate": "2026-03-11",
   "location": {
@@ -10,15 +10,15 @@
   "forecasts": {
     "nws": {
       "highF": 84,
-      "lowF": 55
+      "lowF": 62
     },
     "openMeteo": {
-      "highF": 85.2,
-      "lowF": 57
+      "highF": 85.4,
+      "lowF": 56.5
     },
     "metNo": {
-      "highF": 82.2,
-      "lowF": 61.2
+      "highF": 82.9,
+      "lowF": 59.7
     }
   }
 }
