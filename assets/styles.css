@@ -440,3 +440,11 @@ th {
   margin-bottom: 10px;
 }
 
+details.detailsBlock {
+  width: 100%;
+}
+
+details.detailsBlock summary {
+  user-select: none;
+}
+
