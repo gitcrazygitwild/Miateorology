@@ -760,11 +760,14 @@ async function main() {
   try {
     if (blendDaily && conditions && disagreement) {
       const merged = mergeOutlookData(blendDaily, conditions, disagreement);
+      renderOutlookHighlight(document.getElementById("outlookHighlight"), merged);
       renderDailyOutlook(document.getElementById("dailyOutlook"), merged);
     } else {
+      document.getElementById("outlookHighlight").textContent = "";
       document.getElementById("dailyOutlook").textContent = "7-day outlook not ready yet.";
     }
   } catch {
+    document.getElementById("outlookHighlight").textContent = "";
     document.getElementById("dailyOutlook").textContent = "7-day outlook not ready yet.";
   }
 
