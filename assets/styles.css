@@ -383,3 +383,60 @@ th {
   }
 }
 
+.detailsBlock summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 20px;
+  list-style: none;
+}
+
+.detailsBlock summary::-webkit-details-marker {
+  display: none;
+}
+
+.detailsBlock summary::after {
+  content: "▾";
+  float: right;
+  color: var(--muted);
+}
+
+.detailsBlock[open] summary::after {
+  content: "▴";
+}
+
+.detailsBody {
+  margin-top: 14px;
+}
+
+.highlightCard {
+  background: rgba(250, 204, 21, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.highlightTitle {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.highlightMain {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.highlightSub {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.outlookMetaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
