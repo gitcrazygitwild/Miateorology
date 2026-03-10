@@ -1,0 +1,24 @@
+{
+  "issuedAt": "2026-03-10T01:13:37.902-04:00",
+  "issuedDate": "2026-03-10",
+  "targetDate": "2026-03-11",
+  "location": {
+    "name": "Richmond, VA",
+    "lat": 37.5407,
+    "lon": -77.436
+  },
+  "forecasts": {
+    "nws": {
+      "highF": 84,
+      "lowF": 55
+    },
+    "openMeteo": {
+      "highF": 85.2,
+      "lowF": 57
+    },
+    "metNo": {
+      "highF": 82.2,
+      "lowF": 61.2
+    }
+  }
+}

@@ -4,41 +4,27 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-03-09T07:52:40.454-04:00",
+  "generatedAt": "2026-03-10T01:13:37.902-04:00",
   "days": [
     {
       "date": "2026-03-09",
       "sources": {
         "nws": {
           "date": "2026-03-09",
-          "summary": "Areas Of Fog then Mostly Sunny",
+          "summary": "Mostly Clear",
           "precipProbability": 0,
           "rain": false,
           "snow": false,
           "thunder": false
         },
-        "openMeteo": {
-          "date": "2026-03-09",
-          "summary": "Fog",
-          "precipProbability": 1,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        },
-        "metNo": {
-          "date": "2026-03-09",
-          "summary": "Fair Day",
-          "precipProbability": null,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        }
+        "openMeteo": null,
+        "metNo": null
       },
       "consensus": {
         "rainSignal": "off",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 0.5,
+        "avgPrecipProbability": 0,
         "summary": "Mostly quiet signal"
       }
     },
@@ -55,8 +41,8 @@
         },
         "openMeteo": {
           "date": "2026-03-10",
-          "summary": "Clear",
-          "precipProbability": 3,
+          "summary": "Overcast",
+          "precipProbability": 2,
           "rain": false,
           "snow": false,
           "thunder": false
@@ -74,7 +60,7 @@
         "rainSignal": "off",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 4,
+        "avgPrecipProbability": 3.5,
         "summary": "Mostly quiet signal"
       }
     },
@@ -83,8 +69,8 @@
       "sources": {
         "nws": {
           "date": "2026-03-11",
-          "summary": "Partly Sunny then Slight Chance Showers And Thunderstorms",
-          "precipProbability": 41,
+          "summary": "Partly Sunny then Slight Chance Rain Showers",
+          "precipProbability": 35,
           "rain": true,
           "snow": false,
           "thunder": true
@@ -92,13 +78,49 @@
         "openMeteo": {
           "date": "2026-03-11",
           "summary": "Overcast",
-          "precipProbability": 16,
+          "precipProbability": 13,
           "rain": false,
           "snow": false,
           "thunder": false
         },
         "metNo": {
           "date": "2026-03-11",
+          "summary": "Partlycloudy Night",
+          "precipProbability": null,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "weak",
+        "snowSignal": "off",
+        "thunderSignal": "weak",
+        "avgPrecipProbability": 24,
+        "summary": "Mostly quiet signal"
+      }
+    },
+    {
+      "date": "2026-03-12",
+      "sources": {
+        "nws": {
+          "date": "2026-03-12",
+          "summary": "Showers And Thunderstorms",
+          "precipProbability": 85,
+          "rain": true,
+          "snow": false,
+          "thunder": true
+        },
+        "openMeteo": {
+          "date": "2026-03-12",
+          "summary": "Light snow",
+          "precipProbability": 81,
+          "rain": false,
+          "snow": true,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-03-12",
           "summary": "Partlycloudy Night",
           "precipProbability": null,
           "rain": true,
@@ -108,45 +130,9 @@
       },
       "consensus": {
         "rainSignal": "medium",
-        "snowSignal": "off",
+        "snowSignal": "weak",
         "thunderSignal": "weak",
-        "avgPrecipProbability": 28.5,
-        "summary": "Rain signal present"
-      }
-    },
-    {
-      "date": "2026-03-12",
-      "sources": {
-        "nws": {
-          "date": "2026-03-12",
-          "summary": "Showers And Thunderstorms Likely",
-          "precipProbability": 74,
-          "rain": true,
-          "snow": false,
-          "thunder": true
-        },
-        "openMeteo": {
-          "date": "2026-03-12",
-          "summary": "Rain showers",
-          "precipProbability": 72,
-          "rain": true,
-          "snow": false,
-          "thunder": false
-        },
-        "metNo": {
-          "date": "2026-03-12",
-          "summary": "Cloudy",
-          "precipProbability": null,
-          "rain": true,
-          "snow": false,
-          "thunder": false
-        }
-      },
-      "consensus": {
-        "rainSignal": "strong",
-        "snowSignal": "off",
-        "thunderSignal": "weak",
-        "avgPrecipProbability": 73,
+        "avgPrecipProbability": 83,
         "summary": "Rain signal present"
       }
     },
@@ -155,8 +141,8 @@
       "sources": {
         "nws": {
           "date": "2026-03-13",
-          "summary": "Mostly Sunny",
-          "precipProbability": 7,
+          "summary": "Sunny",
+          "precipProbability": 2,
           "rain": false,
           "snow": false,
           "thunder": false
@@ -164,7 +150,7 @@
         "openMeteo": {
           "date": "2026-03-13",
           "summary": "Overcast",
-          "precipProbability": 6,
+          "precipProbability": 5,
           "rain": false,
           "snow": false,
           "thunder": false
@@ -182,7 +168,7 @@
         "rainSignal": "off",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 6.5,
+        "avgPrecipProbability": 3.5,
         "summary": "Mostly quiet signal"
       }
     },
@@ -200,14 +186,14 @@
         "openMeteo": {
           "date": "2026-03-14",
           "summary": "Overcast",
-          "precipProbability": 3,
+          "precipProbability": 2,
           "rain": false,
           "snow": false,
           "thunder": false
         },
         "metNo": {
           "date": "2026-03-14",
-          "summary": "Cloudy",
+          "summary": "Partlycloudy Night",
           "precipProbability": null,
           "rain": false,
           "snow": false,
@@ -218,7 +204,7 @@
         "rainSignal": "off",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 3,
+        "avgPrecipProbability": 2.5,
         "summary": "Mostly quiet signal"
       }
     },
@@ -227,8 +213,8 @@
       "sources": {
         "nws": {
           "date": "2026-03-15",
-          "summary": "Partly Sunny",
-          "precipProbability": 42,
+          "summary": "Mostly Sunny",
+          "precipProbability": 52,
           "rain": true,
           "snow": false,
           "thunder": false
@@ -236,14 +222,14 @@
         "openMeteo": {
           "date": "2026-03-15",
           "summary": "Overcast",
-          "precipProbability": 26,
+          "precipProbability": 45,
           "rain": false,
           "snow": false,
           "thunder": false
         },
         "metNo": {
           "date": "2026-03-15",
-          "summary": "Clearsky Night",
+          "summary": "Fair Night",
           "precipProbability": null,
           "rain": false,
           "snow": false,
@@ -254,7 +240,7 @@
         "rainSignal": "weak",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 34,
+        "avgPrecipProbability": 48.5,
         "summary": "Mostly quiet signal"
       }
     }
