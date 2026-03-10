@@ -851,16 +851,44 @@ async function main() {
   });
 
   // 8) Disagreement
+  const nwsConditionsForSpread = await getNwsDailyConditions(links.forecastUrl, 7);
+  const omConditionsForSpread = await getOpenMeteoDailyConditions(RICHMOND.lat, RICHMOND.lon, start, end);
+  const metConditionsForSpread = await getMetNoDailyConditions(RICHMOND.lat, RICHMOND.lon, 7);
+
+  const condByDate = new Map();
+
+  for (const x of nwsConditionsForSpread) {
+    if (!condByDate.has(x.date)) condByDate.set(x.date, {});
+    condByDate.get(x.date).nws = x;
+  }
+
+  for (const x of omConditionsForSpread) {
+    if (!condByDate.has(x.date)) condByDate.set(x.date, {});
+    condByDate.get(x.date).openMeteo = x;
+  }
+
+  for (const x of metConditionsForSpread) {
+    if (!condByDate.has(x.date)) condByDate.set(x.date, {});
+    condByDate.get(x.date).metNo = x;
+  }
+
   const disagreementDays = blendedDaily.map(day => {
     const highs = [
       day.sources.nws?.highF,
       day.sources.openMeteo?.highF,
       day.sources.metNo?.highF
     ];
+
     const lows = [
       day.sources.nws?.lowF,
       day.sources.openMeteo?.lowF,
       day.sources.metNo?.lowF
+    ];
+
+    const precips = [
+      condByDate.get(day.date)?.nws?.precipProbability,
+      condByDate.get(day.date)?.openMeteo?.precipProbability,
+      condByDate.get(day.date)?.metNo?.precipProbability
     ];
 
     const highSpread = (() => {
@@ -877,11 +905,18 @@ async function main() {
 
     const overallSpread = mean([highSpread, lowSpread]);
 
+    const precipSpread = (() => {
+      const lo = minVal(precips);
+      const hi = maxVal(precips);
+      return (lo == null || hi == null) ? null : round1(hi - lo);
+    })();
+
     return {
       date: day.date,
       overallSpreadF: overallSpread == null ? null : round1(overallSpread),
       highSpreadF: highSpread,
       lowSpreadF: lowSpread,
+      precipSpread,
       confidence: classifySpread(overallSpread)
     };
   });
@@ -892,9 +927,9 @@ async function main() {
   });
 
   // 9) Conditions
-  const nwsConditions = await getNwsDailyConditions(links.forecastUrl, 7);
-  const omConditions = await getOpenMeteoDailyConditions(RICHMOND.lat, RICHMOND.lon, start, end);
-  const metConditions = await getMetNoDailyConditions(RICHMOND.lat, RICHMOND.lon, 7);
+  const nwsConditions = nwsConditionsForSpread;
+  const omConditions = omConditionsForSpread;
+  const metConditions = metConditionsForSpread;
   const blendedConditions = blendDailyConditions(nwsConditions, omConditions, metConditions);
 
   writeJson(`${dataDir}/conditions_daily.json`, {
