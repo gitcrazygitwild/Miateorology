@@ -13,7 +13,69 @@
   </header>
 
   <main class="wrap">
+<section class="card">
+  <h2>Accuracy view</h2>
+  <div class="toggleRow">
+    <button id="btnLive" class="toggleBtn active" type="button">Live accuracy (all 3)</button>
+    <button id="btnBackfill" class="toggleBtn" type="button">1-year backfill (Open-Meteo only)</button>
+  </div>
+  <p id="viewNote" class="muted" style="margin-top:10px;"></p>
+</section>
 
+<section class="card">
+  <h2>7-Day outlook</h2>
+  <p class="muted">Combined temperature, precipitation, and confidence outlook for the next 7 days.</p>
+  <div id="outlookHighlight"></div>
+  <div id="dailyOutlook"></div>
+</section>
+
+<section class="card">
+  <h2>Current monthly leader</h2>
+  <div id="monthlyWinner"></div>
+</section>
+
+<section class="card">
+  <h2>Accuracy trend</h2>
+  <div id="chartWrap"></div>
+</section>
+
+<section class="card">
+  <h2>Forecast disagreement</h2>
+  <p class="muted">Lower spread between sources = higher confidence.</p>
+  <div id="disagreement"></div>
+</section>
+
+<section class="card">
+  <details class="detailsBlock">
+    <summary>Conditions outlook details</summary>
+    <div class="detailsBody">
+      <p class="muted">Consensus signals for rain, snow, and thunderstorms over the next 7 days.</p>
+      <div id="conditionsSummary"></div>
+      <div id="conditionsTable"></div>
+    </div>
+  </details>
+</section>
+
+<section class="card">
+  <h2>Leaderboard</h2>
+  <div id="meta" class="muted"></div>
+  <div id="leaderboard"></div>
+</section>
+
+<section class="card">
+  <h2>Latest scored day</h2>
+  <div id="latest"></div>
+</section>
+
+<section class="card">
+  <h2>Blended daily forecast (next 7 days)</h2>
+  <div id="blendDaily"></div>
+</section>
+
+<section class="card">
+  <h2>Blended hourly forecast (next 48 hours)</h2>
+  <div id="blendHourly"></div>
+</section>
     <section class="card">
       <h2>Accuracy view</h2>
       <div class="toggleRow">
