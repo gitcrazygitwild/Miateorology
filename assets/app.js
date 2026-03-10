@@ -520,6 +520,31 @@ function renderConditionsTable(container, data) {
   container.replaceChildren(outer);
 }
 
+function renderOutlookHighlight(container, mergedDays) {
+  const ranked = [...mergedDays]
+    .filter(x => typeof x?.disagreement?.overallSpreadF === "number")
+    .sort((a, b) => (b.disagreement.overallSpreadF ?? -1) - (a.disagreement.overallSpreadF ?? -1));
+
+  const top = ranked[0];
+  if (!top) {
+    container.textContent = "";
+    return;
+  }
+
+  const { weekday, monthDay } = formatDayLabel(top.date);
+  const text = `${weekday} ${monthDay}`;
+
+  const card = el("div", { class: "highlightCard" }, [
+    el("div", { class: "highlightTitle" }, ["Most uncertain upcoming day"]),
+    el("div", { class: "highlightMain" }, [text]),
+    el("div", { class: "highlightSub" }, [
+      `Temp spread: ${top.disagreement?.overallSpreadF == null ? "—" : `${top.disagreement.overallSpreadF.toFixed(1)}°`} • ${pillLabelForConfidence(top.disagreement?.confidence)}`
+    ])
+  ]);
+
+  container.replaceChildren(card);
+}
+
 function renderDailyOutlook(container, mergedDays) {
   const grid = el("div", { class: "dailyOutlookGrid" });
 
