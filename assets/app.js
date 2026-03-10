@@ -23,7 +23,7 @@ function pillClassForConfidence(conf) {
 
 function pillLabelForConfidence(conf) {
   if (conf === "high") return "High confidence";
-  if (conf === "medium") return "Mixed";
+  if (conf === "medium") return "Mixed confidence";
   if (conf === "low") return "Low confidence";
   return "Unknown";
 }
