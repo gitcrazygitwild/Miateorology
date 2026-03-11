@@ -4,438 +4,438 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-03-10T07:50:30.598-04:00",
+  "generatedAt": "2026-03-11T07:50:24.036-04:00",
   "hours": [
     {
-      "timeISO": "2026-03-10T07:00:00.000-04:00",
-      "blendedTempF": 52,
+      "timeISO": "2026-03-11T07:00:00.000-04:00",
+      "blendedTempF": 60,
       "sources": {
-        "nws": 52,
+        "nws": 60,
         "openMeteo": null,
         "metNo": null
       }
     },
     {
-      "timeISO": "2026-03-10T08:00:00.000-04:00",
-      "blendedTempF": 60.9,
-      "sources": {
-        "nws": 55,
-        "openMeteo": 74.6,
-        "metNo": 53.1
-      }
-    },
-    {
-      "timeISO": "2026-03-10T09:00:00.000-04:00",
-      "blendedTempF": 65.7,
-      "sources": {
-        "nws": 60,
-        "openMeteo": 80,
-        "metNo": 57.2
-      }
-    },
-    {
-      "timeISO": "2026-03-10T10:00:00.000-04:00",
-      "blendedTempF": 70,
-      "sources": {
-        "nws": 64,
-        "openMeteo": 82.8,
-        "metNo": 63.1
-      }
-    },
-    {
-      "timeISO": "2026-03-10T11:00:00.000-04:00",
-      "blendedTempF": 74,
-      "sources": {
-        "nws": 69,
-        "openMeteo": 83.8,
-        "metNo": 69.1
-      }
-    },
-    {
-      "timeISO": "2026-03-10T12:00:00.000-04:00",
-      "blendedTempF": 76.9,
-      "sources": {
-        "nws": 73,
-        "openMeteo": 83.7,
-        "metNo": 74.1
-      }
-    },
-    {
-      "timeISO": "2026-03-10T13:00:00.000-04:00",
-      "blendedTempF": 78.8,
-      "sources": {
-        "nws": 76,
-        "openMeteo": 83,
-        "metNo": 77.5
-      }
-    },
-    {
-      "timeISO": "2026-03-10T14:00:00.000-04:00",
-      "blendedTempF": 79.6,
-      "sources": {
-        "nws": 78,
-        "openMeteo": 81.2,
-        "metNo": 79.7
-      }
-    },
-    {
-      "timeISO": "2026-03-10T15:00:00.000-04:00",
-      "blendedTempF": 78.9,
-      "sources": {
-        "nws": 80,
-        "openMeteo": 76,
-        "metNo": 80.8
-      }
-    },
-    {
-      "timeISO": "2026-03-10T16:00:00.000-04:00",
-      "blendedTempF": 77.7,
-      "sources": {
-        "nws": 81,
-        "openMeteo": 71.4,
-        "metNo": 80.8
-      }
-    },
-    {
-      "timeISO": "2026-03-10T17:00:00.000-04:00",
-      "blendedTempF": 76,
-      "sources": {
-        "nws": 80,
-        "openMeteo": 68.2,
-        "metNo": 79.9
-      }
-    },
-    {
-      "timeISO": "2026-03-10T18:00:00.000-04:00",
-      "blendedTempF": 73.8,
-      "sources": {
-        "nws": 78,
-        "openMeteo": 66.1,
-        "metNo": 77.4
-      }
-    },
-    {
-      "timeISO": "2026-03-10T19:00:00.000-04:00",
-      "blendedTempF": 70.7,
-      "sources": {
-        "nws": 76,
-        "openMeteo": 63.9,
-        "metNo": 72.3
-      }
-    },
-    {
-      "timeISO": "2026-03-10T20:00:00.000-04:00",
-      "blendedTempF": 68.3,
-      "sources": {
-        "nws": 73,
-        "openMeteo": 62.4,
-        "metNo": 69.4
-      }
-    },
-    {
-      "timeISO": "2026-03-10T21:00:00.000-04:00",
-      "blendedTempF": 66.5,
-      "sources": {
-        "nws": 71,
-        "openMeteo": 61.8,
-        "metNo": 66.7
-      }
-    },
-    {
-      "timeISO": "2026-03-10T22:00:00.000-04:00",
-      "blendedTempF": 64.8,
-      "sources": {
-        "nws": 69,
-        "openMeteo": 60.5,
-        "metNo": 64.9
-      }
-    },
-    {
-      "timeISO": "2026-03-10T23:00:00.000-04:00",
-      "blendedTempF": 64.1,
-      "sources": {
-        "nws": 68,
-        "openMeteo": 59.8,
-        "metNo": 64.4
-      }
-    },
-    {
-      "timeISO": "2026-03-11T00:00:00.000-04:00",
-      "blendedTempF": 63.1,
-      "sources": {
-        "nws": 67,
-        "openMeteo": 58.4,
-        "metNo": 63.9
-      }
-    },
-    {
-      "timeISO": "2026-03-11T01:00:00.000-04:00",
-      "blendedTempF": 62.2,
-      "sources": {
-        "nws": 66,
-        "openMeteo": 57.5,
-        "metNo": 63
-      }
-    },
-    {
-      "timeISO": "2026-03-11T02:00:00.000-04:00",
-      "blendedTempF": 61.4,
-      "sources": {
-        "nws": 65,
-        "openMeteo": 56.7,
-        "metNo": 62.4
-      }
-    },
-    {
-      "timeISO": "2026-03-11T03:00:00.000-04:00",
-      "blendedTempF": 60.9,
-      "sources": {
-        "nws": 64,
-        "openMeteo": 56.5,
-        "metNo": 62.2
-      }
-    },
-    {
-      "timeISO": "2026-03-11T04:00:00.000-04:00",
-      "blendedTempF": 60.5,
-      "sources": {
-        "nws": 63,
-        "openMeteo": 56.7,
-        "metNo": 61.7
-      }
-    },
-    {
-      "timeISO": "2026-03-11T05:00:00.000-04:00",
-      "blendedTempF": 61.7,
-      "sources": {
-        "nws": 62,
-        "openMeteo": 62.2,
-        "metNo": 61
-      }
-    },
-    {
-      "timeISO": "2026-03-11T06:00:00.000-04:00",
-      "blendedTempF": 63.2,
-      "sources": {
-        "nws": 61,
-        "openMeteo": 68.3,
-        "metNo": 60.3
-      }
-    },
-    {
-      "timeISO": "2026-03-11T07:00:00.000-04:00",
-      "blendedTempF": 64.7,
-      "sources": {
-        "nws": 61,
-        "openMeteo": 73.5,
-        "metNo": 59.7
-      }
-    },
-    {
       "timeISO": "2026-03-11T08:00:00.000-04:00",
-      "blendedTempF": 66.7,
+      "blendedTempF": 66.6,
       "sources": {
         "nws": 62,
-        "openMeteo": 78.3,
-        "metNo": 59.9
+        "openMeteo": 78.4,
+        "metNo": 59.4
       }
     },
     {
       "timeISO": "2026-03-11T09:00:00.000-04:00",
-      "blendedTempF": 70,
+      "blendedTempF": 70.2,
       "sources": {
         "nws": 66,
-        "openMeteo": 80.9,
-        "metNo": 63.1
+        "openMeteo": 82.2,
+        "metNo": 62.4
       }
     },
     {
       "timeISO": "2026-03-11T10:00:00.000-04:00",
-      "blendedTempF": 73.2,
+      "blendedTempF": 74.2,
       "sources": {
         "nws": 70,
-        "openMeteo": 81.9,
-        "metNo": 67.8
+        "openMeteo": 84.2,
+        "metNo": 68.4
       }
     },
     {
       "timeISO": "2026-03-11T11:00:00.000-04:00",
-      "blendedTempF": 76.9,
+      "blendedTempF": 76.6,
       "sources": {
-        "nws": 74,
-        "openMeteo": 84.5,
-        "metNo": 72.3
+        "nws": 75,
+        "openMeteo": 85.8,
+        "metNo": 69.1
       }
     },
     {
       "timeISO": "2026-03-11T12:00:00.000-04:00",
-      "blendedTempF": 79.2,
+      "blendedTempF": 80.3,
       "sources": {
-        "nws": 77,
-        "openMeteo": 85,
-        "metNo": 75.6
+        "nws": 79,
+        "openMeteo": 87.7,
+        "metNo": 74.3
       }
     },
     {
       "timeISO": "2026-03-11T13:00:00.000-04:00",
-      "blendedTempF": 81.1,
+      "blendedTempF": 82.1,
       "sources": {
-        "nws": 79,
-        "openMeteo": 85.4,
-        "metNo": 78.8
+        "nws": 81,
+        "openMeteo": 87.4,
+        "metNo": 77.9
       }
     },
     {
       "timeISO": "2026-03-11T14:00:00.000-04:00",
-      "blendedTempF": 81.9,
+      "blendedTempF": 82.8,
       "sources": {
-        "nws": 81,
-        "openMeteo": 84.3,
-        "metNo": 80.4
+        "nws": 83,
+        "openMeteo": 85.4,
+        "metNo": 79.9
       }
     },
     {
       "timeISO": "2026-03-11T15:00:00.000-04:00",
-      "blendedTempF": 81.8,
+      "blendedTempF": 82.9,
       "sources": {
-        "nws": 82,
-        "openMeteo": 81.1,
-        "metNo": 82.4
+        "nws": 85,
+        "openMeteo": 81.6,
+        "metNo": 82
       }
     },
     {
       "timeISO": "2026-03-11T16:00:00.000-04:00",
-      "blendedTempF": 81.2,
+      "blendedTempF": 82.9,
       "sources": {
-        "nws": 83,
-        "openMeteo": 77.7,
-        "metNo": 82.9
+        "nws": 86,
+        "openMeteo": 78.9,
+        "metNo": 83.7
       }
     },
     {
       "timeISO": "2026-03-11T17:00:00.000-04:00",
-      "blendedTempF": 80.1,
+      "blendedTempF": 81,
       "sources": {
-        "nws": 83,
-        "openMeteo": 74.6,
-        "metNo": 82.6
+        "nws": 85,
+        "openMeteo": 76.4,
+        "metNo": 81.5
       }
     },
     {
       "timeISO": "2026-03-11T18:00:00.000-04:00",
-      "blendedTempF": 76.8,
+      "blendedTempF": 79.3,
       "sources": {
-        "nws": 80,
-        "openMeteo": 70.1,
-        "metNo": 80.2
+        "nws": 82,
+        "openMeteo": 74.8,
+        "metNo": 81
       }
     },
     {
       "timeISO": "2026-03-11T19:00:00.000-04:00",
-      "blendedTempF": 75.4,
+      "blendedTempF": 76.8,
       "sources": {
-        "nws": 78,
-        "openMeteo": 69.6,
-        "metNo": 78.6
+        "nws": 79,
+        "openMeteo": 74,
+        "metNo": 77.5
       }
     },
     {
       "timeISO": "2026-03-11T20:00:00.000-04:00",
-      "blendedTempF": 75.1,
+      "blendedTempF": 75.8,
       "sources": {
         "nws": 78,
-        "openMeteo": 70.2,
-        "metNo": 77
+        "openMeteo": 73.6,
+        "metNo": 75.7
       }
     },
     {
       "timeISO": "2026-03-11T21:00:00.000-04:00",
-      "blendedTempF": 74.2,
+      "blendedTempF": 74.7,
       "sources": {
         "nws": 77,
-        "openMeteo": 70.2,
-        "metNo": 75.4
+        "openMeteo": 72.6,
+        "metNo": 74.5
       }
     },
     {
       "timeISO": "2026-03-11T22:00:00.000-04:00",
-      "blendedTempF": 73.6,
+      "blendedTempF": 73.9,
       "sources": {
-        "nws": 75,
-        "openMeteo": 70.7,
-        "metNo": 75
+        "nws": 76,
+        "openMeteo": 71.6,
+        "metNo": 74.1
       }
     },
     {
       "timeISO": "2026-03-11T23:00:00.000-04:00",
-      "blendedTempF": 73.5,
+      "blendedTempF": 73.6,
       "sources": {
-        "nws": 74,
-        "openMeteo": 71.8,
-        "metNo": 74.7
+        "nws": 76,
+        "openMeteo": 70.6,
+        "metNo": 74.3
       }
     },
     {
       "timeISO": "2026-03-12T00:00:00.000-04:00",
-      "blendedTempF": 72.3,
+      "blendedTempF": 73,
       "sources": {
-        "nws": 73,
-        "openMeteo": 70.6,
-        "metNo": 73.4
+        "nws": 75,
+        "openMeteo": 70,
+        "metNo": 73.9
       }
     },
     {
       "timeISO": "2026-03-12T01:00:00.000-04:00",
-      "blendedTempF": 72,
+      "blendedTempF": 72.5,
       "sources": {
-        "nws": 73,
-        "openMeteo": 69.5,
-        "metNo": 73.6
+        "nws": 74,
+        "openMeteo": 69.3,
+        "metNo": 74.1
       }
     },
     {
       "timeISO": "2026-03-12T02:00:00.000-04:00",
-      "blendedTempF": 70.8,
+      "blendedTempF": 72.1,
       "sources": {
-        "nws": 72,
-        "openMeteo": 67.7,
-        "metNo": 72.7
+        "nws": 74,
+        "openMeteo": 68.7,
+        "metNo": 73.6
       }
     },
     {
       "timeISO": "2026-03-12T03:00:00.000-04:00",
-      "blendedTempF": 69.7,
+      "blendedTempF": 71.3,
       "sources": {
-        "nws": 71,
-        "openMeteo": 66.4,
-        "metNo": 71.8
+        "nws": 73,
+        "openMeteo": 68.5,
+        "metNo": 72.3
       }
     },
     {
       "timeISO": "2026-03-12T04:00:00.000-04:00",
-      "blendedTempF": 65.4,
+      "blendedTempF": 69,
       "sources": {
-        "nws": 70,
-        "openMeteo": 55.6,
-        "metNo": 70.7
+        "nws": 72,
+        "openMeteo": 63.1,
+        "metNo": 71.8
       }
     },
     {
       "timeISO": "2026-03-12T05:00:00.000-04:00",
-      "blendedTempF": 63.7,
+      "blendedTempF": 66.1,
       "sources": {
-        "nws": 69,
-        "openMeteo": 51.3,
-        "metNo": 70.7
+        "nws": 70,
+        "openMeteo": 57.2,
+        "metNo": 71.1
       }
     },
     {
       "timeISO": "2026-03-12T06:00:00.000-04:00",
-      "blendedTempF": 61.9,
+      "blendedTempF": 63.2,
       "sources": {
         "nws": 68,
-        "openMeteo": 47.5,
+        "openMeteo": 51.4,
         "metNo": 70.3
+      }
+    },
+    {
+      "timeISO": "2026-03-12T07:00:00.000-04:00",
+      "blendedTempF": 60,
+      "sources": {
+        "nws": 65,
+        "openMeteo": 46.2,
+        "metNo": 68.7
+      }
+    },
+    {
+      "timeISO": "2026-03-12T08:00:00.000-04:00",
+      "blendedTempF": 55.1,
+      "sources": {
+        "nws": 62,
+        "openMeteo": 42.9,
+        "metNo": 60.3
+      }
+    },
+    {
+      "timeISO": "2026-03-12T09:00:00.000-04:00",
+      "blendedTempF": 49.3,
+      "sources": {
+        "nws": 56,
+        "openMeteo": 40.2,
+        "metNo": 51.6
+      }
+    },
+    {
+      "timeISO": "2026-03-12T10:00:00.000-04:00",
+      "blendedTempF": 45.6,
+      "sources": {
+        "nws": 51,
+        "openMeteo": 38.9,
+        "metNo": 46.9
+      }
+    },
+    {
+      "timeISO": "2026-03-12T11:00:00.000-04:00",
+      "blendedTempF": 43.1,
+      "sources": {
+        "nws": 48,
+        "openMeteo": 38.4,
+        "metNo": 43
+      }
+    },
+    {
+      "timeISO": "2026-03-12T12:00:00.000-04:00",
+      "blendedTempF": 41.6,
+      "sources": {
+        "nws": 46,
+        "openMeteo": 38.2,
+        "metNo": 40.5
+      }
+    },
+    {
+      "timeISO": "2026-03-12T13:00:00.000-04:00",
+      "blendedTempF": 39.5,
+      "sources": {
+        "nws": 44,
+        "openMeteo": 36.8,
+        "metNo": 37.8
+      }
+    },
+    {
+      "timeISO": "2026-03-12T14:00:00.000-04:00",
+      "blendedTempF": 38.7,
+      "sources": {
+        "nws": 43,
+        "openMeteo": 36.7,
+        "metNo": 36.5
+      }
+    },
+    {
+      "timeISO": "2026-03-12T15:00:00.000-04:00",
+      "blendedTempF": 39.2,
+      "sources": {
+        "nws": 44,
+        "openMeteo": 38.3,
+        "metNo": 35.4
+      }
+    },
+    {
+      "timeISO": "2026-03-12T16:00:00.000-04:00",
+      "blendedTempF": 40,
+      "sources": {
+        "nws": 45,
+        "openMeteo": 38.6,
+        "metNo": 36.5
+      }
+    },
+    {
+      "timeISO": "2026-03-12T17:00:00.000-04:00",
+      "blendedTempF": 40.2,
+      "sources": {
+        "nws": 46,
+        "openMeteo": 38.4,
+        "metNo": 36.3
+      }
+    },
+    {
+      "timeISO": "2026-03-12T18:00:00.000-04:00",
+      "blendedTempF": 40.4,
+      "sources": {
+        "nws": 46,
+        "openMeteo": 37.4,
+        "metNo": 37.9
+      }
+    },
+    {
+      "timeISO": "2026-03-12T19:00:00.000-04:00",
+      "blendedTempF": 39.1,
+      "sources": {
+        "nws": 45,
+        "openMeteo": 36.6,
+        "metNo": 35.6
+      }
+    },
+    {
+      "timeISO": "2026-03-12T20:00:00.000-04:00",
+      "blendedTempF": 38,
+      "sources": {
+        "nws": 44,
+        "openMeteo": 36.2,
+        "metNo": 33.8
+      }
+    },
+    {
+      "timeISO": "2026-03-12T21:00:00.000-04:00",
+      "blendedTempF": 38.2,
+      "sources": {
+        "nws": 42,
+        "openMeteo": 36.1,
+        "metNo": 36.5
+      }
+    },
+    {
+      "timeISO": "2026-03-12T22:00:00.000-04:00",
+      "blendedTempF": 37.8,
+      "sources": {
+        "nws": 41,
+        "openMeteo": 36.2,
+        "metNo": 36.3
+      }
+    },
+    {
+      "timeISO": "2026-03-12T23:00:00.000-04:00",
+      "blendedTempF": 37,
+      "sources": {
+        "nws": 40,
+        "openMeteo": 36.5,
+        "metNo": 34.5
+      }
+    },
+    {
+      "timeISO": "2026-03-13T00:00:00.000-04:00",
+      "blendedTempF": 35.9,
+      "sources": {
+        "nws": 38,
+        "openMeteo": 36.2,
+        "metNo": 33.4
+      }
+    },
+    {
+      "timeISO": "2026-03-13T01:00:00.000-04:00",
+      "blendedTempF": 35.2,
+      "sources": {
+        "nws": 37,
+        "openMeteo": 35.8,
+        "metNo": 32.7
+      }
+    },
+    {
+      "timeISO": "2026-03-13T02:00:00.000-04:00",
+      "blendedTempF": 34.3,
+      "sources": {
+        "nws": 35,
+        "openMeteo": 35.4,
+        "metNo": 32.4
+      }
+    },
+    {
+      "timeISO": "2026-03-13T03:00:00.000-04:00",
+      "blendedTempF": 33.6,
+      "sources": {
+        "nws": 34,
+        "openMeteo": 35.2,
+        "metNo": 31.5
+      }
+    },
+    {
+      "timeISO": "2026-03-13T04:00:00.000-04:00",
+      "blendedTempF": 33.6,
+      "sources": {
+        "nws": 34,
+        "openMeteo": 35.4,
+        "metNo": 31.5
+      }
+    },
+    {
+      "timeISO": "2026-03-13T05:00:00.000-04:00",
+      "blendedTempF": 34.1,
+      "sources": {
+        "nws": 33,
+        "openMeteo": 37.7,
+        "metNo": 31.5
+      }
+    },
+    {
+      "timeISO": "2026-03-13T06:00:00.000-04:00",
+      "blendedTempF": 35,
+      "sources": {
+        "nws": 33,
+        "openMeteo": 41.1,
+        "metNo": 30.9
       }
     }
   ]

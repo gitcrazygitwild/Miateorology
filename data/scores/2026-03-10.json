@@ -1,0 +1,49 @@
+{
+  "targetDate": "2026-03-10",
+  "observedFromStation": "KRIC",
+  "observationCount": 312,
+  "observed": {
+    "highF": 84.9,
+    "lowF": 46.4
+  },
+  "snapshotUsed": "2026-03-09_for_2026-03-10.json",
+  "scores": [
+    {
+      "provider": "openMeteo",
+      "predicted": {
+        "highF": 82.8,
+        "lowF": 50.3
+      },
+      "errors": {
+        "highAbsF": 2.1,
+        "lowAbsF": 3.9,
+        "overallAbsF": 3
+      }
+    },
+    {
+      "provider": "metNo",
+      "predicted": {
+        "highF": 80.6,
+        "lowF": 52
+      },
+      "errors": {
+        "highAbsF": 4.3,
+        "lowAbsF": 5.6,
+        "overallAbsF": 5
+      }
+    },
+    {
+      "provider": "nws",
+      "predicted": {
+        "highF": 83,
+        "lowF": 60
+      },
+      "errors": {
+        "highAbsF": 1.9,
+        "lowAbsF": 13.6,
+        "overallAbsF": 7.8
+      }
+    }
+  ],
+  "computedAt": "2026-03-11T07:50:24.036-04:00"
+}

@@ -4,29 +4,29 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-03-10T07:50:30.598-04:00",
+  "generatedAt": "2026-03-11T07:50:24.036-04:00",
   "today": {
-    "date": "2026-03-10",
+    "date": "2026-03-11",
     "sources": {
       "nws": {
-        "date": "2026-03-10",
-        "summary": "Sunny",
-        "precipProbability": 5,
-        "rain": false,
+        "date": "2026-03-11",
+        "summary": "Mostly Sunny then Slight Chance Showers And Thunderstorms",
+        "precipProbability": 34,
+        "rain": true,
         "snow": false,
-        "thunder": false
+        "thunder": true
       },
       "openMeteo": {
-        "date": "2026-03-10",
-        "summary": "Partly cloudy",
-        "precipProbability": 1,
+        "date": "2026-03-11",
+        "summary": "Overcast",
+        "precipProbability": 6,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-03-10",
-        "summary": "Clearsky Day",
+        "date": "2026-03-11",
+        "summary": "Cloudy",
         "precipProbability": null,
         "rain": false,
         "snow": false,
@@ -34,10 +34,10 @@
       }
     },
     "consensus": {
-      "rainSignal": "off",
+      "rainSignal": "weak",
       "snowSignal": "off",
-      "thunderSignal": "off",
-      "avgPrecipProbability": 3,
+      "thunderSignal": "weak",
+      "avgPrecipProbability": 20,
       "summary": "Mostly quiet signal"
     }
   },
