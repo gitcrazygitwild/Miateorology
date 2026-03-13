@@ -1,61 +1,61 @@
 {
-  "generatedAt": "2026-03-12T07:45:19.552-04:00",
+  "generatedAt": "2026-03-13T07:47:33.570-04:00",
   "days": [
     {
-      "date": "2026-03-12",
-      "overallSpreadF": 10.5,
-      "highSpreadF": 13.7,
-      "lowSpreadF": 7.2,
+      "date": "2026-03-13",
+      "overallSpreadF": 9,
+      "highSpreadF": 4.7,
+      "lowSpreadF": 13.3,
       "precipSpread": 1,
       "confidence": "low"
     },
     {
-      "date": "2026-03-13",
-      "overallSpreadF": 7.7,
-      "highSpreadF": 5.6,
-      "lowSpreadF": 9.7,
-      "precipSpread": 0,
+      "date": "2026-03-14",
+      "overallSpreadF": 5.4,
+      "highSpreadF": 3.5,
+      "lowSpreadF": 7.3,
+      "precipSpread": 2,
       "confidence": "low"
     },
     {
-      "date": "2026-03-14",
-      "overallSpreadF": 4.9,
-      "highSpreadF": 6.3,
-      "lowSpreadF": 3.4,
-      "precipSpread": 4,
-      "confidence": "medium"
-    },
-    {
       "date": "2026-03-15",
-      "overallSpreadF": 8.8,
-      "highSpreadF": 3.9,
-      "lowSpreadF": 13.7,
-      "precipSpread": 24,
+      "overallSpreadF": 9.3,
+      "highSpreadF": 4.5,
+      "lowSpreadF": 14.1,
+      "precipSpread": 21,
       "confidence": "low"
     },
     {
       "date": "2026-03-16",
-      "overallSpreadF": 14.6,
-      "highSpreadF": 2.9,
-      "lowSpreadF": 26.3,
-      "precipSpread": 10,
+      "overallSpreadF": 11.6,
+      "highSpreadF": 6.8,
+      "lowSpreadF": 16.3,
+      "precipSpread": 7,
       "confidence": "low"
     },
     {
       "date": "2026-03-17",
-      "overallSpreadF": 6.2,
-      "highSpreadF": 4.7,
-      "lowSpreadF": 7.7,
-      "precipSpread": 23,
+      "overallSpreadF": 5.9,
+      "highSpreadF": 5.2,
+      "lowSpreadF": 6.5,
+      "precipSpread": 31,
       "confidence": "low"
     },
     {
       "date": "2026-03-18",
-      "overallSpreadF": 6,
-      "highSpreadF": 8,
-      "lowSpreadF": 3.9,
-      "precipSpread": 3,
+      "overallSpreadF": 6.4,
+      "highSpreadF": 7.5,
+      "lowSpreadF": 5.2,
+      "precipSpread": 2,
       "confidence": "low"
+    },
+    {
+      "date": "2026-03-19",
+      "overallSpreadF": 2.8,
+      "highSpreadF": 1.5,
+      "lowSpreadF": 4,
+      "precipSpread": 8,
+      "confidence": "medium"
     }
   ]
 }
