@@ -4,28 +4,28 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-03-13T07:47:33.570-04:00",
+  "generatedAt": "2026-03-14T07:01:09.692-04:00",
   "today": {
-    "date": "2026-03-13",
+    "date": "2026-03-14",
     "sources": {
       "nws": {
-        "date": "2026-03-13",
-        "summary": "Areas Of Freezing Fog then Sunny",
-        "precipProbability": 1,
+        "date": "2026-03-14",
+        "summary": "Partly Sunny",
+        "precipProbability": 2,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-03-13",
+        "date": "2026-03-14",
         "summary": "Overcast",
-        "precipProbability": 0,
+        "precipProbability": 2,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-03-13",
+        "date": "2026-03-14",
         "summary": "Partlycloudy Day",
         "precipProbability": null,
         "rain": false,
@@ -37,7 +37,7 @@
       "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 0.5,
+      "avgPrecipProbability": 2,
       "summary": "Mostly quiet signal"
     }
   },
