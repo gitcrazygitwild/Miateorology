@@ -13,13 +13,8 @@
   </header>
 
   <main class="wrap">
-<section class="card">
-  <h2>Accuracy view</h2>
-  <div class="toggleRow">
-    <button id="btnLive" class="toggleBtn active" type="button">Live accuracy (all 3)</button>
-    <button id="btnBackfill" class="toggleBtn" type="button">1-year backfill (Open-Meteo only)</button>
-  </div>
-  <p id="viewNote" class="muted" style="margin-top:10px;"></p>
+    <section class="card heroCard">
+  <div id="todayHero"></div>
 </section>
 
 <section class="card">
@@ -37,6 +32,19 @@
 <section class="card">
   <h2>Accuracy trend</h2>
   <div id="chartWrap"></div>
+</section>
+
+<section class="card">
+  <details class="detailsBlock">
+    <summary>Accuracy view</summary>
+    <div class="detailsBody">
+      <div class="toggleRow">
+        <button id="btnLive" class="toggleBtn active" type="button">Live accuracy (all 3)</button>
+        <button id="btnBackfill" class="toggleBtn" type="button">1-year backfill (Open-Meteo only)</button>
+      </div>
+      <p id="viewNote" class="muted" style="margin-top:10px;"></p>
+    </div>
+  </details>
 </section>
 
 <section class="card">
