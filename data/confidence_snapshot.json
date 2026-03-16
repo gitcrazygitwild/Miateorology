@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-03-16T02:26:43.913-04:00",
+  "mostLockedInDay": {
+    "date": "2026-03-19",
+    "overallSpreadF": 4.6,
+    "highSpreadF": 4.5,
+    "lowSpreadF": 4.7,
+    "precipSpread": 2,
+    "windSpreadMph": 12.6,
+    "confidence": "medium"
+  },
+  "mostUncertainDay": {
+    "date": "2026-03-16",
+    "overallSpreadF": 9,
+    "highSpreadF": 3,
+    "lowSpreadF": 14.9,
+    "precipSpread": 32,
+    "windSpreadMph": 18.1,
+    "confidence": "low"
+  }
+}
