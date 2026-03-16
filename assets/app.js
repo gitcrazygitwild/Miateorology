@@ -545,6 +545,70 @@ function renderOutlookHighlight(container, mergedDays) {
   container.replaceChildren(card);
 }
 
+function renderTodayHero(container, mergedDays) {
+  const today = mergedDays?.[0];
+  if (!today) {
+    container.textContent = "Today’s forecast not ready yet.";
+    return;
+  }
+
+  const blend = today.blend || {};
+  const conditions = today.conditions || {};
+  const disagreement = today.disagreement || {};
+  const consensus = conditions.consensus || {};
+  const { weekday, monthDay } = formatDayLabel(today.date);
+  const icon = pickWeatherIcon(conditions);
+
+  const wrap = el("div", { class: "todayHeroWrap" }, [
+    el("div", { class: "todayHeroMain" }, [
+      el("div", { class: "todayHeroLabel" }, ["Today’s forecast"]),
+      el("div", { class: "todayHeroTitle" }, [`${weekday} ${monthDay}`]),
+      el("div", { class: "todayHeroSub" }, [consensus.summary || "—"]),
+      el("div", { class: "todayHeroTemps" }, [
+        `${blend.blendedHighF ?? "—"}° / ${blend.blendedLowF ?? "—"}°`
+      ]),
+      el("div", { class: "todayHeroMiniRow" }, [
+        el("span", { class: "todayMiniPill" }, [
+          consensus.avgPrecipProbability == null
+            ? "Avg precip: —"
+            : `Avg precip: ${consensus.avgPrecipProbability.toFixed(0)}%`
+        ]),
+        el("span", { class: pillClassForSignal(consensus.rainSignal) }, [`Rain: ${pillLabelForSignal(consensus.rainSignal)}`]),
+        el("span", { class: pillClassForSignal(consensus.snowSignal) }, [`Snow: ${pillLabelForSignal(consensus.snowSignal)}`]),
+        el("span", { class: pillClassForSignal(consensus.thunderSignal) }, [`Thunder: ${pillLabelForSignal(consensus.thunderSignal)}`]),
+        el("span", { class: pillClassForConfidence(disagreement.confidence) }, [pillLabelForConfidence(disagreement.confidence)])
+      ])
+    ]),
+    el("div", { class: "todayHeroIcon", "aria-hidden": "true" }, [icon])
+  ]);
+
+  container.replaceChildren(wrap);
+}
+
+function renderOutlookCardExpanded(row) {
+  const conditions = row.conditions || {};
+  const disagreement = row.disagreement || {};
+  const sources = conditions.sources || {};
+
+  return el("div", { class: "outlookExpanded" }, [
+    el("div", { class: "outlookSourceRow" }, [
+      el("span", { class: "outlookSourceName" }, ["NWS"]),
+      document.createTextNode(`: ${sources.nws?.summary || "—"}${sources.nws?.precipProbability != null ? ` (${sources.nws.precipProbability}%)` : ""}`)
+    ]),
+    el("div", { class: "outlookSourceRow" }, [
+      el("span", { class: "outlookSourceName" }, ["Open-Meteo"]),
+      document.createTextNode(`: ${sources.openMeteo?.summary || "—"}${sources.openMeteo?.precipProbability != null ? ` (${sources.openMeteo.precipProbability}%)` : ""}`)
+    ]),
+    el("div", { class: "outlookSourceRow" }, [
+      el("span", { class: "outlookSourceName" }, ["MET.no"]),
+      document.createTextNode(`: ${sources.metNo?.summary || "—"}${sources.metNo?.precipProbability != null ? ` (${sources.metNo.precipProbability}%)` : ""}`)
+    ]),
+    el("div", { class: "outlookExpandHint" }, [
+      `Temp spread: ${disagreement.overallSpreadF == null ? "—" : `${disagreement.overallSpreadF.toFixed(1)}°`}`
+    ])
+  ]);
+}
+
 function renderDailyOutlook(container, mergedDays) {
   const grid = el("div", { class: "dailyOutlookGrid" });
 
@@ -556,42 +620,47 @@ function renderDailyOutlook(container, mergedDays) {
     const { weekday, monthDay } = formatDayLabel(row.date);
     const icon = pickWeatherIcon(conditions);
 
-    const card = el("div", { class: "outlookCard" }, [
-      el("div", { class: "outlookTop" }, [
-        el("div", { class: "outlookDayWrap" }, [
-          el("div", { class: "outlookWeekday" }, [weekday]),
-          el("div", { class: "outlookDate" }, [monthDay])
-        ]),
-        el("div", { class: "outlookIcon", "aria-hidden": "true" }, [icon])
+    const details = el("details", { class: "outlookDetails" }, [
+      el("summary", { class: "outlookSummaryButton" }, [
+        el("div", { class: "outlookCard" }, [
+          el("div", { class: "outlookTop" }, [
+            el("div", { class: "outlookDayWrap" }, [
+              el("div", { class: "outlookWeekday" }, [weekday]),
+              el("div", { class: "outlookDate" }, [monthDay])
+            ]),
+            el("div", { class: "outlookIcon", "aria-hidden": "true" }, [icon])
+          ]),
+
+          el("div", { class: "outlookTemp" }, [
+            `${blend.blendedHighF ?? "—"}° / ${blend.blendedLowF ?? "—"}°`
+          ]),
+
+          el("div", { class: "outlookTempSub" }, ["Blended high / low"]),
+
+          el("div", { class: "outlookSummary" }, [consensus.summary || "—"]),
+
+          el("div", { class: "outlookMetaRow" }, [
+            el("span", { class: "smallMuted" }, [
+              consensus.avgPrecipProbability == null
+                ? "Avg precip: —"
+                : `Avg precip: ${consensus.avgPrecipProbability.toFixed(0)}%`
+            ])
+          ]),
+
+          el("div", { class: "outlookPills" }, [
+            el("span", { class: pillClassForSignal(consensus.rainSignal) }, [`Rain: ${pillLabelForSignal(consensus.rainSignal)}`]),
+            el("span", { class: pillClassForSignal(consensus.snowSignal) }, [`Snow: ${pillLabelForSignal(consensus.snowSignal)}`]),
+            el("span", { class: pillClassForSignal(consensus.thunderSignal) }, [`Thunder: ${pillLabelForSignal(consensus.thunderSignal)}`]),
+            el("span", { class: pillClassForConfidence(disagreement.confidence) }, [pillLabelForConfidence(disagreement.confidence)])
+          ]),
+
+          el("div", { class: "outlookExpandHint" }, ["Tap for source details"])
+        ])
       ]),
-
-      el("div", { class: "outlookTemp" }, [
-        `${blend.blendedHighF ?? "—"}° / ${blend.blendedLowF ?? "—"}°`
-      ]),
-
-      el("div", { class: "outlookTempSub" }, ["Blended high / low"]),
-
-      el("div", { class: "outlookSummary" }, [consensus.summary || "—"]),
-
-      el("div", { class: "outlookMeta" }, [
-        consensus.avgPrecipProbability == null
-          ? "Avg precip: —"
-          : `Avg precip: ${consensus.avgPrecipProbability.toFixed(0)}%`
-      ]),
-
-      el("div", { class: "outlookPills" }, [
-        el("span", { class: pillClassForSignal(consensus.rainSignal) }, [`Rain: ${pillLabelForSignal(consensus.rainSignal)}`]),
-        el("span", { class: pillClassForSignal(consensus.snowSignal) }, [`Snow: ${pillLabelForSignal(consensus.snowSignal)}`]),
-        el("span", { class: pillClassForSignal(consensus.thunderSignal) }, [`Thunder: ${pillLabelForSignal(consensus.thunderSignal)}`]),
-        el("span", { class: pillClassForConfidence(disagreement.confidence) }, [pillLabelForConfidence(disagreement.confidence)])
-      ]),
-
-      el("div", { class: "outlookSourcesMini" }, [
-        `Spread: ${disagreement.overallSpreadF == null ? "—" : `${disagreement.overallSpreadF.toFixed(1)}°`}`
-      ])
+      renderOutlookCardExpanded(row)
     ]);
 
-    grid.append(card);
+    grid.append(details);
   }
 
   container.replaceChildren(grid);
@@ -757,16 +826,19 @@ async function main() {
     document.getElementById("blendHourly").textContent = "Blend not generated yet (wait for action).";
   }
 
-  try {
+    try {
     if (blendDaily && conditions && disagreement) {
       const merged = mergeOutlookData(blendDaily, conditions, disagreement);
+      renderTodayHero(document.getElementById("todayHero"), merged);
       renderOutlookHighlight(document.getElementById("outlookHighlight"), merged);
       renderDailyOutlook(document.getElementById("dailyOutlook"), merged);
     } else {
+      document.getElementById("todayHero").textContent = "Today’s forecast not ready yet.";
       document.getElementById("outlookHighlight").textContent = "";
       document.getElementById("dailyOutlook").textContent = "7-day outlook not ready yet.";
     }
   } catch {
+    document.getElementById("todayHero").textContent = "Today’s forecast not ready yet.";
     document.getElementById("outlookHighlight").textContent = "";
     document.getElementById("dailyOutlook").textContent = "7-day outlook not ready yet.";
   }
