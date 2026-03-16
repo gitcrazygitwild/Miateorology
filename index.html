@@ -4,103 +4,45 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Mia-teorology</title>
-  <link rel="stylesheet" href="./assets/styles.css?v=3" />
+  <link rel="stylesheet" href="./assets/styles.css?v=11" />
 </head>
 <body>
-  <header class="wrap">
-    <h1>Mia-teorology</h1>
-    <p class="sub">Forecast accuracy scoreboard + blended forecast (Richmond default)</p>
+  <header class="wrap siteHeader">
+    <div class="siteTitleRow">
+      <div class="siteTitleGroup">
+        <h1 class="siteTitle">Mia-teorology</h1>
+        <div id="titleTodayBadge" class="titleTodayBadge"></div>
+      </div>
+      <p class="sub">Forecast accuracy scoreboard + blended forecast (Richmond default)</p>
+    </div>
   </header>
 
   <main class="wrap">
     <section class="card heroCard">
-  <div id="todayHero"></div>
-</section>
-
-<section class="card">
-  <h2>7-Day outlook</h2>
-  <p class="muted">Combined temperature, precipitation, and confidence outlook for the next 7 days.</p>
-  <div id="outlookHighlight"></div>
-  <div id="dailyOutlook"></div>
-</section>
-
-<section class="card">
-  <h2>Current monthly leader</h2>
-  <div id="monthlyWinner"></div>
-</section>
-
-<section class="card">
-  <h2>Accuracy trend</h2>
-  <div id="chartWrap"></div>
-</section>
-
-<section class="card">
-  <details class="detailsBlock">
-    <summary>Accuracy view</summary>
-    <div class="detailsBody">
-      <div class="toggleRow">
-        <button id="btnLive" class="toggleBtn active" type="button">Live accuracy (all 3)</button>
-        <button id="btnBackfill" class="toggleBtn" type="button">1-year backfill (Open-Meteo only)</button>
-      </div>
-      <p id="viewNote" class="muted" style="margin-top:10px;"></p>
-    </div>
-  </details>
-</section>
-
-<section class="card">
-  <details class="detailsBlock" open>
-    <summary>Forecast disagreement</summary>
-    <div class="detailsBody">
-      <p class="muted">Lower spread between sources = higher confidence.</p>
-      <div id="disagreement"></div>
-    </div>
-  </details>
-</section>
-
-<section class="card">
-  <details class="detailsBlock">
-    <summary>Leaderboard</summary>
-    <div class="detailsBody">
-      <div id="meta" class="muted"></div>
-      <div id="leaderboard"></div>
-    </div>
-  </details>
-</section>
-
-<section class="card">
-  <details class="detailsBlock">
-    <summary>Latest scored day</summary>
-    <div class="detailsBody">
-      <div id="latest"></div>
-    </div>
-  </details>
-</section>
-
-<section class="card">
-  <details class="detailsBlock">
-    <summary>Blended daily forecast (next 7 days)</summary>
-    <div class="detailsBody">
-      <div id="blendDaily"></div>
-    </div>
-  </details>
-</section>
-
-<section class="card">
-  <details class="detailsBlock">
-    <summary>Blended hourly forecast (next 48 hours)</summary>
-    <div class="detailsBody">
-      <div id="blendHourly"></div>
-    </div>
-  </details>
-</section>
+      <div id="todayHero"></div>
+    </section>
 
     <section class="card">
-      <h2>Accuracy view</h2>
-      <div class="toggleRow">
-        <button id="btnLive" class="toggleBtn active" type="button">Live accuracy (all 3)</button>
-        <button id="btnBackfill" class="toggleBtn" type="button">1-year backfill (Open-Meteo only)</button>
-      </div>
-      <p id="viewNote" class="muted" style="margin-top:10px;"></p>
+      <h2>Weather story</h2>
+      <div id="weatherStory"></div>
+    </section>
+
+    <section class="card">
+      <h2>7-Day outlook</h2>
+      <p class="muted">Combined temperature, precipitation, wind, and confidence outlook for the next 7 days.</p>
+      <div id="outlookHighlight"></div>
+      <div id="dailyOutlook"></div>
+    </section>
+
+    <section class="card">
+      <h2>Richmond Rainbow Watch 🌈</h2>
+      <p class="muted">A fun estimate of rainbow potential based on rain, clearing, and timing.</p>
+      <div id="rainbowWatch"></div>
+    </section>
+
+    <section class="card">
+      <h2>Confidence snapshot</h2>
+      <div id="confidenceSnapshot"></div>
     </section>
 
     <section class="card">
@@ -113,63 +55,98 @@
       <div id="chartWrap"></div>
     </section>
 
-<section class="card">
-  <h2>Forecast disagreement</h2>
-  <p class="muted">Lower spread between sources = higher confidence.</p>
-  <div id="disagreement"></div>
-</section>
-
-<section class="card">
-  <h2>7-Day outlook</h2>
-  <p class="muted">Combined temperature, precipitation, and confidence outlook for the next 7 days.</p>
-  <div id="dailyOutlook"></div>
-</section>
-
-<section class="card">
-  <h2>Conditions outlook</h2>
-  <p class="muted">Consensus signals for rain, snow, and thunderstorms over the next 7 days.</p>
-  <div id="conditionsSummary"></div>
-  <div id="conditionsTable"></div>
-</section>
-
     <section class="card">
-      <h2>Leaderboard</h2>
-      <div id="meta" class="muted"></div>
-      <div id="leaderboard"></div>
+      <details class="detailsBlock">
+        <summary>Accuracy view</summary>
+        <div class="detailsBody">
+          <div class="toggleRow">
+            <button id="btnLive" class="toggleBtn active" type="button">Live accuracy (all 3)</button>
+            <button id="btnBackfill" class="toggleBtn" type="button">1-year backfill (Open-Meteo only)</button>
+          </div>
+          <p id="viewNote" class="muted" style="margin-top:10px;"></p>
+        </div>
+      </details>
     </section>
 
     <section class="card">
-      <h2>Latest scored day</h2>
-      <div id="latest"></div>
+      <details class="detailsBlock" open>
+        <summary>Forecast disagreement</summary>
+        <div class="detailsBody">
+          <p class="muted">Lower spread between sources = higher confidence.</p>
+          <div id="disagreement"></div>
+        </div>
+      </details>
     </section>
 
     <section class="card">
-      <h2>Blended daily forecast (next 7 days)</h2>
-      <div id="blendDaily"></div>
+      <details class="detailsBlock">
+        <summary>Conditions outlook details</summary>
+        <div class="detailsBody">
+          <p class="muted">Consensus signals for rain, snow, thunderstorms, and daily weather summaries.</p>
+          <div id="conditionsSummary"></div>
+          <div id="conditionsTable"></div>
+        </div>
+      </details>
     </section>
 
     <section class="card">
-      <h2>Blended hourly forecast (next 48 hours)</h2>
-      <div id="blendHourly"></div>
+      <details class="detailsBlock">
+        <summary>Leaderboard</summary>
+        <div class="detailsBody">
+          <div id="meta" class="muted"></div>
+          <div id="leaderboard"></div>
+        </div>
+      </details>
     </section>
 
     <section class="card">
-      <h2>Method (MVP)</h2>
-      <ul>
-        <li><b>Live</b>: scores = average absolute error of daily high/low (°F), against recent NWS station observations.</li>
-        <li><b>Backfill</b>: Open-Meteo only, comparing archived forecasts vs historical weather (reanalysis).</li>
-        <li><b>Blend</b>: simple average of available sources at each date/time.</li>
-        <li><b>Disagreement</b>: spread between provider forecasts for each upcoming day.</li>
-        <li><b>Conditions</b>: each source is normalized into simple buckets like rain, snow, thunder, precip chance, and summary.</li>
-      </ul>
+      <details class="detailsBlock">
+        <summary>Latest scored day</summary>
+        <div class="detailsBody">
+          <div id="latest"></div>
+        </div>
+      </details>
     </section>
 
+    <section class="card">
+      <details class="detailsBlock">
+        <summary>Blended daily forecast (next 7 days)</summary>
+        <div class="detailsBody">
+          <div id="blendDaily"></div>
+        </div>
+      </details>
+    </section>
+
+    <section class="card">
+      <details class="detailsBlock">
+        <summary>Blended hourly forecast (next 48 hours)</summary>
+        <div class="detailsBody">
+          <div id="blendHourly"></div>
+        </div>
+      </details>
+    </section>
+
+    <section class="card">
+      <details class="detailsBlock">
+        <summary>Method</summary>
+        <div class="detailsBody">
+          <ul>
+            <li><b>Live</b>: scores are based on forecast vs observed weather, centered on Richmond.</li>
+            <li><b>Backfill</b>: Open-Meteo historical comparison mode for the past year.</li>
+            <li><b>Blend</b>: simple average of available forecast sources at each date/time.</li>
+            <li><b>Disagreement</b>: spread between provider forecasts for temperature, precipitation, and wind.</li>
+            <li><b>Conditions</b>: normalized daily rain, snow, thunder, and summary signals.</li>
+            <li><b>Rainbow Watch</b>: fun estimate based on rain + clearing setup, not a scientific probability.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
   </main>
 
   <footer class="wrap muted">
     <span id="updated"></span>
   </footer>
 
-  <script type="module" src="./assets/app.js?v=3"></script>
+  <script type="module" src="./assets/app.js?v=11"></script>
 </body>
 </html>
