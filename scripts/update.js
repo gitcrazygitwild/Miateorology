@@ -30,8 +30,16 @@ function fFromC(c) {
   return (c == null || Number.isNaN(c)) ? null : (c * 9) / 5 + 32;
 }
 
+function mphFromMs(ms) {
+  return (ms == null || Number.isNaN(ms)) ? null : ms * 2.2369362921;
+}
+
 function round1(x) {
   return x == null ? null : Math.round(x * 10) / 10;
+}
+
+function round0(x) {
+  return x == null ? null : Math.round(x);
 }
 
 function mean(nums) {
@@ -77,6 +85,67 @@ function textHasAny(text, words) {
   return words.some(w => t.includes(w));
 }
 
+function safeMax(arr) {
+  const vals = arr.filter(v => typeof v === "number" && !Number.isNaN(v));
+  return vals.length ? Math.max(...vals) : null;
+}
+
+function classifyWindSignal(maxWindMph) {
+  if (maxWindMph == null) return "off";
+  if (maxWindMph >= 30) return "strong";
+  if (maxWindMph >= 20) return "medium";
+  if (maxWindMph >= 12) return "weak";
+  return "off";
+}
+
+function rainbowScoreFromDay(day) {
+  const avgPrecip = day?.consensus?.avgPrecipProbability ?? null;
+  const rainSignal = day?.consensus?.rainSignal ?? "off";
+  const summary = normalizeText(day?.consensus?.summary || "");
+  const sources = day?.sources || {};
+
+  let score = 0;
+
+  if (avgPrecip != null) {
+    if (avgPrecip >= 30) score += 20;
+    if (avgPrecip >= 45) score += 15;
+    if (avgPrecip >= 60) score += 10;
+  }
+
+  if (rainSignal === "weak") score += 8;
+  if (rainSignal === "medium") score += 18;
+  if (rainSignal === "strong") score += 25;
+
+  if (textHasAny(summary, ["quiet"])) score -= 18;
+  if (textHasAny(summary, ["thunder"])) score += 6;
+
+  const sourceTexts = [
+    sources.nws?.summary,
+    sources.openMeteo?.summary,
+    sources.metNo?.summary
+  ].filter(Boolean).join(" ").toLowerCase();
+
+  if (textHasAny(sourceTexts, ["partly", "sun", "clear", "cloud"])) score += 12;
+  if (textHasAny(sourceTexts, ["overcast"])) score -= 8;
+  if (textHasAny(sourceTexts, ["showers"])) score += 8;
+
+  score = Math.max(0, Math.min(100, score));
+
+  const band =
+    score >= 70 ? "High" :
+    score >= 45 ? "Medium" :
+    score >= 20 ? "Low" :
+    "Slim";
+
+  const summaryText =
+    score >= 70 ? "Best setup for sun plus showers." :
+    score >= 45 ? "A decent post-shower rainbow setup." :
+    score >= 20 ? "A small rainbow chance if breaks in the clouds line up." :
+    "Not much of a rainbow setup right now.";
+
+  return { score: round0(score), band, summary: summaryText };
+}
+
 // ---------- Condition parsing ----------
 function inferRainFromText(text) {
   return textHasAny(text, ["rain", "showers", "drizzle", "sprinkles"]);
@@ -115,11 +184,25 @@ function summarizeConsensus(day) {
     day.sources.metNo?.precipProbability
   ]);
 
+  const avgWindMph = mean([
+    day.sources.nws?.windMph,
+    day.sources.openMeteo?.windMph,
+    day.sources.metNo?.windMph
+  ]);
+
+  const maxWindMph = safeMax([
+    day.sources.nws?.windMph,
+    day.sources.openMeteo?.windMph,
+    day.sources.metNo?.windMph
+  ]);
+
   return {
     rainSignal: signalStrength(rainCount),
     snowSignal: signalStrength(snowCount),
     thunderSignal: signalStrength(thunderCount),
     avgPrecipProbability: avgPrecip == null ? null : round1(avgPrecip),
+    avgWindMph: avgWindMph == null ? null : round1(avgWindMph),
+    windSignal: classifyWindSignal(maxWindMph),
     summary:
       thunderCount >= 2 ? "Thunder signal present" :
       snowCount >= 2 ? "Snow signal present" :
@@ -127,6 +210,94 @@ function summarizeConsensus(day) {
       avgPrecip != null && avgPrecip >= 50 ? "Some precipitation possible" :
       "Mostly quiet signal"
   };
+}
+
+function buildWeatherStory(days) {
+  const today = days?.[0];
+  const tomorrow = days?.[1];
+  if (!today) {
+    return {
+      title: "Weather story",
+      summary: "Forecast story not ready yet."
+    };
+  }
+
+  const c = today.consensus || {};
+  const tC = tomorrow?.consensus || {};
+  const wind = c.avgWindMph;
+  const hi = today.blendedHighF;
+  const lo = today.blendedLowF;
+
+  let title = "Quiet weather day";
+  let summary = "No major Richmond weather signal stands out right now.";
+
+  if (c.thunderSignal === "strong" || c.thunderSignal === "medium") {
+    title = "Storm risk in focus";
+    summary = `Rain and thunder are the main story today, with ${c.avgPrecipProbability ?? "some"}% average precipitation signal${wind != null ? ` and average wind near ${round0(wind)} mph` : ""}.`;
+  } else if (c.rainSignal === "strong" || c.rainSignal === "medium") {
+    title = "Rainy setup today";
+    summary = `Showers look like the main story today, with about ${c.avgPrecipProbability ?? "some"}% average precipitation signal${wind != null ? ` and breeze around ${round0(wind)} mph` : ""}.`;
+  } else if (c.windSignal === "strong" || c.windSignal === "medium") {
+    title = "Windy pattern today";
+    summary = `Wind is the standout today${wind != null ? `, averaging near ${round0(wind)} mph` : ""}${hi != null && lo != null ? ` with temperatures around ${round0(hi)}° / ${round0(lo)}°` : ""}.`;
+  } else if (hi != null && lo != null && hi - lo >= 18) {
+    title = "Big temperature swing";
+    summary = `Richmond looks set for a notable swing today, from roughly ${round0(lo)}° to ${round0(hi)}°.`;
+  }
+
+  if (tomorrow && tC && hi != null && tomorrow.blendedHighF != null) {
+    const delta = tomorrow.blendedHighF - hi;
+    if (delta <= -12) {
+      summary += ` A sharp cooldown follows into tomorrow.`;
+    } else if (delta >= 12) {
+      summary += ` A noticeable warm-up follows into tomorrow.`;
+    }
+  }
+
+  return { title, summary };
+}
+
+function buildDailyWriteup(day, nextDay = null) {
+  const c = day.consensus || {};
+  const hi = day.blendedHighF;
+  const lo = day.blendedLowF;
+  const wind = c.avgWindMph;
+
+  let parts = [];
+
+  if (c.thunderSignal === "strong" || c.thunderSignal === "medium") {
+    parts.push("Storms are the main story");
+  } else if (c.rainSignal === "strong" || c.rainSignal === "medium") {
+    parts.push("Showers look likely");
+  } else if (c.snowSignal === "strong" || c.snowSignal === "medium") {
+    parts.push("Snow is in play");
+  } else if (c.windSignal === "strong" || c.windSignal === "medium") {
+    parts.push("It looks breezy to windy");
+  } else {
+    parts.push("Weather looks fairly quiet");
+  }
+
+  if (hi != null && lo != null) {
+    parts.push(`with temperatures near ${round0(hi)}° / ${round0(lo)}°`);
+  }
+
+  if (c.avgPrecipProbability != null && c.avgPrecipProbability >= 35) {
+    parts.push(`and about ${round0(c.avgPrecipProbability)}% average precipitation signal`);
+  }
+
+  if (wind != null && wind >= 15) {
+    parts.push(`plus wind around ${round0(wind)} mph`);
+  }
+
+  let sentence = parts.join(" ") + ".";
+
+  if (nextDay?.blendedHighF != null && hi != null) {
+    const delta = nextDay.blendedHighF - hi;
+    if (delta <= -12) sentence += " A sharp cooler turn follows the next day.";
+    if (delta >= 12) sentence += " A warmer turn follows the next day.";
+  }
+
+  return sentence;
 }
 
 // ---------- NWS ----------
@@ -143,6 +314,10 @@ async function getNwsLinks(lat, lon) {
 
 async function getNwsForecastData(forecastUrl) {
   return fetchJson(forecastUrl, { headers: { "User-Agent": "mia-teorology (github actions)" } });
+}
+
+async function getNwsHourlyForecastData(forecastHourlyUrl) {
+  return fetchJson(forecastHourlyUrl, { headers: { "User-Agent": "mia-teorology (github actions)" } });
 }
 
 async function getNwsDailyHighLowForDate(forecastUrl, targetDate) {
@@ -195,10 +370,19 @@ async function getNwsDailyConditions(forecastUrl, days = 7) {
       row.nightPeriod?.probabilityOfPrecipitation?.value
     ].filter(v => typeof v === "number");
 
+    const windSpeeds = [
+      row.dayPeriod?.windSpeed,
+      row.nightPeriod?.windSpeed
+    ].filter(Boolean).flatMap(s => {
+      const nums = String(s).match(/\d+/g)?.map(Number) || [];
+      return nums;
+    });
+
     out.push({
       date,
       summary: row.dayPeriod?.shortForecast || row.nightPeriod?.shortForecast || "—",
       precipProbability: precipVals.length ? Math.max(...precipVals) : null,
+      windMph: windSpeeds.length ? Math.max(...windSpeeds) : null,
       rain: inferRainFromText(texts),
       snow: inferSnowFromText(texts),
       thunder: inferThunderFromText(texts)
@@ -209,11 +393,18 @@ async function getNwsDailyConditions(forecastUrl, days = 7) {
 }
 
 async function getNwsHourlyTemps(forecastHourlyUrl, hours = 48) {
-  const data = await fetchJson(forecastHourlyUrl, { headers: { "User-Agent": "mia-teorology (github actions)" } });
+  const data = await getNwsHourlyForecastData(forecastHourlyUrl);
   const periods = data?.properties?.periods || [];
   return periods.slice(0, hours).map(p => ({
     timeISO: DateTime.fromISO(p.startTime).setZone(TZ).toISO(),
-    tempF: typeof p.temperature === "number" ? p.temperature : null
+    tempF: typeof p.temperature === "number" ? p.temperature : null,
+    windMph: (() => {
+      const nums = String(p.windSpeed || "").match(/\d+/g)?.map(Number) || [];
+      return nums.length ? Math.max(...nums) : null;
+    })(),
+    precipProbability: typeof p.probabilityOfPrecipitation?.value === "number"
+      ? p.probabilityOfPrecipitation.value
+      : null
   }));
 }
 
@@ -238,22 +429,36 @@ async function getNwsObservationsForDay(stationId, dayStart, dayEnd) {
   return data?.features || [];
 }
 
-function obsHighLowF(observationFeatures, dayStart, dayEnd) {
+function obsDailySummary(observationFeatures, dayStart, dayEnd) {
   const tempsF = [];
+  const windsMph = [];
+  let precipObsCount = 0;
+
   for (const f of observationFeatures) {
-    const t = f?.properties?.timestamp;
-    const c = f?.properties?.temperature?.value;
-    if (!t || c == null) continue;
-    const ts = DateTime.fromISO(t).setZone(TZ);
+    const tsRaw = f?.properties?.timestamp;
+    if (!tsRaw) continue;
+    const ts = DateTime.fromISO(tsRaw).setZone(TZ);
     if (ts < dayStart || ts >= dayEnd) continue;
-    const tf = fFromC(c);
+
+    const tempC = f?.properties?.temperature?.value;
+    const windMs = f?.properties?.windSpeed?.value;
+    const precipMm = f?.properties?.precipitationLastHour?.value;
+
+    const tf = fFromC(tempC);
     if (tf != null) tempsF.push(tf);
+
+    const mph = mphFromMs(windMs);
+    if (mph != null) windsMph.push(mph);
+
+    if (typeof precipMm === "number" && precipMm > 0) precipObsCount += 1;
   }
-  if (!tempsF.length) return { obsHighF: null, obsLowF: null, n: 0 };
+
   return {
-    obsHighF: Math.max(...tempsF),
-    obsLowF: Math.min(...tempsF),
-    n: tempsF.length
+    obsHighF: tempsF.length ? Math.max(...tempsF) : null,
+    obsLowF: tempsF.length ? Math.min(...tempsF) : null,
+    obsMaxWindMph: windsMph.length ? Math.max(...windsMph) : null,
+    precipOccurred: precipObsCount > 0,
+    n: observationFeatures.length
   };
 }
 
@@ -330,7 +535,8 @@ async function getOpenMeteoDailyConditions(lat, lon, startDate, endDate) {
   const url =
     `https://api.open-meteo.com/v1/forecast` +
     `?latitude=${lat}&longitude=${lon}` +
-    `&daily=weather_code,precipitation_probability_max` +
+    `&daily=weather_code,precipitation_probability_max,windspeed_10m_max,wind_gusts_10m_max` +
+    `&wind_speed_unit=mph` +
     `&timezone=${encodeURIComponent(TZ)}` +
     `&start_date=${startDate}&end_date=${endDate}`;
 
@@ -338,6 +544,8 @@ async function getOpenMeteoDailyConditions(lat, lon, startDate, endDate) {
   const dates = data?.daily?.time || [];
   const codes = data?.daily?.weather_code || [];
   const precipMax = data?.daily?.precipitation_probability_max || [];
+  const windMax = data?.daily?.windspeed_10m_max || [];
+  const gustMax = data?.daily?.wind_gusts_10m_max || [];
 
   return dates.map((date, i) => {
     const code = codes[i];
@@ -346,6 +554,9 @@ async function getOpenMeteoDailyConditions(lat, lon, startDate, endDate) {
       date,
       summary: openMeteoSummaryFromCode(code),
       precipProbability: typeof precipMax[i] === "number" ? precipMax[i] : null,
+      windMph: typeof gustMax[i] === "number"
+        ? gustMax[i]
+        : (typeof windMax[i] === "number" ? windMax[i] : null),
       rain: decoded.rain,
       snow: decoded.snow,
       thunder: decoded.thunder
@@ -361,20 +572,28 @@ async function getOpenMeteoHourlyTemps(lat, lon, hours = 48) {
   const url =
     `https://api.open-meteo.com/v1/forecast` +
     `?latitude=${lat}&longitude=${lon}` +
-    `&hourly=temperature_2m` +
+    `&hourly=temperature_2m,precipitation_probability,windspeed_10m` +
     `&temperature_unit=fahrenheit` +
+    `&wind_speed_unit=mph` +
     `&timezone=${encodeURIComponent(TZ)}` +
     `&start_date=${start.toISODate()}&end_date=${end.toISODate()}`;
 
   const data = await fetchJson(url);
   const times = data?.hourly?.time || [];
   const temps = data?.hourly?.temperature_2m || [];
+  const precips = data?.hourly?.precipitation_probability || [];
+  const winds = data?.hourly?.windspeed_10m || [];
 
   const out = [];
   for (let i = 0; i < times.length && out.length < hours; i++) {
     const t = DateTime.fromISO(times[i]).setZone(TZ);
     if (t < now) continue;
-    out.push({ timeISO: t.toISO(), tempF: temps[i] ?? null });
+    out.push({
+      timeISO: t.toISO(),
+      tempF: temps[i] ?? null,
+      precipProbability: typeof precips[i] === "number" ? precips[i] : null,
+      windMph: typeof winds[i] === "number" ? winds[i] : null
+    });
   }
   return out.slice(0, hours);
 }
@@ -405,10 +624,19 @@ async function getMetNoHourlyTemps(lat, lon, hours = 48) {
   for (const item of series) {
     const t = item?.time;
     const c = item?.data?.instant?.details?.air_temperature;
+    const windMs = item?.data?.instant?.details?.wind_speed;
     if (!t || c == null) continue;
     const ts = DateTime.fromISO(t).setZone(TZ);
     if (ts < now) continue;
-    out.push({ timeISO: ts.toISO(), tempF: round1(fFromC(c)) });
+    out.push({
+      timeISO: ts.toISO(),
+      tempF: round1(fFromC(c)),
+      windMph: round1(mphFromMs(windMs)),
+      precipProbability:
+        item?.data?.next_1_hours?.details?.probability_of_precipitation ??
+        item?.data?.next_6_hours?.details?.probability_of_precipitation ??
+        null
+    });
     if (out.length >= hours) break;
   }
   return out;
@@ -421,23 +649,27 @@ async function getMetNoDailyHighLow(lat, lon, days = 7) {
   for (const item of series) {
     const t = item?.time;
     const c = item?.data?.instant?.details?.air_temperature;
+    const windMs = item?.data?.instant?.details?.wind_speed;
     if (!t || c == null) continue;
     const ts = DateTime.fromISO(t).setZone(TZ);
     const day = ts.toISODate();
     const tf = fFromC(c);
+    const mph = mphFromMs(windMs);
     if (tf == null) continue;
-    if (!byDay.has(day)) byDay.set(day, []);
-    byDay.get(day).push(tf);
+    if (!byDay.has(day)) byDay.set(day, { temps: [], winds: [] });
+    byDay.get(day).temps.push(tf);
+    if (mph != null) byDay.get(day).winds.push(mph);
   }
 
   const sortedDays = Array.from(byDay.keys()).sort();
   const out = [];
   for (const day of sortedDays.slice(0, days)) {
-    const temps = byDay.get(day);
+    const row = byDay.get(day);
     out.push({
       date: day,
-      highF: round1(Math.max(...temps)),
-      lowF: round1(Math.min(...temps))
+      highF: round1(Math.max(...row.temps)),
+      lowF: round1(Math.min(...row.temps)),
+      windMph: row.winds.length ? round1(Math.max(...row.winds)) : null
     });
   }
   return out;
@@ -457,6 +689,7 @@ async function getMetNoDailyConditions(lat, lon, days = 7) {
         date,
         summaries: [],
         precips: [],
+        winds: [],
         rain: false,
         snow: false,
         thunder: false
@@ -467,6 +700,7 @@ async function getMetNoDailyConditions(lat, lon, days = 7) {
     const next1 = item?.data?.next_1_hours || {};
     const next6 = item?.data?.next_6_hours || {};
     const next12 = item?.data?.next_12_hours || {};
+    const instant = item?.data?.instant?.details || {};
 
     const symbol =
       next6?.summary?.symbol_code ||
@@ -480,8 +714,11 @@ async function getMetNoDailyConditions(lat, lon, days = 7) {
       next12?.details?.probability_of_precipitation ??
       null;
 
+    const windMph = mphFromMs(instant.wind_speed);
+
     if (symbol) row.summaries.push(symbol);
     if (typeof precip === "number") row.precips.push(precip);
+    if (windMph != null) row.winds.push(windMph);
 
     const txt = normalizeText(symbol);
     if (txt.includes("rain") || txt.includes("drizzle") || txt.includes("sleet")) row.rain = true;
@@ -496,6 +733,7 @@ async function getMetNoDailyConditions(lat, lon, days = 7) {
       date,
       summary: row.summaries.length ? metNoSummaryFromSymbol(row.summaries[0]) : "—",
       precipProbability: row.precips.length ? Math.max(...row.precips) : null,
+      windMph: row.winds.length ? round1(Math.max(...row.winds)) : null,
       rain: row.rain,
       snow: row.snow,
       thunder: row.thunder
@@ -508,7 +746,7 @@ async function getMetNoDailyConditions(lat, lon, days = 7) {
 // ---------- Blending ----------
 function indexByTime(arr) {
   const m = new Map();
-  for (const x of arr) m.set(x.timeISO, x.tempF);
+  for (const x of arr) m.set(x.timeISO, x);
   return m;
 }
 
@@ -528,42 +766,77 @@ function blendHourly(nws, om, met) {
     const a = nwsM.get(row.timeISO);
     const b = omM.get(row.timeISO);
     const c = metM.get(row.timeISO);
-    const blended = mean([a, b, c]);
+
+    const blendedTemp = mean([a?.tempF, b?.tempF, c?.tempF]);
+    const blendedPrecip = mean([a?.precipProbability, b?.precipProbability, c?.precipProbability]);
+    const blendedWind = mean([a?.windMph, b?.windMph, c?.windMph]);
+
     return {
       timeISO: row.timeISO,
-      blendedTempF: blended == null ? null : round1(blended),
+      blendedTempF: blendedTemp == null ? null : round1(blendedTemp),
+      blendedPrecipProbability: blendedPrecip == null ? null : round1(blendedPrecip),
+      blendedWindMph: blendedWind == null ? null : round1(blendedWind),
       sources: {
-        nws: a ?? null,
-        openMeteo: b ?? null,
-        metNo: c ?? null
+        nws: a ? { tempF: a.tempF ?? null, precipProbability: a.precipProbability ?? null, windMph: a.windMph ?? null } : null,
+        openMeteo: b ? { tempF: b.tempF ?? null, precipProbability: b.precipProbability ?? null, windMph: b.windMph ?? null } : null,
+        metNo: c ? { tempF: c.tempF ?? null, precipProbability: c.precipProbability ?? null, windMph: c.windMph ?? null } : null
       }
     };
   });
 }
 
-function blendDailyTemps(nwsArr, omArr, metArr) {
-  const spine = nwsArr?.length ? nwsArr : (omArr?.length ? omArr : metArr);
-  const nws = indexByDate(nwsArr || []);
-  const om = indexByDate(omArr || []);
-  const met = indexByDate(metArr || []);
+function blendDaily(nwsTemps, omTemps, metTemps, nwsCond, omCond, metCond) {
+  const spine = nwsTemps?.length ? nwsTemps : (omTemps?.length ? omTemps : metTemps);
+  const nwsT = indexByDate(nwsTemps || []);
+  const omT = indexByDate(omTemps || []);
+  const metT = indexByDate(metTemps || []);
+  const nwsC = indexByDate(nwsCond || []);
+  const omC = indexByDate(omCond || []);
+  const metC = indexByDate(metCond || []);
 
   return spine.map(row => {
     const d = row.date;
-    const a = nws.get(d);
-    const b = om.get(d);
-    const c = met.get(d);
+    const nt = nwsT.get(d);
+    const ot = omT.get(d);
+    const mt = metT.get(d);
+    const nc = nwsC.get(d);
+    const oc = omC.get(d);
+    const mc = metC.get(d);
 
-    const hi = mean([a?.highF, b?.highF, c?.highF]);
-    const lo = mean([a?.lowF, b?.lowF, c?.lowF]);
+    const hi = mean([nt?.highF, ot?.highF, mt?.highF]);
+    const lo = mean([nt?.lowF, ot?.lowF, mt?.lowF]);
+    const precip = mean([nc?.precipProbability, oc?.precipProbability, mc?.precipProbability]);
+    const wind = mean([
+      nc?.windMph ?? nt?.windMph,
+      oc?.windMph ?? ot?.windMph,
+      mc?.windMph ?? mt?.windMph
+    ]);
 
     return {
       date: d,
       blendedHighF: hi == null ? null : round1(hi),
       blendedLowF: lo == null ? null : round1(lo),
+      blendedPrecipProbability: precip == null ? null : round1(precip),
+      blendedWindMph: wind == null ? null : round1(wind),
       sources: {
-        nws: a ? { highF: a.highF, lowF: a.lowF } : null,
-        openMeteo: b ? { highF: b.highF, lowF: b.lowF } : null,
-        metNo: c ? { highF: c.highF, lowF: c.lowF } : null
+        nws: {
+          highF: nt?.highF ?? null,
+          lowF: nt?.lowF ?? null,
+          precipProbability: nc?.precipProbability ?? null,
+          windMph: nc?.windMph ?? nt?.windMph ?? null
+        },
+        openMeteo: {
+          highF: ot?.highF ?? null,
+          lowF: ot?.lowF ?? null,
+          precipProbability: oc?.precipProbability ?? null,
+          windMph: oc?.windMph ?? ot?.windMph ?? null
+        },
+        metNo: {
+          highF: mt?.highF ?? null,
+          lowF: mt?.lowF ?? null,
+          precipProbability: mc?.precipProbability ?? null,
+          windMph: mc?.windMph ?? mt?.windMph ?? null
+        }
       }
     };
   });
@@ -600,8 +873,9 @@ function blendDailyConditions(nwsArr, omArr, metArr) {
 // ---------- Main ----------
 async function main() {
   const now = DateTime.now().setZone(TZ);
-  const tomorrow = now.plus({ days: 1 }).startOf("day");
-  const yesterday = now.minus({ days: 1 }).startOf("day");
+  const today = now.startOf("day");
+  const tomorrow = today.plus({ days: 1 });
+  const yesterday = today.minus({ days: 1 });
 
   const dataDir = "data";
   ensureDir(dataDir);
@@ -609,7 +883,8 @@ async function main() {
   writeJson(`${dataDir}/meta.json`, {
     timezone: TZ,
     location: RICHMOND,
-    updatedAt: now.toISO()
+    updatedAt: now.toISO(),
+    todayDate: today.toISODate()
   });
 
   const links = await getNwsLinks(RICHMOND.lat, RICHMOND.lon);
@@ -629,15 +904,46 @@ async function main() {
   const metDaily = await getMetNoDailyHighLow(RICHMOND.lat, RICHMOND.lon, 7);
   const metTomorrow = metDaily.find(x => x.date === tomorrow.toISODate()) || { highF: null, lowF: null };
 
+  const nwsConditionsTomorrow = await getNwsDailyConditions(links.forecastUrl, 7);
+  const omConditionsTomorrow = await getOpenMeteoDailyConditions(
+    RICHMOND.lat,
+    RICHMOND.lon,
+    tomorrow.toISODate(),
+    tomorrow.plus({ days: 6 }).toISODate()
+  );
+  const metConditionsTomorrow = await getMetNoDailyConditions(RICHMOND.lat, RICHMOND.lon, 7);
+
+  const nwsTomorrowCond = nwsConditionsTomorrow.find(x => x.date === tomorrow.toISODate()) || {};
+  const omTomorrowCond = omConditionsTomorrow.find(x => x.date === tomorrow.toISODate()) || {};
+  const metTomorrowCond = metConditionsTomorrow.find(x => x.date === tomorrow.toISODate()) || {};
+
   writeJson(forecastSnapshotPath, {
     issuedAt: now.toISO(),
     issuedDate: issueDate,
     targetDate: tomorrow.toISODate(),
     location: RICHMOND,
     forecasts: {
-      nws: { highF: nwsTomorrow.highF, lowF: nwsTomorrow.lowF },
-      openMeteo: { highF: omTomorrow.highF, lowF: omTomorrow.lowF },
-      metNo: { highF: metTomorrow.highF, lowF: metTomorrow.lowF }
+      nws: {
+        highF: nwsTomorrow.highF,
+        lowF: nwsTomorrow.lowF,
+        windMph: nwsTomorrowCond.windMph ?? null,
+        precipProbability: nwsTomorrowCond.precipProbability ?? null,
+        precipExpected: !!nwsTomorrowCond.rain
+      },
+      openMeteo: {
+        highF: omTomorrow.highF,
+        lowF: omTomorrow.lowF,
+        windMph: omTomorrowCond.windMph ?? null,
+        precipProbability: omTomorrowCond.precipProbability ?? null,
+        precipExpected: !!omTomorrowCond.rain
+      },
+      metNo: {
+        highF: metTomorrow.highF,
+        lowF: metTomorrow.lowF,
+        windMph: metTomorrowCond.windMph ?? null,
+        precipProbability: metTomorrowCond.precipProbability ?? null,
+        precipExpected: !!metTomorrowCond.rain
+      }
     }
   });
 
@@ -656,19 +962,26 @@ async function main() {
       if (!stationId) throw new Error("Could not resolve NWS stationId for observations.");
 
       const obsFeatures = await getNwsObservationsForDay(stationId, dayStart, dayEnd);
-      const { obsHighF, obsLowF, n } = obsHighLowF(obsFeatures, dayStart, dayEnd);
+      const observed = obsDailySummary(obsFeatures, dayStart, dayEnd);
 
       const providers = scoringSnapshot.forecasts;
       const providerScores = Object.entries(providers).map(([key, v]) => {
-        const highErr = (v.highF == null || obsHighF == null) ? null : Math.abs(v.highF - obsHighF);
-        const lowErr = (v.lowF == null || obsLowF == null) ? null : Math.abs(v.lowF - obsLowF);
-        const overall = mean([highErr, lowErr]);
+        const highErr = (v.highF == null || observed.obsHighF == null) ? null : Math.abs(v.highF - observed.obsHighF);
+        const lowErr = (v.lowF == null || observed.obsLowF == null) ? null : Math.abs(v.lowF - observed.obsLowF);
+        const windErr = (v.windMph == null || observed.obsMaxWindMph == null) ? null : Math.abs(v.windMph - observed.obsMaxWindMph);
+        const precipEventErr = (typeof v.precipExpected === "boolean")
+          ? (v.precipExpected === observed.precipOccurred ? 0 : 1)
+          : null;
+        const overall = mean([highErr, lowErr, windErr]);
+
         return {
           provider: key,
           predicted: v,
           errors: {
             highAbsF: highErr == null ? null : round1(highErr),
             lowAbsF: lowErr == null ? null : round1(lowErr),
+            windAbsMph: windErr == null ? null : round1(windErr),
+            precipEventMiss: precipEventErr,
             overallAbsF: overall == null ? null : round1(overall)
           }
         };
@@ -677,10 +990,12 @@ async function main() {
       writeJson(scoreOutPath, {
         targetDate: yesterday.toISODate(),
         observedFromStation: stationId,
-        observationCount: n,
+        observationCount: observed.n,
         observed: {
-          highF: obsHighF == null ? null : round1(obsHighF),
-          lowF: obsLowF == null ? null : round1(obsLowF)
+          highF: observed.obsHighF == null ? null : round1(observed.obsHighF),
+          lowF: observed.obsLowF == null ? null : round1(observed.obsLowF),
+          maxWindMph: observed.obsMaxWindMph == null ? null : round1(observed.obsMaxWindMph),
+          precipOccurred: observed.precipOccurred
         },
         snapshotUsed: path.basename(scoringSnapshotPath),
         scores: providerScores,
@@ -707,16 +1022,23 @@ async function main() {
   for (const day of last30) {
     for (const s of day.scores) {
       const p = s.provider;
-      if (!providerAgg[p]) providerAgg[p] = [];
-      if (typeof s.errors.overallAbsF === "number") providerAgg[p].push(s.errors.overallAbsF);
+      if (!providerAgg[p]) providerAgg[p] = { overall: [], wind: [], precipMisses: [] };
+      if (typeof s.errors.overallAbsF === "number") providerAgg[p].overall.push(s.errors.overallAbsF);
+      if (typeof s.errors.windAbsMph === "number") providerAgg[p].wind.push(s.errors.windAbsMph);
+      if (typeof s.errors.precipEventMiss === "number") providerAgg[p].precipMisses.push(s.errors.precipEventMiss);
     }
   }
 
   const leaderboard = Object.entries(providerAgg)
-    .map(([provider, arr]) => ({
+    .map(([provider, agg]) => ({
       provider,
-      daysScored: arr.length,
-      meanOverallAbsF: round1(mean(arr))
+      daysScored: agg.overall.length,
+      meanOverallAbsF: round1(mean(agg.overall)),
+      meanWindAbsMph: round1(mean(agg.wind)),
+      precipHitRate:
+        agg.precipMisses.length
+          ? round1(100 * (1 - mean(agg.precipMisses)))
+          : null
     }))
     .sort((a, b) => (a.meanOverallAbsF ?? 1e9) - (b.meanOverallAbsF ?? 1e9));
 
@@ -727,19 +1049,31 @@ async function main() {
   });
 
   // 4) Blended forecasts
-  const start = now.toISODate();
-  const end = now.plus({ days: 6 }).toISODate();
+  const start = today.toISODate();
+  const end = today.plus({ days: 6 }).toISODate();
 
   const nwsDailyTemps = [];
   for (let i = 0; i < 7; i++) {
-    const d = now.plus({ days: i }).startOf("day");
+    const d = today.plus({ days: i });
     const r = await getNwsDailyHighLowForDate(links.forecastUrl, d);
     nwsDailyTemps.push({ date: d.toISODate(), highF: r.highF, lowF: r.lowF });
   }
 
   const omDailyTemps = await getOpenMeteoDailyHighLow(RICHMOND.lat, RICHMOND.lon, start, end);
   const metDailyTemps = await getMetNoDailyHighLow(RICHMOND.lat, RICHMOND.lon, 7);
-  const blendedDaily = blendDailyTemps(nwsDailyTemps, omDailyTemps, metDailyTemps);
+
+  const nwsConditions = await getNwsDailyConditions(links.forecastUrl, 7);
+  const omConditions = await getOpenMeteoDailyConditions(RICHMOND.lat, RICHMOND.lon, start, end);
+  const metConditions = await getMetNoDailyConditions(RICHMOND.lat, RICHMOND.lon, 7);
+
+  const blendedDaily = blendDaily(
+    nwsDailyTemps,
+    omDailyTemps,
+    metDailyTemps,
+    nwsConditions,
+    omConditions,
+    metConditions
+  );
 
   writeJson(`${dataDir}/blend_daily.json`, {
     location: RICHMOND,
@@ -850,24 +1184,17 @@ async function main() {
     standings: monthlyStandings
   });
 
-  // 8) Disagreement
-  const nwsConditionsForSpread = await getNwsDailyConditions(links.forecastUrl, 7);
-  const omConditionsForSpread = await getOpenMeteoDailyConditions(RICHMOND.lat, RICHMOND.lon, start, end);
-  const metConditionsForSpread = await getMetNoDailyConditions(RICHMOND.lat, RICHMOND.lon, 7);
-
+  // 8) Disagreement + conditions
   const condByDate = new Map();
-
-  for (const x of nwsConditionsForSpread) {
+  for (const x of nwsConditions) {
     if (!condByDate.has(x.date)) condByDate.set(x.date, {});
     condByDate.get(x.date).nws = x;
   }
-
-  for (const x of omConditionsForSpread) {
+  for (const x of omConditions) {
     if (!condByDate.has(x.date)) condByDate.set(x.date, {});
     condByDate.get(x.date).openMeteo = x;
   }
-
-  for (const x of metConditionsForSpread) {
+  for (const x of metConditions) {
     if (!condByDate.has(x.date)) condByDate.set(x.date, {});
     condByDate.get(x.date).metNo = x;
   }
@@ -891,6 +1218,12 @@ async function main() {
       condByDate.get(day.date)?.metNo?.precipProbability
     ];
 
+    const winds = [
+      condByDate.get(day.date)?.nws?.windMph,
+      condByDate.get(day.date)?.openMeteo?.windMph,
+      condByDate.get(day.date)?.metNo?.windMph
+    ];
+
     const highSpread = (() => {
       const lo = minVal(highs);
       const hi = maxVal(highs);
@@ -911,12 +1244,19 @@ async function main() {
       return (lo == null || hi == null) ? null : round1(hi - lo);
     })();
 
+    const windSpread = (() => {
+      const lo = minVal(winds);
+      const hi = maxVal(winds);
+      return (lo == null || hi == null) ? null : round1(hi - lo);
+    })();
+
     return {
       date: day.date,
       overallSpreadF: overallSpread == null ? null : round1(overallSpread),
       highSpreadF: highSpread,
       lowSpreadF: lowSpread,
       precipSpread,
+      windSpreadMph: windSpread,
       confidence: classifySpread(overallSpread)
     };
   });
@@ -926,20 +1266,33 @@ async function main() {
     days: disagreementDays
   });
 
-  // 9) Conditions
-  const nwsConditions = nwsConditionsForSpread;
-  const omConditions = omConditionsForSpread;
-  const metConditions = metConditionsForSpread;
   const blendedConditions = blendDailyConditions(nwsConditions, omConditions, metConditions);
+
+  const enrichedConditions = blendedConditions.map((day, i, arr) => ({
+    ...day,
+    writeup: buildDailyWriteup(
+      {
+        ...day,
+        blendedHighF: blendedDaily.find(x => x.date === day.date)?.blendedHighF ?? null,
+        blendedLowF: blendedDaily.find(x => x.date === day.date)?.blendedLowF ?? null
+      },
+      (() => {
+        const next = arr[i + 1];
+        if (!next) return null;
+        const nextBlend = blendedDaily.find(x => x.date === next.date);
+        return nextBlend ? { blendedHighF: nextBlend.blendedHighF } : null;
+      })()
+    )
+  }));
 
   writeJson(`${dataDir}/conditions_daily.json`, {
     location: RICHMOND,
     generatedAt: now.toISO(),
-    days: blendedConditions
+    days: enrichedConditions
   });
 
-  const todayConditions = blendedConditions[0] || null;
-  const next7 = blendedConditions;
+  const todayConditions = enrichedConditions[0] || null;
+  const next7 = enrichedConditions;
 
   writeJson(`${dataDir}/conditions_summary.json`, {
     location: RICHMOND,
@@ -948,8 +1301,54 @@ async function main() {
     next7Summary: {
       rainDays: next7.filter(d => d.consensus.rainSignal === "strong" || d.consensus.rainSignal === "medium").length,
       snowDays: next7.filter(d => d.consensus.snowSignal === "strong" || d.consensus.snowSignal === "medium").length,
-      thunderDays: next7.filter(d => d.consensus.thunderSignal === "strong" || d.consensus.thunderSignal === "medium").length
+      thunderDays: next7.filter(d => d.consensus.thunderSignal === "strong" || d.consensus.thunderSignal === "medium").length,
+      windyDays: next7.filter(d => d.consensus.windSignal === "strong" || d.consensus.windSignal === "medium").length
     }
+  });
+
+  // 9) Story / rainbow / confidence snapshot
+  const combinedOutlook = blendedDaily.map(day => {
+    const cond = enrichedConditions.find(x => x.date === day.date);
+    const disag = disagreementDays.find(x => x.date === day.date);
+    return {
+      ...day,
+      consensus: cond?.consensus || null,
+      sources: cond?.sources || null,
+      disagreement: disag || null,
+      writeup: cond?.writeup || null
+    };
+  });
+
+  const weatherStory = buildWeatherStory(combinedOutlook);
+  writeJson(`${dataDir}/weather_story.json`, {
+    generatedAt: now.toISO(),
+    ...weatherStory
+  });
+
+  const rainbowDays = combinedOutlook.map(day => ({
+    date: day.date,
+    ...rainbowScoreFromDay(day)
+  }));
+
+  writeJson(`${dataDir}/rainbow_watch.json`, {
+    generatedAt: now.toISO(),
+    today: rainbowDays[0] || null,
+    bestNext7: [...rainbowDays].sort((a, b) => (b.score ?? -1) - (a.score ?? -1))[0] || null,
+    days: rainbowDays
+  });
+
+  const highConfidenceDay = [...disagreementDays]
+    .filter(d => typeof d.overallSpreadF === "number")
+    .sort((a, b) => (a.overallSpreadF ?? 1e9) - (b.overallSpreadF ?? 1e9))[0] || null;
+
+  const lowConfidenceDay = [...disagreementDays]
+    .filter(d => typeof d.overallSpreadF === "number")
+    .sort((a, b) => (b.overallSpreadF ?? -1) - (a.overallSpreadF ?? -1))[0] || null;
+
+  writeJson(`${dataDir}/confidence_snapshot.json`, {
+    generatedAt: now.toISO(),
+    mostLockedInDay: highConfidenceDay,
+    mostUncertainDay: lowConfidenceDay
   });
 }
 
