@@ -1,5 +1,5 @@
 {
-  "issuedAt": "2026-03-16T02:26:43.913-04:00",
+  "issuedAt": "2026-03-16T08:06:25.632-04:00",
   "issuedDate": "2026-03-16",
   "targetDate": "2026-03-17",
   "location": {
@@ -9,23 +9,23 @@
   },
   "forecasts": {
     "nws": {
-      "highF": 46,
+      "highF": 47,
       "lowF": 25,
       "windMph": 14,
       "precipProbability": 2,
       "precipExpected": false
     },
     "openMeteo": {
-      "highF": 40.4,
-      "lowF": 31.4,
-      "windMph": 30.4,
-      "precipProbability": 17,
+      "highF": 41.2,
+      "lowF": 31.3,
+      "windMph": 31.5,
+      "precipProbability": 15,
       "precipExpected": false
     },
     "metNo": {
-      "highF": 46,
-      "lowF": 31.8,
-      "windMph": 16.3,
+      "highF": 45.7,
+      "lowF": 32.2,
+      "windMph": 17,
       "precipProbability": null,
       "precipExpected": false
     }
