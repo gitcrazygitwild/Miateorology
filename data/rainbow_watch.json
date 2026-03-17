@@ -1,24 +1,18 @@
 {
-  "generatedAt": "2026-03-16T08:06:25.632-04:00",
+  "generatedAt": "2026-03-17T08:05:19.069-04:00",
   "today": {
-    "date": "2026-03-16",
-    "score": 78,
-    "band": "High",
-    "summary": "Best setup for sun plus showers."
+    "date": "2026-03-17",
+    "score": 0,
+    "band": "Slim",
+    "summary": "Not much of a rainbow setup right now."
   },
   "bestNext7": {
-    "date": "2026-03-16",
-    "score": 78,
-    "band": "High",
-    "summary": "Best setup for sun plus showers."
+    "date": "2026-03-21",
+    "score": 38,
+    "band": "Low",
+    "summary": "A small rainbow chance if breaks in the clouds line up."
   },
   "days": [
-    {
-      "date": "2026-03-16",
-      "score": 78,
-      "band": "High",
-      "summary": "Best setup for sun plus showers."
-    },
     {
       "date": "2026-03-17",
       "score": 0,
@@ -39,19 +33,25 @@
     },
     {
       "date": "2026-03-20",
-      "score": 2,
+      "score": 0,
       "band": "Slim",
       "summary": "Not much of a rainbow setup right now."
     },
     {
       "date": "2026-03-21",
-      "score": 2,
-      "band": "Slim",
-      "summary": "Not much of a rainbow setup right now."
+      "score": 38,
+      "band": "Low",
+      "summary": "A small rainbow chance if breaks in the clouds line up."
     },
     {
       "date": "2026-03-22",
-      "score": 37,
+      "score": 22,
+      "band": "Low",
+      "summary": "A small rainbow chance if breaks in the clouds line up."
+    },
+    {
+      "date": "2026-03-23",
+      "score": 33,
       "band": "Low",
       "summary": "A small rainbow chance if breaks in the clouds line up."
     }
