@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-03-18T08:07:29.018-04:00",
+  "generatedAt": "2026-03-19T07:54:13.372-04:00",
   "today": {
-    "date": "2026-03-18",
+    "date": "2026-03-19",
     "sources": {
       "nws": {
-        "date": "2026-03-18",
+        "date": "2026-03-19",
         "summary": "Mostly Sunny",
-        "precipProbability": 2,
-        "windMph": 3,
+        "precipProbability": 3,
+        "windMph": 5,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-03-18",
+        "date": "2026-03-19",
         "summary": "Overcast",
-        "precipProbability": 2,
-        "windMph": 16.6,
+        "precipProbability": 1,
+        "windMph": 16.3,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-03-18",
-        "summary": "Partlycloudy Day",
+        "date": "2026-03-19",
+        "summary": "Fair Day",
         "precipProbability": null,
-        "windMph": 7.8,
+        "windMph": 7.6,
         "rain": false,
         "snow": false,
         "thunder": false
@@ -41,16 +41,16 @@
       "snowSignal": "off",
       "thunderSignal": "off",
       "avgPrecipProbability": 2,
-      "avgWindMph": 9.1,
+      "avgWindMph": 9.6,
       "windSignal": "weak",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 45° / 29°. A warmer turn follows the next day."
+    "writeup": "Weather looks fairly quiet with temperatures near 59° / 34°."
   },
   "next7Summary": {
-    "rainDays": 3,
+    "rainDays": 2,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 4
+    "windyDays": 5
   }
 }
