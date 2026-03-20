@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-03-19T07:54:13.372-04:00",
+  "generatedAt": "2026-03-20T07:47:33.842-04:00",
   "today": {
-    "date": "2026-03-19",
+    "date": "2026-03-20",
     "sources": {
       "nws": {
-        "date": "2026-03-19",
-        "summary": "Mostly Sunny",
-        "precipProbability": 3,
-        "windMph": 5,
-        "rain": false,
+        "date": "2026-03-20",
+        "summary": "Sunny",
+        "precipProbability": 61,
+        "windMph": 13,
+        "rain": true,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-03-19",
+        "date": "2026-03-20",
         "summary": "Overcast",
-        "precipProbability": 1,
-        "windMph": 16.3,
+        "precipProbability": 33,
+        "windMph": 28.9,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-03-19",
-        "summary": "Fair Day",
+        "date": "2026-03-20",
+        "summary": "Clearsky Day",
         "precipProbability": null,
-        "windMph": 7.6,
-        "rain": false,
+        "windMph": 15.2,
+        "rain": true,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "off",
+      "rainSignal": "medium",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 2,
-      "avgWindMph": 9.6,
-      "windSignal": "weak",
-      "summary": "Mostly quiet signal"
+      "avgPrecipProbability": 47,
+      "avgWindMph": 19,
+      "windSignal": "medium",
+      "summary": "Rain signal present"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 59° / 34°."
+    "writeup": "Showers look likely with temperatures near 72° / 43° and about 47% average precipitation signal plus wind around 19 mph."
   },
   "next7Summary": {
-    "rainDays": 2,
+    "rainDays": 4,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 5
+    "windyDays": 6
   }
 }
