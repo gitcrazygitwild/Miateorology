@@ -1,27 +1,27 @@
 {
   "windowDays": 30,
-  "asOf": "2026-03-21T06:59:23.200-04:00",
+  "asOf": "2026-03-22T07:00:32.855-04:00",
   "leaderboard": [
     {
       "provider": "openMeteo",
-      "daysScored": 10,
-      "meanOverallAbsF": 6.7,
-      "meanWindAbsMph": 32.5,
+      "daysScored": 11,
+      "meanOverallAbsF": 7.1,
+      "meanWindAbsMph": 30.4,
       "precipHitRate": 100
     },
     {
       "provider": "metNo",
-      "daysScored": 10,
-      "meanOverallAbsF": 8.6,
-      "meanWindAbsMph": 43.8,
-      "precipHitRate": 100
+      "daysScored": 11,
+      "meanOverallAbsF": 9.2,
+      "meanWindAbsMph": 42.5,
+      "precipHitRate": 80
     },
     {
       "provider": "nws",
-      "daysScored": 10,
-      "meanOverallAbsF": 11.5,
-      "meanWindAbsMph": 46.9,
-      "precipHitRate": 75
+      "daysScored": 11,
+      "meanOverallAbsF": 11.9,
+      "meanWindAbsMph": 46.3,
+      "precipHitRate": 80
     }
   ]
 }
