@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-03-22T07:00:32.855-04:00",
+  "generatedAt": "2026-03-23T08:05:03.227-04:00",
   "today": {
-    "date": "2026-03-22",
+    "date": "2026-03-23",
     "sources": {
       "nws": {
-        "date": "2026-03-22",
-        "summary": "Mostly Sunny",
-        "precipProbability": 16,
-        "windMph": 12,
+        "date": "2026-03-23",
+        "summary": "Chance Showers And Thunderstorms",
+        "precipProbability": 37,
+        "windMph": 16,
+        "rain": true,
+        "snow": false,
+        "thunder": true
+      },
+      "openMeteo": {
+        "date": "2026-03-23",
+        "summary": "Drizzle",
+        "precipProbability": 20,
+        "windMph": 32.2,
         "rain": true,
         "snow": false,
         "thunder": false
       },
-      "openMeteo": {
-        "date": "2026-03-22",
-        "summary": "Overcast",
-        "precipProbability": 1,
-        "windMph": 19.5,
-        "rain": false,
-        "snow": false,
-        "thunder": false
-      },
       "metNo": {
-        "date": "2026-03-22",
+        "date": "2026-03-23",
         "summary": "Partlycloudy Day",
         "precipProbability": null,
-        "windMph": 9.6,
+        "windMph": 15,
         "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "weak",
+      "rainSignal": "medium",
       "snowSignal": "off",
-      "thunderSignal": "off",
-      "avgPrecipProbability": 8.5,
-      "avgWindMph": 13.7,
-      "windSignal": "weak",
-      "summary": "Mostly quiet signal"
+      "thunderSignal": "weak",
+      "avgPrecipProbability": 28.5,
+      "avgWindMph": 21.1,
+      "windSignal": "strong",
+      "summary": "Rain signal present"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 84° / 52°. A sharp cooler turn follows the next day."
+    "writeup": "Showers look likely with temperatures near 69° / 41° plus wind around 21 mph. A sharp cooler turn follows the next day."
   },
   "next7Summary": {
     "rainDays": 3,
-    "snowDays": 1,
+    "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 6
+    "windyDays": 7
   }
 }
