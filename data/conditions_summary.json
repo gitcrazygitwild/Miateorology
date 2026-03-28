@@ -4,48 +4,48 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-03-27T08:06:06.609-04:00",
+  "generatedAt": "2026-03-28T06:52:12.966-04:00",
   "today": {
-    "date": "2026-03-27",
+    "date": "2026-03-28",
     "sources": {
       "nws": {
-        "date": "2026-03-27",
-        "summary": "Mostly Cloudy then Rain Showers",
-        "precipProbability": 86,
-        "windMph": 14,
-        "rain": true,
+        "date": "2026-03-28",
+        "summary": "Sunny",
+        "precipProbability": 0,
+        "windMph": 15,
+        "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-03-27",
-        "summary": "Heavy rain",
-        "precipProbability": 98,
-        "windMph": 29.8,
-        "rain": true,
+        "date": "2026-03-28",
+        "summary": "Overcast",
+        "precipProbability": 4,
+        "windMph": 32.2,
+        "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-03-27",
-        "summary": "Cloudy",
+        "date": "2026-03-28",
+        "summary": "Clearsky Day",
         "precipProbability": null,
-        "windMph": 14.8,
-        "rain": true,
+        "windMph": 17.9,
+        "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "strong",
+      "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 92,
-      "avgWindMph": 19.5,
-      "windSignal": "medium",
-      "summary": "Rain signal present"
+      "avgPrecipProbability": 2,
+      "avgWindMph": 21.7,
+      "windSignal": "strong",
+      "summary": "Mostly quiet signal"
     },
-    "writeup": "Showers look likely with temperatures near 75° / 41° and about 92% average precipitation signal plus wind around 20 mph. A sharp cooler turn follows the next day."
+    "writeup": "It looks breezy to windy with temperatures near 50° / 35° plus wind around 22 mph."
   },
   "next7Summary": {
     "rainDays": 3,
