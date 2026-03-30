@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-03-29T06:54:11.859-04:00",
+  "generatedAt": "2026-03-30T07:19:05.342-04:00",
   "today": {
-    "date": "2026-03-29",
+    "date": "2026-03-30",
     "sources": {
       "nws": {
-        "date": "2026-03-29",
-        "summary": "Sunny",
-        "precipProbability": 5,
-        "windMph": 14,
+        "date": "2026-03-30",
+        "summary": "Mostly Sunny",
+        "precipProbability": 10,
+        "windMph": 15,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-03-29",
-        "summary": "Overcast",
-        "precipProbability": 0,
-        "windMph": 19.5,
+        "date": "2026-03-30",
+        "summary": "Clear",
+        "precipProbability": 5,
+        "windMph": 30.6,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-03-29",
-        "summary": "Fair Day",
+        "date": "2026-03-30",
+        "summary": "Partlycloudy Day",
         "precipProbability": null,
-        "windMph": 11.4,
+        "windMph": 14.3,
         "rain": false,
         "snow": false,
         "thunder": false
@@ -40,17 +40,17 @@
       "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 2.5,
-      "avgWindMph": 15,
-      "windSignal": "weak",
+      "avgPrecipProbability": 7.5,
+      "avgWindMph": 20,
+      "windSignal": "strong",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 61° / 37° plus wind around 15 mph."
+    "writeup": "It looks breezy to windy with temperatures near 74° / 52° plus wind around 20 mph."
   },
   "next7Summary": {
     "rainDays": 3,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 6
+    "windyDays": 7
   }
 }
