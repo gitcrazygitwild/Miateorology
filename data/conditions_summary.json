@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-04-02T07:10:43.307-04:00",
+  "generatedAt": "2026-04-03T07:04:23.007-04:00",
   "today": {
-    "date": "2026-04-02",
+    "date": "2026-04-03",
     "sources": {
       "nws": {
-        "date": "2026-04-02",
-        "summary": "Mostly Sunny then Slight Chance Rain Showers",
-        "precipProbability": 15,
-        "windMph": 8,
-        "rain": true,
+        "date": "2026-04-03",
+        "summary": "Mostly Sunny",
+        "precipProbability": 5,
+        "windMph": 14,
+        "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-04-02",
-        "summary": "Rain",
-        "precipProbability": 42,
-        "windMph": 20.4,
-        "rain": true,
+        "date": "2026-04-03",
+        "summary": "Overcast",
+        "precipProbability": 1,
+        "windMph": 21,
+        "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-04-02",
-        "summary": "Clearsky Day",
+        "date": "2026-04-03",
+        "summary": "Cloudy",
         "precipProbability": null,
-        "windMph": 10.3,
+        "windMph": 13.4,
         "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "medium",
+      "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 28.5,
-      "avgWindMph": 12.9,
+      "avgPrecipProbability": 3,
+      "avgWindMph": 16.1,
       "windSignal": "medium",
-      "summary": "Rain signal present"
+      "summary": "Mostly quiet signal"
     },
-    "writeup": "Showers look likely with temperatures near 84° / 62°."
+    "writeup": "It looks breezy to windy with temperatures near 83° / 59° plus wind around 16 mph."
   },
   "next7Summary": {
-    "rainDays": 2,
+    "rainDays": 1,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 6
+    "windyDays": 5
   }
 }
