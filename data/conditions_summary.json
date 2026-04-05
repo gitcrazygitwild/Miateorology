@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-04-04T06:53:45.354-04:00",
+  "generatedAt": "2026-04-05T06:55:14.576-04:00",
   "today": {
-    "date": "2026-04-04",
+    "date": "2026-04-05",
     "sources": {
       "nws": {
-        "date": "2026-04-04",
-        "summary": "Sunny",
-        "precipProbability": 9,
-        "windMph": 14,
-        "rain": false,
+        "date": "2026-04-05",
+        "summary": "Showers And Thunderstorms",
+        "precipProbability": 82,
+        "windMph": 18,
+        "rain": true,
         "snow": false,
-        "thunder": false
+        "thunder": true
       },
       "openMeteo": {
-        "date": "2026-04-04",
-        "summary": "Partly cloudy",
-        "precipProbability": 2,
-        "windMph": 23.9,
-        "rain": false,
+        "date": "2026-04-05",
+        "summary": "Dense drizzle",
+        "precipProbability": 85,
+        "windMph": 35.6,
+        "rain": true,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-04-04",
-        "summary": "Fair Day",
+        "date": "2026-04-05",
+        "summary": "Cloudy",
         "precipProbability": null,
-        "windMph": 11.9,
-        "rain": false,
+        "windMph": 20.4,
+        "rain": true,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "off",
+      "rainSignal": "strong",
       "snowSignal": "off",
-      "thunderSignal": "off",
-      "avgPrecipProbability": 5.5,
-      "avgWindMph": 16.6,
-      "windSignal": "medium",
-      "summary": "Mostly quiet signal"
+      "thunderSignal": "weak",
+      "avgPrecipProbability": 83.5,
+      "avgWindMph": 24.7,
+      "windSignal": "strong",
+      "summary": "Rain signal present"
     },
-    "writeup": "It looks breezy to windy with temperatures near 85° / 64° plus wind around 17 mph."
+    "writeup": "Showers look likely with temperatures near 76° / 52° and about 84% average precipitation signal plus wind around 25 mph."
   },
   "next7Summary": {
     "rainDays": 1,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 5
+    "windyDays": 4
   }
 }
