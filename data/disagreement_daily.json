@@ -1,68 +1,68 @@
 {
-  "generatedAt": "2026-04-09T07:17:26.583-04:00",
+  "generatedAt": "2026-04-11T06:56:12.662-04:00",
   "days": [
     {
-      "date": "2026-04-09",
-      "overallSpreadF": 4.6,
-      "highSpreadF": 1.5,
-      "lowSpreadF": 7.7,
-      "precipSpread": 0,
-      "windSpreadMph": 14.5,
-      "confidence": "medium"
-    },
-    {
-      "date": "2026-04-10",
-      "overallSpreadF": 7.1,
-      "highSpreadF": 1.6,
-      "lowSpreadF": 12.6,
-      "precipSpread": 0,
-      "windSpreadMph": 9.9,
-      "confidence": "low"
-    },
-    {
       "date": "2026-04-11",
-      "overallSpreadF": 5.5,
-      "highSpreadF": 4.2,
+      "overallSpreadF": 4,
+      "highSpreadF": 1.2,
       "lowSpreadF": 6.8,
-      "precipSpread": 4,
-      "windSpreadMph": 14.5,
-      "confidence": "low"
+      "precipSpread": 1,
+      "windSpreadMph": 16.5,
+      "confidence": "medium"
     },
     {
       "date": "2026-04-12",
-      "overallSpreadF": 5,
-      "highSpreadF": 4.4,
-      "lowSpreadF": 5.6,
-      "precipSpread": 2,
-      "windSpreadMph": 21.7,
-      "confidence": "medium"
+      "overallSpreadF": 5.1,
+      "highSpreadF": 2.9,
+      "lowSpreadF": 7.3,
+      "precipSpread": 1,
+      "windSpreadMph": 17.3,
+      "confidence": "low"
     },
     {
       "date": "2026-04-13",
       "overallSpreadF": 3.2,
-      "highSpreadF": 2.6,
-      "lowSpreadF": 3.7,
+      "highSpreadF": 0.6,
+      "lowSpreadF": 5.7,
       "precipSpread": 1,
-      "windSpreadMph": 20.8,
+      "windSpreadMph": 17.2,
       "confidence": "medium"
     },
     {
       "date": "2026-04-14",
-      "overallSpreadF": 3.5,
-      "highSpreadF": 3.4,
-      "lowSpreadF": 3.5,
-      "precipSpread": 1,
-      "windSpreadMph": 17.3,
+      "overallSpreadF": 4,
+      "highSpreadF": 4.1,
+      "lowSpreadF": 3.9,
+      "precipSpread": 0,
+      "windSpreadMph": 20.9,
       "confidence": "medium"
     },
     {
       "date": "2026-04-15",
-      "overallSpreadF": 4.7,
-      "highSpreadF": 5,
-      "lowSpreadF": 4.4,
-      "precipSpread": 4,
-      "windSpreadMph": 18.5,
+      "overallSpreadF": 4.2,
+      "highSpreadF": 4.1,
+      "lowSpreadF": 4.2,
+      "precipSpread": 0,
+      "windSpreadMph": 20.4,
       "confidence": "medium"
+    },
+    {
+      "date": "2026-04-16",
+      "overallSpreadF": 4.6,
+      "highSpreadF": 5.1,
+      "lowSpreadF": 4,
+      "precipSpread": 2,
+      "windSpreadMph": 18.3,
+      "confidence": "medium"
+    },
+    {
+      "date": "2026-04-17",
+      "overallSpreadF": 12,
+      "highSpreadF": 16.2,
+      "lowSpreadF": 7.7,
+      "precipSpread": 4,
+      "windSpreadMph": 13.4,
+      "confidence": "low"
     }
   ]
 }
