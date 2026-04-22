@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-04-21T07:33:18.380-04:00",
+  "generatedAt": "2026-04-22T07:32:44.986-04:00",
   "today": {
-    "date": "2026-04-21",
+    "date": "2026-04-22",
     "sources": {
       "nws": {
-        "date": "2026-04-21",
-        "summary": "Patchy Frost then Sunny",
-        "precipProbability": 2,
-        "windMph": 8,
-        "rain": false,
+        "date": "2026-04-22",
+        "summary": "Mostly Sunny then Chance Showers And Thunderstorms",
+        "precipProbability": 32,
+        "windMph": 14,
+        "rain": true,
         "snow": false,
-        "thunder": false
+        "thunder": true
       },
       "openMeteo": {
-        "date": "2026-04-21",
-        "summary": "Overcast",
-        "precipProbability": 1,
-        "windMph": 16.1,
-        "rain": false,
+        "date": "2026-04-22",
+        "summary": "Light drizzle",
+        "precipProbability": 17,
+        "windMph": 28.4,
+        "rain": true,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-04-21",
-        "summary": "Clearsky Day",
+        "date": "2026-04-22",
+        "summary": "Partlycloudy Day",
         "precipProbability": null,
-        "windMph": 10.3,
-        "rain": false,
+        "windMph": 13.6,
+        "rain": true,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "off",
+      "rainSignal": "strong",
       "snowSignal": "off",
-      "thunderSignal": "off",
-      "avgPrecipProbability": 1.5,
-      "avgWindMph": 11.5,
-      "windSignal": "weak",
-      "summary": "Mostly quiet signal"
+      "thunderSignal": "weak",
+      "avgPrecipProbability": 24.5,
+      "avgWindMph": 18.7,
+      "windSignal": "medium",
+      "summary": "Rain signal present"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 64° / 40°. A warmer turn follows the next day."
+    "writeup": "Showers look likely with temperatures near 79° / 51° plus wind around 19 mph."
   },
   "next7Summary": {
-    "rainDays": 4,
+    "rainDays": 6,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 4
+    "windyDays": 6
   }
 }
