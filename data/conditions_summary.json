@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-04-25T07:05:21.943-04:00",
+  "generatedAt": "2026-04-26T07:05:43.903-04:00",
   "today": {
-    "date": "2026-04-25",
+    "date": "2026-04-26",
     "sources": {
       "nws": {
-        "date": "2026-04-25",
-        "summary": "Mostly Sunny then Chance Showers And Thunderstorms",
-        "precipProbability": 91,
-        "windMph": 7,
+        "date": "2026-04-26",
+        "summary": "Cloudy",
+        "precipProbability": 9,
+        "windMph": 13,
         "rain": true,
         "snow": false,
-        "thunder": true
+        "thunder": false
       },
       "openMeteo": {
-        "date": "2026-04-25",
+        "date": "2026-04-26",
         "summary": "Overcast",
-        "precipProbability": 58,
-        "windMph": 35.6,
+        "precipProbability": 18,
+        "windMph": 21.3,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-04-25",
-        "summary": "Partlycloudy Day",
+        "date": "2026-04-26",
+        "summary": "Cloudy",
         "precipProbability": null,
         "windMph": 12.5,
-        "rain": true,
+        "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "medium",
+      "rainSignal": "weak",
       "snowSignal": "off",
-      "thunderSignal": "weak",
-      "avgPrecipProbability": 74.5,
-      "avgWindMph": 18.4,
-      "windSignal": "strong",
-      "summary": "Rain signal present"
+      "thunderSignal": "off",
+      "avgPrecipProbability": 13.5,
+      "avgWindMph": 15.6,
+      "windSignal": "medium",
+      "summary": "Mostly quiet signal"
     },
-    "writeup": "Showers look likely with temperatures near 85° / 55° and about 75% average precipitation signal plus wind around 18 mph. A sharp cooler turn follows the next day."
+    "writeup": "It looks breezy to windy with temperatures near 57° / 47° plus wind around 16 mph."
   },
   "next7Summary": {
     "rainDays": 3,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 5
+    "windyDays": 4
   }
 }
