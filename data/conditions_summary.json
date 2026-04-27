@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-04-26T07:05:43.903-04:00",
+  "generatedAt": "2026-04-27T08:00:06.010-04:00",
   "today": {
-    "date": "2026-04-26",
+    "date": "2026-04-27",
     "sources": {
       "nws": {
-        "date": "2026-04-26",
-        "summary": "Cloudy",
-        "precipProbability": 9,
-        "windMph": 13,
-        "rain": true,
+        "date": "2026-04-27",
+        "summary": "Sunny",
+        "precipProbability": 0,
+        "windMph": 8,
+        "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-04-26",
+        "date": "2026-04-27",
         "summary": "Overcast",
-        "precipProbability": 18,
-        "windMph": 21.3,
+        "precipProbability": 0,
+        "windMph": 15.7,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-04-26",
-        "summary": "Cloudy",
+        "date": "2026-04-27",
+        "summary": "Clearsky Day",
         "precipProbability": null,
-        "windMph": 12.5,
+        "windMph": 7.6,
         "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "weak",
+      "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 13.5,
-      "avgWindMph": 15.6,
-      "windSignal": "medium",
+      "avgPrecipProbability": 0,
+      "avgWindMph": 10.4,
+      "windSignal": "weak",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "It looks breezy to windy with temperatures near 57° / 47° plus wind around 16 mph."
+    "writeup": "Weather looks fairly quiet with temperatures near 68° / 44°."
   },
   "next7Summary": {
-    "rainDays": 3,
+    "rainDays": 5,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 4
+    "windyDays": 5
   }
 }
