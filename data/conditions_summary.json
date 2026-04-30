@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-04-29T07:55:00.642-04:00",
+  "generatedAt": "2026-04-30T07:53:53.543-04:00",
   "today": {
-    "date": "2026-04-29",
+    "date": "2026-04-30",
     "sources": {
       "nws": {
-        "date": "2026-04-29",
-        "summary": "Cloudy then Chance Showers And Thunderstorms",
-        "precipProbability": 55,
+        "date": "2026-04-30",
+        "summary": "Partly Sunny",
+        "precipProbability": 4,
         "windMph": 10,
-        "rain": true,
+        "rain": false,
         "snow": false,
-        "thunder": true
+        "thunder": false
       },
       "openMeteo": {
-        "date": "2026-04-29",
-        "summary": "Rain",
-        "precipProbability": 28,
-        "windMph": 17.4,
-        "rain": true,
+        "date": "2026-04-30",
+        "summary": "Overcast",
+        "precipProbability": 5,
+        "windMph": 27.5,
+        "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-04-29",
-        "summary": "Cloudy",
+        "date": "2026-04-30",
+        "summary": "Partlycloudy Day",
         "precipProbability": null,
-        "windMph": 14.5,
-        "rain": true,
+        "windMph": 10.5,
+        "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "strong",
+      "rainSignal": "off",
       "snowSignal": "off",
-      "thunderSignal": "weak",
-      "avgPrecipProbability": 41.5,
-      "avgWindMph": 14,
-      "windSignal": "weak",
-      "summary": "Rain signal present"
+      "thunderSignal": "off",
+      "avgPrecipProbability": 4.5,
+      "avgWindMph": 16,
+      "windSignal": "medium",
+      "summary": "Mostly quiet signal"
     },
-    "writeup": "Showers look likely with temperatures near 72° / 51° and about 42% average precipitation signal."
+    "writeup": "It looks breezy to windy with temperatures near 72° / 51° plus wind around 16 mph."
   },
   "next7Summary": {
-    "rainDays": 3,
+    "rainDays": 2,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 5
+    "windyDays": 6
   }
 }
