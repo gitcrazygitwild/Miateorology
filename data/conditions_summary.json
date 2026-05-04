@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-05-03T07:08:06.934-04:00",
+  "generatedAt": "2026-05-04T08:05:31.778-04:00",
   "today": {
-    "date": "2026-05-03",
+    "date": "2026-05-04",
     "sources": {
       "nws": {
-        "date": "2026-05-03",
-        "summary": "Sunny",
-        "precipProbability": 3,
-        "windMph": 10,
+        "date": "2026-05-04",
+        "summary": "Mostly Sunny",
+        "precipProbability": 7,
+        "windMph": 13,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-05-03",
+        "date": "2026-05-04",
         "summary": "Overcast",
-        "precipProbability": 1,
-        "windMph": 20.6,
+        "precipProbability": 6,
+        "windMph": 36.5,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-05-03",
-        "summary": "Fair Day",
+        "date": "2026-05-04",
+        "summary": "Clearsky Day",
         "precipProbability": null,
-        "windMph": 10.5,
+        "windMph": 12.5,
         "rain": false,
         "snow": false,
         "thunder": false
@@ -40,17 +40,17 @@
       "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 2,
-      "avgWindMph": 13.7,
-      "windSignal": "medium",
+      "avgPrecipProbability": 6.5,
+      "avgWindMph": 20.7,
+      "windSignal": "strong",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "It looks breezy to windy with temperatures near 65° / 44°. A warmer turn follows the next day."
+    "writeup": "It looks breezy to windy with temperatures near 79° / 52° plus wind around 21 mph."
   },
   "next7Summary": {
     "rainDays": 3,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 7
+    "windyDays": 6
   }
 }
