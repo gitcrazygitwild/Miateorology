@@ -303,7 +303,7 @@ function buildDailyWriteup(day, nextDay = null) {
 // ---------- NWS ----------
 async function getNwsLinks(lat, lon) {
   const url = `https://api.weather.gov/points/${lat},${lon}`;
-  const data = await fetchJson(url, { headers: { "User-Agent": "mia-teorology (github actions)" } });
+  const data = await fetchJson(url, { headers: { "User-Agent": ua } });
   const props = data?.properties || {};
   return {
     forecastUrl: props.forecast,
