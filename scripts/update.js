@@ -612,7 +612,7 @@ async function getMetNoTimeseries(lat, lon) {
     throw new Error("METNO_USER_AGENT is required (set it in GitHub Actions env).");
   }
   const url = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lon}`;
-  const data = await fetchJson(url, { headers: { "User-Agent": ua } });
+  const data = await fetchJson(url, { headers: { "User-Agent": "HubertsHouse/1.0 hr.schwartz23@gmail.com" } });
   return data?.properties?.timeseries || [];
 }
 
