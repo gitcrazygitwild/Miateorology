@@ -303,7 +303,9 @@ function buildDailyWriteup(day, nextDay = null) {
 // ---------- NWS ----------
 async function getNwsLinks(lat, lon) {
   const url = `https://api.weather.gov/points/${lat},${lon}`;
-  const data = await fetchJson(url, { headers: { "User-Agent": ua } });
+  const data = await fetchJson(url, {
+    headers: { "User-Agent": "mia-teorology (github actions)" }
+  });
   const props = data?.properties || {};
   return {
     forecastUrl: props.forecast,
@@ -313,11 +315,15 @@ async function getNwsLinks(lat, lon) {
 }
 
 async function getNwsForecastData(forecastUrl) {
-  return fetchJson(forecastUrl, { headers: { "User-Agent": "mia-teorology (github actions)" } });
+  return fetchJson(forecastUrl, {
+    headers: { "User-Agent": "mia-teorology (github actions)" }
+  });
 }
 
 async function getNwsHourlyForecastData(forecastHourlyUrl) {
-  return fetchJson(forecastHourlyUrl, { headers: { "User-Agent": "mia-teorology (github actions)" } });
+  return fetchJson(forecastHourlyUrl, {
+    headers: { "User-Agent": "mia-teorology (github actions)" }
+  });
 }
 
 async function getNwsDailyHighLowForDate(forecastUrl, targetDate) {
@@ -409,7 +415,9 @@ async function getNwsHourlyTemps(forecastHourlyUrl, hours = 48) {
 }
 
 async function getNwsStationId(observationStationsUrl) {
-  const data = await fetchJson(observationStationsUrl, { headers: { "User-Agent": "mia-teorology (github actions)" } });
+  const data = await fetchJson(observationStationsUrl, {
+    headers: { "User-Agent": "mia-teorology (github actions)" }
+  });
   const stations = data?.observationStations || data?.features || [];
   if (Array.isArray(stations) && typeof stations[0] === "string") {
     const parts = stations[0].split("/");
@@ -425,7 +433,9 @@ async function getNwsObservationsForDay(stationId, dayStart, dayEnd) {
   const start = dayStart.toUTC().toISO();
   const end = dayEnd.toUTC().toISO();
   const url = `https://api.weather.gov/stations/${stationId}/observations?start=${encodeURIComponent(start)}&end=${encodeURIComponent(end)}&limit=500`;
-  const data = await fetchJson(url, { headers: { "User-Agent": "mia-teorology (github actions)" } });
+  const data = await fetchJson(url, {
+    headers: { "User-Agent": "mia-teorology (github actions)" }
+  });
   return data?.features || [];
 }
 
@@ -611,8 +621,11 @@ async function getMetNoTimeseries(lat, lon) {
   if (!ua || ua.trim().length < 10) {
     throw new Error("METNO_USER_AGENT is required (set it in GitHub Actions env).");
   }
+
   const url = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lon}`;
-  const data = await fetchJson(url, { headers: { "User-Agent": "HubertsHouse/1.0 hr.schwartz23@gmail.com" } });
+  const data = await fetchJson(url, {
+    headers: { "User-Agent": ua }
+  });
   return data?.properties?.timeseries || [];
 }
 
