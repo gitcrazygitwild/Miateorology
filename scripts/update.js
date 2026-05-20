@@ -617,15 +617,17 @@ function metNoSummaryFromSymbol(symbol) {
 }
 
 async function getMetNoTimeseries(lat, lon) {
-  const ua = process.env.METNO_USER_AGENT;
-  if (!ua || ua.trim().length < 10) {
+  const metNoUserAgent = process.env.METNO_USER_AGENT;
+
+  if (!metNoUserAgent || metNoUserAgent.trim().length < 10) {
     throw new Error("METNO_USER_AGENT is required (set it in GitHub Actions env).");
   }
 
   const url = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lon}`;
   const data = await fetchJson(url, {
-    headers: { "User-Agent": ua }
+    headers: { "User-Agent": metNoUserAgent }
   });
+
   return data?.properties?.timeseries || [];
 }
 
