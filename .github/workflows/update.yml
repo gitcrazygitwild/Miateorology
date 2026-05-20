@@ -27,7 +27,7 @@ jobs:
       - name: Run update script
         env:
           # Required by met.no: use a descriptive User-Agent.
-          METNO_USER_AGENT: "mia-teorology (github: YOUR_GITHUB_USERNAME; contact: you@example.com)"
+          METNO_USER_AGENT: "mia-teorology (github: gitcrazygitwild; contact: hr.schwartz23@gmail.com)"
         run: npm run update
 
       - name: Commit data updates
