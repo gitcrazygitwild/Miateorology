@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-05-25T09:43:14.996-04:00",
+  "generatedAt": "2026-05-27T09:48:48.859-04:00",
   "today": {
-    "date": "2026-05-25",
+    "date": "2026-05-27",
     "sources": {
       "nws": {
-        "date": "2026-05-25",
-        "summary": "Showers And Thunderstorms",
-        "precipProbability": 86,
-        "windMph": 6,
+        "date": "2026-05-27",
+        "summary": "Mostly Cloudy then Chance Showers And Thunderstorms",
+        "precipProbability": 68,
+        "windMph": 9,
         "rain": true,
         "snow": false,
         "thunder": true
       },
       "openMeteo": {
-        "date": "2026-05-25",
-        "summary": "Rain showers",
-        "precipProbability": 64,
-        "windMph": 21.7,
+        "date": "2026-05-27",
+        "summary": "Rain",
+        "precipProbability": 53,
+        "windMph": 32.4,
         "rain": true,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-05-25",
-        "summary": "Rain",
+        "date": "2026-05-27",
+        "summary": "Cloudy",
         "precipProbability": null,
-        "windMph": 9.8,
+        "windMph": 11.9,
         "rain": true,
         "snow": false,
         "thunder": false
@@ -40,17 +40,17 @@
       "rainSignal": "strong",
       "snowSignal": "off",
       "thunderSignal": "weak",
-      "avgPrecipProbability": 75,
-      "avgWindMph": 12.5,
-      "windSignal": "medium",
+      "avgPrecipProbability": 60.5,
+      "avgWindMph": 17.8,
+      "windSignal": "strong",
       "summary": "Rain signal present"
     },
-    "writeup": "Showers look likely with temperatures near 78° / 68° and about 75% average precipitation signal."
+    "writeup": "Showers look likely with temperatures near 84° / 69° and about 61% average precipitation signal plus wind around 18 mph."
   },
   "next7Summary": {
-    "rainDays": 4,
+    "rainDays": 2,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 5
+    "windyDays": 7
   }
 }
