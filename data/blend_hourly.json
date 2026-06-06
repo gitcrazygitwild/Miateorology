@@ -4,603 +4,97 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-06-05T09:25:37.701-04:00",
+  "generatedAt": "2026-06-06T07:44:47.920-04:00",
   "hours": [
     {
-      "timeISO": "2026-06-05T09:00:00.000-04:00",
-      "blendedTempF": 74,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 1,
-      "sources": {
-        "nws": {
-          "tempF": 74,
-          "precipProbability": 0,
-          "windMph": 1
-        },
-        "openMeteo": null,
-        "metNo": null
-      }
-    },
-    {
-      "timeISO": "2026-06-05T10:00:00.000-04:00",
-      "blendedTempF": 83.1,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 4.7,
-      "sources": {
-        "nws": {
-          "tempF": 80,
-          "precipProbability": 0,
-          "windMph": 2
-        },
-        "openMeteo": {
-          "tempF": 93,
-          "precipProbability": 0,
-          "windMph": 7.4
-        },
-        "metNo": {
-          "tempF": 76.3,
-          "precipProbability": null,
-          "windMph": 4.7
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-05T11:00:00.000-04:00",
-      "blendedTempF": 86.2,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 5.5,
-      "sources": {
-        "nws": {
-          "tempF": 84,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 94.1,
-          "precipProbability": 0,
-          "windMph": 8
-        },
-        "metNo": {
-          "tempF": 80.4,
-          "precipProbability": null,
-          "windMph": 5.6
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-05T12:00:00.000-04:00",
-      "blendedTempF": 88.8,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 5.3,
-      "sources": {
-        "nws": {
-          "tempF": 89,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 94.4,
-          "precipProbability": 0,
-          "windMph": 7.9
-        },
-        "metNo": {
-          "tempF": 83.1,
-          "precipProbability": null,
-          "windMph": 4.9
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-05T13:00:00.000-04:00",
-      "blendedTempF": 89.8,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 5.3,
-      "sources": {
-        "nws": {
-          "tempF": 90,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 94.2,
-          "precipProbability": 0,
-          "windMph": 8.2
-        },
-        "metNo": {
-          "tempF": 85.3,
-          "precipProbability": null,
-          "windMph": 4.7
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-05T14:00:00.000-04:00",
-      "blendedTempF": 90.7,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 6.2,
-      "sources": {
-        "nws": {
-          "tempF": 92,
-          "precipProbability": 0,
-          "windMph": 5
-        },
-        "openMeteo": {
-          "tempF": 93.3,
-          "precipProbability": 0,
-          "windMph": 8.4
-        },
-        "metNo": {
-          "tempF": 86.9,
-          "precipProbability": null,
-          "windMph": 5.1
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-05T15:00:00.000-04:00",
-      "blendedTempF": 90.9,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 6.3,
-      "sources": {
-        "nws": {
-          "tempF": 93,
-          "precipProbability": 0,
-          "windMph": 5
-        },
-        "openMeteo": {
-          "tempF": 91.7,
-          "precipProbability": 0,
-          "windMph": 8.9
-        },
-        "metNo": {
-          "tempF": 88,
-          "precipProbability": null,
-          "windMph": 5.1
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-05T16:00:00.000-04:00",
-      "blendedTempF": 90,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 5.4,
-      "sources": {
-        "nws": {
-          "tempF": 93,
-          "precipProbability": 0,
-          "windMph": 5
-        },
-        "openMeteo": {
-          "tempF": 88.1,
-          "precipProbability": 0,
-          "windMph": 7.6
-        },
-        "metNo": {
-          "tempF": 88.9,
-          "precipProbability": null,
-          "windMph": 3.6
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-05T17:00:00.000-04:00",
-      "blendedTempF": 88.1,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 4.9,
-      "sources": {
-        "nws": {
-          "tempF": 92,
-          "precipProbability": 0,
-          "windMph": 6
-        },
-        "openMeteo": {
-          "tempF": 82.8,
-          "precipProbability": 0,
-          "windMph": 4.8
-        },
-        "metNo": {
-          "tempF": 89.4,
-          "precipProbability": null,
-          "windMph": 3.8
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-05T18:00:00.000-04:00",
-      "blendedTempF": 86.3,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 4.2,
-      "sources": {
-        "nws": {
-          "tempF": 91,
-          "precipProbability": 0,
-          "windMph": 5
-        },
-        "openMeteo": {
-          "tempF": 79.1,
-          "precipProbability": 0,
-          "windMph": 3.9
-        },
-        "metNo": {
-          "tempF": 88.9,
-          "precipProbability": null,
-          "windMph": 3.8
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-05T19:00:00.000-04:00",
-      "blendedTempF": 83.2,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 4.9,
-      "sources": {
-        "nws": {
-          "tempF": 88,
-          "precipProbability": 0,
-          "windMph": 5
-        },
-        "openMeteo": {
-          "tempF": 76.5,
-          "precipProbability": 0,
-          "windMph": 3.4
-        },
-        "metNo": {
-          "tempF": 85.1,
-          "precipProbability": null,
-          "windMph": 6.3
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-05T20:00:00.000-04:00",
-      "blendedTempF": 79.5,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 4,
-      "sources": {
-        "nws": {
-          "tempF": 84,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 74.6,
-          "precipProbability": 0,
-          "windMph": 2.5
-        },
-        "metNo": {
-          "tempF": 79.9,
-          "precipProbability": null,
-          "windMph": 6.5
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-05T21:00:00.000-04:00",
-      "blendedTempF": 76.8,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 4.3,
-      "sources": {
-        "nws": {
-          "tempF": 81,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 72.7,
-          "precipProbability": 0,
-          "windMph": 4.3
-        },
-        "metNo": {
-          "tempF": 76.6,
-          "precipProbability": null,
-          "windMph": 5.6
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-05T22:00:00.000-04:00",
-      "blendedTempF": 74.2,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 4.2,
-      "sources": {
-        "nws": {
-          "tempF": 78,
-          "precipProbability": 0,
-          "windMph": 2
-        },
-        "openMeteo": {
-          "tempF": 70.4,
-          "precipProbability": 0,
-          "windMph": 3.6
-        },
-        "metNo": {
-          "tempF": 74.3,
-          "precipProbability": null,
-          "windMph": 6.9
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-05T23:00:00.000-04:00",
-      "blendedTempF": 73,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 4.9,
-      "sources": {
-        "nws": {
-          "tempF": 76,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 70,
-          "precipProbability": 0,
-          "windMph": 4.4
-        },
-        "metNo": {
-          "tempF": 72.9,
-          "precipProbability": null,
-          "windMph": 7.4
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-06T00:00:00.000-04:00",
-      "blendedTempF": 71.3,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 4.8,
-      "sources": {
-        "nws": {
-          "tempF": 74,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 68.1,
-          "precipProbability": 0,
-          "windMph": 3.8
-        },
-        "metNo": {
-          "tempF": 71.8,
-          "precipProbability": null,
-          "windMph": 7.6
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-06T01:00:00.000-04:00",
-      "blendedTempF": 69.5,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 4.7,
-      "sources": {
-        "nws": {
-          "tempF": 72,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 65.4,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "metNo": {
-          "tempF": 71.2,
-          "precipProbability": null,
-          "windMph": 8.1
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-06T02:00:00.000-04:00",
-      "blendedTempF": 68.7,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 4.8,
-      "sources": {
-        "nws": {
-          "tempF": 71,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 64.6,
-          "precipProbability": 0,
-          "windMph": 3.7
-        },
-        "metNo": {
-          "tempF": 70.5,
-          "precipProbability": null,
-          "windMph": 7.8
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-06T03:00:00.000-04:00",
+      "timeISO": "2026-06-06T07:00:00.000-04:00",
       "blendedTempF": 68,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 4.7,
-      "sources": {
-        "nws": {
-          "tempF": 69,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 65.7,
-          "precipProbability": 0,
-          "windMph": 2.9
-        },
-        "metNo": {
-          "tempF": 69.4,
-          "precipProbability": null,
-          "windMph": 8.1
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-06T04:00:00.000-04:00",
-      "blendedTempF": 69.2,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 4.4,
-      "sources": {
-        "nws": {
-          "tempF": 68,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 71.2,
-          "precipProbability": 0,
-          "windMph": 2.8
-        },
-        "metNo": {
-          "tempF": 68.4,
-          "precipProbability": null,
-          "windMph": 7.4
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-06T05:00:00.000-04:00",
-      "blendedTempF": 70.8,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 4.6,
-      "sources": {
-        "nws": {
-          "tempF": 67,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 77.7,
-          "precipProbability": 0,
-          "windMph": 3.6
-        },
-        "metNo": {
-          "tempF": 67.8,
-          "precipProbability": null,
-          "windMph": 7.2
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-06T06:00:00.000-04:00",
-      "blendedTempF": 74,
       "blendedPrecipProbability": 0,
       "blendedWindMph": 5,
       "sources": {
         "nws": {
           "tempF": 68,
           "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 86.7,
-          "precipProbability": 0,
-          "windMph": 5.1
-        },
-        "metNo": {
-          "tempF": 67.3,
-          "precipProbability": null,
-          "windMph": 6.9
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-06T07:00:00.000-04:00",
-      "blendedTempF": 76.9,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 6.5,
-      "sources": {
-        "nws": {
-          "tempF": 70,
-          "precipProbability": 0,
           "windMph": 5
         },
-        "openMeteo": {
-          "tempF": 91.7,
-          "precipProbability": 0,
-          "windMph": 7.2
-        },
-        "metNo": {
-          "tempF": 69.1,
-          "precipProbability": null,
-          "windMph": 7.2
-        }
+        "openMeteo": null,
+        "metNo": null
       }
     },
     {
       "timeISO": "2026-06-06T08:00:00.000-04:00",
-      "blendedTempF": 79.9,
+      "blendedTempF": 79.5,
       "blendedPrecipProbability": 0,
-      "blendedWindMph": 6.7,
+      "blendedWindMph": 5.6,
       "sources": {
         "nws": {
-          "tempF": 73,
+          "tempF": 74,
           "precipProbability": 0,
-          "windMph": 5
+          "windMph": 3
         },
         "openMeteo": {
-          "tempF": 94,
+          "tempF": 91.4,
           "precipProbability": 0,
-          "windMph": 8.3
+          "windMph": 7.9
         },
         "metNo": {
-          "tempF": 72.7,
+          "tempF": 73,
           "precipProbability": null,
-          "windMph": 6.9
+          "windMph": 6
         }
       }
     },
     {
       "timeISO": "2026-06-06T09:00:00.000-04:00",
-      "blendedTempF": 83.4,
-      "blendedPrecipProbability": 0.5,
-      "blendedWindMph": 7.6,
+      "blendedTempF": 83.2,
+      "blendedPrecipProbability": 0,
+      "blendedWindMph": 6,
       "sources": {
         "nws": {
-          "tempF": 78,
+          "tempF": 79,
           "precipProbability": 0,
-          "windMph": 5
+          "windMph": 3
         },
         "openMeteo": {
-          "tempF": 95.5,
-          "precipProbability": 1,
-          "windMph": 11.7
+          "tempF": 93.2,
+          "precipProbability": 0,
+          "windMph": 9.1
         },
         "metNo": {
-          "tempF": 76.8,
+          "tempF": 77.4,
           "precipProbability": null,
-          "windMph": 6
+          "windMph": 5.8
         }
       }
     },
     {
       "timeISO": "2026-06-06T10:00:00.000-04:00",
-      "blendedTempF": 86.6,
-      "blendedPrecipProbability": 0.5,
-      "blendedWindMph": 7.8,
+      "blendedTempF": 86.7,
+      "blendedPrecipProbability": 0,
+      "blendedWindMph": 7,
       "sources": {
         "nws": {
-          "tempF": 83,
+          "tempF": 84,
           "precipProbability": 0,
-          "windMph": 6
+          "windMph": 5
         },
         "openMeteo": {
-          "tempF": 95.8,
-          "precipProbability": 1,
-          "windMph": 12.6
+          "tempF": 94.5,
+          "precipProbability": 0,
+          "windMph": 10.6
         },
         "metNo": {
-          "tempF": 81,
+          "tempF": 81.7,
           "precipProbability": null,
-          "windMph": 4.9
+          "windMph": 5.4
         }
       }
     },
     {
       "timeISO": "2026-06-06T11:00:00.000-04:00",
       "blendedTempF": 89.5,
-      "blendedPrecipProbability": 1,
-      "blendedWindMph": 7.9,
+      "blendedPrecipProbability": 0,
+      "blendedWindMph": 7.7,
       "sources": {
         "nws": {
           "tempF": 88,
@@ -608,12 +102,12 @@
           "windMph": 6
         },
         "openMeteo": {
-          "tempF": 95.5,
-          "precipProbability": 2,
-          "windMph": 12
+          "tempF": 95.3,
+          "precipProbability": 0,
+          "windMph": 11.4
         },
         "metNo": {
-          "tempF": 85.1,
+          "tempF": 85.3,
           "precipProbability": null,
           "windMph": 5.8
         }
@@ -621,9 +115,9 @@
     },
     {
       "timeISO": "2026-06-06T12:00:00.000-04:00",
-      "blendedTempF": 91.6,
-      "blendedPrecipProbability": 1,
-      "blendedWindMph": 8.3,
+      "blendedTempF": 91.2,
+      "blendedPrecipProbability": 0,
+      "blendedWindMph": 8.7,
       "sources": {
         "nws": {
           "tempF": 90,
@@ -631,22 +125,22 @@
           "windMph": 7
         },
         "openMeteo": {
-          "tempF": 96.4,
-          "precipProbability": 2,
-          "windMph": 11.1
+          "tempF": 95.7,
+          "precipProbability": 0,
+          "windMph": 12.5
         },
         "metNo": {
-          "tempF": 88.3,
+          "tempF": 87.8,
           "precipProbability": null,
-          "windMph": 6.9
+          "windMph": 6.5
         }
       }
     },
     {
       "timeISO": "2026-06-06T13:00:00.000-04:00",
-      "blendedTempF": 93,
-      "blendedPrecipProbability": 1,
-      "blendedWindMph": 8.9,
+      "blendedTempF": 92,
+      "blendedPrecipProbability": 0.5,
+      "blendedWindMph": 9,
       "sources": {
         "nws": {
           "tempF": 92,
@@ -654,12 +148,12 @@
           "windMph": 8
         },
         "openMeteo": {
-          "tempF": 96.2,
-          "precipProbability": 2,
-          "windMph": 11.5
+          "tempF": 95.4,
+          "precipProbability": 1,
+          "windMph": 11.8
         },
         "metNo": {
-          "tempF": 90.7,
+          "tempF": 88.7,
           "precipProbability": null,
           "windMph": 7.2
         }
@@ -667,9 +161,9 @@
     },
     {
       "timeISO": "2026-06-06T14:00:00.000-04:00",
-      "blendedTempF": 93.7,
-      "blendedPrecipProbability": 1.5,
-      "blendedWindMph": 10,
+      "blendedTempF": 92.5,
+      "blendedPrecipProbability": 0.5,
+      "blendedWindMph": 9.7,
       "sources": {
         "nws": {
           "tempF": 93,
@@ -677,91 +171,91 @@
           "windMph": 9
         },
         "openMeteo": {
-          "tempF": 95.3,
-          "precipProbability": 3,
-          "windMph": 11.9
+          "tempF": 94.3,
+          "precipProbability": 1,
+          "windMph": 11.4
         },
         "metNo": {
+          "tempF": 90.1,
+          "precipProbability": null,
+          "windMph": 8.7
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-06T15:00:00.000-04:00",
+      "blendedTempF": 92.7,
+      "blendedPrecipProbability": 0.5,
+      "blendedWindMph": 9.5,
+      "sources": {
+        "nws": {
+          "tempF": 94,
+          "precipProbability": 0,
+          "windMph": 9
+        },
+        "openMeteo": {
           "tempF": 92.8,
+          "precipProbability": 1,
+          "windMph": 10.4
+        },
+        "metNo": {
+          "tempF": 91.2,
           "precipProbability": null,
           "windMph": 9.2
         }
       }
     },
     {
-      "timeISO": "2026-06-06T15:00:00.000-04:00",
-      "blendedTempF": 93.7,
-      "blendedPrecipProbability": 1.5,
-      "blendedWindMph": 10,
+      "timeISO": "2026-06-06T16:00:00.000-04:00",
+      "blendedTempF": 92.1,
+      "blendedPrecipProbability": 0.5,
+      "blendedWindMph": 9.1,
       "sources": {
         "nws": {
           "tempF": 94,
           "precipProbability": 0,
-          "windMph": 9
-        },
-        "openMeteo": {
-          "tempF": 94.2,
-          "precipProbability": 3,
-          "windMph": 10.3
-        },
-        "metNo": {
-          "tempF": 93,
-          "precipProbability": null,
-          "windMph": 10.7
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-06T16:00:00.000-04:00",
-      "blendedTempF": 93.2,
-      "blendedPrecipProbability": 0,
-      "blendedWindMph": 9.4,
-      "sources": {
-        "nws": {
-          "tempF": 95,
-          "precipProbability": 0,
           "windMph": 10
         },
         "openMeteo": {
-          "tempF": 91.1,
-          "precipProbability": 0,
-          "windMph": 7.8
+          "tempF": 89.9,
+          "precipProbability": 1,
+          "windMph": 8
         },
         "metNo": {
-          "tempF": 93.6,
+          "tempF": 92.5,
           "precipProbability": null,
-          "windMph": 10.3
+          "windMph": 9.2
         }
       }
     },
     {
       "timeISO": "2026-06-06T17:00:00.000-04:00",
-      "blendedTempF": 90.7,
+      "blendedTempF": 90.3,
       "blendedPrecipProbability": 0.5,
-      "blendedWindMph": 7.9,
+      "blendedWindMph": 8.5,
       "sources": {
         "nws": {
-          "tempF": 94,
+          "tempF": 93,
           "precipProbability": 0,
           "windMph": 10
         },
         "openMeteo": {
-          "tempF": 85.2,
+          "tempF": 85.3,
           "precipProbability": 1,
-          "windMph": 3
+          "windMph": 6.2
         },
         "metNo": {
-          "tempF": 93,
+          "tempF": 92.7,
           "precipProbability": null,
-          "windMph": 10.7
+          "windMph": 9.4
         }
       }
     },
     {
       "timeISO": "2026-06-06T18:00:00.000-04:00",
-      "blendedTempF": 88.5,
-      "blendedPrecipProbability": 0.5,
-      "blendedWindMph": 6.3,
+      "blendedTempF": 88.8,
+      "blendedPrecipProbability": 1,
+      "blendedWindMph": 7.7,
       "sources": {
         "nws": {
           "tempF": 92,
@@ -769,22 +263,22 @@
           "windMph": 8
         },
         "openMeteo": {
-          "tempF": 81.8,
-          "precipProbability": 1,
-          "windMph": 1.5
+          "tempF": 82.7,
+          "precipProbability": 2,
+          "windMph": 6.3
         },
         "metNo": {
-          "tempF": 91.6,
+          "tempF": 91.8,
           "precipProbability": null,
-          "windMph": 9.4
+          "windMph": 8.9
         }
       }
     },
     {
       "timeISO": "2026-06-06T19:00:00.000-04:00",
-      "blendedTempF": 86.2,
-      "blendedPrecipProbability": 0.5,
-      "blendedWindMph": 5.6,
+      "blendedTempF": 86.5,
+      "blendedPrecipProbability": 1.5,
+      "blendedWindMph": 6.7,
       "sources": {
         "nws": {
           "tempF": 90,
@@ -792,35 +286,35 @@
           "windMph": 7
         },
         "openMeteo": {
-          "tempF": 79.6,
-          "precipProbability": 1,
-          "windMph": 3.2
+          "tempF": 81.1,
+          "precipProbability": 3,
+          "windMph": 5.4
         },
         "metNo": {
-          "tempF": 89.1,
+          "tempF": 88.3,
           "precipProbability": null,
-          "windMph": 6.5
+          "windMph": 7.6
         }
       }
     },
     {
       "timeISO": "2026-06-06T20:00:00.000-04:00",
-      "blendedTempF": 83.5,
-      "blendedPrecipProbability": 0.5,
-      "blendedWindMph": 5,
+      "blendedTempF": 83.6,
+      "blendedPrecipProbability": 3,
+      "blendedWindMph": 5.6,
       "sources": {
         "nws": {
           "tempF": 87,
-          "precipProbability": 0,
+          "precipProbability": 3,
           "windMph": 5
         },
         "openMeteo": {
-          "tempF": 77.7,
-          "precipProbability": 1,
-          "windMph": 4.3
+          "tempF": 79.4,
+          "precipProbability": 3,
+          "windMph": 6.3
         },
         "metNo": {
-          "tempF": 85.8,
+          "tempF": 84.4,
           "precipProbability": null,
           "windMph": 5.6
         }
@@ -828,22 +322,22 @@
     },
     {
       "timeISO": "2026-06-06T21:00:00.000-04:00",
-      "blendedTempF": 80.8,
-      "blendedPrecipProbability": 0.5,
+      "blendedTempF": 80.2,
+      "blendedPrecipProbability": 3.5,
       "blendedWindMph": 4.9,
       "sources": {
         "nws": {
-          "tempF": 84,
-          "precipProbability": 0,
-          "windMph": 5
+          "tempF": 82,
+          "precipProbability": 5,
+          "windMph": 3
         },
         "openMeteo": {
-          "tempF": 76.3,
-          "precipProbability": 1,
-          "windMph": 4.9
+          "tempF": 78.1,
+          "precipProbability": 2,
+          "windMph": 6.7
         },
         "metNo": {
-          "tempF": 82,
+          "tempF": 80.4,
           "precipProbability": null,
           "windMph": 4.9
         }
@@ -851,229 +345,229 @@
     },
     {
       "timeISO": "2026-06-06T22:00:00.000-04:00",
-      "blendedTempF": 79.1,
-      "blendedPrecipProbability": 0.5,
+      "blendedTempF": 78.6,
+      "blendedPrecipProbability": 4,
       "blendedWindMph": 4.3,
       "sources": {
         "nws": {
-          "tempF": 82,
-          "precipProbability": 0,
+          "tempF": 81,
+          "precipProbability": 5,
           "windMph": 3
         },
         "openMeteo": {
-          "tempF": 74.8,
-          "precipProbability": 1,
-          "windMph": 4.8
+          "tempF": 76.5,
+          "precipProbability": 3,
+          "windMph": 5.8
         },
         "metNo": {
-          "tempF": 80.4,
+          "tempF": 78.3,
           "precipProbability": null,
-          "windMph": 5.1
+          "windMph": 4
         }
       }
     },
     {
       "timeISO": "2026-06-06T23:00:00.000-04:00",
-      "blendedTempF": 77.6,
-      "blendedPrecipProbability": 0.5,
-      "blendedWindMph": 4.6,
-      "sources": {
-        "nws": {
-          "tempF": 80,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 73.9,
-          "precipProbability": 1,
-          "windMph": 4.9
-        },
-        "metNo": {
-          "tempF": 78.8,
-          "precipProbability": null,
-          "windMph": 5.8
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-07T00:00:00.000-04:00",
-      "blendedTempF": 76,
-      "blendedPrecipProbability": 0.5,
-      "blendedWindMph": 4.6,
+      "blendedTempF": 76.1,
+      "blendedPrecipProbability": 3.5,
+      "blendedWindMph": 3.3,
       "sources": {
         "nws": {
           "tempF": 78,
-          "precipProbability": 0,
-          "windMph": 3
+          "precipProbability": 4,
+          "windMph": 2
         },
         "openMeteo": {
-          "tempF": 73,
-          "precipProbability": 1,
-          "windMph": 4.3
+          "tempF": 73.8,
+          "precipProbability": 3,
+          "windMph": 2.3
         },
         "metNo": {
-          "tempF": 77,
-          "precipProbability": null,
-          "windMph": 6.5
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-07T01:00:00.000-04:00",
-      "blendedTempF": 74.2,
-      "blendedPrecipProbability": 0.5,
-      "blendedWindMph": 4,
-      "sources": {
-        "nws": {
-          "tempF": 76,
-          "precipProbability": 0,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 72.1,
-          "precipProbability": 1,
-          "windMph": 4.4
-        },
-        "metNo": {
-          "tempF": 74.5,
-          "precipProbability": null,
-          "windMph": 4.5
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-07T02:00:00.000-04:00",
-      "blendedTempF": 72.9,
-      "blendedPrecipProbability": 1,
-      "blendedWindMph": 4.4,
-      "sources": {
-        "nws": {
-          "tempF": 74,
-          "precipProbability": 1,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 71.2,
-          "precipProbability": 1,
-          "windMph": 4.3
-        },
-        "metNo": {
-          "tempF": 73.6,
-          "precipProbability": null,
-          "windMph": 6
-        }
-      }
-    },
-    {
-      "timeISO": "2026-06-07T03:00:00.000-04:00",
-      "blendedTempF": 72.8,
-      "blendedPrecipProbability": 1,
-      "blendedWindMph": 4.4,
-      "sources": {
-        "nws": {
-          "tempF": 73,
-          "precipProbability": 1,
-          "windMph": 3
-        },
-        "openMeteo": {
-          "tempF": 73.5,
-          "precipProbability": 1,
-          "windMph": 4.6
-        },
-        "metNo": {
-          "tempF": 72,
+          "tempF": 76.5,
           "precipProbability": null,
           "windMph": 5.6
         }
       }
     },
     {
+      "timeISO": "2026-06-07T00:00:00.000-04:00",
+      "blendedTempF": 74.9,
+      "blendedPrecipProbability": 3,
+      "blendedWindMph": 3.7,
+      "sources": {
+        "nws": {
+          "tempF": 77,
+          "precipProbability": 3,
+          "windMph": 2
+        },
+        "openMeteo": {
+          "tempF": 72.3,
+          "precipProbability": 3,
+          "windMph": 3
+        },
+        "metNo": {
+          "tempF": 75.4,
+          "precipProbability": null,
+          "windMph": 6
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T01:00:00.000-04:00",
+      "blendedTempF": 73.5,
+      "blendedPrecipProbability": 3,
+      "blendedWindMph": 3.5,
+      "sources": {
+        "nws": {
+          "tempF": 76,
+          "precipProbability": 3,
+          "windMph": 2
+        },
+        "openMeteo": {
+          "tempF": 71.4,
+          "precipProbability": 3,
+          "windMph": 3.4
+        },
+        "metNo": {
+          "tempF": 73.2,
+          "precipProbability": null,
+          "windMph": 5.1
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T02:00:00.000-04:00",
+      "blendedTempF": 72.3,
+      "blendedPrecipProbability": 3,
+      "blendedWindMph": 3.7,
+      "sources": {
+        "nws": {
+          "tempF": 75,
+          "precipProbability": 3,
+          "windMph": 2
+        },
+        "openMeteo": {
+          "tempF": 70.4,
+          "precipProbability": 3,
+          "windMph": 3.6
+        },
+        "metNo": {
+          "tempF": 71.6,
+          "precipProbability": null,
+          "windMph": 5.4
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T03:00:00.000-04:00",
+      "blendedTempF": 71.8,
+      "blendedPrecipProbability": 2.5,
+      "blendedWindMph": 3.5,
+      "sources": {
+        "nws": {
+          "tempF": 73,
+          "precipProbability": 2,
+          "windMph": 2
+        },
+        "openMeteo": {
+          "tempF": 71.5,
+          "precipProbability": 3,
+          "windMph": 2.2
+        },
+        "metNo": {
+          "tempF": 70.9,
+          "precipProbability": null,
+          "windMph": 6.3
+        }
+      }
+    },
+    {
       "timeISO": "2026-06-07T04:00:00.000-04:00",
-      "blendedTempF": 73.6,
-      "blendedPrecipProbability": 1,
-      "blendedWindMph": 5.2,
+      "blendedTempF": 72.9,
+      "blendedPrecipProbability": 3.5,
+      "blendedWindMph": 3.3,
       "sources": {
         "nws": {
           "tempF": 72,
-          "precipProbability": 1,
+          "precipProbability": 3,
           "windMph": 3
         },
         "openMeteo": {
-          "tempF": 77.7,
-          "precipProbability": 1,
-          "windMph": 6.7
+          "tempF": 76.3,
+          "precipProbability": 4,
+          "windMph": 2.1
         },
         "metNo": {
-          "tempF": 71.1,
+          "tempF": 70.5,
           "precipProbability": null,
-          "windMph": 5.8
+          "windMph": 4.9
         }
       }
     },
     {
       "timeISO": "2026-06-07T05:00:00.000-04:00",
-      "blendedTempF": 74.6,
-      "blendedPrecipProbability": 2,
-      "blendedWindMph": 5.1,
+      "blendedTempF": 74,
+      "blendedPrecipProbability": 3.5,
+      "blendedWindMph": 4.4,
       "sources": {
         "nws": {
           "tempF": 71,
-          "precipProbability": 1,
+          "precipProbability": 3,
           "windMph": 3
         },
         "openMeteo": {
-          "tempF": 82,
-          "precipProbability": 3,
-          "windMph": 6.6
+          "tempF": 81.5,
+          "precipProbability": 4,
+          "windMph": 4.5
         },
         "metNo": {
-          "tempF": 70.7,
+          "tempF": 69.6,
           "precipProbability": null,
-          "windMph": 5.8
+          "windMph": 5.6
         }
       }
     },
     {
       "timeISO": "2026-06-07T06:00:00.000-04:00",
-      "blendedTempF": 75.1,
-      "blendedPrecipProbability": 2,
-      "blendedWindMph": 5.3,
+      "blendedTempF": 76.1,
+      "blendedPrecipProbability": 3,
+      "blendedWindMph": 5,
       "sources": {
         "nws": {
-          "tempF": 71,
-          "precipProbability": 1,
+          "tempF": 72,
+          "precipProbability": 3,
           "windMph": 3
         },
         "openMeteo": {
-          "tempF": 84.1,
+          "tempF": 87.3,
           "precipProbability": 3,
-          "windMph": 7.2
+          "windMph": 6.7
         },
         "metNo": {
-          "tempF": 70.3,
+          "tempF": 68.9,
           "precipProbability": null,
-          "windMph": 5.8
+          "windMph": 5.4
         }
       }
     },
     {
       "timeISO": "2026-06-07T07:00:00.000-04:00",
-      "blendedTempF": 77.1,
-      "blendedPrecipProbability": 2,
-      "blendedWindMph": 5.4,
+      "blendedTempF": 78.3,
+      "blendedPrecipProbability": 3,
+      "blendedWindMph": 5.5,
       "sources": {
         "nws": {
-          "tempF": 72,
-          "precipProbability": 1,
+          "tempF": 73,
+          "precipProbability": 3,
           "windMph": 3
         },
         "openMeteo": {
-          "tempF": 87.2,
+          "tempF": 90.7,
           "precipProbability": 3,
-          "windMph": 7.3
+          "windMph": 7.4
         },
         "metNo": {
-          "tempF": 72.1,
+          "tempF": 71.1,
           "precipProbability": null,
           "windMph": 6
         }
@@ -1081,24 +575,530 @@
     },
     {
       "timeISO": "2026-06-07T08:00:00.000-04:00",
-      "blendedTempF": 79.6,
-      "blendedPrecipProbability": 4.5,
-      "blendedWindMph": 5.1,
+      "blendedTempF": 80.1,
+      "blendedPrecipProbability": 3,
+      "blendedWindMph": 6,
       "sources": {
         "nws": {
-          "tempF": 74,
-          "precipProbability": 6,
+          "tempF": 76,
+          "precipProbability": 1,
           "windMph": 3
         },
         "openMeteo": {
-          "tempF": 88.6,
+          "tempF": 89.2,
+          "precipProbability": 5,
+          "windMph": 9.4
+        },
+        "metNo": {
+          "tempF": 75.2,
+          "precipProbability": null,
+          "windMph": 5.6
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T09:00:00.000-04:00",
+      "blendedTempF": 81.2,
+      "blendedPrecipProbability": 3.5,
+      "blendedWindMph": 6.9,
+      "sources": {
+        "nws": {
+          "tempF": 80,
+          "precipProbability": 1,
+          "windMph": 5
+        },
+        "openMeteo": {
+          "tempF": 83.6,
+          "precipProbability": 6,
+          "windMph": 10.1
+        },
+        "metNo": {
+          "tempF": 80.1,
+          "precipProbability": null,
+          "windMph": 5.6
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T10:00:00.000-04:00",
+      "blendedTempF": 85.2,
+      "blendedPrecipProbability": 5,
+      "blendedWindMph": 5.1,
+      "sources": {
+        "nws": {
+          "tempF": 84,
+          "precipProbability": 1,
+          "windMph": 5
+        },
+        "openMeteo": {
+          "tempF": 87.7,
+          "precipProbability": 9,
+          "windMph": 3
+        },
+        "metNo": {
+          "tempF": 84,
+          "precipProbability": null,
+          "windMph": 7.4
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T11:00:00.000-04:00",
+      "blendedTempF": 88.1,
+      "blendedPrecipProbability": 8.5,
+      "blendedWindMph": 7.2,
+      "sources": {
+        "nws": {
+          "tempF": 88,
+          "precipProbability": 1,
+          "windMph": 6
+        },
+        "openMeteo": {
+          "tempF": 90,
+          "precipProbability": 16,
+          "windMph": 8.8
+        },
+        "metNo": {
+          "tempF": 86.2,
+          "precipProbability": null,
+          "windMph": 6.9
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T12:00:00.000-04:00",
+      "blendedTempF": 85.3,
+      "blendedPrecipProbability": 12.5,
+      "blendedWindMph": 5.5,
+      "sources": {
+        "nws": {
+          "tempF": 90,
           "precipProbability": 3,
-          "windMph": 6.8
+          "windMph": 6
+        },
+        "openMeteo": {
+          "tempF": 79.1,
+          "precipProbability": 22,
+          "windMph": 3.3
+        },
+        "metNo": {
+          "tempF": 86.7,
+          "precipProbability": null,
+          "windMph": 7.2
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T13:00:00.000-04:00",
+      "blendedTempF": 88.2,
+      "blendedPrecipProbability": 6.5,
+      "blendedWindMph": 5.4,
+      "sources": {
+        "nws": {
+          "tempF": 91,
+          "precipProbability": 3,
+          "windMph": 6
+        },
+        "openMeteo": {
+          "tempF": 86.6,
+          "precipProbability": 10,
+          "windMph": 4
+        },
+        "metNo": {
+          "tempF": 86.9,
+          "precipProbability": null,
+          "windMph": 6.3
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T14:00:00.000-04:00",
+      "blendedTempF": 89.8,
+      "blendedPrecipProbability": 23.5,
+      "blendedWindMph": 6.2,
+      "sources": {
+        "nws": {
+          "tempF": 91,
+          "precipProbability": 40,
+          "windMph": 6
+        },
+        "openMeteo": {
+          "tempF": 90.1,
+          "precipProbability": 7,
+          "windMph": 7.1
+        },
+        "metNo": {
+          "tempF": 88.3,
+          "precipProbability": null,
+          "windMph": 5.6
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T15:00:00.000-04:00",
+      "blendedTempF": 90.6,
+      "blendedPrecipProbability": 30,
+      "blendedWindMph": 5.3,
+      "sources": {
+        "nws": {
+          "tempF": 92,
+          "precipProbability": 40,
+          "windMph": 6
+        },
+        "openMeteo": {
+          "tempF": 90.5,
+          "precipProbability": 20,
+          "windMph": 4
+        },
+        "metNo": {
+          "tempF": 89.4,
+          "precipProbability": null,
+          "windMph": 5.8
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T16:00:00.000-04:00",
+      "blendedTempF": 88.5,
+      "blendedPrecipProbability": 30,
+      "blendedWindMph": 6.2,
+      "sources": {
+        "nws": {
+          "tempF": 91,
+          "precipProbability": 40,
+          "windMph": 5
+        },
+        "openMeteo": {
+          "tempF": 88.1,
+          "precipProbability": 20,
+          "windMph": 2.5
+        },
+        "metNo": {
+          "tempF": 86.4,
+          "precipProbability": null,
+          "windMph": 11
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T17:00:00.000-04:00",
+      "blendedTempF": 83.7,
+      "blendedPrecipProbability": 21.5,
+      "blendedWindMph": 6.1,
+      "sources": {
+        "nws": {
+          "tempF": 90,
+          "precipProbability": 36,
+          "windMph": 5
+        },
+        "openMeteo": {
+          "tempF": 83.4,
+          "precipProbability": 7,
+          "windMph": 5.5
+        },
+        "metNo": {
+          "tempF": 77.7,
+          "precipProbability": null,
+          "windMph": 7.8
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T18:00:00.000-04:00",
+      "blendedTempF": 84.6,
+      "blendedPrecipProbability": 21.5,
+      "blendedWindMph": 4.5,
+      "sources": {
+        "nws": {
+          "tempF": 89,
+          "precipProbability": 36,
+          "windMph": 3
+        },
+        "openMeteo": {
+          "tempF": 82,
+          "precipProbability": 7,
+          "windMph": 6.3
+        },
+        "metNo": {
+          "tempF": 82.9,
+          "precipProbability": null,
+          "windMph": 4.3
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T19:00:00.000-04:00",
+      "blendedTempF": 83.3,
+      "blendedPrecipProbability": 21.5,
+      "blendedWindMph": 2.8,
+      "sources": {
+        "nws": {
+          "tempF": 87,
+          "precipProbability": 36,
+          "windMph": 2
+        },
+        "openMeteo": {
+          "tempF": 80.2,
+          "precipProbability": 7,
+          "windMph": 2.7
+        },
+        "metNo": {
+          "tempF": 82.6,
+          "precipProbability": null,
+          "windMph": 3.8
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T20:00:00.000-04:00",
+      "blendedTempF": 80.3,
+      "blendedPrecipProbability": 10,
+      "blendedWindMph": 2.2,
+      "sources": {
+        "nws": {
+          "tempF": 84,
+          "precipProbability": 13,
+          "windMph": 1
+        },
+        "openMeteo": {
+          "tempF": 76.6,
+          "precipProbability": 7,
+          "windMph": 3.5
+        },
+        "metNo": {
+          "tempF": 80.4,
+          "precipProbability": null,
+          "windMph": 2.2
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T21:00:00.000-04:00",
+      "blendedTempF": 78.1,
+      "blendedPrecipProbability": 10,
+      "blendedWindMph": 2.8,
+      "sources": {
+        "nws": {
+          "tempF": 81,
+          "precipProbability": 13,
+          "windMph": 1
+        },
+        "openMeteo": {
+          "tempF": 74.4,
+          "precipProbability": 7,
+          "windMph": 4.5
+        },
+        "metNo": {
+          "tempF": 78.8,
+          "precipProbability": null,
+          "windMph": 2.9
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T22:00:00.000-04:00",
+      "blendedTempF": 76.2,
+      "blendedPrecipProbability": 10,
+      "blendedWindMph": 3.9,
+      "sources": {
+        "nws": {
+          "tempF": 79,
+          "precipProbability": 13,
+          "windMph": 0
+        },
+        "openMeteo": {
+          "tempF": 72.5,
+          "precipProbability": 7,
+          "windMph": 7.6
+        },
+        "metNo": {
+          "tempF": 77.2,
+          "precipProbability": null,
+          "windMph": 4
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-07T23:00:00.000-04:00",
+      "blendedTempF": 74.2,
+      "blendedPrecipProbability": 4.5,
+      "blendedWindMph": 4.4,
+      "sources": {
+        "nws": {
+          "tempF": 76,
+          "precipProbability": 9,
+          "windMph": 0
+        },
+        "openMeteo": {
+          "tempF": 70.8,
+          "precipProbability": 0,
+          "windMph": 8.2
+        },
+        "metNo": {
+          "tempF": 75.7,
+          "precipProbability": null,
+          "windMph": 4.9
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-08T00:00:00.000-04:00",
+      "blendedTempF": 72.7,
+      "blendedPrecipProbability": 4.5,
+      "blendedWindMph": 5.8,
+      "sources": {
+        "nws": {
+          "tempF": 74,
+          "precipProbability": 9,
+          "windMph": 1
+        },
+        "openMeteo": {
+          "tempF": 69,
+          "precipProbability": 0,
+          "windMph": 8.7
+        },
+        "metNo": {
+          "tempF": 75.2,
+          "precipProbability": null,
+          "windMph": 7.6
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-08T01:00:00.000-04:00",
+      "blendedTempF": 72.2,
+      "blendedPrecipProbability": 4.5,
+      "blendedWindMph": 6.4,
+      "sources": {
+        "nws": {
+          "tempF": 73,
+          "precipProbability": 9,
+          "windMph": 1
+        },
+        "openMeteo": {
+          "tempF": 67.4,
+          "precipProbability": 0,
+          "windMph": 8.9
         },
         "metNo": {
           "tempF": 76.1,
           "precipProbability": null,
-          "windMph": 5.4
+          "windMph": 9.4
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-08T02:00:00.000-04:00",
+      "blendedTempF": 71.7,
+      "blendedPrecipProbability": 0,
+      "blendedWindMph": 6.3,
+      "sources": {
+        "nws": {
+          "tempF": 72,
+          "precipProbability": 0,
+          "windMph": 2
+        },
+        "openMeteo": {
+          "tempF": 68.5,
+          "precipProbability": 0,
+          "windMph": 7.5
+        },
+        "metNo": {
+          "tempF": 74.5,
+          "precipProbability": null,
+          "windMph": 9.4
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-08T03:00:00.000-04:00",
+      "blendedTempF": 71,
+      "blendedPrecipProbability": 0,
+      "blendedWindMph": 7.4,
+      "sources": {
+        "nws": {
+          "tempF": 71,
+          "precipProbability": 0,
+          "windMph": 3
+        },
+        "openMeteo": {
+          "tempF": 68.7,
+          "precipProbability": 0,
+          "windMph": 9.1
+        },
+        "metNo": {
+          "tempF": 73.2,
+          "precipProbability": null,
+          "windMph": 10.1
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-08T04:00:00.000-04:00",
+      "blendedTempF": 70,
+      "blendedPrecipProbability": 0,
+      "blendedWindMph": 6.9,
+      "sources": {
+        "nws": {
+          "tempF": 70,
+          "precipProbability": 0,
+          "windMph": 3
+        },
+        "openMeteo": {
+          "tempF": 69,
+          "precipProbability": 0,
+          "windMph": 9.1
+        },
+        "metNo": {
+          "tempF": 70.9,
+          "precipProbability": null,
+          "windMph": 8.7
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-08T05:00:00.000-04:00",
+      "blendedTempF": 69.8,
+      "blendedPrecipProbability": 0,
+      "blendedWindMph": 7.4,
+      "sources": {
+        "nws": {
+          "tempF": 69,
+          "precipProbability": 0,
+          "windMph": 5
+        },
+        "openMeteo": {
+          "tempF": 71,
+          "precipProbability": 0,
+          "windMph": 8.9
+        },
+        "metNo": {
+          "tempF": 69.4,
+          "precipProbability": null,
+          "windMph": 8.3
+        }
+      }
+    },
+    {
+      "timeISO": "2026-06-08T06:00:00.000-04:00",
+      "blendedTempF": 70.9,
+      "blendedPrecipProbability": 0,
+      "blendedWindMph": 7.3,
+      "sources": {
+        "nws": {
+          "tempF": 69,
+          "precipProbability": 0,
+          "windMph": 6
+        },
+        "openMeteo": {
+          "tempF": 75.1,
+          "precipProbability": 0,
+          "windMph": 7.9
+        },
+        "metNo": {
+          "tempF": 68.5,
+          "precipProbability": null,
+          "windMph": 8.1
         }
       }
     }
