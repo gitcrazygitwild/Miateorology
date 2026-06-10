@@ -4,34 +4,160 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-06-09T09:17:30.603-04:00",
+  "generatedAt": "2026-06-10T09:48:41.794-04:00",
   "days": [
     {
-      "date": "2026-06-09",
+      "date": "2026-06-10",
       "sources": {
         "nws": {
-          "date": "2026-06-09",
-          "summary": "Partly Sunny",
-          "precipProbability": 17,
-          "windMph": 8,
+          "date": "2026-06-10",
+          "summary": "Chance Showers And Thunderstorms",
+          "precipProbability": 56,
+          "windMph": 13,
           "rain": true,
           "snow": false,
-          "thunder": false
+          "thunder": true
         },
         "openMeteo": {
-          "date": "2026-06-09",
+          "date": "2026-06-10",
           "summary": "Overcast",
-          "precipProbability": 2,
-          "windMph": 15.2,
+          "precipProbability": 25,
+          "windMph": 24.8,
           "rain": false,
           "snow": false,
           "thunder": false
         },
         "metNo": {
-          "date": "2026-06-09",
-          "summary": "Partlycloudy Day",
+          "date": "2026-06-10",
+          "summary": "Cloudy",
           "precipProbability": null,
-          "windMph": 8.9,
+          "windMph": 15,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "medium",
+        "snowSignal": "off",
+        "thunderSignal": "weak",
+        "avgPrecipProbability": 40.5,
+        "avgWindMph": 17.6,
+        "windSignal": "medium",
+        "summary": "Rain signal present"
+      },
+      "writeup": "Showers look likely with temperatures near 89° / 72° and about 41% average precipitation signal plus wind around 18 mph."
+    },
+    {
+      "date": "2026-06-11",
+      "sources": {
+        "nws": {
+          "date": "2026-06-11",
+          "summary": "Sunny then Chance Showers And Thunderstorms",
+          "precipProbability": 25,
+          "windMph": 6,
+          "rain": true,
+          "snow": false,
+          "thunder": true
+        },
+        "openMeteo": {
+          "date": "2026-06-11",
+          "summary": "Overcast",
+          "precipProbability": 29,
+          "windMph": 28,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-06-11",
+          "summary": "Fair Night",
+          "precipProbability": null,
+          "windMph": 19.2,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "medium",
+        "snowSignal": "off",
+        "thunderSignal": "weak",
+        "avgPrecipProbability": 27,
+        "avgWindMph": 17.7,
+        "windSignal": "medium",
+        "summary": "Rain signal present"
+      },
+      "writeup": "Showers look likely with temperatures near 98° / 74° plus wind around 18 mph."
+    },
+    {
+      "date": "2026-06-12",
+      "sources": {
+        "nws": {
+          "date": "2026-06-12",
+          "summary": "Mostly Sunny then Chance Showers And Thunderstorms",
+          "precipProbability": 49,
+          "windMph": 8,
+          "rain": true,
+          "snow": false,
+          "thunder": true
+        },
+        "openMeteo": {
+          "date": "2026-06-12",
+          "summary": "Rain showers",
+          "precipProbability": 46,
+          "windMph": 28,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-06-12",
+          "summary": "Clearsky Night",
+          "precipProbability": null,
+          "windMph": 12.5,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "strong",
+        "snowSignal": "off",
+        "thunderSignal": "weak",
+        "avgPrecipProbability": 47.5,
+        "avgWindMph": 16.2,
+        "windSignal": "medium",
+        "summary": "Rain signal present"
+      },
+      "writeup": "Showers look likely with temperatures near 99° / 73° and about 48% average precipitation signal plus wind around 16 mph."
+    },
+    {
+      "date": "2026-06-13",
+      "sources": {
+        "nws": {
+          "date": "2026-06-13",
+          "summary": "Sunny",
+          "precipProbability": 6,
+          "windMph": 7,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "openMeteo": {
+          "date": "2026-06-13",
+          "summary": "Heavy rain showers",
+          "precipProbability": 46,
+          "windMph": 28.4,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-06-13",
+          "summary": "Fair Night",
+          "precipProbability": null,
+          "windMph": 7.6,
           "rain": false,
           "snow": false,
           "thunder": false
@@ -41,199 +167,31 @@
         "rainSignal": "weak",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 9.5,
-        "avgWindMph": 10.7,
-        "windSignal": "weak",
+        "avgPrecipProbability": 26,
+        "avgWindMph": 14.3,
+        "windSignal": "medium",
         "summary": "Mostly quiet signal"
       },
-      "writeup": "Weather looks fairly quiet with temperatures near 85° / 64°."
-    },
-    {
-      "date": "2026-06-10",
-      "sources": {
-        "nws": {
-          "date": "2026-06-10",
-          "summary": "Chance Rain Showers then Chance Showers And Thunderstorms",
-          "precipProbability": 33,
-          "windMph": 13,
-          "rain": true,
-          "snow": false,
-          "thunder": true
-        },
-        "openMeteo": {
-          "date": "2026-06-10",
-          "summary": "Light drizzle",
-          "precipProbability": 38,
-          "windMph": 24.6,
-          "rain": true,
-          "snow": false,
-          "thunder": false
-        },
-        "metNo": {
-          "date": "2026-06-10",
-          "summary": "Cloudy",
-          "precipProbability": null,
-          "windMph": 13,
-          "rain": true,
-          "snow": false,
-          "thunder": false
-        }
-      },
-      "consensus": {
-        "rainSignal": "strong",
-        "snowSignal": "off",
-        "thunderSignal": "weak",
-        "avgPrecipProbability": 35.5,
-        "avgWindMph": 16.9,
-        "windSignal": "medium",
-        "summary": "Rain signal present"
-      },
-      "writeup": "Showers look likely with temperatures near 89° / 71° and about 36% average precipitation signal plus wind around 17 mph."
-    },
-    {
-      "date": "2026-06-11",
-      "sources": {
-        "nws": {
-          "date": "2026-06-11",
-          "summary": "Mostly Sunny then Slight Chance Showers And Thunderstorms",
-          "precipProbability": 31,
-          "windMph": 6,
-          "rain": true,
-          "snow": false,
-          "thunder": true
-        },
-        "openMeteo": {
-          "date": "2026-06-11",
-          "summary": "Violent rain showers",
-          "precipProbability": 27,
-          "windMph": 26.6,
-          "rain": true,
-          "snow": false,
-          "thunder": false
-        },
-        "metNo": {
-          "date": "2026-06-11",
-          "summary": "Fair Night",
-          "precipProbability": null,
-          "windMph": 8.9,
-          "rain": true,
-          "snow": false,
-          "thunder": false
-        }
-      },
-      "consensus": {
-        "rainSignal": "strong",
-        "snowSignal": "off",
-        "thunderSignal": "weak",
-        "avgPrecipProbability": 29,
-        "avgWindMph": 13.8,
-        "windSignal": "medium",
-        "summary": "Rain signal present"
-      },
-      "writeup": "Showers look likely with temperatures near 97° / 73°."
-    },
-    {
-      "date": "2026-06-12",
-      "sources": {
-        "nws": {
-          "date": "2026-06-12",
-          "summary": "Mostly Sunny then Slight Chance Showers And Thunderstorms",
-          "precipProbability": 40,
-          "windMph": 6,
-          "rain": true,
-          "snow": false,
-          "thunder": true
-        },
-        "openMeteo": {
-          "date": "2026-06-12",
-          "summary": "Drizzle",
-          "precipProbability": 35,
-          "windMph": 19.2,
-          "rain": true,
-          "snow": false,
-          "thunder": false
-        },
-        "metNo": {
-          "date": "2026-06-12",
-          "summary": "Partlycloudy Night",
-          "precipProbability": null,
-          "windMph": 8.7,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        }
-      },
-      "consensus": {
-        "rainSignal": "medium",
-        "snowSignal": "off",
-        "thunderSignal": "weak",
-        "avgPrecipProbability": 37.5,
-        "avgWindMph": 11.3,
-        "windSignal": "weak",
-        "summary": "Rain signal present"
-      },
-      "writeup": "Showers look likely with temperatures near 98° / 73° and about 38% average precipitation signal."
-    },
-    {
-      "date": "2026-06-13",
-      "sources": {
-        "nws": {
-          "date": "2026-06-13",
-          "summary": "Mostly Sunny then Slight Chance Showers And Thunderstorms",
-          "precipProbability": 17,
-          "windMph": 7,
-          "rain": true,
-          "snow": false,
-          "thunder": true
-        },
-        "openMeteo": {
-          "date": "2026-06-13",
-          "summary": "Rain showers",
-          "precipProbability": 35,
-          "windMph": 29.8,
-          "rain": true,
-          "snow": false,
-          "thunder": false
-        },
-        "metNo": {
-          "date": "2026-06-13",
-          "summary": "Cloudy",
-          "precipProbability": null,
-          "windMph": 8.9,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        }
-      },
-      "consensus": {
-        "rainSignal": "medium",
-        "snowSignal": "off",
-        "thunderSignal": "weak",
-        "avgPrecipProbability": 26,
-        "avgWindMph": 15.2,
-        "windSignal": "medium",
-        "summary": "Rain signal present"
-      },
-      "writeup": "Showers look likely with temperatures near 91° / 71° plus wind around 15 mph."
+      "writeup": "It looks breezy to windy with temperatures near 89° / 71°."
     },
     {
       "date": "2026-06-14",
       "sources": {
         "nws": {
           "date": "2026-06-14",
-          "summary": "Mostly Sunny",
-          "precipProbability": 25,
-          "windMph": 6,
+          "summary": "Mostly Sunny then Chance Showers And Thunderstorms",
+          "precipProbability": 35,
+          "windMph": 9,
           "rain": true,
           "snow": false,
           "thunder": true
         },
         "openMeteo": {
           "date": "2026-06-14",
-          "summary": "Overcast",
-          "precipProbability": 24,
-          "windMph": 28.2,
-          "rain": false,
+          "summary": "Light drizzle",
+          "precipProbability": 39,
+          "windMph": 23.3,
+          "rain": true,
           "snow": false,
           "thunder": false
         },
@@ -241,22 +199,22 @@
           "date": "2026-06-14",
           "summary": "Partlycloudy Night",
           "precipProbability": null,
-          "windMph": 8.9,
+          "windMph": 6.7,
           "rain": false,
           "snow": false,
           "thunder": false
         }
       },
       "consensus": {
-        "rainSignal": "weak",
+        "rainSignal": "medium",
         "snowSignal": "off",
         "thunderSignal": "weak",
-        "avgPrecipProbability": 24.5,
-        "avgWindMph": 14.4,
+        "avgPrecipProbability": 37,
+        "avgWindMph": 13,
         "windSignal": "medium",
-        "summary": "Mostly quiet signal"
+        "summary": "Rain signal present"
       },
-      "writeup": "It looks breezy to windy with temperatures near 93° / 70°."
+      "writeup": "Showers look likely with temperatures near 97° / 71° and about 37% average precipitation signal."
     },
     {
       "date": "2026-06-15",
@@ -265,7 +223,7 @@
           "date": "2026-06-15",
           "summary": "Chance Rain Showers then Chance Showers And Thunderstorms",
           "precipProbability": 49,
-          "windMph": 8,
+          "windMph": 7,
           "rain": true,
           "snow": false,
           "thunder": true
@@ -273,17 +231,17 @@
         "openMeteo": {
           "date": "2026-06-15",
           "summary": "Light drizzle",
-          "precipProbability": 40,
-          "windMph": 28,
+          "precipProbability": 39,
+          "windMph": 24.4,
           "rain": true,
           "snow": false,
           "thunder": false
         },
         "metNo": {
           "date": "2026-06-15",
-          "summary": "Cloudy",
+          "summary": "Partlycloudy Night",
           "precipProbability": null,
-          "windMph": 8.3,
+          "windMph": 9.4,
           "rain": true,
           "snow": false,
           "thunder": false
@@ -293,12 +251,54 @@
         "rainSignal": "strong",
         "snowSignal": "off",
         "thunderSignal": "weak",
-        "avgPrecipProbability": 44.5,
-        "avgWindMph": 14.8,
+        "avgPrecipProbability": 44,
+        "avgWindMph": 13.6,
         "windSignal": "medium",
         "summary": "Rain signal present"
       },
-      "writeup": "Showers look likely with temperatures near 87° / 72° and about 45% average precipitation signal."
+      "writeup": "Showers look likely with temperatures near 87° / 71° and about 44% average precipitation signal."
+    },
+    {
+      "date": "2026-06-16",
+      "sources": {
+        "nws": {
+          "date": "2026-06-16",
+          "summary": "Chance Rain Showers",
+          "precipProbability": 43,
+          "windMph": 7,
+          "rain": true,
+          "snow": false,
+          "thunder": true
+        },
+        "openMeteo": {
+          "date": "2026-06-16",
+          "summary": "Light drizzle",
+          "precipProbability": 36,
+          "windMph": 28.4,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-06-16",
+          "summary": "Rain",
+          "precipProbability": null,
+          "windMph": 7.4,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "strong",
+        "snowSignal": "off",
+        "thunderSignal": "weak",
+        "avgPrecipProbability": 39.5,
+        "avgWindMph": 14.3,
+        "windSignal": "medium",
+        "summary": "Rain signal present"
+      },
+      "writeup": "Showers look likely with temperatures near 78° / 67° and about 40% average precipitation signal."
     }
   ]
 }

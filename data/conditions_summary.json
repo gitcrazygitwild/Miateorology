@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-06-09T09:17:30.603-04:00",
+  "generatedAt": "2026-06-10T09:48:41.794-04:00",
   "today": {
-    "date": "2026-06-09",
+    "date": "2026-06-10",
     "sources": {
       "nws": {
-        "date": "2026-06-09",
-        "summary": "Partly Sunny",
-        "precipProbability": 17,
-        "windMph": 8,
+        "date": "2026-06-10",
+        "summary": "Chance Showers And Thunderstorms",
+        "precipProbability": 56,
+        "windMph": 13,
         "rain": true,
         "snow": false,
-        "thunder": false
+        "thunder": true
       },
       "openMeteo": {
-        "date": "2026-06-09",
+        "date": "2026-06-10",
         "summary": "Overcast",
-        "precipProbability": 2,
-        "windMph": 15.2,
+        "precipProbability": 25,
+        "windMph": 24.8,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-06-09",
-        "summary": "Partlycloudy Day",
+        "date": "2026-06-10",
+        "summary": "Cloudy",
         "precipProbability": null,
-        "windMph": 8.9,
-        "rain": false,
+        "windMph": 15,
+        "rain": true,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "weak",
+      "rainSignal": "medium",
       "snowSignal": "off",
-      "thunderSignal": "off",
-      "avgPrecipProbability": 9.5,
-      "avgWindMph": 10.7,
-      "windSignal": "weak",
-      "summary": "Mostly quiet signal"
+      "thunderSignal": "weak",
+      "avgPrecipProbability": 40.5,
+      "avgWindMph": 17.6,
+      "windSignal": "medium",
+      "summary": "Rain signal present"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 85° / 64°."
+    "writeup": "Showers look likely with temperatures near 89° / 72° and about 41% average precipitation signal plus wind around 18 mph."
   },
   "next7Summary": {
-    "rainDays": 5,
+    "rainDays": 6,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 5
+    "windyDays": 7
   }
 }
