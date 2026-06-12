@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-06-11T10:11:53.881-04:00",
+  "generatedAt": "2026-06-12T09:43:32.236-04:00",
   "today": {
-    "date": "2026-06-11",
+    "date": "2026-06-12",
     "sources": {
       "nws": {
-        "date": "2026-06-11",
-        "summary": "Mostly Sunny then Slight Chance Showers And Thunderstorms",
-        "precipProbability": 29,
-        "windMph": 8,
+        "date": "2026-06-12",
+        "summary": "Sunny then Chance Showers And Thunderstorms",
+        "precipProbability": 51,
+        "windMph": 10,
         "rain": true,
         "snow": false,
         "thunder": true
       },
       "openMeteo": {
-        "date": "2026-06-11",
-        "summary": "Overcast",
-        "precipProbability": 16,
-        "windMph": 17.4,
-        "rain": false,
+        "date": "2026-06-12",
+        "summary": "Drizzle",
+        "precipProbability": 23,
+        "windMph": 23.3,
+        "rain": true,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-06-11",
-        "summary": "Partlycloudy Day",
+        "date": "2026-06-12",
+        "summary": "Fair Day",
         "precipProbability": null,
-        "windMph": 9.4,
-        "rain": false,
+        "windMph": 14.5,
+        "rain": true,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "weak",
+      "rainSignal": "strong",
       "snowSignal": "off",
       "thunderSignal": "weak",
-      "avgPrecipProbability": 22.5,
-      "avgWindMph": 11.6,
-      "windSignal": "weak",
-      "summary": "Mostly quiet signal"
+      "avgPrecipProbability": 37,
+      "avgWindMph": 15.9,
+      "windSignal": "medium",
+      "summary": "Rain signal present"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 98° / 76°."
+    "writeup": "Showers look likely with temperatures near 98° / 73° and about 37% average precipitation signal plus wind around 16 mph."
   },
   "next7Summary": {
     "rainDays": 5,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 3
+    "windyDays": 4
   }
 }
