@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-06-12T09:43:32.236-04:00",
+  "generatedAt": "2026-06-13T08:03:03.250-04:00",
   "today": {
-    "date": "2026-06-12",
+    "date": "2026-06-13",
     "sources": {
       "nws": {
-        "date": "2026-06-12",
-        "summary": "Sunny then Chance Showers And Thunderstorms",
-        "precipProbability": 51,
-        "windMph": 10,
-        "rain": true,
+        "date": "2026-06-13",
+        "summary": "Sunny",
+        "precipProbability": 1,
+        "windMph": 6,
+        "rain": false,
         "snow": false,
-        "thunder": true
+        "thunder": false
       },
       "openMeteo": {
-        "date": "2026-06-12",
-        "summary": "Drizzle",
-        "precipProbability": 23,
-        "windMph": 23.3,
-        "rain": true,
+        "date": "2026-06-13",
+        "summary": "Overcast",
+        "precipProbability": 20,
+        "windMph": 15.4,
+        "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-06-12",
-        "summary": "Fair Day",
+        "date": "2026-06-13",
+        "summary": "Clearsky Day",
         "precipProbability": null,
-        "windMph": 14.5,
-        "rain": true,
+        "windMph": 10.1,
+        "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "strong",
+      "rainSignal": "off",
       "snowSignal": "off",
-      "thunderSignal": "weak",
-      "avgPrecipProbability": 37,
-      "avgWindMph": 15.9,
-      "windSignal": "medium",
-      "summary": "Rain signal present"
+      "thunderSignal": "off",
+      "avgPrecipProbability": 10.5,
+      "avgWindMph": 10.5,
+      "windSignal": "weak",
+      "summary": "Mostly quiet signal"
     },
-    "writeup": "Showers look likely with temperatures near 98° / 73° and about 37% average precipitation signal plus wind around 16 mph."
+    "writeup": "Weather looks fairly quiet with temperatures near 91° / 72°."
   },
   "next7Summary": {
     "rainDays": 5,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 4
+    "windyDays": 6
   }
 }
