@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-06-17T10:01:51.229-04:00",
+  "generatedAt": "2026-06-18T09:43:20.899-04:00",
   "today": {
-    "date": "2026-06-17",
+    "date": "2026-06-18",
     "sources": {
       "nws": {
-        "date": "2026-06-17",
-        "summary": "Sunny",
-        "precipProbability": 2,
-        "windMph": 9,
-        "rain": false,
+        "date": "2026-06-18",
+        "summary": "Mostly Sunny then Slight Chance Showers And Thunderstorms",
+        "precipProbability": 64,
+        "windMph": 18,
+        "rain": true,
         "snow": false,
-        "thunder": false
+        "thunder": true
       },
       "openMeteo": {
-        "date": "2026-06-17",
-        "summary": "Overcast",
-        "precipProbability": 2,
-        "windMph": 16.8,
+        "date": "2026-06-18",
+        "summary": "Thunderstorm",
+        "precipProbability": 21,
+        "windMph": 34.7,
         "rain": false,
         "snow": false,
-        "thunder": false
+        "thunder": true
       },
       "metNo": {
-        "date": "2026-06-17",
-        "summary": "Fair Day",
+        "date": "2026-06-18",
+        "summary": "Partlycloudy Day",
         "precipProbability": null,
-        "windMph": 11.2,
-        "rain": false,
+        "windMph": 18.8,
+        "rain": true,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "off",
+      "rainSignal": "medium",
       "snowSignal": "off",
-      "thunderSignal": "off",
-      "avgPrecipProbability": 2,
-      "avgWindMph": 12.3,
-      "windSignal": "weak",
-      "summary": "Mostly quiet signal"
+      "thunderSignal": "medium",
+      "avgPrecipProbability": 42.5,
+      "avgWindMph": 23.8,
+      "windSignal": "strong",
+      "summary": "Thunder signal present"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 90° / 71°."
+    "writeup": "Storms are the main story with temperatures near 94° / 72° and about 43% average precipitation signal plus wind around 24 mph. A sharp cooler turn follows the next day."
   },
   "next7Summary": {
-    "rainDays": 3,
+    "rainDays": 4,
     "snowDays": 0,
-    "thunderDays": 0,
-    "windyDays": 5
+    "thunderDays": 1,
+    "windyDays": 6
   }
 }
