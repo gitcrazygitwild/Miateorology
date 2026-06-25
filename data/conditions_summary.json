@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-06-24T08:29:34.980-04:00",
+  "generatedAt": "2026-06-25T08:33:18.825-04:00",
   "today": {
-    "date": "2026-06-24",
+    "date": "2026-06-25",
     "sources": {
       "nws": {
-        "date": "2026-06-24",
-        "summary": "Sunny",
-        "precipProbability": 0,
-        "windMph": 5,
+        "date": "2026-06-25",
+        "summary": "Mostly Sunny",
+        "precipProbability": 2,
+        "windMph": 8,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-06-24",
+        "date": "2026-06-25",
         "summary": "Overcast",
-        "precipProbability": 0,
-        "windMph": 20.1,
+        "precipProbability": 1,
+        "windMph": 14.8,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-06-24",
+        "date": "2026-06-25",
         "summary": "Partlycloudy Day",
         "precipProbability": null,
-        "windMph": 6.5,
+        "windMph": 9.8,
         "rain": false,
         "snow": false,
         "thunder": false
@@ -40,17 +40,17 @@
       "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 0,
-      "avgWindMph": 10.5,
-      "windSignal": "medium",
+      "avgPrecipProbability": 1.5,
+      "avgWindMph": 10.9,
+      "windSignal": "weak",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "It looks breezy to windy with temperatures near 83° / 63°."
+    "writeup": "Weather looks fairly quiet with temperatures near 88° / 66°."
   },
   "next7Summary": {
-    "rainDays": 3,
+    "rainDays": 2,
     "snowDays": 0,
     "thunderDays": 1,
-    "windyDays": 3
+    "windyDays": 2
   }
 }
