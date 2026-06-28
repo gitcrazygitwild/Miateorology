@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-06-27T07:46:20.058-04:00",
+  "generatedAt": "2026-06-28T07:58:34.575-04:00",
   "today": {
-    "date": "2026-06-27",
+    "date": "2026-06-28",
     "sources": {
       "nws": {
-        "date": "2026-06-27",
-        "summary": "Partly Sunny then Chance Showers And Thunderstorms",
-        "precipProbability": 47,
-        "windMph": 6,
+        "date": "2026-06-28",
+        "summary": "Mostly Cloudy then Showers And Thunderstorms Likely",
+        "precipProbability": 60,
+        "windMph": 3,
         "rain": true,
         "snow": false,
         "thunder": true
       },
       "openMeteo": {
-        "date": "2026-06-27",
-        "summary": "Thunderstorm",
-        "precipProbability": 26,
-        "windMph": 20.8,
-        "rain": false,
+        "date": "2026-06-28",
+        "summary": "Light drizzle",
+        "precipProbability": 28,
+        "windMph": 9.4,
+        "rain": true,
         "snow": false,
-        "thunder": true
+        "thunder": false
       },
       "metNo": {
-        "date": "2026-06-27",
-        "summary": "Cloudy",
+        "date": "2026-06-28",
+        "summary": "Rain",
         "precipProbability": null,
-        "windMph": 10.3,
+        "windMph": 4.9,
         "rain": true,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "medium",
+      "rainSignal": "strong",
       "snowSignal": "off",
-      "thunderSignal": "medium",
-      "avgPrecipProbability": 36.5,
-      "avgWindMph": 12.4,
-      "windSignal": "medium",
-      "summary": "Thunder signal present"
+      "thunderSignal": "weak",
+      "avgPrecipProbability": 44,
+      "avgWindMph": 5.8,
+      "windSignal": "off",
+      "summary": "Rain signal present"
     },
-    "writeup": "Storms are the main story with temperatures near 86° / 71° and about 37% average precipitation signal."
+    "writeup": "Showers look likely with temperatures near 82° / 71° and about 44% average precipitation signal."
   },
   "next7Summary": {
-    "rainDays": 3,
+    "rainDays": 1,
     "snowDays": 0,
-    "thunderDays": 1,
+    "thunderDays": 0,
     "windyDays": 5
   }
 }
