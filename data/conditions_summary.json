@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-07-02T08:21:30.021-04:00",
+  "generatedAt": "2026-07-03T08:20:05.793-04:00",
   "today": {
-    "date": "2026-07-02",
+    "date": "2026-07-03",
     "sources": {
       "nws": {
-        "date": "2026-07-02",
+        "date": "2026-07-03",
         "summary": "Sunny",
-        "precipProbability": 1,
+        "precipProbability": 11,
         "windMph": 6,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-07-02",
+        "date": "2026-07-03",
         "summary": "Clear",
-        "precipProbability": 1,
-        "windMph": 12.8,
+        "precipProbability": 5,
+        "windMph": 13.2,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-07-02",
+        "date": "2026-07-03",
         "summary": "Clearsky Day",
         "precipProbability": null,
-        "windMph": 7.4,
+        "windMph": 6.7,
         "rain": false,
         "snow": false,
         "thunder": false
@@ -40,17 +40,17 @@
       "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 1,
-      "avgWindMph": 8.7,
+      "avgPrecipProbability": 8,
+      "avgWindMph": 8.6,
       "windSignal": "weak",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 100° / 75°."
+    "writeup": "Weather looks fairly quiet with temperatures near 102° / 80°."
   },
   "next7Summary": {
     "rainDays": 5,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 4
+    "windyDays": 3
   }
 }
