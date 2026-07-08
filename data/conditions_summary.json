@@ -4,51 +4,51 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-07-07T08:38:46.286-04:00",
+  "generatedAt": "2026-07-08T07:57:34.301-04:00",
   "today": {
-    "date": "2026-07-07",
+    "date": "2026-07-08",
     "sources": {
       "nws": {
-        "date": "2026-07-07",
-        "summary": "Partly Sunny then Chance Showers And Thunderstorms",
-        "precipProbability": 76,
+        "date": "2026-07-08",
+        "summary": "Chance Showers And Thunderstorms",
+        "precipProbability": 42,
         "windMph": 6,
         "rain": true,
         "snow": false,
         "thunder": true
       },
       "openMeteo": {
-        "date": "2026-07-07",
-        "summary": "Light drizzle",
-        "precipProbability": 55,
-        "windMph": 16.1,
-        "rain": true,
+        "date": "2026-07-08",
+        "summary": "Overcast",
+        "precipProbability": 32,
+        "windMph": 16.3,
+        "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-07-07",
-        "summary": "Cloudy",
+        "date": "2026-07-08",
+        "summary": "Rainshowers Day",
         "precipProbability": null,
-        "windMph": 6.3,
+        "windMph": 8.9,
         "rain": true,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "strong",
+      "rainSignal": "medium",
       "snowSignal": "off",
       "thunderSignal": "weak",
-      "avgPrecipProbability": 65.5,
-      "avgWindMph": 9.5,
+      "avgPrecipProbability": 37,
+      "avgWindMph": 10.4,
       "windSignal": "weak",
       "summary": "Rain signal present"
     },
-    "writeup": "Showers look likely with temperatures near 88° / 72° and about 66% average precipitation signal."
+    "writeup": "Showers look likely with temperatures near 85° / 72° and about 37% average precipitation signal."
   },
   "next7Summary": {
-    "rainDays": 7,
+    "rainDays": 5,
     "snowDays": 0,
     "thunderDays": 0,
     "windyDays": 4
