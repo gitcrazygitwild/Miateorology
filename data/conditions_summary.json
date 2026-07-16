@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-07-15T07:49:35.177-04:00",
+  "generatedAt": "2026-07-16T07:54:08.861-04:00",
   "today": {
-    "date": "2026-07-15",
+    "date": "2026-07-16",
     "sources": {
       "nws": {
-        "date": "2026-07-15",
-        "summary": "Sunny",
-        "precipProbability": 0,
-        "windMph": 7,
+        "date": "2026-07-16",
+        "summary": "Haze",
+        "precipProbability": 7,
+        "windMph": 5,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-07-15",
+        "date": "2026-07-16",
         "summary": "Overcast",
-        "precipProbability": 0,
-        "windMph": 13,
+        "precipProbability": 2,
+        "windMph": 11.2,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-07-15",
-        "summary": "Clearsky Day",
+        "date": "2026-07-16",
+        "summary": "Partlycloudy Day",
         "precipProbability": null,
-        "windMph": 7.4,
+        "windMph": 5.6,
         "rain": false,
         "snow": false,
         "thunder": false
@@ -40,17 +40,17 @@
       "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 0,
-      "avgWindMph": 9.1,
-      "windSignal": "weak",
+      "avgPrecipProbability": 4.5,
+      "avgWindMph": 7.3,
+      "windSignal": "off",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 97° / 71°."
+    "writeup": "Weather looks fairly quiet with temperatures near 97° / 75°."
   },
   "next7Summary": {
-    "rainDays": 4,
+    "rainDays": 5,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 3
+    "windyDays": 6
   }
 }
