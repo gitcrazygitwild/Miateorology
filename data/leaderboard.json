@@ -1,25 +1,25 @@
 {
   "windowDays": 30,
-  "asOf": "2026-07-16T07:54:08.861-04:00",
+  "asOf": "2026-07-17T07:41:17.375-04:00",
   "leaderboard": [
     {
       "provider": "openMeteo",
       "daysScored": 30,
-      "meanOverallAbsF": 10,
-      "meanWindAbsMph": 24.8,
-      "precipHitRate": 83.3
+      "meanOverallAbsF": 10.1,
+      "meanWindAbsMph": 25,
+      "precipHitRate": 86.7
     },
     {
       "provider": "metNo",
       "daysScored": 30,
-      "meanOverallAbsF": 14.4,
-      "meanWindAbsMph": 38.5,
+      "meanOverallAbsF": 14.3,
+      "meanWindAbsMph": 38.4,
       "precipHitRate": 80
     },
     {
       "provider": "nws",
       "daysScored": 30,
-      "meanOverallAbsF": 15.3,
+      "meanOverallAbsF": 15.4,
       "meanWindAbsMph": 40.2,
       "precipHitRate": 76.7
     }
