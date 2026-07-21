@@ -4,84 +4,57 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-07-20T08:26:15.357-04:00",
+  "generatedAt": "2026-07-21T08:01:09.034-04:00",
   "days": [
     {
-      "date": "2026-07-20",
-      "blendedHighF": 87,
-      "blendedLowF": 71.9,
-      "blendedPrecipProbability": 33,
-      "blendedWindMph": 12.6,
-      "sources": {
-        "nws": {
-          "highF": 86,
-          "lowF": 70,
-          "precipProbability": 52,
-          "windMph": 7
-        },
-        "openMeteo": {
-          "highF": 88.6,
-          "lowF": 72.3,
-          "precipProbability": 14,
-          "windMph": 23.3
-        },
-        "metNo": {
-          "highF": 86.5,
-          "lowF": 73.4,
-          "precipProbability": null,
-          "windMph": 7.4
-        }
-      }
-    },
-    {
       "date": "2026-07-21",
-      "blendedHighF": 89.6,
-      "blendedLowF": 72.8,
-      "blendedPrecipProbability": 88,
-      "blendedWindMph": 25.2,
+      "blendedHighF": 88.4,
+      "blendedLowF": 72.9,
+      "blendedPrecipProbability": 59,
+      "blendedWindMph": 21.3,
       "sources": {
         "nws": {
-          "highF": 89,
-          "lowF": 72,
-          "precipProbability": 91,
-          "windMph": 13
+          "highF": 91,
+          "lowF": 71,
+          "precipProbability": 74,
+          "windMph": 14
         },
         "openMeteo": {
-          "highF": 88.5,
-          "lowF": 73.2,
-          "precipProbability": 85,
-          "windMph": 44.7
+          "highF": 86.3,
+          "lowF": 72.8,
+          "precipProbability": 44,
+          "windMph": 36.2
         },
         "metNo": {
-          "highF": 91.4,
-          "lowF": 73.2,
+          "highF": 88,
+          "lowF": 74.8,
           "precipProbability": null,
-          "windMph": 17.9
+          "windMph": 13.6
         }
       }
     },
     {
       "date": "2026-07-22",
-      "blendedHighF": 88.4,
-      "blendedLowF": 70.7,
-      "blendedPrecipProbability": 88,
-      "blendedWindMph": 19,
+      "blendedHighF": 85.5,
+      "blendedLowF": 69.9,
+      "blendedPrecipProbability": 74.5,
+      "blendedWindMph": 19.1,
       "sources": {
         "nws": {
-          "highF": 88,
+          "highF": 86,
           "lowF": 66,
-          "precipProbability": 91,
-          "windMph": 12
+          "precipProbability": 70,
+          "windMph": 13
         },
         "openMeteo": {
-          "highF": 92.6,
-          "lowF": 71.5,
-          "precipProbability": 85,
-          "windMph": 30.4
+          "highF": 84.7,
+          "lowF": 70.7,
+          "precipProbability": 79,
+          "windMph": 29.8
         },
         "metNo": {
-          "highF": 84.6,
-          "lowF": 74.7,
+          "highF": 85.8,
+          "lowF": 72.9,
           "precipProbability": null,
           "windMph": 14.5
         }
@@ -89,107 +62,134 @@
     },
     {
       "date": "2026-07-23",
-      "blendedHighF": 80.9,
-      "blendedLowF": 66.2,
-      "blendedPrecipProbability": 46,
-      "blendedWindMph": 15.5,
+      "blendedHighF": 78.9,
+      "blendedLowF": 64.3,
+      "blendedPrecipProbability": 59.5,
+      "blendedWindMph": 15.3,
       "sources": {
         "nws": {
-          "highF": 82,
-          "lowF": 64,
-          "precipProbability": 23,
+          "highF": 81,
+          "lowF": 63,
+          "precipProbability": 40,
           "windMph": 9
         },
         "openMeteo": {
-          "highF": 81.4,
-          "lowF": 66.7,
-          "precipProbability": 69,
-          "windMph": 28.9
+          "highF": 79.3,
+          "lowF": 64,
+          "precipProbability": 79,
+          "windMph": 25.8
         },
         "metNo": {
-          "highF": 79.2,
-          "lowF": 68,
+          "highF": 76.3,
+          "lowF": 66,
           "precipProbability": null,
-          "windMph": 8.7
+          "windMph": 11.2
         }
       }
     },
     {
       "date": "2026-07-24",
-      "blendedHighF": 82.8,
-      "blendedLowF": 64.9,
-      "blendedPrecipProbability": 16,
-      "blendedWindMph": 10.2,
+      "blendedHighF": 79.1,
+      "blendedLowF": 66.1,
+      "blendedPrecipProbability": 32.5,
+      "blendedWindMph": 9.9,
       "sources": {
         "nws": {
-          "highF": 84,
+          "highF": 82,
           "lowF": 65,
-          "precipProbability": 18,
-          "windMph": 6
+          "precipProbability": 41,
+          "windMph": 7
         },
         "openMeteo": {
-          "highF": 83.6,
-          "lowF": 63.6,
-          "precipProbability": 14,
-          "windMph": 16.8
+          "highF": 75.9,
+          "lowF": 67,
+          "precipProbability": 24,
+          "windMph": 14.5
         },
         "metNo": {
-          "highF": 80.8,
-          "lowF": 66,
+          "highF": 79.5,
+          "lowF": 66.4,
           "precipProbability": null,
-          "windMph": 7.8
+          "windMph": 8.1
         }
       }
     },
     {
       "date": "2026-07-25",
-      "blendedHighF": 82.6,
-      "blendedLowF": 67.5,
-      "blendedPrecipProbability": 19.5,
-      "blendedWindMph": 7.9,
+      "blendedHighF": 81.2,
+      "blendedLowF": 66.6,
+      "blendedPrecipProbability": 40,
+      "blendedWindMph": 9,
       "sources": {
         "nws": {
-          "highF": 83,
+          "highF": 82,
           "lowF": 66,
-          "precipProbability": 18,
+          "precipProbability": 41,
           "windMph": 5
         },
         "openMeteo": {
-          "highF": 84.7,
-          "lowF": 67.1,
-          "precipProbability": 21,
-          "windMph": 13
+          "highF": 85.6,
+          "lowF": 66.3,
+          "precipProbability": 39,
+          "windMph": 17.2
         },
         "metNo": {
-          "highF": 80.2,
-          "lowF": 69.3,
+          "highF": 75.9,
+          "lowF": 67.5,
           "precipProbability": null,
-          "windMph": 5.8
+          "windMph": 4.9
         }
       }
     },
     {
       "date": "2026-07-26",
-      "blendedHighF": 85,
-      "blendedLowF": 69.9,
-      "blendedPrecipProbability": 13,
-      "blendedWindMph": 10.7,
+      "blendedHighF": 85.3,
+      "blendedLowF": 68.1,
+      "blendedPrecipProbability": 24.5,
+      "blendedWindMph": 7.6,
       "sources": {
         "nws": {
-          "highF": 88,
-          "lowF": 68,
-          "precipProbability": 13,
-          "windMph": 6
+          "highF": 86,
+          "lowF": 69,
+          "precipProbability": 25,
+          "windMph": 5
         },
         "openMeteo": {
-          "highF": 80.9,
-          "lowF": 70.1,
-          "precipProbability": 13,
-          "windMph": 20.8
+          "highF": 88.9,
+          "lowF": 68.1,
+          "precipProbability": 24,
+          "windMph": 12.8
         },
         "metNo": {
-          "highF": 86.2,
-          "lowF": 71.6,
+          "highF": 81,
+          "lowF": 67.1,
+          "precipProbability": null,
+          "windMph": 5.1
+        }
+      }
+    },
+    {
+      "date": "2026-07-27",
+      "blendedHighF": 89,
+      "blendedLowF": 69.1,
+      "blendedPrecipProbability": 25,
+      "blendedWindMph": 12.5,
+      "sources": {
+        "nws": {
+          "highF": 90,
+          "lowF": 69,
+          "precipProbability": 23,
+          "windMph": 7
+        },
+        "openMeteo": {
+          "highF": 91.1,
+          "lowF": 69.6,
+          "precipProbability": 27,
+          "windMph": 25.1
+        },
+        "metNo": {
+          "highF": 85.8,
+          "lowF": 68.7,
           "precipProbability": null,
           "windMph": 5.4
         }
