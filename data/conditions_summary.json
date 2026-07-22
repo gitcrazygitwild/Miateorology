@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-07-21T08:01:09.034-04:00",
+  "generatedAt": "2026-07-22T08:03:44.397-04:00",
   "today": {
-    "date": "2026-07-21",
+    "date": "2026-07-22",
     "sources": {
       "nws": {
-        "date": "2026-07-21",
-        "summary": "Chance Showers And Thunderstorms",
-        "precipProbability": 74,
-        "windMph": 14,
+        "date": "2026-07-22",
+        "summary": "Chance Showers And Thunderstorms then Slight Chance Showers And Thunderstorms",
+        "precipProbability": 86,
+        "windMph": 12,
         "rain": true,
         "snow": false,
         "thunder": true
       },
       "openMeteo": {
-        "date": "2026-07-21",
-        "summary": "Violent rain showers",
-        "precipProbability": 44,
+        "date": "2026-07-22",
+        "summary": "Heavy rain",
+        "precipProbability": 80,
         "windMph": 36.2,
         "rain": true,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-07-21",
-        "summary": "Rainshowers Day",
+        "date": "2026-07-22",
+        "summary": "Cloudy",
         "precipProbability": null,
-        "windMph": 13.6,
+        "windMph": 12.1,
         "rain": true,
         "snow": false,
         "thunder": false
@@ -40,17 +40,17 @@
       "rainSignal": "strong",
       "snowSignal": "off",
       "thunderSignal": "weak",
-      "avgPrecipProbability": 59,
-      "avgWindMph": 21.3,
+      "avgPrecipProbability": 83,
+      "avgWindMph": 20.1,
       "windSignal": "strong",
       "summary": "Rain signal present"
     },
-    "writeup": "Showers look likely with temperatures near 88° / 73° and about 59% average precipitation signal plus wind around 21 mph."
+    "writeup": "Showers look likely with temperatures near 86° / 71° and about 83% average precipitation signal plus wind around 20 mph."
   },
   "next7Summary": {
     "rainDays": 6,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 4
+    "windyDays": 3
   }
 }
