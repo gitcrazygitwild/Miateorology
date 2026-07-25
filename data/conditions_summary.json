@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-07-24T07:55:56.222-04:00",
+  "generatedAt": "2026-07-25T07:35:55.788-04:00",
   "today": {
-    "date": "2026-07-24",
+    "date": "2026-07-25",
     "sources": {
       "nws": {
-        "date": "2026-07-24",
-        "summary": "Mostly Sunny",
-        "precipProbability": 28,
-        "windMph": 8,
+        "date": "2026-07-25",
+        "summary": "Chance Rain Showers then Mostly Cloudy",
+        "precipProbability": 50,
+        "windMph": 5,
         "rain": true,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-07-24",
+        "date": "2026-07-25",
         "summary": "Overcast",
-        "precipProbability": 14,
-        "windMph": 13,
+        "precipProbability": 37,
+        "windMph": 9.4,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-07-24",
-        "summary": "Partlycloudy Day",
+        "date": "2026-07-25",
+        "summary": "Cloudy",
         "precipProbability": null,
-        "windMph": 8.1,
-        "rain": true,
+        "windMph": 5.4,
+        "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "medium",
+      "rainSignal": "weak",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 21,
-      "avgWindMph": 9.7,
-      "windSignal": "weak",
-      "summary": "Rain signal present"
+      "avgPrecipProbability": 43.5,
+      "avgWindMph": 6.6,
+      "windSignal": "off",
+      "summary": "Mostly quiet signal"
     },
-    "writeup": "Showers look likely with temperatures near 81° / 66°."
+    "writeup": "Weather looks fairly quiet with temperatures near 78° / 66° and about 44% average precipitation signal."
   },
   "next7Summary": {
-    "rainDays": 6,
+    "rainDays": 4,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 4
+    "windyDays": 0
   }
 }
