@@ -1,26 +1,26 @@
 {
   "month": "2026-07",
-  "generatedAt": "2026-07-26T07:36:49.720-04:00",
+  "generatedAt": "2026-07-27T09:21:50.681-04:00",
   "leader": {
     "provider": "openMeteo",
-    "daysScored": 23,
-    "meanOverallAbsF": 9.3
+    "daysScored": 24,
+    "meanOverallAbsF": 9.1
   },
   "standings": [
     {
       "provider": "openMeteo",
-      "daysScored": 23,
-      "meanOverallAbsF": 9.3
+      "daysScored": 24,
+      "meanOverallAbsF": 9.1
     },
     {
       "provider": "metNo",
-      "daysScored": 23,
-      "meanOverallAbsF": 13.6
+      "daysScored": 24,
+      "meanOverallAbsF": 13.4
     },
     {
       "provider": "nws",
-      "daysScored": 23,
-      "meanOverallAbsF": 14.5
+      "daysScored": 24,
+      "meanOverallAbsF": 14.3
     }
   ]
 }
