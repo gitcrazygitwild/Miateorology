@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-07-27T09:21:50.681-04:00",
+  "generatedAt": "2026-07-28T08:14:33.873-04:00",
   "today": {
-    "date": "2026-07-27",
+    "date": "2026-07-28",
     "sources": {
       "nws": {
-        "date": "2026-07-27",
-        "summary": "Mostly Sunny then Slight Chance Showers And Thunderstorms",
-        "precipProbability": 21,
-        "windMph": 5,
+        "date": "2026-07-28",
+        "summary": "Slight Chance Rain Showers then Showers And Thunderstorms Likely",
+        "precipProbability": 72,
+        "windMph": 14,
         "rain": true,
         "snow": false,
         "thunder": true
       },
       "openMeteo": {
-        "date": "2026-07-27",
-        "summary": "Overcast",
-        "precipProbability": 44,
-        "windMph": 15.4,
-        "rain": false,
+        "date": "2026-07-28",
+        "summary": "Light drizzle",
+        "precipProbability": 47,
+        "windMph": 27.5,
+        "rain": true,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-07-27",
-        "summary": "Partlycloudy Day",
+        "date": "2026-07-28",
+        "summary": "Rainshowers Day",
         "precipProbability": null,
-        "windMph": 10.3,
-        "rain": false,
+        "windMph": 14.5,
+        "rain": true,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "weak",
+      "rainSignal": "strong",
       "snowSignal": "off",
       "thunderSignal": "weak",
-      "avgPrecipProbability": 32.5,
-      "avgWindMph": 10.2,
-      "windSignal": "weak",
-      "summary": "Mostly quiet signal"
+      "avgPrecipProbability": 59.5,
+      "avgWindMph": 18.7,
+      "windSignal": "medium",
+      "summary": "Rain signal present"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 86° / 69°."
+    "writeup": "Showers look likely with temperatures near 87° / 70° and about 60% average precipitation signal plus wind around 19 mph."
   },
   "next7Summary": {
     "rainDays": 3,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 3
+    "windyDays": 4
   }
 }
