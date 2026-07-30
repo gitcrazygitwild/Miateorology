@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-07-29T08:21:16.392-04:00",
+  "generatedAt": "2026-07-30T08:04:14.688-04:00",
   "today": {
-    "date": "2026-07-29",
+    "date": "2026-07-30",
     "sources": {
       "nws": {
-        "date": "2026-07-29",
+        "date": "2026-07-30",
         "summary": "Sunny",
-        "precipProbability": 3,
+        "precipProbability": 1,
         "windMph": 8,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-07-29",
-        "summary": "Overcast",
-        "precipProbability": 3,
-        "windMph": 21,
+        "date": "2026-07-30",
+        "summary": "Clear",
+        "precipProbability": 1,
+        "windMph": 19.5,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-07-29",
-        "summary": "Fair Day",
+        "date": "2026-07-30",
+        "summary": "Clearsky Day",
         "precipProbability": null,
-        "windMph": 9.4,
+        "windMph": 8.1,
         "rain": false,
         "snow": false,
         "thunder": false
@@ -40,17 +40,17 @@
       "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 3,
-      "avgWindMph": 12.8,
-      "windSignal": "medium",
+      "avgPrecipProbability": 1,
+      "avgWindMph": 11.9,
+      "windSignal": "weak",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "It looks breezy to windy with temperatures near 86° / 70°."
+    "writeup": "Weather looks fairly quiet with temperatures near 87° / 68°."
   },
   "next7Summary": {
-    "rainDays": 3,
+    "rainDays": 4,
     "snowDays": 0,
-    "thunderDays": 0,
-    "windyDays": 3
+    "thunderDays": 1,
+    "windyDays": 5
   }
 }
