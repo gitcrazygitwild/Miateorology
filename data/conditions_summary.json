@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-08-03T09:20:36.301-04:00",
+  "generatedAt": "2026-08-04T08:19:34.304-04:00",
   "today": {
-    "date": "2026-08-03",
+    "date": "2026-08-04",
     "sources": {
       "nws": {
-        "date": "2026-08-03",
-        "summary": "Chance Rain Showers then Chance Showers And Thunderstorms",
-        "precipProbability": 50,
-        "windMph": 8,
+        "date": "2026-08-04",
+        "summary": "Showers And Thunderstorms Likely",
+        "precipProbability": 82,
+        "windMph": 7,
         "rain": true,
         "snow": false,
         "thunder": true
       },
       "openMeteo": {
-        "date": "2026-08-03",
-        "summary": "Light drizzle",
-        "precipProbability": 52,
-        "windMph": 20.4,
+        "date": "2026-08-04",
+        "summary": "Violent rain showers",
+        "precipProbability": 39,
+        "windMph": 17.4,
         "rain": true,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-08-03",
-        "summary": "Partlycloudy Day",
+        "date": "2026-08-04",
+        "summary": "Rain",
         "precipProbability": null,
-        "windMph": 9.2,
+        "windMph": 9.6,
         "rain": true,
         "snow": false,
         "thunder": false
@@ -40,17 +40,17 @@
       "rainSignal": "strong",
       "snowSignal": "off",
       "thunderSignal": "weak",
-      "avgPrecipProbability": 51,
-      "avgWindMph": 12.5,
-      "windSignal": "medium",
+      "avgPrecipProbability": 60.5,
+      "avgWindMph": 11.3,
+      "windSignal": "weak",
       "summary": "Rain signal present"
     },
-    "writeup": "Showers look likely with temperatures near 88° / 73° and about 51% average precipitation signal."
+    "writeup": "Showers look likely with temperatures near 85° / 73° and about 61% average precipitation signal."
   },
   "next7Summary": {
-    "rainDays": 7,
+    "rainDays": 5,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 7
+    "windyDays": 5
   }
 }
