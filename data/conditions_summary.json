@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-08-04T08:19:34.304-04:00",
+  "generatedAt": "2026-08-05T08:17:03.597-04:00",
   "today": {
-    "date": "2026-08-04",
+    "date": "2026-08-05",
     "sources": {
       "nws": {
-        "date": "2026-08-04",
-        "summary": "Showers And Thunderstorms Likely",
-        "precipProbability": 82,
-        "windMph": 7,
+        "date": "2026-08-05",
+        "summary": "Partly Sunny then Chance Showers And Thunderstorms",
+        "precipProbability": 26,
+        "windMph": 9,
         "rain": true,
         "snow": false,
         "thunder": true
       },
       "openMeteo": {
-        "date": "2026-08-04",
-        "summary": "Violent rain showers",
-        "precipProbability": 39,
-        "windMph": 17.4,
+        "date": "2026-08-05",
+        "summary": "Dense drizzle",
+        "precipProbability": 22,
+        "windMph": 15,
         "rain": true,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-08-04",
-        "summary": "Rain",
+        "date": "2026-08-05",
+        "summary": "Lightrainshowers Day",
         "precipProbability": null,
-        "windMph": 9.6,
+        "windMph": 8.9,
         "rain": true,
         "snow": false,
         "thunder": false
@@ -40,17 +40,17 @@
       "rainSignal": "strong",
       "snowSignal": "off",
       "thunderSignal": "weak",
-      "avgPrecipProbability": 60.5,
-      "avgWindMph": 11.3,
+      "avgPrecipProbability": 24,
+      "avgWindMph": 11,
       "windSignal": "weak",
       "summary": "Rain signal present"
     },
-    "writeup": "Showers look likely with temperatures near 85° / 73° and about 61% average precipitation signal."
+    "writeup": "Showers look likely with temperatures near 87° / 73°."
   },
   "next7Summary": {
-    "rainDays": 5,
+    "rainDays": 4,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 5
+    "windyDays": 4
   }
 }
