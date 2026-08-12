@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-08-11T07:05:19.521-04:00",
+  "generatedAt": "2026-08-12T07:10:47.589-04:00",
   "today": {
-    "date": "2026-08-11",
+    "date": "2026-08-12",
     "sources": {
       "nws": {
-        "date": "2026-08-11",
-        "summary": "Partly Sunny then Slight Chance Showers And Thunderstorms",
-        "precipProbability": 29,
-        "windMph": 7,
+        "date": "2026-08-12",
+        "summary": "Mostly Sunny",
+        "precipProbability": 10,
+        "windMph": 6,
         "rain": true,
         "snow": false,
-        "thunder": true
+        "thunder": false
       },
       "openMeteo": {
-        "date": "2026-08-11",
+        "date": "2026-08-12",
         "summary": "Overcast",
-        "precipProbability": 25,
-        "windMph": 18.8,
+        "precipProbability": 14,
+        "windMph": 13.4,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-08-11",
-        "summary": "Fair Day",
+        "date": "2026-08-12",
+        "summary": "Partlycloudy Day",
         "precipProbability": null,
-        "windMph": 11.2,
-        "rain": true,
+        "windMph": 7.6,
+        "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "medium",
+      "rainSignal": "weak",
       "snowSignal": "off",
-      "thunderSignal": "weak",
-      "avgPrecipProbability": 27,
-      "avgWindMph": 12.3,
+      "thunderSignal": "off",
+      "avgPrecipProbability": 12,
+      "avgWindMph": 9,
       "windSignal": "weak",
-      "summary": "Rain signal present"
+      "summary": "Mostly quiet signal"
     },
-    "writeup": "Showers look likely with temperatures near 94° / 72°."
+    "writeup": "Weather looks fairly quiet with temperatures near 90° / 72°."
   },
   "next7Summary": {
-    "rainDays": 6,
+    "rainDays": 4,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 5
+    "windyDays": 3
   }
 }
