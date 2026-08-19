@@ -1,0 +1,66 @@
+{
+  "targetDate": "2026-08-18",
+  "observedFromStation": "KRIC",
+  "observationCount": 309,
+  "observed": {
+    "highF": 89.6,
+    "lowF": 73.4,
+    "maxWindMph": 49.9,
+    "precipOccurred": false
+  },
+  "snapshotUsed": "2026-08-17_for_2026-08-18.json",
+  "scores": [
+    {
+      "provider": "openMeteo",
+      "predicted": {
+        "highF": 88.6,
+        "lowF": 73.1,
+        "windMph": 15.9,
+        "precipProbability": 18,
+        "precipExpected": true
+      },
+      "errors": {
+        "highAbsF": 1,
+        "lowAbsF": 0.3,
+        "windAbsMph": 34,
+        "precipEventMiss": 1,
+        "overallAbsF": 11.8
+      }
+    },
+    {
+      "provider": "metNo",
+      "predicted": {
+        "highF": 89.8,
+        "lowF": 74.5,
+        "windMph": 7.2,
+        "precipProbability": null,
+        "precipExpected": false
+      },
+      "errors": {
+        "highAbsF": 0.2,
+        "lowAbsF": 1.1,
+        "windAbsMph": 42.7,
+        "precipEventMiss": 0,
+        "overallAbsF": 14.7
+      }
+    },
+    {
+      "provider": "nws",
+      "predicted": {
+        "highF": 90,
+        "lowF": 69,
+        "windMph": 6,
+        "precipProbability": 15,
+        "precipExpected": true
+      },
+      "errors": {
+        "highAbsF": 0.4,
+        "lowAbsF": 4.4,
+        "windAbsMph": 43.9,
+        "precipEventMiss": 1,
+        "overallAbsF": 16.2
+      }
+    }
+  ],
+  "computedAt": "2026-08-19T06:46:55.858-04:00"
+}

@@ -1,24 +1,18 @@
 {
-  "generatedAt": "2026-08-18T06:47:10.477-04:00",
+  "generatedAt": "2026-08-19T06:46:55.858-04:00",
   "today": {
-    "date": "2026-08-18",
+    "date": "2026-08-19",
     "score": 0,
     "band": "Slim",
     "summary": "Not much of a rainbow setup right now."
   },
   "bestNext7": {
-    "date": "2026-08-20",
-    "score": 90,
+    "date": "2026-08-21",
+    "score": 89,
     "band": "High",
     "summary": "Best setup for sun plus showers."
   },
   "days": [
-    {
-      "date": "2026-08-18",
-      "score": 0,
-      "band": "Slim",
-      "summary": "Not much of a rainbow setup right now."
-    },
     {
       "date": "2026-08-19",
       "score": 0,
@@ -27,19 +21,19 @@
     },
     {
       "date": "2026-08-20",
-      "score": 90,
+      "score": 75,
       "band": "High",
       "summary": "Best setup for sun plus showers."
     },
     {
       "date": "2026-08-21",
-      "score": 90,
+      "score": 89,
       "band": "High",
       "summary": "Best setup for sun plus showers."
     },
     {
       "date": "2026-08-22",
-      "score": 90,
+      "score": 77,
       "band": "High",
       "summary": "Best setup for sun plus showers."
     },
@@ -51,9 +45,15 @@
     },
     {
       "date": "2026-08-24",
-      "score": 2,
+      "score": 0,
       "band": "Slim",
       "summary": "Not much of a rainbow setup right now."
+    },
+    {
+      "date": "2026-08-25",
+      "score": 45,
+      "band": "Medium",
+      "summary": "A decent post-shower rainbow setup."
     }
   ]
 }
