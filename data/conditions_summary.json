@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-08-22T06:41:18.247-04:00",
+  "generatedAt": "2026-08-23T06:42:03.801-04:00",
   "today": {
-    "date": "2026-08-22",
+    "date": "2026-08-23",
     "sources": {
       "nws": {
-        "date": "2026-08-22",
-        "summary": "Showers And Thunderstorms Likely then Chance Showers And Thunderstorms",
-        "precipProbability": 56,
-        "windMph": 5,
-        "rain": true,
+        "date": "2026-08-23",
+        "summary": "Sunny",
+        "precipProbability": 0,
+        "windMph": 10,
+        "rain": false,
         "snow": false,
-        "thunder": true
+        "thunder": false
       },
       "openMeteo": {
-        "date": "2026-08-22",
-        "summary": "Light drizzle",
-        "precipProbability": 71,
-        "windMph": 18.3,
-        "rain": true,
+        "date": "2026-08-23",
+        "summary": "Overcast",
+        "precipProbability": 46,
+        "windMph": 15.7,
+        "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-08-22",
-        "summary": "Cloudy",
+        "date": "2026-08-23",
+        "summary": "Clearsky Day",
         "precipProbability": null,
-        "windMph": 9.6,
-        "rain": true,
+        "windMph": 8.7,
+        "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "strong",
+      "rainSignal": "off",
       "snowSignal": "off",
-      "thunderSignal": "weak",
-      "avgPrecipProbability": 63.5,
-      "avgWindMph": 11,
+      "thunderSignal": "off",
+      "avgPrecipProbability": 23,
+      "avgWindMph": 11.5,
       "windSignal": "weak",
-      "summary": "Rain signal present"
+      "summary": "Mostly quiet signal"
     },
-    "writeup": "Showers look likely with temperatures near 82° / 69° and about 64% average precipitation signal."
+    "writeup": "Weather looks fairly quiet with temperatures near 85° / 65°."
   },
   "next7Summary": {
-    "rainDays": 3,
+    "rainDays": 4,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 1
+    "windyDays": 3
   }
 }
