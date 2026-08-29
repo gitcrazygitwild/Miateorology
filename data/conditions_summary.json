@@ -4,44 +4,44 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-08-28T17:11:15.327-04:00",
+  "generatedAt": "2026-08-29T11:05:20.964-04:00",
   "today": {
-    "date": "2026-08-28",
+    "date": "2026-08-29",
     "sources": {
       "nws": {
-        "date": "2026-08-28",
-        "summary": "Chance Showers And Thunderstorms",
-        "precipProbability": 46,
-        "windMph": 6,
-        "rain": true,
+        "date": "2026-08-29",
+        "summary": "Partly Sunny",
+        "precipProbability": 4,
+        "windMph": 7,
+        "rain": false,
         "snow": false,
-        "thunder": true
+        "thunder": false
       },
       "openMeteo": {
-        "date": "2026-08-28",
+        "date": "2026-08-29",
         "summary": "Overcast",
-        "precipProbability": 11,
-        "windMph": 13.6,
+        "precipProbability": 1,
+        "windMph": 15.4,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-08-28",
-        "summary": "Partlycloudy Night",
+        "date": "2026-08-29",
+        "summary": "Cloudy",
         "precipProbability": null,
-        "windMph": 5.6,
+        "windMph": 9.2,
         "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "weak",
+      "rainSignal": "off",
       "snowSignal": "off",
-      "thunderSignal": "weak",
-      "avgPrecipProbability": 28.5,
-      "avgWindMph": 8.4,
+      "thunderSignal": "off",
+      "avgPrecipProbability": 2.5,
+      "avgWindMph": 10.5,
       "windSignal": "weak",
       "summary": "Mostly quiet signal"
     },
@@ -51,6 +51,6 @@
     "rainDays": 2,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 3
+    "windyDays": 2
   }
 }

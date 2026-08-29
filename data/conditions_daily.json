@@ -4,57 +4,15 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-08-28T17:11:15.327-04:00",
+  "generatedAt": "2026-08-29T11:05:20.964-04:00",
   "days": [
-    {
-      "date": "2026-08-28",
-      "sources": {
-        "nws": {
-          "date": "2026-08-28",
-          "summary": "Chance Showers And Thunderstorms",
-          "precipProbability": 46,
-          "windMph": 6,
-          "rain": true,
-          "snow": false,
-          "thunder": true
-        },
-        "openMeteo": {
-          "date": "2026-08-28",
-          "summary": "Overcast",
-          "precipProbability": 11,
-          "windMph": 13.6,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        },
-        "metNo": {
-          "date": "2026-08-28",
-          "summary": "Partlycloudy Night",
-          "precipProbability": null,
-          "windMph": 5.6,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        }
-      },
-      "consensus": {
-        "rainSignal": "weak",
-        "snowSignal": "off",
-        "thunderSignal": "weak",
-        "avgPrecipProbability": 28.5,
-        "avgWindMph": 8.4,
-        "windSignal": "weak",
-        "summary": "Mostly quiet signal"
-      },
-      "writeup": "Weather looks fairly quiet with temperatures near 86° / 70°."
-    },
     {
       "date": "2026-08-29",
       "sources": {
         "nws": {
           "date": "2026-08-29",
           "summary": "Partly Sunny",
-          "precipProbability": 7,
+          "precipProbability": 4,
           "windMph": 7,
           "rain": false,
           "snow": false,
@@ -63,28 +21,28 @@
         "openMeteo": {
           "date": "2026-08-29",
           "summary": "Overcast",
-          "precipProbability": 4,
-          "windMph": 17.7,
+          "precipProbability": 1,
+          "windMph": 15.4,
           "rain": false,
           "snow": false,
           "thunder": false
         },
         "metNo": {
           "date": "2026-08-29",
-          "summary": "Partlycloudy Night",
+          "summary": "Cloudy",
           "precipProbability": null,
-          "windMph": 8.7,
-          "rain": true,
+          "windMph": 9.2,
+          "rain": false,
           "snow": false,
           "thunder": false
         }
       },
       "consensus": {
-        "rainSignal": "weak",
+        "rainSignal": "off",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 5.5,
-        "avgWindMph": 11.1,
+        "avgPrecipProbability": 2.5,
+        "avgWindMph": 10.5,
         "windSignal": "weak",
         "summary": "Mostly quiet signal"
       },
@@ -96,7 +54,7 @@
         "nws": {
           "date": "2026-08-30",
           "summary": "Mostly Sunny",
-          "precipProbability": 2,
+          "precipProbability": 5,
           "windMph": 6,
           "rain": false,
           "snow": false,
@@ -104,18 +62,18 @@
         },
         "openMeteo": {
           "date": "2026-08-30",
-          "summary": "Overcast",
-          "precipProbability": 15,
-          "windMph": 23.9,
+          "summary": "Fog",
+          "precipProbability": 4,
+          "windMph": 17,
           "rain": false,
           "snow": false,
           "thunder": false
         },
         "metNo": {
           "date": "2026-08-30",
-          "summary": "Fair Night",
+          "summary": "Clearsky Night",
           "precipProbability": null,
-          "windMph": 6.5,
+          "windMph": 6.3,
           "rain": false,
           "snow": false,
           "thunder": false
@@ -125,12 +83,12 @@
         "rainSignal": "off",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 8.5,
-        "avgWindMph": 12.1,
-        "windSignal": "medium",
+        "avgPrecipProbability": 4.5,
+        "avgWindMph": 9.8,
+        "windSignal": "weak",
         "summary": "Mostly quiet signal"
       },
-      "writeup": "It looks breezy to windy with temperatures near 90° / 70°."
+      "writeup": "Weather looks fairly quiet with temperatures near 90° / 70°."
     },
     {
       "date": "2026-08-31",
@@ -138,7 +96,7 @@
         "nws": {
           "date": "2026-08-31",
           "summary": "Sunny",
-          "precipProbability": 1,
+          "precipProbability": 3,
           "windMph": 3,
           "rain": false,
           "snow": false,
@@ -146,52 +104,52 @@
         },
         "openMeteo": {
           "date": "2026-08-31",
-          "summary": "Drizzle",
-          "precipProbability": 6,
-          "windMph": 26.4,
-          "rain": true,
+          "summary": "Overcast",
+          "precipProbability": 2,
+          "windMph": 19.9,
+          "rain": false,
           "snow": false,
           "thunder": false
         },
         "metNo": {
           "date": "2026-08-31",
-          "summary": "Fair Night",
+          "summary": "Clearsky Night",
           "precipProbability": null,
-          "windMph": 6.5,
+          "windMph": 7.2,
           "rain": false,
           "snow": false,
           "thunder": false
         }
       },
       "consensus": {
-        "rainSignal": "weak",
+        "rainSignal": "off",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 3.5,
-        "avgWindMph": 12,
-        "windSignal": "medium",
+        "avgPrecipProbability": 2.5,
+        "avgWindMph": 10,
+        "windSignal": "weak",
         "summary": "Mostly quiet signal"
       },
-      "writeup": "It looks breezy to windy with temperatures near 95° / 74°."
+      "writeup": "Weather looks fairly quiet with temperatures near 96° / 73°."
     },
     {
       "date": "2026-09-01",
       "sources": {
         "nws": {
           "date": "2026-09-01",
-          "summary": "Sunny",
-          "precipProbability": 5,
+          "summary": "Mostly Sunny then Slight Chance Showers And Thunderstorms",
+          "precipProbability": 18,
           "windMph": 5,
-          "rain": false,
+          "rain": true,
           "snow": false,
-          "thunder": false
+          "thunder": true
         },
         "openMeteo": {
           "date": "2026-09-01",
-          "summary": "Light drizzle",
-          "precipProbability": 15,
-          "windMph": 15.2,
-          "rain": true,
+          "summary": "Overcast",
+          "precipProbability": 3,
+          "windMph": 13,
+          "rain": false,
           "snow": false,
           "thunder": false
         },
@@ -199,7 +157,7 @@
           "date": "2026-09-01",
           "summary": "Clearsky Night",
           "precipProbability": null,
-          "windMph": 5.1,
+          "windMph": 6.9,
           "rain": false,
           "snow": false,
           "thunder": false
@@ -208,13 +166,13 @@
       "consensus": {
         "rainSignal": "weak",
         "snowSignal": "off",
-        "thunderSignal": "off",
-        "avgPrecipProbability": 10,
-        "avgWindMph": 8.4,
+        "thunderSignal": "weak",
+        "avgPrecipProbability": 10.5,
+        "avgWindMph": 8.3,
         "windSignal": "weak",
         "summary": "Mostly quiet signal"
       },
-      "writeup": "Weather looks fairly quiet with temperatures near 95° / 76°."
+      "writeup": "Weather looks fairly quiet with temperatures near 98° / 76°."
     },
     {
       "date": "2026-09-02",
@@ -222,41 +180,41 @@
         "nws": {
           "date": "2026-09-02",
           "summary": "Sunny",
-          "precipProbability": 15,
+          "precipProbability": 14,
           "windMph": 6,
-          "rain": true,
+          "rain": false,
           "snow": false,
-          "thunder": true
+          "thunder": false
         },
         "openMeteo": {
           "date": "2026-09-02",
-          "summary": "Drizzle",
-          "precipProbability": 20,
-          "windMph": 20.4,
+          "summary": "Light drizzle",
+          "precipProbability": 3,
+          "windMph": 11,
           "rain": true,
           "snow": false,
           "thunder": false
         },
         "metNo": {
           "date": "2026-09-02",
-          "summary": "Cloudy",
+          "summary": "Partlycloudy Night",
           "precipProbability": null,
-          "windMph": 7.6,
+          "windMph": 8.1,
           "rain": false,
           "snow": false,
           "thunder": false
         }
       },
       "consensus": {
-        "rainSignal": "medium",
+        "rainSignal": "weak",
         "snowSignal": "off",
-        "thunderSignal": "weak",
-        "avgPrecipProbability": 17.5,
-        "avgWindMph": 11.3,
-        "windSignal": "medium",
-        "summary": "Rain signal present"
+        "thunderSignal": "off",
+        "avgPrecipProbability": 8.5,
+        "avgWindMph": 8.4,
+        "windSignal": "off",
+        "summary": "Mostly quiet signal"
       },
-      "writeup": "Showers look likely with temperatures near 96° / 76°."
+      "writeup": "Weather looks fairly quiet with temperatures near 100° / 78°."
     },
     {
       "date": "2026-09-03",
@@ -264,18 +222,18 @@
         "nws": {
           "date": "2026-09-03",
           "summary": "Mostly Sunny then Chance Showers And Thunderstorms",
-          "precipProbability": 31,
-          "windMph": 6,
+          "precipProbability": 25,
+          "windMph": 7,
           "rain": true,
           "snow": false,
           "thunder": true
         },
         "openMeteo": {
           "date": "2026-09-03",
-          "summary": "Overcast",
-          "precipProbability": 31,
-          "windMph": 19,
-          "rain": false,
+          "summary": "Light drizzle",
+          "precipProbability": 29,
+          "windMph": 23,
+          "rain": true,
           "snow": false,
           "thunder": false
         },
@@ -283,22 +241,64 @@
           "date": "2026-09-03",
           "summary": "Clearsky Night",
           "precipProbability": null,
-          "windMph": 8.7,
+          "windMph": 8.1,
           "rain": true,
           "snow": false,
           "thunder": false
         }
       },
       "consensus": {
-        "rainSignal": "medium",
+        "rainSignal": "strong",
         "snowSignal": "off",
         "thunderSignal": "weak",
-        "avgPrecipProbability": 31,
-        "avgWindMph": 11.2,
-        "windSignal": "weak",
+        "avgPrecipProbability": 27,
+        "avgWindMph": 12.7,
+        "windSignal": "medium",
         "summary": "Rain signal present"
       },
-      "writeup": "Showers look likely with temperatures near 100° / 76°."
+      "writeup": "Showers look likely with temperatures near 102° / 78°."
+    },
+    {
+      "date": "2026-09-04",
+      "sources": {
+        "nws": {
+          "date": "2026-09-04",
+          "summary": "Mostly Sunny then Chance Showers And Thunderstorms",
+          "precipProbability": 35,
+          "windMph": 6,
+          "rain": true,
+          "snow": false,
+          "thunder": true
+        },
+        "openMeteo": {
+          "date": "2026-09-04",
+          "summary": "Light drizzle",
+          "precipProbability": 44,
+          "windMph": 22.8,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-09-04",
+          "summary": "Fair Night",
+          "precipProbability": null,
+          "windMph": 5.8,
+          "rain": true,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "strong",
+        "snowSignal": "off",
+        "thunderSignal": "weak",
+        "avgPrecipProbability": 39.5,
+        "avgWindMph": 11.5,
+        "windSignal": "medium",
+        "summary": "Rain signal present"
+      },
+      "writeup": "Showers look likely with temperatures near 95° / 75° and about 40% average precipitation signal."
     }
   ]
 }
