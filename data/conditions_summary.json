@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-09-02T10:30:56.236-04:00",
+  "generatedAt": "2026-09-03T10:35:40.006-04:00",
   "today": {
-    "date": "2026-09-02",
+    "date": "2026-09-03",
     "sources": {
       "nws": {
-        "date": "2026-09-02",
+        "date": "2026-09-03",
         "summary": "Sunny",
-        "precipProbability": 30,
-        "windMph": 6,
+        "precipProbability": 51,
+        "windMph": 5,
         "rain": true,
         "snow": false,
         "thunder": true
       },
       "openMeteo": {
-        "date": "2026-09-02",
-        "summary": "Overcast",
-        "precipProbability": 9,
-        "windMph": 19.2,
+        "date": "2026-09-03",
+        "summary": "Fog",
+        "precipProbability": 10,
+        "windMph": 9.6,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-09-02",
-        "summary": "Partlycloudy Day",
+        "date": "2026-09-03",
+        "summary": "Fair Day",
         "precipProbability": null,
-        "windMph": 6.9,
+        "windMph": 14.1,
         "rain": true,
         "snow": false,
         "thunder": false
@@ -40,17 +40,17 @@
       "rainSignal": "medium",
       "snowSignal": "off",
       "thunderSignal": "weak",
-      "avgPrecipProbability": 19.5,
-      "avgWindMph": 10.7,
+      "avgPrecipProbability": 30.5,
+      "avgWindMph": 9.6,
       "windSignal": "weak",
       "summary": "Rain signal present"
     },
-    "writeup": "Showers look likely with temperatures near 96° / 77°."
+    "writeup": "Showers look likely with temperatures near 97° / 74°."
   },
   "next7Summary": {
-    "rainDays": 4,
+    "rainDays": 2,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 4
+    "windyDays": 5
   }
 }
