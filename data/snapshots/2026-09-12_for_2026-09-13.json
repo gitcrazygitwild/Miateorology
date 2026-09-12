@@ -1,0 +1,33 @@
+{
+  "issuedAt": "2026-09-12T09:36:57.489-04:00",
+  "issuedDate": "2026-09-12",
+  "targetDate": "2026-09-13",
+  "location": {
+    "name": "Richmond, VA",
+    "lat": 37.5407,
+    "lon": -77.436
+  },
+  "forecasts": {
+    "nws": {
+      "highF": 88,
+      "lowF": 70,
+      "windMph": 6,
+      "precipProbability": 30,
+      "precipExpected": true
+    },
+    "openMeteo": {
+      "highF": 89.2,
+      "lowF": 73.2,
+      "windMph": 21,
+      "precipProbability": 34,
+      "precipExpected": true
+    },
+    "metNo": {
+      "highF": 86.2,
+      "lowF": 72,
+      "windMph": 8.1,
+      "precipProbability": null,
+      "precipExpected": true
+    }
+  }
+}
