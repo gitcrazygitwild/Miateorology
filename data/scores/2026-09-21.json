@@ -1,0 +1,66 @@
+{
+  "targetDate": "2026-09-21",
+  "observedFromStation": "KRIC",
+  "observationCount": 322,
+  "observed": {
+    "highF": 84.2,
+    "lowF": 69.8,
+    "maxWindMph": 49.7,
+    "precipOccurred": true
+  },
+  "snapshotUsed": "2026-09-20_for_2026-09-21.json",
+  "scores": [
+    {
+      "provider": "openMeteo",
+      "predicted": {
+        "highF": 83.6,
+        "lowF": 71.3,
+        "windMph": 20.1,
+        "precipProbability": 47,
+        "precipExpected": true
+      },
+      "errors": {
+        "highAbsF": 0.6,
+        "lowAbsF": 1.5,
+        "windAbsMph": 29.6,
+        "precipEventMiss": 0,
+        "overallAbsF": 10.6
+      }
+    },
+    {
+      "provider": "nws",
+      "predicted": {
+        "highF": 82,
+        "lowF": 66,
+        "windMph": 12,
+        "precipProbability": 71,
+        "precipExpected": true
+      },
+      "errors": {
+        "highAbsF": 2.2,
+        "lowAbsF": 3.8,
+        "windAbsMph": 37.7,
+        "precipEventMiss": 0,
+        "overallAbsF": 14.6
+      }
+    },
+    {
+      "provider": "metNo",
+      "predicted": {
+        "highF": 80.2,
+        "lowF": 69.8,
+        "windMph": 8.9,
+        "precipProbability": null,
+        "precipExpected": true
+      },
+      "errors": {
+        "highAbsF": 4,
+        "lowAbsF": 0,
+        "windAbsMph": 40.8,
+        "precipEventMiss": 0,
+        "overallAbsF": 14.9
+      }
+    }
+  ],
+  "computedAt": "2026-09-22T10:56:20.342-04:00"
+}
