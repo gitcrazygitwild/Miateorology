@@ -4,51 +4,51 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-09-22T10:56:20.342-04:00",
+  "generatedAt": "2026-09-23T11:02:14.517-04:00",
   "today": {
-    "date": "2026-09-22",
+    "date": "2026-09-23",
     "sources": {
       "nws": {
-        "date": "2026-09-22",
-        "summary": "Rain Showers",
-        "precipProbability": 86,
-        "windMph": 12,
+        "date": "2026-09-23",
+        "summary": "Light Rain Likely",
+        "precipProbability": 59,
+        "windMph": 15,
         "rain": true,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-09-22",
-        "summary": "Heavy rain",
-        "precipProbability": 56,
-        "windMph": 29.8,
+        "date": "2026-09-23",
+        "summary": "Light rain",
+        "precipProbability": 69,
+        "windMph": 28.9,
         "rain": true,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-09-22",
-        "summary": "Rainshowers Day",
+        "date": "2026-09-23",
+        "summary": "Cloudy",
         "precipProbability": null,
-        "windMph": 13.2,
-        "rain": true,
+        "windMph": 15.7,
+        "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "strong",
+      "rainSignal": "medium",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 71,
-      "avgWindMph": 18.3,
+      "avgPrecipProbability": 64,
+      "avgWindMph": 19.9,
       "windSignal": "medium",
       "summary": "Rain signal present"
     },
-    "writeup": "Showers look likely with temperatures near 74° / 63° and about 71% average precipitation signal plus wind around 18 mph."
+    "writeup": "Showers look likely with temperatures near 64° / 59° and about 64% average precipitation signal plus wind around 20 mph."
   },
   "next7Summary": {
-    "rainDays": 2,
+    "rainDays": 1,
     "snowDays": 0,
     "thunderDays": 0,
     "windyDays": 5
