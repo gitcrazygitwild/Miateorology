@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-09-24T11:08:30.359-04:00",
+  "generatedAt": "2026-09-25T11:17:15.020-04:00",
   "today": {
-    "date": "2026-09-24",
+    "date": "2026-09-25",
     "sources": {
       "nws": {
-        "date": "2026-09-24",
-        "summary": "Mostly Cloudy",
-        "precipProbability": 2,
+        "date": "2026-09-25",
+        "summary": "Mostly Sunny",
+        "precipProbability": 4,
         "windMph": 15,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-09-24",
+        "date": "2026-09-25",
         "summary": "Overcast",
-        "precipProbability": 1,
-        "windMph": 27.1,
+        "precipProbability": 0,
+        "windMph": 29.3,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-09-24",
-        "summary": "Cloudy",
+        "date": "2026-09-25",
+        "summary": "Partlycloudy Day",
         "precipProbability": null,
-        "windMph": 14.5,
+        "windMph": 13.2,
         "rain": false,
         "snow": false,
         "thunder": false
@@ -40,15 +40,15 @@
       "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 1.5,
-      "avgWindMph": 18.9,
+      "avgPrecipProbability": 2,
+      "avgWindMph": 19.2,
       "windSignal": "medium",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "It looks breezy to windy with temperatures near 65° / 55° plus wind around 19 mph."
+    "writeup": "It looks breezy to windy with temperatures near 71° / 55° plus wind around 19 mph."
   },
   "next7Summary": {
-    "rainDays": 0,
+    "rainDays": 1,
     "snowDays": 0,
     "thunderDays": 0,
     "windyDays": 6
