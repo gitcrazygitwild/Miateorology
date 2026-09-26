@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-09-25T11:17:15.020-04:00",
+  "generatedAt": "2026-09-26T10:31:21.275-04:00",
   "mostLockedInDay": {
-    "date": "2026-09-28",
-    "overallSpreadF": 1.7,
-    "highSpreadF": 1.9,
-    "lowSpreadF": 1.4,
-    "precipSpread": 2,
-    "windSpreadMph": 14.5,
-    "confidence": "high"
+    "date": "2026-09-30",
+    "overallSpreadF": 2.2,
+    "highSpreadF": 4,
+    "lowSpreadF": 0.4,
+    "precipSpread": 3,
+    "windSpreadMph": 15.7,
+    "confidence": "medium"
   },
   "mostUncertainDay": {
-    "date": "2026-09-25",
-    "overallSpreadF": 6.7,
-    "highSpreadF": 3.9,
-    "lowSpreadF": 9.5,
-    "precipSpread": 4,
-    "windSpreadMph": 16.1,
+    "date": "2026-10-02",
+    "overallSpreadF": 6.8,
+    "highSpreadF": 6.5,
+    "lowSpreadF": 7.1,
+    "precipSpread": 5,
+    "windSpreadMph": 10.1,
     "confidence": "low"
   }
 }
