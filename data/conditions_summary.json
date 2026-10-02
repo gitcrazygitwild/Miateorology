@@ -4,31 +4,31 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-10-01T13:02:12.083-04:00",
+  "generatedAt": "2026-10-02T12:16:43.374-04:00",
   "today": {
-    "date": "2026-10-01",
+    "date": "2026-10-02",
     "sources": {
       "nws": {
-        "date": "2026-10-01",
+        "date": "2026-10-02",
         "summary": "Mostly Sunny",
-        "precipProbability": 1,
-        "windMph": 9,
+        "precipProbability": 14,
+        "windMph": 12,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-10-01",
+        "date": "2026-10-02",
         "summary": "Overcast",
-        "precipProbability": 1,
-        "windMph": 15,
+        "precipProbability": 8,
+        "windMph": 22.1,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-10-01",
-        "summary": "Fair Day",
+        "date": "2026-10-02",
+        "summary": "Partlycloudy Day",
         "precipProbability": null,
         "windMph": 9.4,
         "rain": false,
@@ -40,12 +40,12 @@
       "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 1,
-      "avgWindMph": 11.1,
-      "windSignal": "weak",
+      "avgPrecipProbability": 11,
+      "avgWindMph": 14.5,
+      "windSignal": "medium",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 86° / 65°."
+    "writeup": "It looks breezy to windy with temperatures near 89° / 65°. A sharp cooler turn follows the next day."
   },
   "next7Summary": {
     "rainDays": 2,
