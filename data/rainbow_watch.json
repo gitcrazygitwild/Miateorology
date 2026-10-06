@@ -1,24 +1,18 @@
 {
-  "generatedAt": "2026-10-05T15:18:16.734-04:00",
+  "generatedAt": "2026-10-06T12:49:37.549-04:00",
   "today": {
-    "date": "2026-10-05",
+    "date": "2026-10-06",
     "score": 0,
     "band": "Slim",
     "summary": "Not much of a rainbow setup right now."
   },
   "bestNext7": {
     "date": "2026-10-11",
-    "score": 65,
-    "band": "Medium",
-    "summary": "A decent post-shower rainbow setup."
+    "score": 80,
+    "band": "High",
+    "summary": "Best setup for sun plus showers."
   },
   "days": [
-    {
-      "date": "2026-10-05",
-      "score": 0,
-      "band": "Slim",
-      "summary": "Not much of a rainbow setup right now."
-    },
     {
       "date": "2026-10-06",
       "score": 0,
@@ -51,7 +45,13 @@
     },
     {
       "date": "2026-10-11",
-      "score": 65,
+      "score": 80,
+      "band": "High",
+      "summary": "Best setup for sun plus showers."
+    },
+    {
+      "date": "2026-10-12",
+      "score": 68,
       "band": "Medium",
       "summary": "A decent post-shower rainbow setup."
     }
