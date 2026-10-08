@@ -4,12 +4,12 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-10-07T13:26:00.099-04:00",
+  "generatedAt": "2026-10-08T13:24:36.440-04:00",
   "today": {
-    "date": "2026-10-07",
+    "date": "2026-10-08",
     "sources": {
       "nws": {
-        "date": "2026-10-07",
+        "date": "2026-10-08",
         "summary": "Sunny",
         "precipProbability": 0,
         "windMph": 8,
@@ -18,19 +18,19 @@
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-10-07",
+        "date": "2026-10-08",
         "summary": "Overcast",
         "precipProbability": 0,
-        "windMph": 15.7,
+        "windMph": 17.9,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-10-07",
+        "date": "2026-10-08",
         "summary": "Clearsky Day",
         "precipProbability": null,
-        "windMph": 7.8,
+        "windMph": 5.6,
         "rain": false,
         "snow": false,
         "thunder": false
@@ -45,12 +45,12 @@
       "windSignal": "weak",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 73° / 53°."
+    "writeup": "Weather looks fairly quiet with temperatures near 82° / 58°."
   },
   "next7Summary": {
-    "rainDays": 2,
+    "rainDays": 3,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 4
+    "windyDays": 5
   }
 }
