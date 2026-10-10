@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-10-08T13:24:36.440-04:00",
+  "generatedAt": "2026-10-10T11:52:42.101-04:00",
   "today": {
-    "date": "2026-10-08",
+    "date": "2026-10-10",
     "sources": {
       "nws": {
-        "date": "2026-10-08",
-        "summary": "Sunny",
-        "precipProbability": 0,
-        "windMph": 8,
-        "rain": false,
+        "date": "2026-10-10",
+        "summary": "Mostly Cloudy",
+        "precipProbability": 92,
+        "windMph": 14,
+        "rain": true,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-10-08",
+        "date": "2026-10-10",
         "summary": "Overcast",
-        "precipProbability": 0,
-        "windMph": 17.9,
+        "precipProbability": 38,
+        "windMph": 24.6,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-10-08",
-        "summary": "Clearsky Day",
+        "date": "2026-10-10",
+        "summary": "Lightrain",
         "precipProbability": null,
-        "windMph": 5.6,
-        "rain": false,
+        "windMph": 12.3,
+        "rain": true,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "off",
+      "rainSignal": "medium",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 0,
-      "avgWindMph": 10.5,
-      "windSignal": "weak",
-      "summary": "Mostly quiet signal"
+      "avgPrecipProbability": 65,
+      "avgWindMph": 17,
+      "windSignal": "medium",
+      "summary": "Rain signal present"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 82° / 58°."
+    "writeup": "Showers look likely with temperatures near 70° / 60° and about 65% average precipitation signal plus wind around 17 mph."
   },
   "next7Summary": {
-    "rainDays": 3,
+    "rainDays": 5,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 5
+    "windyDays": 7
   }
 }
