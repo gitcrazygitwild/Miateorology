@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-10-10T11:52:42.101-04:00",
+  "generatedAt": "2026-10-11T12:19:46.840-04:00",
   "today": {
-    "date": "2026-10-10",
+    "date": "2026-10-11",
     "sources": {
       "nws": {
-        "date": "2026-10-10",
-        "summary": "Mostly Cloudy",
-        "precipProbability": 92,
-        "windMph": 14,
+        "date": "2026-10-11",
+        "summary": "Showers And Thunderstorms",
+        "precipProbability": 81,
+        "windMph": 8,
+        "rain": true,
+        "snow": false,
+        "thunder": true
+      },
+      "openMeteo": {
+        "date": "2026-10-11",
+        "summary": "Heavy rain showers",
+        "precipProbability": 75,
+        "windMph": 41.2,
         "rain": true,
         "snow": false,
         "thunder": false
       },
-      "openMeteo": {
-        "date": "2026-10-10",
-        "summary": "Overcast",
-        "precipProbability": 38,
-        "windMph": 24.6,
-        "rain": false,
-        "snow": false,
-        "thunder": false
-      },
       "metNo": {
-        "date": "2026-10-10",
-        "summary": "Lightrain",
+        "date": "2026-10-11",
+        "summary": "Heavyrain",
         "precipProbability": null,
-        "windMph": 12.3,
+        "windMph": 11.6,
         "rain": true,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "medium",
+      "rainSignal": "strong",
       "snowSignal": "off",
-      "thunderSignal": "off",
-      "avgPrecipProbability": 65,
-      "avgWindMph": 17,
-      "windSignal": "medium",
+      "thunderSignal": "weak",
+      "avgPrecipProbability": 78,
+      "avgWindMph": 20.3,
+      "windSignal": "strong",
       "summary": "Rain signal present"
     },
-    "writeup": "Showers look likely with temperatures near 70° / 60° and about 65% average precipitation signal plus wind around 17 mph."
+    "writeup": "Showers look likely with temperatures near 77° / 66° and about 78% average precipitation signal plus wind around 20 mph."
   },
   "next7Summary": {
-    "rainDays": 5,
+    "rainDays": 3,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 7
+    "windyDays": 6
   }
 }
