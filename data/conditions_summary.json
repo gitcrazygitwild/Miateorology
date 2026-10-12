@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-10-11T12:19:46.840-04:00",
+  "generatedAt": "2026-10-12T15:48:47.561-04:00",
   "today": {
-    "date": "2026-10-11",
+    "date": "2026-10-12",
     "sources": {
       "nws": {
-        "date": "2026-10-11",
-        "summary": "Showers And Thunderstorms",
-        "precipProbability": 81,
-        "windMph": 8,
-        "rain": true,
+        "date": "2026-10-12",
+        "summary": "Mostly Sunny",
+        "precipProbability": 0,
+        "windMph": 12,
+        "rain": false,
         "snow": false,
-        "thunder": true
+        "thunder": false
       },
       "openMeteo": {
-        "date": "2026-10-11",
-        "summary": "Heavy rain showers",
-        "precipProbability": 75,
-        "windMph": 41.2,
-        "rain": true,
+        "date": "2026-10-12",
+        "summary": "Overcast",
+        "precipProbability": 24,
+        "windMph": 28.9,
+        "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-10-11",
-        "summary": "Heavyrain",
+        "date": "2026-10-12",
+        "summary": "Clearsky Day",
         "precipProbability": null,
-        "windMph": 11.6,
-        "rain": true,
+        "windMph": 11,
+        "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "strong",
+      "rainSignal": "off",
       "snowSignal": "off",
-      "thunderSignal": "weak",
-      "avgPrecipProbability": 78,
-      "avgWindMph": 20.3,
-      "windSignal": "strong",
-      "summary": "Rain signal present"
+      "thunderSignal": "off",
+      "avgPrecipProbability": 12,
+      "avgWindMph": 17.3,
+      "windSignal": "medium",
+      "summary": "Mostly quiet signal"
     },
-    "writeup": "Showers look likely with temperatures near 77° / 66° and about 78% average precipitation signal plus wind around 20 mph."
+    "writeup": "It looks breezy to windy with temperatures near 75° / 60° plus wind around 17 mph."
   },
   "next7Summary": {
-    "rainDays": 3,
+    "rainDays": 2,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 6
+    "windyDays": 3
   }
 }
