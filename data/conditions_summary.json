@@ -4,51 +4,51 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-10-14T11:10:22.002-04:00",
+  "generatedAt": "2026-10-15T11:03:02.055-04:00",
   "today": {
-    "date": "2026-10-14",
+    "date": "2026-10-15",
     "sources": {
       "nws": {
-        "date": "2026-10-14",
-        "summary": "Sunny",
-        "precipProbability": 6,
-        "windMph": 7,
-        "rain": false,
+        "date": "2026-10-15",
+        "summary": "Chance Rain Showers",
+        "precipProbability": 27,
+        "windMph": 9,
+        "rain": true,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-10-14",
-        "summary": "Clear",
-        "precipProbability": 2,
-        "windMph": 14.3,
+        "date": "2026-10-15",
+        "summary": "Overcast",
+        "precipProbability": 13,
+        "windMph": 18.1,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-10-14",
-        "summary": "Clearsky Day",
+        "date": "2026-10-15",
+        "summary": "Cloudy",
         "precipProbability": null,
-        "windMph": 6.9,
+        "windMph": 8.7,
         "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "off",
+      "rainSignal": "weak",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 4,
-      "avgWindMph": 9.4,
+      "avgPrecipProbability": 20,
+      "avgWindMph": 11.9,
       "windSignal": "weak",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 89° / 68°. A sharp cooler turn follows the next day."
+    "writeup": "Weather looks fairly quiet with temperatures near 74° / 64°. A warmer turn follows the next day."
   },
   "next7Summary": {
-    "rainDays": 3,
+    "rainDays": 2,
     "snowDays": 0,
     "thunderDays": 0,
     "windyDays": 3
