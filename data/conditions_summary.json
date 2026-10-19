@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-10-18T10:02:06.422-04:00",
+  "generatedAt": "2026-10-19T12:59:21.737-04:00",
   "today": {
-    "date": "2026-10-18",
+    "date": "2026-10-19",
     "sources": {
       "nws": {
-        "date": "2026-10-18",
+        "date": "2026-10-19",
         "summary": "Sunny",
         "precipProbability": 0,
-        "windMph": 12,
+        "windMph": 13,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-10-18",
+        "date": "2026-10-19",
         "summary": "Clear",
         "precipProbability": 0,
-        "windMph": 22.8,
+        "windMph": 19.7,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-10-18",
+        "date": "2026-10-19",
         "summary": "Clearsky Day",
         "precipProbability": null,
-        "windMph": 11.6,
+        "windMph": 10.3,
         "rain": false,
         "snow": false,
         "thunder": false
@@ -41,16 +41,16 @@
       "snowSignal": "off",
       "thunderSignal": "off",
       "avgPrecipProbability": 0,
-      "avgWindMph": 15.5,
-      "windSignal": "medium",
+      "avgWindMph": 14.3,
+      "windSignal": "weak",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "It looks breezy to windy with temperatures near 59° / 43° plus wind around 16 mph."
+    "writeup": "Weather looks fairly quiet with temperatures near 64° / 46°."
   },
   "next7Summary": {
     "rainDays": 0,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 6
+    "windyDays": 5
   }
 }

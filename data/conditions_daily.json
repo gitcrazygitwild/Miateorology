@@ -4,74 +4,32 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-10-18T10:02:06.422-04:00",
+  "generatedAt": "2026-10-19T12:59:21.737-04:00",
   "days": [
-    {
-      "date": "2026-10-18",
-      "sources": {
-        "nws": {
-          "date": "2026-10-18",
-          "summary": "Sunny",
-          "precipProbability": 0,
-          "windMph": 12,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        },
-        "openMeteo": {
-          "date": "2026-10-18",
-          "summary": "Clear",
-          "precipProbability": 0,
-          "windMph": 22.8,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        },
-        "metNo": {
-          "date": "2026-10-18",
-          "summary": "Clearsky Day",
-          "precipProbability": null,
-          "windMph": 11.6,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        }
-      },
-      "consensus": {
-        "rainSignal": "off",
-        "snowSignal": "off",
-        "thunderSignal": "off",
-        "avgPrecipProbability": 0,
-        "avgWindMph": 15.5,
-        "windSignal": "medium",
-        "summary": "Mostly quiet signal"
-      },
-      "writeup": "It looks breezy to windy with temperatures near 59° / 43° plus wind around 16 mph."
-    },
     {
       "date": "2026-10-19",
       "sources": {
         "nws": {
           "date": "2026-10-19",
           "summary": "Sunny",
-          "precipProbability": 2,
-          "windMph": 14,
+          "precipProbability": 0,
+          "windMph": 13,
           "rain": false,
           "snow": false,
           "thunder": false
         },
         "openMeteo": {
           "date": "2026-10-19",
-          "summary": "Mainly clear",
+          "summary": "Clear",
           "precipProbability": 0,
-          "windMph": 23.3,
+          "windMph": 19.7,
           "rain": false,
           "snow": false,
           "thunder": false
         },
         "metNo": {
           "date": "2026-10-19",
-          "summary": "Clearsky Night",
+          "summary": "Clearsky Day",
           "precipProbability": null,
           "windMph": 10.3,
           "rain": false,
@@ -83,12 +41,12 @@
         "rainSignal": "off",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 1,
-        "avgWindMph": 15.9,
-        "windSignal": "medium",
+        "avgPrecipProbability": 0,
+        "avgWindMph": 14.3,
+        "windSignal": "weak",
         "summary": "Mostly quiet signal"
       },
-      "writeup": "It looks breezy to windy with temperatures near 62° / 45° plus wind around 16 mph."
+      "writeup": "Weather looks fairly quiet with temperatures near 64° / 46°."
     },
     {
       "date": "2026-10-20",
@@ -96,7 +54,7 @@
         "nws": {
           "date": "2026-10-20",
           "summary": "Sunny",
-          "precipProbability": 2,
+          "precipProbability": 0,
           "windMph": 14,
           "rain": false,
           "snow": false,
@@ -106,7 +64,7 @@
           "date": "2026-10-20",
           "summary": "Clear",
           "precipProbability": 0,
-          "windMph": 32,
+          "windMph": 29.5,
           "rain": false,
           "snow": false,
           "thunder": false
@@ -115,7 +73,7 @@
           "date": "2026-10-20",
           "summary": "Clearsky Night",
           "precipProbability": null,
-          "windMph": 10.7,
+          "windMph": 10.1,
           "rain": false,
           "snow": false,
           "thunder": false
@@ -125,12 +83,12 @@
         "rainSignal": "off",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 1,
-        "avgWindMph": 18.9,
-        "windSignal": "strong",
+        "avgPrecipProbability": 0,
+        "avgWindMph": 17.9,
+        "windSignal": "medium",
         "summary": "Mostly quiet signal"
       },
-      "writeup": "It looks breezy to windy with temperatures near 69° / 48° plus wind around 19 mph."
+      "writeup": "It looks breezy to windy with temperatures near 68° / 48° plus wind around 18 mph."
     },
     {
       "date": "2026-10-21",
@@ -138,23 +96,107 @@
         "nws": {
           "date": "2026-10-21",
           "summary": "Sunny",
-          "precipProbability": 4,
-          "windMph": 14,
+          "precipProbability": 1,
+          "windMph": 12,
           "rain": false,
           "snow": false,
           "thunder": false
         },
         "openMeteo": {
           "date": "2026-10-21",
-          "summary": "Clear",
-          "precipProbability": 5,
-          "windMph": 21.3,
+          "summary": "Mainly clear",
+          "precipProbability": 0,
+          "windMph": 22,
           "rain": false,
           "snow": false,
           "thunder": false
         },
         "metNo": {
           "date": "2026-10-21",
+          "summary": "Clearsky Night",
+          "precipProbability": null,
+          "windMph": 8.9,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "off",
+        "snowSignal": "off",
+        "thunderSignal": "off",
+        "avgPrecipProbability": 0.5,
+        "avgWindMph": 14.3,
+        "windSignal": "medium",
+        "summary": "Mostly quiet signal"
+      },
+      "writeup": "It looks breezy to windy with temperatures near 65° / 47°."
+    },
+    {
+      "date": "2026-10-22",
+      "sources": {
+        "nws": {
+          "date": "2026-10-22",
+          "summary": "Sunny",
+          "precipProbability": 1,
+          "windMph": 9,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "openMeteo": {
+          "date": "2026-10-22",
+          "summary": "Clear",
+          "precipProbability": 0,
+          "windMph": 21.5,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-10-22",
+          "summary": "Clearsky Night",
+          "precipProbability": null,
+          "windMph": 7.4,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "off",
+        "snowSignal": "off",
+        "thunderSignal": "off",
+        "avgPrecipProbability": 0.5,
+        "avgWindMph": 12.6,
+        "windSignal": "medium",
+        "summary": "Mostly quiet signal"
+      },
+      "writeup": "It looks breezy to windy with temperatures near 67° / 47°."
+    },
+    {
+      "date": "2026-10-23",
+      "sources": {
+        "nws": {
+          "date": "2026-10-23",
+          "summary": "Sunny",
+          "precipProbability": 0,
+          "windMph": 10,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "openMeteo": {
+          "date": "2026-10-23",
+          "summary": "Clear",
+          "precipProbability": 0,
+          "windMph": 23.7,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-10-23",
           "summary": "Clearsky Night",
           "precipProbability": null,
           "windMph": 8.7,
@@ -167,96 +209,12 @@
         "rainSignal": "off",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 4.5,
-        "avgWindMph": 14.7,
+        "avgPrecipProbability": 0,
+        "avgWindMph": 14.1,
         "windSignal": "medium",
         "summary": "Mostly quiet signal"
       },
-      "writeup": "It looks breezy to windy with temperatures near 65° / 49°."
-    },
-    {
-      "date": "2026-10-22",
-      "sources": {
-        "nws": {
-          "date": "2026-10-22",
-          "summary": "Sunny",
-          "precipProbability": 4,
-          "windMph": 12,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        },
-        "openMeteo": {
-          "date": "2026-10-22",
-          "summary": "Clear",
-          "precipProbability": 5,
-          "windMph": 12.5,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        },
-        "metNo": {
-          "date": "2026-10-22",
-          "summary": "Clearsky Night",
-          "precipProbability": null,
-          "windMph": 6.5,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        }
-      },
-      "consensus": {
-        "rainSignal": "off",
-        "snowSignal": "off",
-        "thunderSignal": "off",
-        "avgPrecipProbability": 4.5,
-        "avgWindMph": 10.3,
-        "windSignal": "weak",
-        "summary": "Mostly quiet signal"
-      },
-      "writeup": "Weather looks fairly quiet with temperatures near 68° / 48°."
-    },
-    {
-      "date": "2026-10-23",
-      "sources": {
-        "nws": {
-          "date": "2026-10-23",
-          "summary": "Sunny",
-          "precipProbability": 4,
-          "windMph": 13,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        },
-        "openMeteo": {
-          "date": "2026-10-23",
-          "summary": "Mainly clear",
-          "precipProbability": 3,
-          "windMph": 21.3,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        },
-        "metNo": {
-          "date": "2026-10-23",
-          "summary": "Clearsky Night",
-          "precipProbability": null,
-          "windMph": 9.4,
-          "rain": false,
-          "snow": false,
-          "thunder": false
-        }
-      },
-      "consensus": {
-        "rainSignal": "off",
-        "snowSignal": "off",
-        "thunderSignal": "off",
-        "avgPrecipProbability": 3.5,
-        "avgWindMph": 14.6,
-        "windSignal": "medium",
-        "summary": "Mostly quiet signal"
-      },
-      "writeup": "It looks breezy to windy with temperatures near 63° / 49°."
+      "writeup": "It looks breezy to windy with temperatures near 64° / 47°."
     },
     {
       "date": "2026-10-24",
@@ -264,17 +222,17 @@
         "nws": {
           "date": "2026-10-24",
           "summary": "Sunny",
-          "precipProbability": 7,
-          "windMph": 12,
+          "precipProbability": 0,
+          "windMph": 9,
           "rain": false,
           "snow": false,
           "thunder": false
         },
         "openMeteo": {
           "date": "2026-10-24",
-          "summary": "Mainly clear",
-          "precipProbability": 5,
-          "windMph": 20.8,
+          "summary": "Overcast",
+          "precipProbability": 0,
+          "windMph": 20.1,
           "rain": false,
           "snow": false,
           "thunder": false
@@ -283,7 +241,7 @@
           "date": "2026-10-24",
           "summary": "Clearsky Night",
           "precipProbability": null,
-          "windMph": 7.6,
+          "windMph": 7.4,
           "rain": false,
           "snow": false,
           "thunder": false
@@ -293,12 +251,54 @@
         "rainSignal": "off",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 6,
-        "avgWindMph": 13.5,
+        "avgPrecipProbability": 0,
+        "avgWindMph": 12.2,
         "windSignal": "medium",
         "summary": "Mostly quiet signal"
       },
       "writeup": "It looks breezy to windy with temperatures near 62° / 45°."
+    },
+    {
+      "date": "2026-10-25",
+      "sources": {
+        "nws": {
+          "date": "2026-10-25",
+          "summary": "Sunny",
+          "precipProbability": 0,
+          "windMph": 5,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "openMeteo": {
+          "date": "2026-10-25",
+          "summary": "Overcast",
+          "precipProbability": 0,
+          "windMph": 9.6,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-10-25",
+          "summary": "Clearsky Night",
+          "precipProbability": null,
+          "windMph": 6,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "off",
+        "snowSignal": "off",
+        "thunderSignal": "off",
+        "avgPrecipProbability": 0,
+        "avgWindMph": 6.9,
+        "windSignal": "off",
+        "summary": "Mostly quiet signal"
+      },
+      "writeup": "Weather looks fairly quiet with temperatures near 64° / 45°."
     }
   ]
 }
