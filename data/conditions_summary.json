@@ -4,30 +4,30 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-10-20T11:07:05.191-04:00",
+  "generatedAt": "2026-10-21T11:17:19.093-04:00",
   "today": {
-    "date": "2026-10-20",
+    "date": "2026-10-21",
     "sources": {
       "nws": {
-        "date": "2026-10-20",
+        "date": "2026-10-21",
         "summary": "Sunny",
         "precipProbability": 0,
-        "windMph": 13,
+        "windMph": 12,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-10-20",
+        "date": "2026-10-21",
         "summary": "Clear",
         "precipProbability": 0,
-        "windMph": 28.9,
+        "windMph": 23,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-10-20",
+        "date": "2026-10-21",
         "summary": "Clearsky Day",
         "precipProbability": null,
         "windMph": 10.3,
@@ -41,16 +41,16 @@
       "snowSignal": "off",
       "thunderSignal": "off",
       "avgPrecipProbability": 0,
-      "avgWindMph": 17.4,
+      "avgWindMph": 15.1,
       "windSignal": "medium",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "It looks breezy to windy with temperatures near 69° / 49° plus wind around 17 mph."
+    "writeup": "It looks breezy to windy with temperatures near 66° / 47° plus wind around 15 mph."
   },
   "next7Summary": {
     "rainDays": 0,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 4
+    "windyDays": 3
   }
 }
