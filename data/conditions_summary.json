@@ -4,33 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-11-01T11:48:43.780-05:00",
+  "generatedAt": "2026-11-02T15:22:16.201-05:00",
   "today": {
-    "date": "2026-11-01",
+    "date": "2026-11-02",
     "sources": {
       "nws": {
-        "date": "2026-11-01",
-        "summary": "Mostly Sunny",
-        "precipProbability": 3,
-        "windMph": 6,
+        "date": "2026-11-02",
+        "summary": "Partly Sunny",
+        "precipProbability": 4,
+        "windMph": 5,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-11-01",
+        "date": "2026-11-02",
         "summary": "Overcast",
-        "precipProbability": 1,
-        "windMph": 12.5,
+        "precipProbability": 3,
+        "windMph": 7.4,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-11-01",
-        "summary": "Partlycloudy Day",
+        "date": "2026-11-02",
+        "summary": "Partlycloudy Night",
         "precipProbability": null,
-        "windMph": 5.8,
+        "windMph": 4,
         "rain": false,
         "snow": false,
         "thunder": false
@@ -40,15 +40,15 @@
       "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 2,
-      "avgWindMph": 8.1,
-      "windSignal": "weak",
+      "avgPrecipProbability": 3.5,
+      "avgWindMph": 5.5,
+      "windSignal": "off",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 66° / 46°."
+    "writeup": "Weather looks fairly quiet with temperatures near 63° / 47°."
   },
   "next7Summary": {
-    "rainDays": 2,
+    "rainDays": 3,
     "snowDays": 0,
     "thunderDays": 0,
     "windyDays": 4
