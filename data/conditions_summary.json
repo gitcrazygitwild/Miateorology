@@ -4,53 +4,53 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-11-12T13:20:05.951-05:00",
+  "generatedAt": "2026-11-13T12:45:24.070-05:00",
   "today": {
-    "date": "2026-11-12",
+    "date": "2026-11-13",
     "sources": {
       "nws": {
-        "date": "2026-11-12",
-        "summary": "Slight Chance Rain Showers",
-        "precipProbability": 22,
-        "windMph": 13,
-        "rain": true,
+        "date": "2026-11-13",
+        "summary": "Partly Sunny",
+        "precipProbability": 2,
+        "windMph": 12,
+        "rain": false,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "summary": "Overcast",
-        "precipProbability": 11,
-        "windMph": 25.3,
+        "precipProbability": 1,
+        "windMph": 21.9,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-11-12",
-        "summary": "Fair Day",
+        "date": "2026-11-13",
+        "summary": "Partlycloudy Day",
         "precipProbability": null,
-        "windMph": 12.8,
+        "windMph": 11.6,
         "rain": false,
         "snow": false,
         "thunder": false
       }
     },
     "consensus": {
-      "rainSignal": "weak",
+      "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 16.5,
-      "avgWindMph": 17,
+      "avgPrecipProbability": 1.5,
+      "avgWindMph": 15.2,
       "windSignal": "medium",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "It looks breezy to windy with temperatures near 68° / 47° plus wind around 17 mph. A sharp cooler turn follows the next day."
+    "writeup": "It looks breezy to windy with temperatures near 54° / 38° plus wind around 15 mph."
   },
   "next7Summary": {
     "rainDays": 0,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 3
+    "windyDays": 4
   }
 }
