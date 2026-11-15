@@ -1,0 +1,39 @@
+.forecast-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 10px 0 14px; color: var(--muted); font-size: 12px; }
+.forecast-toolbar button, .activity-options button { border: 1px solid var(--border); border-radius: 10px; padding: 9px 13px; min-height: 40px; color: var(--text); background: var(--soft); font: inherit; cursor: pointer; }
+.forecast-toolbar button:disabled { opacity: .5; cursor: wait; }
+.forecast-toolbar button:focus-visible, .activity-options button:focus-visible, .hourly-strip:focus-visible { outline: 2px solid var(--accent2); outline-offset: 3px; }
+#forecastStatus[data-stale="true"] { color: #f5cf86; }
+.titleTodayBadgeIcon svg { display: block; width: 30px; height: 30px; }
+.todayHeroIcon svg { display: block; width: 100%; max-width: 130px; height: 130px; }
+.outlookIcon svg { display: block; width: 44px; height: 44px; }
+.planner-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+.planner-heading > span { font-size: 11px; color: var(--muted); }
+.hourly-trend { color: var(--accent2); height: 88px; border-bottom: 1px solid var(--border); }
+.hourly-trend:empty { display: none; }
+.hourly-trend svg { width: 100%; height: 100%; }
+.hourly-strip { display: flex; gap: 8px; overflow-x: auto; padding: 14px 0 12px; overscroll-behavior-x: contain; scrollbar-color: #486478 transparent; }
+.hour-card { position: relative; display: flex; align-items: center; flex-direction: column; gap: 5px; flex: 0 0 82px; border: 1px solid var(--border); border-radius: 12px; padding: 12px 8px 16px; background: var(--soft); overflow: hidden; }
+.hour-label { font-size: 12px; font-weight: 650; }.hour-day, .hour-wind { color: var(--muted); font-size: 10px; }
+.hour-temp { font-size: 27px; font-weight: 650; letter-spacing: -1px; margin: 7px 0; }
+.hour-rain { color: var(--accent2); font-size: 11px; }
+.hour-rain-bar { position: absolute; bottom: 0; left: 0; width: var(--rain); height: 3px; background: var(--accent2); }
+.hourly-issued { margin: 7px 0 0; color: var(--muted); font-size: 10px; }
+.outdoor-card { background: linear-gradient(120deg, #19332c, var(--card) 85%); }
+.outdoor-intro { color: var(--muted); font-size: 13px; margin: 0 0 15px; }
+.activity-options { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 23px; }
+.activity-options button { font-size: 12px; }
+.activity-options button[aria-pressed="true"] { color: #102b20; background: var(--accent); border-color: var(--accent); font-weight: 650; }
+.outdoor-day { display: block; color: var(--accent); font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+.outdoor-when { font-size: clamp(26px, 4vw, 37px); font-weight: 650; letter-spacing: -1px; margin: 9px 0 12px; }
+.outdoor-details { font-size: 13px; line-height: 1.7; margin-bottom: 14px; }
+.outdoor-note { color: var(--muted); font-size: 10px; line-height: 1.6; margin: 0; }
+@media(max-width:600px) {
+  .forecast-toolbar { align-items: flex-start; font-size: 11px; }
+  .forecast-toolbar button { white-space: nowrap; }
+  .planner-heading { display: block; }.planner-heading > span { display: block; margin-bottom: 8px; }
+  .hour-card { flex-basis: 74px; }.hourly-trend { height: 66px; }
+  .activity-options button { flex: 1; padding: 9px 8px; font-size: 11px; }
+}
+/* Let detailed source tables scroll within their card on small screens. */
+#monthlyWinner, #disagreement, #conditionsTable, #leaderboard, #latest, #blendDaily, #blendHourly { max-width: 100%; overflow-x: auto; }
+.card { min-width: 0; }

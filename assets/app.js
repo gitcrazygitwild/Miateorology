@@ -1,5 +1,7 @@
+import { richmondDay, forecastCondition, weatherIcon } from './weather-shared.js';
+import { renderHourlyStrip, initOutdoorPlanner } from './weather-planner.js';
 async function fetchJson(p) {
-  const res = await fetch(p, { cache: "no-store" });
+  const res = await fetch(p, { cache: "no-store", signal: AbortSignal.timeout(12000) });
   if (!res.ok) throw new Error(`Failed to load ${p}`);
   return res.json();
 }
@@ -83,18 +85,9 @@ function windLabel(signal) {
 }
 
 function pickWeatherIcon(day) {
-  const c = day.consensus || {};
-  const summary = String(c.summary || "").toLowerCase();
-
-  if (c.thunderSignal === "strong" || c.thunderSignal === "medium" || summary.includes("thunder")) return "⛈️";
-  if (c.snowSignal === "strong" || c.snowSignal === "medium" || summary.includes("snow")) return "🌨️";
-  if (c.rainSignal === "strong" || c.rainSignal === "medium" || summary.includes("rain")) return "🌧️";
-  if (summary.includes("cloud")) return "☁️";
-  if (summary.includes("overcast")) return "☁️";
-  if (summary.includes("partly")) return "⛅";
-  if (summary.includes("clear")) return "☀️";
-  if (summary.includes("quiet")) return "☀️";
-  return "🌤️";
+  const holder = document.createElement('span');
+  holder.innerHTML = weatherIcon(forecastCondition(day).kind);
+  return holder.firstElementChild;
 }
 
 function mergeOutlookData(blendDaily, conditionsDaily, disagreementDaily) {
@@ -114,11 +107,11 @@ function mergeOutlookData(blendDaily, conditionsDaily, disagreementDaily) {
     byDate.get(d.date).disagreement = d;
   }
 
-  return Array.from(byDate.values()).sort((a, b) => a.date.localeCompare(b.date));
+  return Array.from(byDate.values()).filter(day => day.date >= richmondDay()).sort((a, b) => a.date.localeCompare(b.date)).slice(0, 7);
 }
 
 function renderTitleTodayBadge(container, mergedDays) {
-  const today = mergedDays?.[0];
+  const today = mergedDays?.find(day => day.date === richmondDay());
   if (!today) {
     container.replaceChildren();
     return;
@@ -724,7 +717,7 @@ function renderOutlookHighlight(container, mergedDays) {
 }
 
 function renderTodayHero(container, mergedDays) {
-  const today = mergedDays?.[0];
+  const today = mergedDays?.find(day => day.date === richmondDay());
   if (!today) {
     container.textContent = "Today’s forecast not ready yet.";
     return;
@@ -741,7 +734,7 @@ function renderTodayHero(container, mergedDays) {
     el("div", { class: "todayHeroMain" }, [
       el("div", { class: "todayHeroLabel" }, ["Today’s Richmond forecast"]),
       el("div", { class: "todayHeroTitle" }, [`${label.weekday} ${label.monthDay}`]),
-      el("div", { class: "todayHeroSub" }, [consensus.summary || "—"]),
+      el("div", { class: "todayHeroSub" }, [forecastCondition(conditions).label]),
       el("div", { class: "todayHeroTemps" }, [
         `${blend.blendedHighF ?? "—"}° / ${blend.blendedLowF ?? "—"}°`
       ]),
@@ -821,7 +814,7 @@ function renderDailyOutlook(container, mergedDays) {
             `Blended high / low • ${blend.blendedWindMph == null ? "—" : `${blend.blendedWindMph.toFixed(0)} mph`} wind`
           ]),
 
-          el("div", { class: "outlookSummary" }, [consensus.summary || "—"]),
+          el("div", { class: "outlookSummary" }, [forecastCondition(conditions).label]),
 
           el("div", { class: "outlookMetaRow" }, [
             el("span", { class: "smallMuted" }, [
@@ -979,103 +972,71 @@ async function main() {
       btnBackfill.classList.add("active");
       btnLive.classList.remove("active");
       await loadBackfill(meta);
-      localStorage.setItem("accuracyView", "backfill");
+      try { localStorage.setItem("accuracyView", "backfill"); } catch {}
     } else {
       btnLive.classList.add("active");
       btnBackfill.classList.remove("active");
       await loadLive(meta);
-      localStorage.setItem("accuracyView", "live");
+      try { localStorage.setItem("accuracyView", "live"); } catch {}
     }
   }
 
   btnLive?.addEventListener("click", () => setMode("live").catch(console.error));
   btnBackfill?.addEventListener("click", () => setMode("backfill").catch(console.error));
 
-  const pref = localStorage.getItem("accuracyView") || "live";
+  let pref = 'live';
+  try { pref = localStorage.getItem('accuracyView') || 'live'; } catch {}
   await setMode(pref);
-
-  let disagreement = null;
-  let conditions = null;
-  let blendDaily = null;
-
-  try {
-    const story = await fetchJson("./data/weather_story.json");
-    renderWeatherStory(document.getElementById("weatherStory"), story);
-  } catch {
-    document.getElementById("weatherStory").textContent = "Weather story not ready yet.";
-  }
-
-  try {
-    const rainbow = await fetchJson("./data/rainbow_watch.json");
-    renderRainbowWatch(document.getElementById("rainbowWatch"), rainbow);
-  } catch {
-    document.getElementById("rainbowWatch").textContent = "Rainbow watch not ready yet.";
-  }
-
-  try {
-    const confidence = await fetchJson("./data/confidence_snapshot.json");
-    renderConfidenceSnapshot(document.getElementById("confidenceSnapshot"), confidence);
-  } catch {
-    document.getElementById("confidenceSnapshot").textContent = "Confidence snapshot not ready yet.";
-  }
-
-  try {
-    disagreement = await fetchJson("./data/disagreement_daily.json");
-    renderDisagreement(document.getElementById("disagreement"), disagreement);
-  } catch {
-    document.getElementById("disagreement").textContent = "Disagreement data not ready yet.";
-  }
-
-  try {
-    const condSummary = await fetchJson("./data/conditions_summary.json");
-    renderConditionsSummary(document.getElementById("conditionsSummary"), condSummary);
-  } catch {
-    document.getElementById("conditionsSummary").textContent = "Conditions summary not ready yet.";
-  }
-
-  try {
-    conditions = await fetchJson("./data/conditions_daily.json");
-    renderConditionsTable(document.getElementById("conditionsTable"), conditions);
-  } catch {
-    document.getElementById("conditionsTable").textContent = "Conditions table not ready yet.";
-  }
-
-  try {
-    blendDaily = await fetchJson("./data/blend_daily.json");
-    renderBlendDaily(document.getElementById("blendDaily"), blendDaily);
-
-    const blendHourly = await fetchJson("./data/blend_hourly.json");
-    renderBlendHourly(document.getElementById("blendHourly"), blendHourly);
-  } catch {
-    document.getElementById("blendDaily").textContent = "Blend not generated yet (wait for action).";
-    document.getElementById("blendHourly").textContent = "Blend not generated yet (wait for action).";
-  }
-
-  try {
-    if (blendDaily && conditions && disagreement) {
-      const merged = mergeOutlookData(blendDaily, conditions, disagreement);
-      renderTitleTodayBadge(document.getElementById("titleTodayBadge"), merged);
-      renderTodayHero(document.getElementById("todayHero"), merged);
-      renderOutlookHighlight(document.getElementById("outlookHighlight"), merged);
-      renderDailyOutlook(document.getElementById("dailyOutlook"), merged);
-    } else {
-      document.getElementById("todayHero").textContent = "Today’s forecast not ready yet.";
-      document.getElementById("outlookHighlight").textContent = "";
-      document.getElementById("dailyOutlook").textContent = "7-day outlook not ready yet.";
-    }
-  } catch {
-    document.getElementById("todayHero").textContent = "Today’s forecast not ready yet.";
-    document.getElementById("outlookHighlight").textContent = "";
-    document.getElementById("dailyOutlook").textContent = "7-day outlook not ready yet.";
-  }
-
-  if (meta.updatedAt) {
-    document.getElementById("updated").textContent =
-      `Last updated: ${formatRichmondTimestamp(meta.updatedAt)} Richmond time`;
-  }
 }
 
-main().catch(err => {
-  console.error(err);
-  document.body.append(el("pre", {}, [String(err)]));
-});
+const updateOutdoor = initOutdoorPlanner();
+let refreshing = false;
+function currentFeed(data) {
+  const age = Date.now() - new Date(data?.generatedAt).getTime();
+  return Number.isFinite(age) && age >= -300000 && age <= 72 * 3600000 ? data : null;
+}
+async function refreshForecast() {
+  if (refreshing) return;
+  refreshing = true;
+  const button = document.getElementById('refreshForecast');
+  button.disabled = true;
+  const names = ['weather_story', 'rainbow_watch', 'confidence_snapshot', 'disagreement_daily', 'conditions_summary', 'conditions_daily', 'blend_daily', 'blend_hourly'];
+  try {
+    const results = await Promise.allSettled(names.map(name => fetchJson(`./data/${name}.json`)));
+    const data = Object.fromEntries(names.map((name, i) => [name, results[i].status === 'fulfilled' ? currentFeed(results[i].value) : null]));
+    const renderers = [
+      ['weather_story','weatherStory',renderWeatherStory], ['rainbow_watch','rainbowWatch',renderRainbowWatch],
+      ['confidence_snapshot','confidenceSnapshot',renderConfidenceSnapshot], ['disagreement_daily','disagreement',renderDisagreement],
+      ['conditions_summary','conditionsSummary',renderConditionsSummary], ['conditions_daily','conditionsTable',renderConditionsTable],
+      ['blend_daily','blendDaily',renderBlendDaily], ['blend_hourly','blendHourly',renderBlendHourly]
+    ];
+    for (const [key,id,render] of renderers) {
+      const target = document.getElementById(id);
+      if (data[key]) render(target, data[key]);
+      else target.textContent = 'Current forecast unavailable. Please try refreshing.';
+    }
+    renderHourlyStrip(data.blend_hourly);
+    updateOutdoor(data.blend_hourly, data.conditions_daily);
+    const merged = data.blend_daily && data.conditions_daily ? mergeOutlookData(data.blend_daily, data.conditions_daily, data.disagreement_daily) : [];
+    const openCards = [...document.querySelectorAll('#dailyOutlook details')].map((card, i) => card.open ? i : -1);
+    renderTitleTodayBadge(document.getElementById('titleTodayBadge'), merged);
+    renderTodayHero(document.getElementById('todayHero'), merged);
+    renderOutlookHighlight(document.getElementById('outlookHighlight'), merged);
+    renderDailyOutlook(document.getElementById('dailyOutlook'), merged);
+    document.querySelectorAll('#dailyOutlook details').forEach((card, i) => { card.open = openCards.includes(i); });
+    const issued = data.blend_daily?.generatedAt;
+    const older = issued && Math.min(+new Date(issued), +new Date(data.conditions_daily?.generatedAt)) < Date.now() - 36 * 3600000;
+    const status = document.getElementById('forecastStatus');
+    status.dataset.stale = String(!merged.length || older);
+    status.textContent = !merged.length ? 'Forecast unavailable · try refresh' : `${older ? 'Older forecast' : 'Forecast issued'} ${formatRichmondTimestamp(issued)} ET · checked ${getRichmondFormatter({hour:'numeric',minute:'2-digit'}).format(new Date())}`;
+    document.getElementById('updated').textContent = 'Richmond, Virginia · forecasts refresh from the latest published data every 5 minutes.';
+  } catch (error) {
+    console.error(error);
+    document.getElementById('forecastStatus').textContent = 'Could not refresh the forecast. Try again shortly.';
+  } finally { refreshing = false; button.disabled = false; }
+}
+document.getElementById('refreshForecast').addEventListener('click', refreshForecast);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') refreshForecast(); });
+setInterval(() => { if (document.visibilityState === 'visible') refreshForecast(); }, 300000);
+refreshForecast();
+main().catch(() => { document.getElementById('viewNote').textContent = 'Accuracy history is temporarily unavailable. The forecast loads separately.'; });

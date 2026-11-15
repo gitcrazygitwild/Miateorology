@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Mia-teorology</title>
-  <link rel="stylesheet" href="./assets/styles.css?v=11" />
+  <link rel="stylesheet" href="./assets/styles.css?v=12" />
+  <link rel="stylesheet" href="./assets/planner.css?v=12" />
 </head>
 <body>
   <header class="wrap siteHeader">
@@ -18,10 +19,28 @@
   </header>
 
   <main class="wrap">
+    <div class="forecast-toolbar"><span id="forecastStatus" role="status">Checking Richmond’s forecast…</span><button id="refreshForecast" type="button">↻ Refresh</button></div>
     <section class="card heroCard">
       <div id="todayHero"></div>
     </section>
 
+    <section class="card" aria-labelledby="hourlyHeading">
+      <div class="planner-heading"><h2 id="hourlyHeading">The next 24 hours</h2><span>Temperature · rain · wind</span></div>
+      <div id="hourlyTrend" class="hourly-trend"></div>
+      <div id="hourlyStrip" class="hourly-strip" role="list" tabindex="0" aria-label="Hourly Richmond forecast, scroll for more hours"></div>
+      <p id="hourlyIssued" class="hourly-issued"></p>
+    </section>
+    <section class="card outdoor-card" aria-labelledby="outdoorHeading">
+      <h2 id="outdoorHeading">A little time outside</h2>
+      <p class="outdoor-intro">Find a comfortable window in the next 48 hours.</p>
+      <div class="activity-options" role="group" aria-label="Choose your activity">
+        <button type="button" data-outdoor-activity="walk" aria-pressed="true">A walk</button>
+        <button type="button" data-outdoor-activity="errands" aria-pressed="false">Quick errands</button>
+        <button type="button" data-outdoor-activity="patio" aria-pressed="false">Patio time</button>
+      </div>
+      <div aria-live="polite"><span id="outdoorDay" class="outdoor-day"></span><div id="outdoorWhen" class="outdoor-when">Checking the forecast…</div><p id="outdoorDetails" class="outdoor-details"></p></div>
+      <p class="outdoor-note">Ranked by lower rain, lighter wind, and comfortable temperatures between 7am and 7pm ET. A forecast suggestion; check conditions before heading out.</p>
+    </section>
     <section class="card">
       <h2>Weather story</h2>
       <div id="weatherStory"></div>
@@ -147,6 +166,6 @@
     <span id="updated"></span>
   </footer>
 
-  <script type="module" src="./assets/app.js?v=11"></script>
+  <script type="module" src="./assets/app.js?v=12"></script>
 </body>
 </html>

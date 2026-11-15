@@ -4,7 +4,9 @@
   "type": "module",
   "scripts": {
     "update": "node scripts/update.js",
-    "backfill:openmeteo:year": "node scripts/backfill_openmeteo_year.js"
+    "backfill:openmeteo:year": "node scripts/backfill_openmeteo_year.js",
+    "test": "node --test tests/*.test.js",
+    "check": "node --check assets/app.js && node --check assets/weather-planner.js && node --check assets/planner-model.js && node --check assets/weather-shared.js"
   },
   "dependencies": {
     "luxon": "^3.5.0"
