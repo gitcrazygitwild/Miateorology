@@ -1,5 +1,11 @@
 import { richmondDay, forecastCondition, weatherIcon } from './weather-shared.js';
 import { renderHourlyStrip, initOutdoorPlanner } from './weather-planner.js';
+import { initDesk, renderRain, renderForecastDays } from './desk-ui.js';
+import { initAccuracyChart } from './accuracy-chart.js';
+import { PROVIDERS } from './insights-model.js';
+const providerName = name => PROVIDERS[name] || name;
+initDesk();
+const updateChart = initAccuracyChart(document.getElementById('chartWrap'));
 async function fetchJson(p) {
   const res = await fetch(p, { cache: "no-store", signal: AbortSignal.timeout(12000) });
   if (!res.ok) throw new Error(`Failed to load ${p}`);
@@ -57,31 +63,10 @@ function pillClassForConfidence(conf) {
 }
 
 function pillLabelForConfidence(conf) {
-  if (conf === "high") return "High confidence";
-  if (conf === "medium") return "Mixed confidence";
-  if (conf === "low") return "Low confidence";
+  if (conf === "high") return "High source agreement";
+  if (conf === "medium") return "Mixed source agreement";
+  if (conf === "low") return "Low source agreement";
   return "Unknown";
-}
-
-function pillClassForSignal(signal) {
-  if (signal === "strong") return "conditionPill signalStrong";
-  if (signal === "medium") return "conditionPill signalMedium";
-  if (signal === "weak") return "conditionPill signalWeak";
-  return "conditionPill signalOff";
-}
-
-function pillLabelForSignal(signal) {
-  if (signal === "strong") return "Strong";
-  if (signal === "medium") return "Moderate";
-  if (signal === "weak") return "Weak";
-  return "None";
-}
-
-function windLabel(signal) {
-  if (signal === "strong") return "Wind: Strong";
-  if (signal === "medium") return "Wind: Moderate";
-  if (signal === "weak") return "Wind: Breezy";
-  return "Wind: Light";
 }
 
 function pickWeatherIcon(day) {
@@ -124,7 +109,7 @@ function renderTitleTodayBadge(container, mergedDays) {
   const badge = el("div", { class: "titleTodayBadgeInner" }, [
     el("span", { class: "titleTodayBadgeIcon", "aria-hidden": "true" }, [icon]),
     el("span", { class: "titleTodayBadgeTemps" }, [
-      `${hi ?? "—"}°/${lo ?? "—"}°`
+      `${Number.isFinite(hi) ? Math.round(hi) : "—"}° / ${Number.isFinite(lo) ? Math.round(lo) : "—"}°`
     ])
   ]);
 
@@ -146,65 +131,11 @@ function renderWeatherStory(container, data) {
 }
 
 function renderRainbowWatch(container, data) {
-  if (!data?.today) {
-    container.textContent = "Rainbow watch not ready yet.";
-    return;
-  }
-
-  const today = data.today;
-  const best = data.bestNext7;
-
-  const grid = el("div", { class: "statGrid" }, [
-    el("div", { class: "statCard rainbowCard" }, [
-      el("div", { class: "statLabel" }, ["Today"]),
-      el("div", { class: "statValue" }, [`${today.score ?? "—"}%`]),
-      el("div", { class: "statSub" }, [`${today.band} rainbow potential`]),
-      el("div", { class: "smallMuted" }, [today.summary || ""])
-    ]),
-    el("div", { class: "statCard rainbowCard" }, [
-      el("div", { class: "statLabel" }, ["Best next 7 days"]),
-      el("div", { class: "statValue" }, [
-        best?.date ? `${formatRichmondDay(best.date).weekday} ${formatRichmondDay(best.date).monthDay}` : "—"
-      ]),
-      el("div", { class: "statSub" }, [
-        best?.score != null ? `${best.score}% • ${best.band}` : "—"
-      ])
-    ])
-  ]);
-
-  container.replaceChildren(grid);
-}
-
-function renderConfidenceSnapshot(container, data) {
-  const locked = data?.mostLockedInDay;
-  const uncertain = data?.mostUncertainDay;
-
-  const card = el("div", { class: "statGrid" }, [
-    el("div", { class: "statCard" }, [
-      el("div", { class: "statLabel" }, ["Most locked-in day"]),
-      el("div", { class: "statValue" }, [
-        locked?.date ? `${formatRichmondDay(locked.date).weekday} ${formatRichmondDay(locked.date).monthDay}` : "—"
-      ]),
-      el("div", { class: "statSub" }, [
-        locked?.overallSpreadF != null
-          ? `Temp spread ${locked.overallSpreadF.toFixed(1)}°`
-          : "—"
-      ])
-    ]),
-    el("div", { class: "statCard" }, [
-      el("div", { class: "statLabel" }, ["Most uncertain day"]),
-      el("div", { class: "statValue" }, [
-        uncertain?.date ? `${formatRichmondDay(uncertain.date).weekday} ${formatRichmondDay(uncertain.date).monthDay}` : "—"
-      ]),
-      el("div", { class: "statSub" }, [
-        uncertain?.overallSpreadF != null
-          ? `Temp spread ${uncertain.overallSpreadF.toFixed(1)}°`
-          : "—"
-      ])
-    ])
-  ]);
-
-  container.replaceChildren(card);
+  const today = (data?.days || []).find(day => day.date === richmondDay());
+  const future = (data?.days || []).filter(day => day.date >= richmondDay() && Number.isFinite(day.score));
+  const best = [...future].sort((a, b) => b.score - a.score)[0];
+  if (!today || !Number.isFinite(today.score)) { container.textContent = 'Mia is waiting for today’s rainbow outlook.'; return; }
+  container.replaceChildren(el('p', {}, [`${today.band || 'Unknown'} potential today · ${Math.round(today.score)}/100 rainbow index.`]), el('p', {class:'smallMuted'}, [best?.score > today.score ? `Best upcoming setup: ${formatRichmondDay(best.date).weekday} ${formatRichmondDay(best.date).monthDay} · ${Math.round(best.score)}/100. A playful index, not a probability.` : `${today.summary || 'Keep an eye on the sky.'} A playful index, not a probability.`]));
 }
 
 function renderLeaderboard(container, data) {
@@ -227,7 +158,7 @@ function renderLeaderboard(container, data) {
     tbody.append(
       el("tr", {}, [
         el("td", {}, [String(i + 1)]),
-        el("td", {}, [row.provider]),
+        el("td", {}, [providerName(row.provider)]),
         el("td", {}, [row.meanOverallAbsF == null ? "—" : `${row.meanOverallAbsF.toFixed(1)}°`]),
         el("td", {}, [row.meanWindAbsMph == null ? "—" : `${row.meanWindAbsMph.toFixed(1)} mph`]),
         el("td", {}, [row.precipHitRate == null ? "—" : `${row.precipHitRate.toFixed(0)}%`]),
@@ -252,7 +183,7 @@ function renderLatest(container, latestScore) {
       ])
     ]),
     el("p", { class: "muted" }, [
-      `Observed high/low: ${observed.highF ?? "—"}° / ${observed.lowF ?? "—"}° • Max wind: ${observed.maxWindMph ?? "—"} mph • Precip: ${observed.precipOccurred ? "Yes" : "No"}`
+      `Observed high/low: ${observed.highF ?? "—"}° / ${observed.lowF ?? "—"}° • Max wind: ${observed.maxWindMph ?? "—"} mph • Precip: ${observed.precipOccurred == null ? "—" : observed.precipOccurred ? "Yes" : "No"}`
     ])
   ]);
 
@@ -277,7 +208,7 @@ function renderLatest(container, latestScore) {
     const e = s.errors || {};
     tbody.append(
       el("tr", {}, [
-        el("td", {}, [s.provider]),
+        el("td", {}, [providerName(s.provider)]),
         el("td", {}, [`${p.highF ?? "—"}° / ${p.lowF ?? "—"}°`]),
         el("td", {}, [p.windMph == null ? "—" : `${p.windMph} mph`]),
         el("td", {}, [typeof p.precipProbability === "number" ? `${p.precipProbability}%` : (p.precipExpected ? "Yes" : "No")]),
@@ -320,13 +251,13 @@ function renderBlendDaily(container, data) {
         el("td", {}, [d.blendedPrecipProbability == null ? "—" : `${d.blendedPrecipProbability.toFixed(0)}%`]),
         el("td", {}, [d.blendedWindMph == null ? "—" : `${d.blendedWindMph.toFixed(0)} mph`]),
         el("td", {}, [
-          `${d.sources.nws?.highF ?? "—"}° / ${d.sources.nws?.lowF ?? "—"}° • ${d.sources.nws?.precipProbability ?? "—"}% • ${d.sources.nws?.windMph ?? "—"} mph`
+          `${d.sources?.nws?.highF ?? "—"}° / ${d.sources?.nws?.lowF ?? "—"}° • ${d.sources?.nws?.precipProbability ?? "—"}% • ${d.sources?.nws?.windMph ?? "—"} mph`
         ]),
         el("td", {}, [
-          `${d.sources.openMeteo?.highF ?? "—"}° / ${d.sources.openMeteo?.lowF ?? "—"}° • ${d.sources.openMeteo?.precipProbability ?? "—"}% • ${d.sources.openMeteo?.windMph ?? "—"} mph`
+          `${d.sources?.openMeteo?.highF ?? "—"}° / ${d.sources?.openMeteo?.lowF ?? "—"}° • ${d.sources?.openMeteo?.precipProbability ?? "—"}% • ${d.sources?.openMeteo?.windMph ?? "—"} mph`
         ]),
         el("td", {}, [
-          `${d.sources.metNo?.highF ?? "—"}° / ${d.sources.metNo?.lowF ?? "—"}° • ${d.sources.metNo?.precipProbability ?? "—"}% • ${d.sources.metNo?.windMph ?? "—"} mph`
+          `${d.sources?.metNo?.highF ?? "—"}° / ${d.sources?.metNo?.lowF ?? "—"}° • ${d.sources?.metNo?.precipProbability ?? "—"}% • ${d.sources?.metNo?.windMph ?? "—"} mph`
         ])
       ])
     );
@@ -363,18 +294,18 @@ function renderBlendHourly(container, data) {
         el("td", {}, [h.blendedPrecipProbability == null ? "—" : `${h.blendedPrecipProbability.toFixed(0)}%`]),
         el("td", {}, [h.blendedWindMph == null ? "—" : `${h.blendedWindMph.toFixed(0)} mph`]),
         el("td", {}, [
-          h.sources.nws
-            ? `${h.sources.nws.tempF ?? "—"}° • ${h.sources.nws.precipProbability ?? "—"}% • ${h.sources.nws.windMph ?? "—"} mph`
+          h.sources?.nws
+            ? `${h.sources?.nws.tempF ?? "—"}° • ${h.sources?.nws.precipProbability ?? "—"}% • ${h.sources?.nws.windMph ?? "—"} mph`
             : "—"
         ]),
         el("td", {}, [
-          h.sources.openMeteo
-            ? `${h.sources.openMeteo.tempF ?? "—"}° • ${h.sources.openMeteo.precipProbability ?? "—"}% • ${h.sources.openMeteo.windMph ?? "—"} mph`
+          h.sources?.openMeteo
+            ? `${h.sources?.openMeteo.tempF ?? "—"}° • ${h.sources?.openMeteo.precipProbability ?? "—"}% • ${h.sources?.openMeteo.windMph ?? "—"} mph`
             : "—"
         ]),
         el("td", {}, [
-          h.sources.metNo
-            ? `${h.sources.metNo.tempF ?? "—"}° • ${h.sources.metNo.precipProbability ?? "—"}% • ${h.sources.metNo.windMph ?? "—"} mph`
+          h.sources?.metNo
+            ? `${h.sources?.metNo.tempF ?? "—"}° • ${h.sources?.metNo.precipProbability ?? "—"}% • ${h.sources?.metNo.windMph ?? "—"} mph`
             : "—"
         ])
       ])
@@ -397,7 +328,7 @@ function renderMonthlyWinner(container, data) {
   const grid = el("div", { class: "statGrid" }, [
     el("div", { class: "statCard" }, [
       el("div", { class: "statLabel" }, ["Leader"]),
-      el("div", { class: "statValue" }, [leader.provider]),
+      el("div", { class: "statValue" }, [providerName(leader.provider)]),
       el("div", { class: "statSub" }, [`${leader.meanOverallAbsF.toFixed(1)}° mean temp error`])
     ]),
     el("div", { class: "statCard" }, [
@@ -424,7 +355,7 @@ function renderMonthlyWinner(container, data) {
     tbody.append(
       el("tr", {}, [
         el("td", {}, [String(i + 1)]),
-        el("td", {}, [row.provider]),
+        el("td", {}, [providerName(row.provider)]),
         el("td", {}, [row.meanOverallAbsF == null ? "—" : `${row.meanOverallAbsF.toFixed(1)}°`]),
         el("td", {}, [String(row.daysScored)])
       ])
@@ -471,251 +402,6 @@ function renderDisagreement(container, data) {
   container.replaceChildren(table);
 }
 
-function renderLineChart(container, chartData, mode) {
-  const seriesEntries = Object.entries(chartData.series || {})
-    .map(([name, arr]) => [name, (arr || []).filter(p => typeof p.value === "number")])
-    .filter(([, arr]) => arr.length);
-
-  if (!seriesEntries.length) {
-    container.textContent = "Not enough chart data yet.";
-    return;
-  }
-
-  const allPoints = seriesEntries.flatMap(([, arr]) => arr);
-  const values = allPoints.map(p => p.value);
-  const minY = Math.min(...values);
-  const maxY = Math.max(...values);
-  const rangeY = Math.max(1, maxY - minY);
-
-  const width = 820;
-  const height = 280;
-  const padL = 44;
-  const padR = 16;
-  const padT = 16;
-  const padB = 30;
-  const innerW = width - padL - padR;
-  const innerH = height - padT - padB;
-
-  const palette = {
-    nws: "#7dd3fc",
-    openMeteo: mode === "backfill" ? "#c4b5fd" : "#86efac",
-    metNo: "#fca5a5"
-  };
-
-  const xAt = (i, n) => padL + (n <= 1 ? innerW / 2 : (i * innerW) / (n - 1));
-  const yAt = (v) => padT + innerH - ((v - minY) / rangeY) * innerH;
-
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
-  svg.setAttribute("class", "chartSvg");
-
-  for (let i = 0; i < 4; i++) {
-    const y = padT + (innerH * i) / 3;
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("x1", padL);
-    line.setAttribute("x2", width - padR);
-    line.setAttribute("y1", y);
-    line.setAttribute("y2", y);
-    line.setAttribute("stroke", "rgba(255,255,255,.08)");
-    line.setAttribute("stroke-width", "1");
-    svg.appendChild(line);
-
-    const labelVal = (maxY - ((maxY - minY) * i) / 3).toFixed(1);
-    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    text.setAttribute("x", 4);
-    text.setAttribute("y", y + 4);
-    text.setAttribute("fill", "#a8b3d6");
-    text.setAttribute("font-size", "12");
-    text.textContent = `${labelVal}°`;
-    svg.appendChild(text);
-  }
-
-  for (const [name, arr] of seriesEntries) {
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    const d = arr.map((p, i) => `${i === 0 ? "M" : "L"} ${xAt(i, arr.length)} ${yAt(p.value)}`).join(" ");
-    path.setAttribute("d", d);
-    path.setAttribute("fill", "none");
-    path.setAttribute("stroke", palette[name] || "#fff");
-    path.setAttribute("stroke-width", "3");
-    path.setAttribute("stroke-linecap", "round");
-    path.setAttribute("stroke-linejoin", "round");
-    svg.appendChild(path);
-  }
-
-  const firstPoint = allPoints[0];
-  const lastPoint = allPoints[allPoints.length - 1];
-  if (firstPoint && lastPoint) {
-    const leftText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    leftText.setAttribute("x", padL);
-    leftText.setAttribute("y", height - 6);
-    leftText.setAttribute("fill", "#a8b3d6");
-    leftText.setAttribute("font-size", "12");
-    leftText.textContent = firstPoint.date;
-    svg.appendChild(leftText);
-
-    const rightText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    rightText.setAttribute("x", width - padR);
-    rightText.setAttribute("y", height - 6);
-    rightText.setAttribute("text-anchor", "end");
-    rightText.setAttribute("fill", "#a8b3d6");
-    rightText.setAttribute("font-size", "12");
-    rightText.textContent = lastPoint.date;
-    svg.appendChild(rightText);
-  }
-
-  const legend = el("div", { class: "chartLegend" });
-  if (mode === "live") {
-    legend.append(
-      el("span", { class: "legendItem" }, [el("span", { class: "legendSwatch swatchNws" }), "NWS"]),
-      el("span", { class: "legendItem" }, [el("span", { class: "legendSwatch swatchOm" }), "Open-Meteo"]),
-      el("span", { class: "legendItem" }, [el("span", { class: "legendSwatch swatchMet" }), "MET.no"])
-    );
-  } else {
-    legend.append(
-      el("span", { class: "legendItem" }, [el("span", { class: "legendSwatch swatchBackfill" }), "Open-Meteo backfill"])
-    );
-  }
-
-  const wrapper = el("div", { class: "chartBox" }, [legend]);
-  wrapper.append(svg);
-  container.replaceChildren(wrapper);
-}
-
-function renderConditionsSummary(container, data) {
-  if (!data?.today) {
-    container.textContent = "Conditions summary not ready yet.";
-    return;
-  }
-
-  const today = data.today;
-  const next7 = data.next7Summary || {};
-
-  const grid = el("div", { class: "statGrid" }, [
-    el("div", { class: "statCard" }, [
-      el("div", { class: "statLabel" }, ["Today"]),
-      el("div", { class: "statValue" }, [today.consensus?.summary || "—"]),
-      el("div", { class: "statSub" }, [
-        `Avg precip: ${today.consensus?.avgPrecipProbability == null ? "—" : `${today.consensus.avgPrecipProbability.toFixed(0)}%`} • Avg wind: ${today.consensus?.avgWindMph == null ? "—" : `${today.consensus.avgWindMph.toFixed(0)} mph`}`
-      ])
-    ]),
-    el("div", { class: "statCard" }, [
-      el("div", { class: "statLabel" }, ["Rain signal"]),
-      el("div", { class: "statValue" }, [String(next7.rainDays ?? 0)]),
-      el("div", { class: "statSub" }, ["days in next 7 with moderate/strong rain signal"])
-    ]),
-    el("div", { class: "statCard" }, [
-      el("div", { class: "statLabel" }, ["Windy days"]),
-      el("div", { class: "statValue" }, [String(next7.windyDays ?? 0)]),
-      el("div", { class: "statSub" }, ["days in next 7 with moderate/strong wind signal"])
-    ]),
-    el("div", { class: "statCard" }, [
-      el("div", { class: "statLabel" }, ["Thunder signal"]),
-      el("div", { class: "statValue" }, [String(next7.thunderDays ?? 0)]),
-      el("div", { class: "statSub" }, ["days in next 7 with moderate/strong thunder signal"])
-    ])
-  ]);
-
-  container.replaceChildren(grid);
-}
-
-function renderConditionsTable(container, data) {
-  const outer = el("div", { class: "tableScroll" });
-  const table = el("table", { class: "conditionsTable" });
-
-  table.append(
-    el("thead", {}, [
-      el("tr", {}, [
-        el("th", {}, ["Day"]),
-        el("th", {}, ["Consensus"]),
-        el("th", {}, ["Rain"]),
-        el("th", {}, ["Snow"]),
-        el("th", {}, ["Thunder"]),
-        el("th", {}, ["Wind"]),
-        el("th", {}, ["Sources"])
-      ])
-    ])
-  );
-
-  const tbody = el("tbody");
-
-  for (const day of data.days || []) {
-    const c = day.consensus || {};
-    const s = day.sources || {};
-    const label = formatRichmondDay(day.date);
-
-    const dateCell = el("div", { class: "dayCell" }, [
-      el("div", { class: "dayWeek" }, [label.weekday]),
-      el("div", { class: "dayDate" }, [label.monthDay])
-    ]);
-
-    const consensusCell = el("div", { class: "consensusCell" }, [
-      el("div", { class: "consensusMain" }, [c.summary || "—"]),
-      el("div", { class: "smallMuted" }, [
-        `Avg precip: ${c.avgPrecipProbability == null ? "—" : `${c.avgPrecipProbability.toFixed(0)}%`} • Avg wind: ${c.avgWindMph == null ? "—" : `${c.avgWindMph.toFixed(0)} mph`}`
-      ]),
-      el("div", { class: "smallMuted" }, [day.writeup || ""])
-    ]);
-
-    const sourceCell = el("div", { class: "conditionSources" }, [
-      el("div", { class: "sourceLine" }, [
-        el("span", { class: "sourceName" }, ["NWS"]),
-        document.createTextNode(`: ${s.nws?.summary || "—"}${s.nws?.precipProbability != null ? ` (${s.nws.precipProbability}%)` : ""}${s.nws?.windMph != null ? ` • ${s.nws.windMph} mph` : ""}`)
-      ]),
-      el("div", { class: "sourceLine smallMuted" }, [
-        el("span", { class: "sourceName" }, ["Open-Meteo"]),
-        document.createTextNode(`: ${s.openMeteo?.summary || "—"}${s.openMeteo?.precipProbability != null ? ` (${s.openMeteo.precipProbability}%)` : ""}${s.openMeteo?.windMph != null ? ` • ${s.openMeteo.windMph} mph` : ""}`)
-      ]),
-      el("div", { class: "sourceLine smallMuted" }, [
-        el("span", { class: "sourceName" }, ["MET.no"]),
-        document.createTextNode(`: ${s.metNo?.summary || "—"}${s.metNo?.precipProbability != null ? ` (${s.metNo.precipProbability}%)` : ""}${s.metNo?.windMph != null ? ` • ${s.metNo.windMph} mph` : ""}`)
-      ])
-    ]);
-
-    tbody.append(
-      el("tr", {}, [
-        el("td", {}, [dateCell]),
-        el("td", {}, [consensusCell]),
-        el("td", {}, [el("span", { class: pillClassForSignal(c.rainSignal) }, [pillLabelForSignal(c.rainSignal)])]),
-        el("td", {}, [el("span", { class: pillClassForSignal(c.snowSignal) }, [pillLabelForSignal(c.snowSignal)])]),
-        el("td", {}, [el("span", { class: pillClassForSignal(c.thunderSignal) }, [pillLabelForSignal(c.thunderSignal)])]),
-        el("td", {}, [el("span", { class: pillClassForSignal(c.windSignal) }, [windLabel(c.windSignal)])]),
-        el("td", {}, [sourceCell])
-      ])
-    );
-  }
-
-  table.append(tbody);
-  outer.append(table);
-  container.replaceChildren(outer);
-}
-
-function renderOutlookHighlight(container, mergedDays) {
-  const ranked = [...mergedDays]
-    .filter(x => typeof x?.disagreement?.overallSpreadF === "number")
-    .sort((a, b) => (b.disagreement.overallSpreadF ?? -1) - (a.disagreement.overallSpreadF ?? -1));
-
-  const top = ranked[0];
-  if (!top) {
-    container.textContent = "";
-    return;
-  }
-
-  const label = formatRichmondDay(top.date);
-  const text = `${label.weekday} ${label.monthDay}`;
-  const precipSpread = top.disagreement?.precipSpread;
-  const windSpread = top.disagreement?.windSpreadMph;
-
-  const card = el("div", { class: "highlightCard" }, [
-    el("div", { class: "highlightTitle" }, ["Most uncertain upcoming day"]),
-    el("div", { class: "highlightMain" }, [text]),
-    el("div", { class: "highlightSub" }, [
-      `Temp spread: ${top.disagreement?.overallSpreadF == null ? "—" : `${top.disagreement.overallSpreadF.toFixed(1)}°`} • Precip spread: ${precipSpread == null ? "—" : `${precipSpread.toFixed(0)} pts`} • Wind spread: ${windSpread == null ? "—" : `${windSpread.toFixed(0)} mph`} • ${pillLabelForConfidence(top.disagreement?.confidence)}`
-    ])
-  ]);
-
-  container.replaceChildren(card);
-}
-
 function renderTodayHero(container, mergedDays) {
   const today = mergedDays?.find(day => day.date === richmondDay());
   if (!today) {
@@ -736,21 +422,19 @@ function renderTodayHero(container, mergedDays) {
       el("div", { class: "todayHeroTitle" }, [`${label.weekday} ${label.monthDay}`]),
       el("div", { class: "todayHeroSub" }, [forecastCondition(conditions).label]),
       el("div", { class: "todayHeroTemps" }, [
-        `${blend.blendedHighF ?? "—"}° / ${blend.blendedLowF ?? "—"}°`
+        `${Number.isFinite(blend.blendedHighF) ? Math.round(blend.blendedHighF) : "—"}° / ${Number.isFinite(blend.blendedLowF) ? Math.round(blend.blendedLowF) : "—"}°`
       ]),
       el("div", { class: "todayHeroMiniRow" }, [
         el("span", { class: "todayMiniPill" }, [
           consensus.avgPrecipProbability == null
-            ? "Avg precip: —"
-            : `Avg precip: ${consensus.avgPrecipProbability.toFixed(0)}%`
+            ? "Rain chance: —"
+            : `Rain chance: ${consensus.avgPrecipProbability.toFixed(0)}%`
         ]),
         el("span", { class: "todayMiniPill" }, [
           consensus.avgWindMph == null
-            ? "Avg wind: —"
-            : `Avg wind: ${consensus.avgWindMph.toFixed(0)} mph`
+            ? "Wind: —"
+            : `Wind: ${consensus.avgWindMph.toFixed(0)} mph`
         ]),
-        el("span", { class: pillClassForSignal(consensus.rainSignal) }, [`Rain: ${pillLabelForSignal(consensus.rainSignal)}`]),
-        el("span", { class: pillClassForSignal(consensus.thunderSignal) }, [`Thunder: ${pillLabelForSignal(consensus.thunderSignal)}`]),
         el("span", { class: pillClassForConfidence(disagreement.confidence) }, [pillLabelForConfidence(disagreement.confidence)])
       ])
     ]),
@@ -760,92 +444,8 @@ function renderTodayHero(container, mergedDays) {
   container.replaceChildren(wrap);
 }
 
-function renderOutlookCardExpanded(row) {
-  const conditions = row.conditions || {};
-  const disagreement = row.disagreement || {};
-  const sources = conditions.sources || {};
-
-  return el("div", { class: "outlookExpanded" }, [
-    el("div", { class: "outlookSourceRow" }, [
-      el("span", { class: "outlookSourceName" }, ["NWS"]),
-      document.createTextNode(`: ${sources.nws?.summary || "—"}${sources.nws?.precipProbability != null ? ` (${sources.nws.precipProbability}%)` : ""}${sources.nws?.windMph != null ? ` • ${sources.nws.windMph} mph` : ""}`)
-    ]),
-    el("div", { class: "outlookSourceRow" }, [
-      el("span", { class: "outlookSourceName" }, ["Open-Meteo"]),
-      document.createTextNode(`: ${sources.openMeteo?.summary || "—"}${sources.openMeteo?.precipProbability != null ? ` (${sources.openMeteo.precipProbability}%)` : ""}${sources.openMeteo?.windMph != null ? ` • ${sources.openMeteo.windMph} mph` : ""}`)
-    ]),
-    el("div", { class: "outlookSourceRow" }, [
-      el("span", { class: "outlookSourceName" }, ["MET.no"]),
-      document.createTextNode(`: ${sources.metNo?.summary || "—"}${sources.metNo?.precipProbability != null ? ` (${sources.metNo.precipProbability}%)` : ""}${sources.metNo?.windMph != null ? ` • ${sources.metNo.windMph} mph` : ""}`)
-    ]),
-    el("div", { class: "outlookExpandHint" }, [
-      `Temp spread: ${disagreement.overallSpreadF == null ? "—" : `${disagreement.overallSpreadF.toFixed(1)}°`} • Precip spread: ${disagreement.precipSpread == null ? "—" : `${disagreement.precipSpread.toFixed(0)} pts`} • Wind spread: ${disagreement.windSpreadMph == null ? "—" : `${disagreement.windSpreadMph.toFixed(0)} mph`}`
-    ])
-  ]);
-}
-
-function renderDailyOutlook(container, mergedDays) {
-  const grid = el("div", { class: "dailyOutlookGrid" });
-
-  for (const row of mergedDays) {
-    const blend = row.blend || {};
-    const conditions = row.conditions || {};
-    const disagreement = row.disagreement || {};
-    const consensus = conditions.consensus || {};
-    const label = formatRichmondDay(row.date);
-    const icon = pickWeatherIcon(conditions);
-
-    const details = el("details", { class: "outlookDetails" }, [
-      el("summary", { class: "outlookSummaryButton" }, [
-        el("div", { class: "outlookCard" }, [
-          el("div", { class: "outlookTop" }, [
-            el("div", { class: "outlookDayWrap" }, [
-              el("div", { class: "outlookWeekday" }, [label.weekday]),
-              el("div", { class: "outlookDate" }, [label.monthDay])
-            ]),
-            el("div", { class: "outlookIcon", "aria-hidden": "true" }, [icon])
-          ]),
-
-          el("div", { class: "outlookTemp" }, [
-            `${blend.blendedHighF ?? "—"}° / ${blend.blendedLowF ?? "—"}°`
-          ]),
-
-          el("div", { class: "outlookTempSub" }, [
-            `Blended high / low • ${blend.blendedWindMph == null ? "—" : `${blend.blendedWindMph.toFixed(0)} mph`} wind`
-          ]),
-
-          el("div", { class: "outlookSummary" }, [forecastCondition(conditions).label]),
-
-          el("div", { class: "outlookMetaRow" }, [
-            el("span", { class: "smallMuted" }, [
-              blend.blendedPrecipProbability == null
-                ? "Avg precip: —"
-                : `Avg precip: ${blend.blendedPrecipProbability.toFixed(0)}%`
-            ])
-          ]),
-
-          el("div", { class: "outlookPills" }, [
-            el("span", { class: pillClassForSignal(consensus.rainSignal) }, [`Rain: ${pillLabelForSignal(consensus.rainSignal)}`]),
-            el("span", { class: pillClassForSignal(consensus.snowSignal) }, [`Snow: ${pillLabelForSignal(consensus.snowSignal)}`]),
-            el("span", { class: pillClassForSignal(consensus.thunderSignal) }, [`Thunder: ${pillLabelForSignal(consensus.thunderSignal)}`]),
-            el("span", { class: pillClassForSignal(consensus.windSignal) }, [windLabel(consensus.windSignal)]),
-            el("span", { class: pillClassForConfidence(disagreement.confidence) }, [pillLabelForConfidence(disagreement.confidence)])
-          ]),
-
-          el("div", { class: "outlookSourcesMini" }, [conditions.writeup || ""]),
-          el("div", { class: "outlookExpandHint" }, ["Tap for source details"])
-        ])
-      ]),
-      renderOutlookCardExpanded(row)
-    ]);
-
-    grid.append(details);
-  }
-
-  container.replaceChildren(grid);
-}
-
 async function loadLive(meta) {
+  document.getElementById("monthlyHeading").textContent = "This month’s standings";
   const lb = await fetchJson("./data/leaderboard.json");
   document.getElementById("meta").textContent = `Location: ${meta.location.name} • Window: ${lb.windowDays} days • Time zone: Richmond`;
   renderLeaderboard(document.getElementById("leaderboard"), lb);
@@ -884,13 +484,14 @@ async function loadLive(meta) {
 
   try {
     const chart = await fetchJson("./data/chart_live.json");
-    renderLineChart(document.getElementById("chartWrap"), chart, "live");
+    updateChart(chart);
   } catch {
-    document.getElementById("chartWrap").textContent = "Chart not ready yet.";
+    updateChart(null);
   }
 }
 
 async function loadBackfill(meta) {
+  document.getElementById("monthlyHeading").textContent = "Historical comparison";
   try {
     const lb = await fetchJson("./data/leaderboard_openmeteo_year.json");
     const latest = await fetchJson("./data/latest_openmeteo_year.json");
@@ -940,23 +541,23 @@ async function loadBackfill(meta) {
         el("div", { class: "statCard" }, [
           el("div", { class: "statLabel" }, ["Mode"]),
           el("div", { class: "statValue" }, ["Backfill"]),
-          el("div", { class: "statSub" }, ["Monthly winner card only applies to live scoring."])
+          el("div", { class: "statSub" }, ["Archived predictions versus reanalysis. One provider; temperature only."])
         ])
       ])
     );
 
     try {
       const chart = await fetchJson("./data/chart_backfill_openmeteo_year.json");
-      renderLineChart(document.getElementById("chartWrap"), chart, "backfill");
+      updateChart(chart);
     } catch {
-      document.getElementById("chartWrap").textContent = "Backfill chart not ready yet.";
+      updateChart(null);
     }
   } catch {
     document.getElementById("viewNote").textContent =
       "Backfill data not generated yet. Run the 'Backfill Open-Meteo (1 year)' GitHub Action once.";
     document.getElementById("leaderboard").textContent = "—";
     document.getElementById("latest").textContent = "—";
-    document.getElementById("chartWrap").textContent = "—";
+    updateChart(null);
     document.getElementById("monthlyWinner").textContent = "—";
   }
 }
@@ -967,7 +568,12 @@ async function main() {
   const btnLive = document.getElementById("btnLive");
   const btnBackfill = document.getElementById("btnBackfill");
 
+  let modeLoading = false;
   async function setMode(mode) {
+    if (modeLoading) return;
+    modeLoading = true; btnLive.disabled = btnBackfill.disabled = true;
+    btnLive.setAttribute("aria-pressed", String(mode !== "backfill")); btnBackfill.setAttribute("aria-pressed", String(mode === "backfill"));
+    try {
     if (mode === "backfill") {
       btnBackfill.classList.add("active");
       btnLive.classList.remove("active");
@@ -979,6 +585,12 @@ async function main() {
       await loadLive(meta);
       try { localStorage.setItem("accuracyView", "live"); } catch {}
     }
+    } catch {
+      document.getElementById('viewNote').textContent = 'This accuracy dataset is temporarily unavailable. Try selecting it again.';
+      for (const id of ['monthlyWinner','leaderboard','latest']) document.getElementById(id).textContent = 'Unavailable';
+      updateChart(null);
+    }
+    finally { modeLoading = false; btnLive.disabled = btnBackfill.disabled = false; }
   }
 
   btnLive?.addEventListener("click", () => setMode("live").catch(console.error));
@@ -1000,14 +612,12 @@ async function refreshForecast() {
   refreshing = true;
   const button = document.getElementById('refreshForecast');
   button.disabled = true;
-  const names = ['weather_story', 'rainbow_watch', 'confidence_snapshot', 'disagreement_daily', 'conditions_summary', 'conditions_daily', 'blend_daily', 'blend_hourly'];
+  const names = ['rainbow_watch', 'disagreement_daily', 'conditions_daily', 'blend_daily', 'blend_hourly'];
   try {
     const results = await Promise.allSettled(names.map(name => fetchJson(`./data/${name}.json`)));
     const data = Object.fromEntries(names.map((name, i) => [name, results[i].status === 'fulfilled' ? currentFeed(results[i].value) : null]));
     const renderers = [
-      ['weather_story','weatherStory',renderWeatherStory], ['rainbow_watch','rainbowWatch',renderRainbowWatch],
-      ['confidence_snapshot','confidenceSnapshot',renderConfidenceSnapshot], ['disagreement_daily','disagreement',renderDisagreement],
-      ['conditions_summary','conditionsSummary',renderConditionsSummary], ['conditions_daily','conditionsTable',renderConditionsTable],
+      ['rainbow_watch','rainbowWatch',renderRainbowWatch], ['disagreement_daily','disagreement',renderDisagreement],
       ['blend_daily','blendDaily',renderBlendDaily], ['blend_hourly','blendHourly',renderBlendHourly]
     ];
     for (const [key,id,render] of renderers) {
@@ -1016,20 +626,20 @@ async function refreshForecast() {
       else target.textContent = 'Current forecast unavailable. Please try refreshing.';
     }
     renderHourlyStrip(data.blend_hourly);
+    renderRain(document.getElementById('rainOutlook'), data.blend_hourly);
     updateOutdoor(data.blend_hourly, data.conditions_daily);
     const merged = data.blend_daily && data.conditions_daily ? mergeOutlookData(data.blend_daily, data.conditions_daily, data.disagreement_daily) : [];
-    const openCards = [...document.querySelectorAll('#dailyOutlook details')].map((card, i) => card.open ? i : -1);
     renderTitleTodayBadge(document.getElementById('titleTodayBadge'), merged);
     renderTodayHero(document.getElementById('todayHero'), merged);
-    renderOutlookHighlight(document.getElementById('outlookHighlight'), merged);
-    renderDailyOutlook(document.getElementById('dailyOutlook'), merged);
-    document.querySelectorAll('#dailyOutlook details').forEach((card, i) => { card.open = openCards.includes(i); });
+    renderForecastDays(document.getElementById('dailyOutlook'), merged);
+    const today = merged.find(day => day.date === richmondDay());
+    renderWeatherStory(document.getElementById('weatherStory'), today ? {title:'The daily read', summary:today.conditions?.writeup || forecastCondition(today.conditions).label} : null);
     const issued = data.blend_daily?.generatedAt;
     const older = issued && Math.min(+new Date(issued), +new Date(data.conditions_daily?.generatedAt)) < Date.now() - 36 * 3600000;
     const status = document.getElementById('forecastStatus');
     status.dataset.stale = String(!merged.length || older);
     status.textContent = !merged.length ? 'Forecast unavailable · try refresh' : `${older ? 'Older forecast' : 'Forecast issued'} ${formatRichmondTimestamp(issued)} ET · checked ${getRichmondFormatter({hour:'numeric',minute:'2-digit'}).format(new Date())}`;
-    document.getElementById('updated').textContent = 'Richmond, Virginia · forecasts refresh from the latest published data every 5 minutes.';
+    document.getElementById('updated').textContent = 'Richmond, VA · NWS + Open-Meteo + MET Norway';
   } catch (error) {
     console.error(error);
     document.getElementById('forecastStatus').textContent = 'Could not refresh the forecast. Try again shortly.';

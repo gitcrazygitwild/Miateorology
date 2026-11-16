@@ -6,7 +6,7 @@ const format = options => new Intl.DateTimeFormat('en-US', { timeZone: 'America/
 const number = (value, suffix = '') => Number.isFinite(value) ? `${Math.round(value)}${suffix}` : '—';
 
 export function renderHourlyStrip(data, now = new Date()) {
-  const hours = upcomingHours(data, now);
+  const hours = upcomingHours(data, now, 48).filter(hour => +new Date(hour.timeISO) < +now + 24 * 3600000);
   const container = $('hourlyStrip');
   if (!hours.length) {
     container.textContent = 'The next hourly forecast is not available yet. Try refreshing in a little while.';

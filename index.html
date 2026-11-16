@@ -1,171 +1,407 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mia-teorology</title>
-  <link rel="stylesheet" href="./assets/styles.css?v=12" />
-  <link rel="stylesheet" href="./assets/planner.css?v=12" />
-</head>
-<body>
-  <header class="wrap siteHeader">
-    <div class="siteTitleRow">
-      <div class="siteTitleGroup">
-        <h1 class="siteTitle">Mia-teorology</h1>
-        <div id="titleTodayBadge" class="titleTodayBadge"></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#101721" />
+    <meta
+      name="description"
+      content="Richmond's forecast, thoughtfully compared. Hourly weather, rain windows, and honest forecast accuracy from Mia's weather desk."
+    />
+    <title>Mia-teorology · Richmond weather</title>
+    <link rel="icon" href="./assets/mia.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./assets/styles.css?v=13" />
+    <link rel="stylesheet" href="./assets/planner.css?v=13" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to weather</a>
+    <header class="wrap siteHeader">
+      <a class="brand" href="#forecast" aria-label="Mia-teorology forecast"
+        ><img src="./assets/mia.svg" width="52" height="52" alt="" />
+        <div>
+          <span class="eyebrow">Mia’s weather desk</span>
+          <h1>Mia-teorology<span class="brand-dot">.</span></h1>
+        </div></a
+      >
+      <div class="header-place">
+        <span>Richmond, Virginia</span><small>Eastern time · °F</small>
       </div>
-      <p class="sub">Forecast accuracy scoreboard + blended forecast (Richmond default)</p>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <div class="forecast-toolbar"><span id="forecastStatus" role="status">Checking Richmond’s forecast…</span><button id="refreshForecast" type="button">↻ Refresh</button></div>
-    <section class="card heroCard">
-      <div id="todayHero"></div>
-    </section>
-
-    <section class="card" aria-labelledby="hourlyHeading">
-      <div class="planner-heading"><h2 id="hourlyHeading">The next 24 hours</h2><span>Temperature · rain · wind</span></div>
-      <div id="hourlyTrend" class="hourly-trend"></div>
-      <div id="hourlyStrip" class="hourly-strip" role="list" tabindex="0" aria-label="Hourly Richmond forecast, scroll for more hours"></div>
-      <p id="hourlyIssued" class="hourly-issued"></p>
-    </section>
-    <section class="card outdoor-card" aria-labelledby="outdoorHeading">
-      <h2 id="outdoorHeading">A little time outside</h2>
-      <p class="outdoor-intro">Find a comfortable window in the next 48 hours.</p>
-      <div class="activity-options" role="group" aria-label="Choose your activity">
-        <button type="button" data-outdoor-activity="walk" aria-pressed="true">A walk</button>
-        <button type="button" data-outdoor-activity="errands" aria-pressed="false">Quick errands</button>
-        <button type="button" data-outdoor-activity="patio" aria-pressed="false">Patio time</button>
+      <div id="titleTodayBadge" class="titleTodayBadge"></div>
+    </header>
+    <main class="wrap" id="main">
+      <nav class="desk-nav" aria-label="Weather desk">
+        <div role="tablist" aria-label="Weather sections">
+          <button
+            type="button"
+            role="tab"
+            id="tab-forecast"
+            aria-controls="panel-forecast"
+            aria-selected="true"
+            data-desk-tab="forecast"
+          >
+            Forecast
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-accuracy"
+            aria-controls="panel-accuracy"
+            aria-selected="false"
+            tabindex="-1"
+            data-desk-tab="accuracy"
+          >
+            Accuracy lab
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-sources"
+            aria-controls="panel-sources"
+            aria-selected="false"
+            tabindex="-1"
+            data-desk-tab="sources"
+          >
+            Sources &amp; method
+          </button>
+        </div>
+        <a
+          class="home-link"
+          href="https://huberts-house.web.app"
+          aria-label="Open Hubert’s House"
+          >The house
+          <svg
+            class="link-arrow"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M4 12 12 4M4 4h8v8"
+              stroke="currentColor"
+              stroke-width="1.5"
+            /></svg
+        ></a>
+      </nav>
+      <div class="forecast-toolbar">
+        <span id="forecastStatus" role="status"
+          >Checking Richmond’s forecast…</span
+        ><button id="refreshForecast" type="button">↻ Refresh</button>
       </div>
-      <div aria-live="polite"><span id="outdoorDay" class="outdoor-day"></span><div id="outdoorWhen" class="outdoor-when">Checking the forecast…</div><p id="outdoorDetails" class="outdoor-details"></p></div>
-      <p class="outdoor-note">Ranked by lower rain, lighter wind, and comfortable temperatures between 7am and 7pm ET. A forecast suggestion; check conditions before heading out.</p>
-    </section>
-    <section class="card">
-      <h2>Weather story</h2>
-      <div id="weatherStory"></div>
-    </section>
 
-    <section class="card">
-      <h2>7-Day outlook</h2>
-      <p class="muted">Combined temperature, precipitation, wind, and confidence outlook for the next 7 days.</p>
-      <div id="outlookHighlight"></div>
-      <div id="dailyOutlook"></div>
-    </section>
-
-    <section class="card">
-      <h2>Richmond Rainbow Watch 🌈</h2>
-      <p class="muted">A fun estimate of rainbow potential based on rain, clearing, and timing.</p>
-      <div id="rainbowWatch"></div>
-    </section>
-
-    <section class="card">
-      <h2>Confidence snapshot</h2>
-      <div id="confidenceSnapshot"></div>
-    </section>
-
-    <section class="card">
-      <h2>Current monthly leader</h2>
-      <div id="monthlyWinner"></div>
-    </section>
-
-    <section class="card">
-      <h2>Accuracy trend</h2>
-      <div id="chartWrap"></div>
-    </section>
-
-    <section class="card">
-      <details class="detailsBlock">
-        <summary>Accuracy view</summary>
-        <div class="detailsBody">
-          <div class="toggleRow">
-            <button id="btnLive" class="toggleBtn active" type="button">Live accuracy (all 3)</button>
-            <button id="btnBackfill" class="toggleBtn" type="button">1-year backfill (Open-Meteo only)</button>
+      <div
+        role="tabpanel"
+        id="panel-forecast"
+        aria-labelledby="tab-forecast"
+        tabindex="0"
+      >
+        <section class="card heroCard" aria-label="Today's forecast">
+          <div id="todayHero"></div>
+          <div id="weatherStory" class="hero-story"></div>
+        </section>
+        <section class="card hourly-card" aria-labelledby="hourlyHeading">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Hour by hour</span>
+              <h2 id="hourlyHeading">The next 24 hours</h2>
+            </div>
+            <div class="hour-controls">
+              <button
+                type="button"
+                id="earlierHours"
+                aria-label="Scroll to earlier hours"
+              >
+                ←</button
+              ><button
+                type="button"
+                id="laterHours"
+                aria-label="Scroll to later hours"
+              >
+                →
+              </button>
+            </div>
           </div>
-          <p id="viewNote" class="muted" style="margin-top:10px;"></p>
+          <div id="hourlyTrend" class="hourly-trend"></div>
+          <div
+            id="hourlyStrip"
+            class="hourly-strip"
+            role="list"
+            tabindex="0"
+            aria-label="Hourly Richmond forecast, scroll for more hours"
+          ></div>
+          <p id="hourlyIssued" class="hourly-issued"></p>
+        </section>
+        <div class="planning-grid">
+          <section class="card rain-card" aria-labelledby="rainHeading">
+            <span class="eyebrow">Umbrella check</span>
+            <h2 id="rainHeading">Rain, at a glance</h2>
+            <div id="rainOutlook" aria-live="polite"></div>
+          </section>
+          <section class="card outdoor-card" aria-labelledby="outdoorHeading">
+            <span class="eyebrow">Make a little room for outside</span>
+            <h2 id="outdoorHeading">Your best window</h2>
+            <div
+              class="activity-options"
+              role="group"
+              aria-label="Choose your activity"
+            >
+              <button
+                type="button"
+                data-outdoor-activity="walk"
+                aria-pressed="true"
+              >
+                A walk</button
+              ><button
+                type="button"
+                data-outdoor-activity="errands"
+                aria-pressed="false"
+              >
+                Errands</button
+              ><button
+                type="button"
+                data-outdoor-activity="patio"
+                aria-pressed="false"
+              >
+                Patio time
+              </button>
+            </div>
+            <div aria-live="polite">
+              <span id="outdoorDay" class="outdoor-day"></span>
+              <div id="outdoorWhen" class="outdoor-when">
+                Checking the forecast…
+              </div>
+              <p id="outdoorDetails" class="outdoor-details"></p>
+            </div>
+            <p class="outdoor-note">
+              Next 48 hours · 7am–7pm ET · ranked by rain, wind &amp;
+              temperature.
+            </p>
+          </section>
         </div>
-      </details>
-    </section>
+        <section class="card week-card" aria-labelledby="weekHeading">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">The week ahead</span>
+              <h2 id="weekHeading">A little foresight</h2>
+            </div>
+            <span class="section-note">Open a day to compare sources</span>
+          </div>
+          <div id="dailyOutlook"></div>
+          <p class="smallMuted">
+            Temperature bars share the same scale. Source agreement describes
+            the spread of predictions, not a guarantee.
+          </p>
+        </section>
+        <section class="card mia-note" aria-labelledby="rainbowHeading">
+          <img src="./assets/mia.svg" alt="" width="64" height="64" />
+          <div>
+            <span class="eyebrow">Mia’s window seat</span>
+            <h2 id="rainbowHeading">Chasing rainbows</h2>
+            <div id="rainbowWatch"></div>
+          </div>
+          <span class="rainbow-decoration" aria-hidden="true">🌈</span>
+        </section>
+      </div>
 
-    <section class="card">
-      <details class="detailsBlock" open>
-        <summary>Forecast disagreement</summary>
-        <div class="detailsBody">
-          <p class="muted">Lower spread between sources = higher confidence.</p>
-          <div id="disagreement"></div>
+      <div
+        role="tabpanel"
+        id="panel-accuracy"
+        aria-labelledby="tab-accuracy"
+        tabindex="0"
+        hidden
+      >
+        <div class="page-heading">
+          <span class="eyebrow">Show your work</span>
+          <h2>Which forecast earns your trust?</h2>
+          <p class="muted">
+            Compare predictions with what actually happened. Lower temperature
+            error is better.
+          </p>
         </div>
-      </details>
-    </section>
-
-    <section class="card">
-      <details class="detailsBlock">
-        <summary>Conditions outlook details</summary>
-        <div class="detailsBody">
-          <p class="muted">Consensus signals for rain, snow, thunderstorms, and daily weather summaries.</p>
-          <div id="conditionsSummary"></div>
-          <div id="conditionsTable"></div>
+        <div class="toggleRow" role="group" aria-label="Accuracy dataset">
+          <button
+            id="btnLive"
+            class="toggleBtn active"
+            aria-pressed="true"
+            type="button"
+          >
+            Recent · all 3 sources</button
+          ><button
+            id="btnBackfill"
+            class="toggleBtn"
+            aria-pressed="false"
+            type="button"
+          >
+            Historical · Open-Meteo
+          </button>
         </div>
-      </details>
-    </section>
+        <p id="viewNote" class="smallMuted" role="status">
+          Loading accuracy history…
+        </p>
+        <section class="card">
+          <div class="section-heading">
+            <h2 id="monthlyHeading">This month’s standings</h2>
+            <span class="section-note">Mean temperature error · °F</span>
+          </div>
+          <div id="monthlyWinner"></div>
+        </section>
+        <section class="card">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Follow the evidence</span>
+              <h2>Accuracy over time</h2>
+            </div>
+            <div
+              class="chart-ranges"
+              role="group"
+              aria-label="Chart date range"
+            >
+              <button type="button" data-chart-days="7" aria-pressed="false">
+                7d</button
+              ><button type="button" data-chart-days="30" aria-pressed="true">
+                30d</button
+              ><button type="button" data-chart-days="all" aria-pressed="false">
+                All
+              </button>
+            </div>
+          </div>
+          <div id="chartWrap"></div>
+        </section>
+        <section class="card">
+          <h2>Source scorecard</h2>
+          <p id="meta" class="smallMuted"></p>
+          <div
+            id="leaderboard"
+            class="tableScroll"
+            tabindex="0"
+            role="region"
+            aria-label="Source accuracy scores"
+          ></div>
+        </section>
+        <details class="card detailsBlock">
+          <summary>Inspect the latest scored day</summary>
+          <div
+            id="latest"
+            class="tableScroll detailsBody"
+            tabindex="0"
+            role="region"
+            aria-label="Latest observed and predicted weather"
+          ></div>
+        </details>
+      </div>
 
-    <section class="card">
-      <details class="detailsBlock">
-        <summary>Leaderboard</summary>
-        <div class="detailsBody">
-          <div id="meta" class="muted"></div>
-          <div id="leaderboard"></div>
+      <div
+        role="tabpanel"
+        id="panel-sources"
+        aria-labelledby="tab-sources"
+        tabindex="0"
+        hidden
+      >
+        <div class="page-heading">
+          <span class="eyebrow">Behind the forecast</span>
+          <h2>Three perspectives. One weather desk.</h2>
+          <p class="muted">
+            An equal blend of available forecasts, with every source still
+            visible.
+          </p>
         </div>
-      </details>
-    </section>
-
-    <section class="card">
-      <details class="detailsBlock">
-        <summary>Latest scored day</summary>
-        <div class="detailsBody">
-          <div id="latest"></div>
+        <div class="provider-grid">
+          <a
+            class="card provider"
+            href="https://www.weather.gov/"
+            target="_blank"
+            rel="noopener"
+            ><span class="provider-dot nws"></span>
+            <h2>National Weather Service</h2>
+            <p>U.S. public forecasts, centered on Richmond.</p></a
+          ><a
+            class="card provider"
+            href="https://open-meteo.com/"
+            target="_blank"
+            rel="noopener"
+            ><span class="provider-dot openMeteo"></span>
+            <h2>Open-Meteo</h2>
+            <p>Global model forecasts and historical weather.</p></a
+          ><a
+            class="card provider"
+            href="https://www.met.no/en"
+            target="_blank"
+            rel="noopener"
+            ><span class="provider-dot metNo"></span>
+            <h2>MET Norway</h2>
+            <p>An independent global forecast perspective.</p></a
+          >
         </div>
-      </details>
-    </section>
-
-    <section class="card">
-      <details class="detailsBlock">
-        <summary>Blended daily forecast (next 7 days)</summary>
-        <div class="detailsBody">
-          <div id="blendDaily"></div>
-        </div>
-      </details>
-    </section>
-
-    <section class="card">
-      <details class="detailsBlock">
-        <summary>Blended hourly forecast (next 48 hours)</summary>
-        <div class="detailsBody">
-          <div id="blendHourly"></div>
-        </div>
-      </details>
-    </section>
-
-    <section class="card">
-      <details class="detailsBlock">
-        <summary>Method</summary>
-        <div class="detailsBody">
-          <ul>
-            <li><b>Live</b>: scores are based on forecast vs observed weather, centered on Richmond.</li>
-            <li><b>Backfill</b>: Open-Meteo historical comparison mode for the past year.</li>
-            <li><b>Blend</b>: simple average of available forecast sources at each date/time.</li>
-            <li><b>Disagreement</b>: spread between provider forecasts for temperature, precipitation, and wind.</li>
-            <li><b>Conditions</b>: normalized daily rain, snow, thunder, and summary signals.</li>
-            <li><b>Rainbow Watch</b>: fun estimate based on rain + clearing setup, not a scientific probability.</li>
-          </ul>
-        </div>
-      </details>
-    </section>
-  </main>
-
-  <footer class="wrap muted">
-    <span id="updated"></span>
-  </footer>
-
-  <script type="module" src="./assets/app.js?v=12"></script>
-</body>
+        <section class="card method-card">
+          <h2>A few things worth knowing</h2>
+          <dl>
+            <div>
+              <dt>The blend</dt>
+              <dd>
+                A simple average of available sources. Missing readings stay
+                missing; the source count can vary by hour and metric.
+              </dd>
+            </div>
+            <div>
+              <dt>The score</dt>
+              <dd>
+                Recent accuracy compares forecast high/low, wind, and rain
+                events with Richmond observations. Historical mode compares only
+                Open-Meteo temperatures with reanalysis.
+              </dd>
+            </div>
+            <div>
+              <dt>The timing</dt>
+              <dd>
+                Forecasts are collected by the scheduled weather job. Refresh
+                checks for newly published data; it does not generate a new
+                forecast.
+              </dd>
+            </div>
+            <div>
+              <dt>The playful part</dt>
+              <dd>
+                Rainbow Watch is a rain-and-clearing index out of 100, not a
+                scientific probability. Outside windows are planning suggestions
+                based on available forecasts.
+              </dd>
+            </div>
+          </dl>
+        </section>
+        <details class="card detailsBlock">
+          <summary>Compare daily source readings</summary>
+          <div
+            id="blendDaily"
+            class="tableScroll detailsBody"
+            tabindex="0"
+            role="region"
+            aria-label="Daily source forecasts"
+          ></div>
+        </details>
+        <details class="card detailsBlock">
+          <summary>Compare hourly source readings</summary>
+          <div
+            id="blendHourly"
+            class="tableScroll detailsBody"
+            tabindex="0"
+            role="region"
+            aria-label="Hourly source forecasts"
+          ></div>
+        </details>
+        <details class="card detailsBlock">
+          <summary>Inspect source agreement</summary>
+          <div
+            id="disagreement"
+            class="tableScroll detailsBody"
+            tabindex="0"
+            role="region"
+            aria-label="Forecast disagreement"
+          ></div>
+        </details>
+      </div>
+    </main>
+    <footer class="wrap site-footer">
+      <span id="updated"></span><a href="#forecast">Back to forecast ↑</a>
+    </footer>
+    <script type="module" src="./assets/app.js?v=13"></script>
+  </body>
 </html>
