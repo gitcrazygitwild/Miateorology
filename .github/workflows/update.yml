@@ -6,6 +6,10 @@ on:
     - cron: "15 10 * * *"
   workflow_dispatch: {}
 
+concurrency:
+  group: forecast-data-update
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -23,6 +27,9 @@ jobs:
 
       - name: Install deps
         run: npm ci || npm i
+
+      - name: Check and test forecast code
+        run: npm run check && npm test
 
       - name: Run update script
         env:

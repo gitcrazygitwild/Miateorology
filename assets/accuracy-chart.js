@@ -1,6 +1,6 @@
 import { chartDataset, PROVIDERS } from "./insights-model.js";
 import { node } from "./desk-ui.js";
-const colors = { nws: "#8ccff0", openMeteo: "#a7d8ad", metNo: "#d7b1ed" };
+const colors = { nws: "#8ccff0", openMeteo: "#a7d8ad", metNo: "#d7b1ed", dwdIcon: "#efbd85" };
 const svgNode = (tag, attrs) => {
   const n = document.createElementNS("http://www.w3.org/2000/svg", tag);
   for (const [key, value] of Object.entries(attrs)) n.setAttribute(key, value);

@@ -4,6 +4,7 @@ export const PROVIDERS = {
   nws: "NWS",
   openMeteo: "Open-Meteo",
   metNo: "MET Norway",
+  dwdIcon: "DWD ICON",
 };
 
 // Fixed time slots keep gaps visible instead of pulling later hours forward.
