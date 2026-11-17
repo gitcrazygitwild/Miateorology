@@ -244,7 +244,7 @@ export function renderForecastDays(container, days) {
         node(
           "small",
           "",
-          `${formatNumber(source?.precipProbability, "%")} rain · ${formatNumber(source?.windMph)} mph`,
+          `${key === "dwdIcon" ? "Rain chance unavailable" : `${formatNumber(source?.precipProbability, "%")} rain`} · ${formatNumber(source?.windMph)} mph`,
         ),
       );
       sourceGrid.append(card);

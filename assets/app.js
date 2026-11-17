@@ -236,7 +236,8 @@ function renderBlendDaily(container, data) {
         el("th", {}, ["Blend wind"]),
         el("th", {}, ["NWS"]),
         el("th", {}, ["Open-Meteo"]),
-        el("th", {}, ["MET.no"])
+        el("th", {}, ["MET.no"]),
+        el("th", {}, ["DWD ICON"])
       ])
     ])
   );
@@ -258,7 +259,8 @@ function renderBlendDaily(container, data) {
         ]),
         el("td", {}, [
           `${d.sources?.metNo?.highF ?? "—"}° / ${d.sources?.metNo?.lowF ?? "—"}° • ${d.sources?.metNo?.precipProbability ?? "—"}% • ${d.sources?.metNo?.windMph ?? "—"} mph`
-        ])
+        ]),
+        el("td", {}, [`${d.sources?.dwdIcon?.highF ?? "—"}° / ${d.sources?.dwdIcon?.lowF ?? "—"}° • rain chance unavailable • ${d.sources?.dwdIcon?.windMph ?? "—"} mph`])
       ])
     );
   }
@@ -278,7 +280,8 @@ function renderBlendHourly(container, data) {
         el("th", {}, ["Blend wind"]),
         el("th", {}, ["NWS"]),
         el("th", {}, ["Open-Meteo"]),
-        el("th", {}, ["MET.no"])
+        el("th", {}, ["MET.no"]),
+        el("th", {}, ["DWD ICON"])
       ])
     ])
   );
@@ -307,7 +310,8 @@ function renderBlendHourly(container, data) {
           h.sources?.metNo
             ? `${h.sources?.metNo.tempF ?? "—"}° • ${h.sources?.metNo.precipProbability ?? "—"}% • ${h.sources?.metNo.windMph ?? "—"} mph`
             : "—"
-        ])
+        ]),
+        el("td", {}, [h.sources?.dwdIcon ? `${h.sources.dwdIcon.tempF ?? "—"}° • rain chance unavailable • ${h.sources.dwdIcon.windMph ?? "—"} mph` : "—"])
       ])
     );
   }
@@ -639,7 +643,9 @@ async function refreshForecast() {
     const status = document.getElementById('forecastStatus');
     status.dataset.stale = String(!merged.length || older);
     status.textContent = !merged.length ? 'Forecast unavailable · try refresh' : `${older ? 'Older forecast' : 'Forecast issued'} ${formatRichmondTimestamp(issued)} ET · checked ${getRichmondFormatter({hour:'numeric',minute:'2-digit'}).format(new Date())}`;
-    document.getElementById('updated').textContent = 'Richmond, VA · NWS + Open-Meteo + MET Norway';
+    document.getElementById('updated').textContent = 'Richmond, VA · NWS + Open-Meteo + MET Norway + DWD ICON';
+    const icon = data.blend_daily?.sources?.dwdIcon;
+    document.getElementById('iconSourceStatus').textContent = icon ? icon.available ? `Available · ${icon.days} forecast days · rain probability unavailable` : 'Unavailable in the latest collection · the blend uses the other sources' : 'Waiting for the first ICON collection';
   } catch (error) {
     console.error(error);
     document.getElementById('forecastStatus').textContent = 'Could not refresh the forecast. Try again shortly.';

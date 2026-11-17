@@ -10,7 +10,7 @@
     />
     <title>Mia-teorology · Richmond weather</title>
     <link rel="icon" href="./assets/mia.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./assets/styles.css?v=13" />
+    <link rel="stylesheet" href="./assets/styles.css?v=14" />
     <link rel="stylesheet" href="./assets/planner.css?v=13" />
   </head>
   <body>
@@ -224,7 +224,7 @@
             aria-pressed="true"
             type="button"
           >
-            Recent · all 3 sources</button
+            Recent · all sources</button
           ><button
             id="btnBackfill"
             class="toggleBtn"
@@ -298,7 +298,7 @@
       >
         <div class="page-heading">
           <span class="eyebrow">Behind the forecast</span>
-          <h2>Three perspectives. One weather desk.</h2>
+          <h2>Four forecast perspectives.</h2>
           <p class="muted">
             An equal blend of available forecasts, with every source still
             visible.
@@ -330,6 +330,12 @@
             <h2>MET Norway</h2>
             <p>An independent global forecast perspective.</p></a
           >
+          <a class="card provider" href="https://open-meteo.com/en/docs/dwd-api" target="_blank" rel="noopener">
+            <span class="provider-dot dwdIcon"></span>
+            <h2>DWD ICON</h2>
+            <p>Germany’s weather model, delivered by Open-Meteo. Temperature, wind, and conditions from a separate model run.</p>
+            <p id="iconSourceStatus" class="smallMuted" role="status">Waiting for the first ICON collection</p>
+          </a>
         </div>
         <section class="card method-card">
           <h2>A few things worth knowing</h2>
@@ -338,7 +344,7 @@
               <dt>The blend</dt>
               <dd>
                 A simple average of available sources. Missing readings stay
-                missing; the source count can vary by hour and metric.
+                missing; the source count can vary by hour and metric. ICON does not supply rain probabilities in this feed. ICON and the Open-Meteo forecast share an API service; model forecasts are not statistically independent.
               </dd>
             </div>
             <div>
@@ -346,7 +352,7 @@
               <dd>
                 Recent accuracy compares forecast high/low, wind, and rain
                 events with Richmond observations. Historical mode compares only
-                Open-Meteo temperatures with reanalysis.
+                Open-Meteo temperatures with reanalysis. ICON starts building accuracy history from new forecast snapshots; it has no invented or backfilled scores.
               </dd>
             </div>
             <div>
@@ -402,6 +408,6 @@
     <footer class="wrap site-footer">
       <span id="updated"></span><a href="#forecast">Back to forecast ↑</a>
     </footer>
-    <script type="module" src="./assets/app.js?v=13"></script>
+    <script type="module" src="./assets/app.js?v=14"></script>
   </body>
 </html>
