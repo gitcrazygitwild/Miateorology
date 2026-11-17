@@ -5,6 +5,14 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "updatedAt": "2026-11-16T15:30:12.185-05:00",
-  "todayDate": "2026-11-16"
+  "updatedAt": "2026-11-17T00:08:33.601-05:00",
+  "todayDate": "2026-11-17",
+  "sources": {
+    "dwdIcon": {
+      "available": true,
+      "days": 7,
+      "via": "Open-Meteo",
+      "rainProbabilityAvailable": false
+    }
+  }
 }

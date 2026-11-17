@@ -4,48 +4,33 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-11-16T15:30:12.185-05:00",
+  "generatedAt": "2026-11-17T00:08:33.601-05:00",
   "today": {
     "date": "2026-11-16",
     "sources": {
       "nws": {
         "date": "2026-11-16",
-        "summary": "Sunny",
-        "precipProbability": 0,
-        "windMph": 8,
-        "rain": false,
-        "snow": false,
-        "thunder": false
-      },
-      "openMeteo": {
-        "date": "2026-11-16",
         "summary": "Clear",
         "precipProbability": 0,
-        "windMph": 18.6,
+        "windMph": 2,
         "rain": false,
         "snow": false,
         "thunder": false
       },
-      "metNo": {
-        "date": "2026-11-16",
-        "summary": "Clearsky Night",
-        "precipProbability": null,
-        "windMph": 6.3,
-        "rain": false,
-        "snow": false,
-        "thunder": false
-      }
+      "openMeteo": null,
+      "metNo": null,
+      "dwdIcon": null
     },
     "consensus": {
       "rainSignal": "off",
       "snowSignal": "off",
       "thunderSignal": "off",
       "avgPrecipProbability": 0,
-      "avgWindMph": 11,
-      "windSignal": "weak",
+      "avgWindMph": 2,
+      "windSignal": "off",
       "summary": "Mostly quiet signal"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 56° / 36°."
+    "writeup": "Weather looks fairly quiet."
   },
   "next7Summary": {
     "rainDays": 0,
