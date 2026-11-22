@@ -4,63 +4,63 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-11-21T12:34:25.251-05:00",
+  "generatedAt": "2026-11-22T12:50:44.779-05:00",
   "today": {
-    "date": "2026-11-21",
+    "date": "2026-11-22",
     "sources": {
       "nws": {
-        "date": "2026-11-21",
-        "summary": "Mostly Cloudy",
-        "precipProbability": 32,
-        "windMph": 7,
+        "date": "2026-11-22",
+        "summary": "Rain Showers Likely",
+        "precipProbability": 68,
+        "windMph": 8,
         "rain": true,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-11-21",
+        "date": "2026-11-22",
         "summary": "Overcast",
-        "precipProbability": 5,
-        "windMph": 13.4,
+        "precipProbability": 49,
+        "windMph": 18.3,
         "rain": false,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-11-21",
-        "summary": "Cloudy",
+        "date": "2026-11-22",
+        "summary": "Lightrain",
         "precipProbability": null,
-        "windMph": 7.6,
-        "rain": false,
+        "windMph": 7.4,
+        "rain": true,
         "snow": false,
         "thunder": false
       },
       "dwdIcon": {
-        "date": "2026-11-21",
-        "summary": "Overcast",
+        "date": "2026-11-22",
+        "summary": "Light rain",
         "precipProbability": null,
-        "windMph": 4.9,
-        "rain": false,
+        "windMph": 5.2,
+        "rain": true,
         "snow": false,
         "thunder": false,
-        "precipExpected": false
+        "precipExpected": true
       }
     },
     "consensus": {
-      "rainSignal": "weak",
+      "rainSignal": "strong",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 18.5,
-      "avgWindMph": 8.2,
+      "avgPrecipProbability": 58.5,
+      "avgWindMph": 9.7,
       "windSignal": "weak",
-      "summary": "Mostly quiet signal"
+      "summary": "Rain signal present"
     },
-    "writeup": "Weather looks fairly quiet with temperatures near 65° / 45°."
+    "writeup": "Showers look likely with temperatures near 66° / 54° and about 59% average precipitation signal."
   },
   "next7Summary": {
-    "rainDays": 4,
+    "rainDays": 5,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 5
+    "windyDays": 6
   }
 }
