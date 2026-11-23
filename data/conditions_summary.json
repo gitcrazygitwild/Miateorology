@@ -4,42 +4,42 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-11-22T12:50:44.779-05:00",
+  "generatedAt": "2026-11-23T17:03:02.170-05:00",
   "today": {
-    "date": "2026-11-22",
+    "date": "2026-11-23",
     "sources": {
       "nws": {
-        "date": "2026-11-22",
-        "summary": "Rain Showers Likely",
-        "precipProbability": 68,
-        "windMph": 8,
+        "date": "2026-11-23",
+        "summary": "Slight Chance Rain Showers",
+        "precipProbability": 46,
+        "windMph": 14,
         "rain": true,
         "snow": false,
         "thunder": false
       },
       "openMeteo": {
-        "date": "2026-11-22",
-        "summary": "Overcast",
-        "precipProbability": 49,
-        "windMph": 18.3,
-        "rain": false,
+        "date": "2026-11-23",
+        "summary": "Light drizzle",
+        "precipProbability": 28,
+        "windMph": 31.1,
+        "rain": true,
         "snow": false,
         "thunder": false
       },
       "metNo": {
-        "date": "2026-11-22",
+        "date": "2026-11-23",
         "summary": "Lightrain",
         "precipProbability": null,
-        "windMph": 7.4,
+        "windMph": 12.5,
         "rain": true,
         "snow": false,
         "thunder": false
       },
       "dwdIcon": {
-        "date": "2026-11-22",
-        "summary": "Light rain",
+        "date": "2026-11-23",
+        "summary": "Rain showers",
         "precipProbability": null,
-        "windMph": 5.2,
+        "windMph": 10,
         "rain": true,
         "snow": false,
         "thunder": false,
@@ -50,17 +50,17 @@
       "rainSignal": "strong",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 58.5,
-      "avgWindMph": 9.7,
-      "windSignal": "weak",
+      "avgPrecipProbability": 37,
+      "avgWindMph": 16.9,
+      "windSignal": "strong",
       "summary": "Rain signal present"
     },
-    "writeup": "Showers look likely with temperatures near 66° / 54° and about 59% average precipitation signal."
+    "writeup": "Showers look likely with temperatures near 72° / 49° and about 37% average precipitation signal plus wind around 17 mph. A sharp cooler turn follows the next day."
   },
   "next7Summary": {
-    "rainDays": 5,
+    "rainDays": 4,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 6
+    "windyDays": 7
   }
 }
