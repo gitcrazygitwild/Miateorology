@@ -4,6 +4,9 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { fetchDwdIcon, decodeOpenMeteoWeatherCode, openMeteoSummaryFromCode } from "./dwd-icon.js";
 
+import { observationSummary } from "./observation-summary.js";
+import { writeAccuracyReport } from "./accuracy-report.js";
+
 const TZ = "America/New_York";
 const RICHMOND = { name: "Richmond, VA", lat: 37.5407, lon: -77.4360 };
 
@@ -454,39 +457,6 @@ async function getNwsObservationsForDay(stationId, dayStart, dayEnd) {
   return data?.features || [];
 }
 
-function obsDailySummary(observationFeatures, dayStart, dayEnd) {
-  const tempsF = [];
-  const windsMph = [];
-  let precipObsCount = 0;
-
-  for (const f of observationFeatures) {
-    const tsRaw = f?.properties?.timestamp;
-    if (!tsRaw) continue;
-    const ts = DateTime.fromISO(tsRaw).setZone(TZ);
-    if (ts < dayStart || ts >= dayEnd) continue;
-
-    const tempC = f?.properties?.temperature?.value;
-    const windMs = f?.properties?.windSpeed?.value;
-    const precipMm = f?.properties?.precipitationLastHour?.value;
-
-    const tf = fFromC(tempC);
-    if (tf != null) tempsF.push(tf);
-
-    const mph = mphFromMs(windMs);
-    if (mph != null) windsMph.push(mph);
-
-    if (typeof precipMm === "number" && precipMm > 0) precipObsCount += 1;
-  }
-
-  return {
-    obsHighF: tempsF.length ? Math.max(...tempsF) : null,
-    obsLowF: tempsF.length ? Math.min(...tempsF) : null,
-    obsMaxWindMph: windsMph.length ? Math.max(...windsMph) : null,
-    precipOccurred: precipObsCount > 0,
-    n: observationFeatures.length
-  };
-}
-
 // ---------- Open-Meteo ----------
 async function getOpenMeteoDailyHighLow(lat, lon, startDate, endDate) {
   const url =
@@ -927,21 +897,21 @@ async function main() {
         lowF: nwsTomorrow.lowF,
         windMph: nwsTomorrowCond.windMph ?? null,
         precipProbability: nwsTomorrowCond.precipProbability ?? null,
-        precipExpected: !!nwsTomorrowCond.rain
+        precipExpected: typeof nwsTomorrowCond.rain === "boolean" ? nwsTomorrowCond.rain || nwsTomorrowCond.snow || nwsTomorrowCond.thunder : null
       },
       openMeteo: {
         highF: omTomorrow.highF,
         lowF: omTomorrow.lowF,
         windMph: omTomorrowCond.windMph ?? null,
         precipProbability: omTomorrowCond.precipProbability ?? null,
-        precipExpected: !!omTomorrowCond.rain
+        precipExpected: typeof omTomorrowCond.rain === "boolean" ? omTomorrowCond.rain || omTomorrowCond.snow || omTomorrowCond.thunder : null
       },
       metNo: {
         highF: metTomorrow.highF,
         lowF: metTomorrow.lowF,
         windMph: metTomorrowCond.windMph ?? null,
         precipProbability: metTomorrowCond.precipProbability ?? null,
-        precipExpected: !!metTomorrowCond.rain
+        precipExpected: typeof metTomorrowCond.rain === "boolean" ? metTomorrowCond.rain || metTomorrowCond.snow || metTomorrowCond.thunder : null
       },
       ...(iconAvailable ? {dwdIcon:{
         highF:icon.temps.find(row=>row.date===tomorrow.toISODate())?.highF ?? null,
@@ -968,17 +938,17 @@ async function main() {
       if (!stationId) throw new Error("Could not resolve NWS stationId for observations.");
 
       const obsFeatures = await getNwsObservationsForDay(stationId, dayStart, dayEnd);
-      const observed = obsDailySummary(obsFeatures, dayStart, dayEnd);
+      const observed = observationSummary(obsFeatures, dayStart, dayEnd);
 
       const providers = scoringSnapshot.forecasts;
       const providerScores = Object.entries(providers).map(([key, v]) => {
         const highErr = (v.highF == null || observed.obsHighF == null) ? null : Math.abs(v.highF - observed.obsHighF);
         const lowErr = (v.lowF == null || observed.obsLowF == null) ? null : Math.abs(v.lowF - observed.obsLowF);
         const windErr = (v.windMph == null || observed.obsMaxWindMph == null) ? null : Math.abs(v.windMph - observed.obsMaxWindMph);
-        const precipEventErr = (typeof v.precipExpected === "boolean")
+        const precipEventErr = (typeof v.precipExpected === "boolean" && typeof observed.precipOccurred === "boolean")
           ? (v.precipExpected === observed.precipOccurred ? 0 : 1)
           : null;
-        const overall = mean([highErr, lowErr, windErr]);
+        const overall = highErr === null || lowErr === null ? null : mean([highErr, lowErr]);
 
         return {
           provider: key,
@@ -994,6 +964,8 @@ async function main() {
       }).sort((a, b) => (a.errors.overallAbsF ?? 1e9) - (b.errors.overallAbsF ?? 1e9));
 
       writeJson(scoreOutPath, {
+        observationVersion: 2,
+        precipitationHours: observed.precipHours,
         targetDate: yesterday.toISODate(),
         observedFromStation: stationId,
         observationCount: observed.n,
@@ -1022,6 +994,7 @@ async function main() {
     .map(f => readJsonIfExists(path.join(scoresDir, f)))
     .filter(Boolean);
 
+  writeAccuracyReport(dataDir, now.toISO());
   const last30 = allLiveDays.slice(-30);
 
   const providerAgg = {};

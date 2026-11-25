@@ -8,6 +8,7 @@ const svgNode = (tag, attrs) => {
 };
 
 export function initAccuracyChart(container) {
+  let spec={metric:"temperature",unit:"°F",label:"Temperature error"};
   let source,
     range = "30";
   function render() {
@@ -35,14 +36,14 @@ export function initAccuracyChart(container) {
         ? (left + right) / 2
         : left +
           ((stamp - data.start) / (data.end - data.start)) * (right - left);
-    const ceiling = Math.ceil(data.max / 5) * 5,
+    const ceiling = spec.metric === "rain" ? 100 : Math.ceil(data.max / 5) * 5,
       y = (value) => bottom - (value / ceiling) * (bottom - top);
     const svg = svgNode("svg", {
       viewBox: `0 0 ${width} ${height}`,
       class: "chartSvg",
       role: "img",
       "aria-label":
-        "Mean high and low temperature error by date, in degrees Fahrenheit. Lower is better. Use the date slider for exact readings.",
+        `${spec.label} by date, in ${spec.unit}. ${spec.metric === "rain" ? "Higher" : "Lower"} is better. Use the date slider for exact readings.`,
     });
     for (let i = 0; i <= 4; i++) {
       const value = (ceiling * i) / 4;
@@ -61,7 +62,7 @@ export function initAccuracyChart(container) {
         fill: "#9cacbd",
         "font-size": 12,
       });
-      label.textContent = `${value.toFixed(value % 1 ? 1 : 0)}°`;
+      label.textContent = `${value.toFixed(value % 1 ? 1 : 0 )}${spec.unit}`;
       svg.append(label);
     }
     const legend = node("div", "chartLegend");
@@ -147,7 +148,7 @@ export function initAccuracyChart(container) {
         const item = node(
           "span",
           "",
-          `${PROVIDERS[name]} ${Number.isFinite(value) ? value.toFixed(1) + "°" : "—"}`,
+          `${PROVIDERS[name]} ${Number.isFinite(value) ? value.toFixed(1) + spec.unit : "—"}`,
         );
         item.style.color = colors[name];
         readout.append(item);
@@ -191,7 +192,8 @@ export function initAccuracyChart(container) {
       render();
     }),
   );
-  return (data) => {
+  return (data, options) => {
+    if(options) spec=options;
     source = data;
     render();
   };
