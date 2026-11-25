@@ -10,7 +10,7 @@
     />
     <title>Mia-teorology · Richmond weather</title>
     <link rel="icon" href="./assets/mia.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./assets/styles.css?v=14" />
+    <link rel="stylesheet" href="./assets/styles.css?v=15" />
     <link rel="stylesheet" href="./assets/planner.css?v=13" />
   </head>
   <body>
@@ -185,12 +185,15 @@
             </div>
             <span class="section-note">Open a day to compare sources</span>
           </div>
+          <div class="spread-heading"><span class="eyebrow">Where the models agree</span><p class="smallMuted">Daily highs · blue band = source range · gold line = blend. A wider band means more disagreement, not a probability or confidence interval.</p></div>
+          <div id="forecastSpread"></div>
           <div id="dailyOutlook"></div>
           <p class="smallMuted">
             Temperature bars share the same scale. Source agreement describes
             the spread of predictions, not a guarantee.
           </p>
         </section>
+        <section class="card mia-dispatch-card" id="miaWardrobe" aria-label="Mia’s daily weather outfit"></section>
         <section class="card mia-note" aria-labelledby="rainbowHeading">
           <img src="./assets/mia.svg" alt="" width="64" height="64" />
           <div>
@@ -214,7 +217,7 @@
           <h2>Which forecast earns your trust?</h2>
           <p class="muted">
             Compare predictions with what actually happened. Lower temperature
-            error is better.
+            and wind error is better; higher wet-day accuracy is better.
           </p>
         </div>
         <div class="toggleRow" role="group" aria-label="Accuracy dataset">
@@ -240,7 +243,7 @@
         <section class="card">
           <div class="section-heading">
             <h2 id="monthlyHeading">This month’s standings</h2>
-            <span class="section-note">Mean temperature error · °F</span>
+            <span class="section-note">Units stay separate</span>
           </div>
           <div id="monthlyWinner"></div>
         </section>
@@ -264,6 +267,12 @@
               </button>
             </div>
           </div>
+          <div class="metric-controls" role="group" aria-label="Accuracy metric">
+            <button type="button" data-accuracy-metric="temperature" aria-pressed="true">Temperature</button>
+            <button type="button" data-accuracy-metric="wind" aria-pressed="false">Wind</button>
+            <button type="button" data-accuracy-metric="rain" aria-pressed="false">Rain &amp; snow</button>
+          </div>
+          <p id="metricNote" class="smallMuted" role="status"></p>
           <div id="chartWrap"></div>
         </section>
         <section class="card">
@@ -350,8 +359,7 @@
             <div>
               <dt>The score</dt>
               <dd>
-                Recent accuracy compares forecast high/low, wind, and rain
-                events with Richmond observations. Historical mode compares only
+                Recent accuracy measures high/low temperature error in °F, maximum sustained wind error in mph, and wet-day prediction hits separately. Legacy records without verified wind units or precipitation coverage are excluded from those two metrics. Historical mode compares only
                 Open-Meteo temperatures with reanalysis. ICON starts building accuracy history from new forecast snapshots; it has no invented or backfilled scores.
               </dd>
             </div>
@@ -408,6 +416,6 @@
     <footer class="wrap site-footer">
       <span id="updated"></span><a href="#forecast">Back to forecast ↑</a>
     </footer>
-    <script type="module" src="./assets/app.js?v=14"></script>
+    <script type="module" src="./assets/app.js?v=15"></script>
   </body>
 </html>

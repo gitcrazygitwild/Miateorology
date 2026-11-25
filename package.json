@@ -6,7 +6,8 @@
     "update": "node scripts/update.js",
     "backfill:openmeteo:year": "node scripts/backfill_openmeteo_year.js",
     "test": "node --test tests/*.test.js",
-    "check": "node --check assets/app.js && node --check assets/weather-planner.js && node --check assets/planner-model.js && node --check assets/weather-shared.js && node --check assets/desk-ui.js && node --check assets/insights-model.js && node --check assets/accuracy-chart.js && node --check scripts/update.js && node --check scripts/dwd-icon.js"
+    "check": "node --check assets/app.js && node --check assets/weather-planner.js && node --check assets/planner-model.js && node --check assets/weather-shared.js && node --check assets/desk-ui.js && node --check assets/insights-model.js && node --check assets/accuracy-chart.js && node --check scripts/update.js && node --check scripts/dwd-icon.js && node --check assets/accuracy-model.js && node --check assets/weather-extras-model.js && node --check assets/weather-extras.js && node --check scripts/observation-summary.js && node --check scripts/accuracy-report.js",
+    "report:accuracy": "node --input-type=module -e \"import {writeAccuracyReport} from './scripts/accuracy-report.js'; writeAccuracyReport();\""
   },
   "dependencies": {
     "luxon": "^3.5.0"

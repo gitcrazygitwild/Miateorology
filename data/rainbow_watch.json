@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-24T15:40:15.741-05:00",
+  "generatedAt": "2026-11-25T00:04:52.168-05:00",
   "today": {
-    "date": "2026-11-24",
-    "score": 0,
-    "band": "Slim",
-    "summary": "Not much of a rainbow setup right now."
+    "date": "2026-11-25",
+    "score": 82,
+    "band": "High",
+    "summary": "Best setup for sun plus showers."
   },
   "bestNext7": {
     "date": "2026-11-25",
@@ -14,12 +14,6 @@
   },
   "days": [
     {
-      "date": "2026-11-24",
-      "score": 0,
-      "band": "Slim",
-      "summary": "Not much of a rainbow setup right now."
-    },
-    {
       "date": "2026-11-25",
       "score": 82,
       "band": "High",
@@ -27,7 +21,7 @@
     },
     {
       "date": "2026-11-26",
-      "score": 78,
+      "score": 70,
       "band": "High",
       "summary": "Best setup for sun plus showers."
     },
@@ -45,15 +39,21 @@
     },
     {
       "date": "2026-11-29",
-      "score": 0,
-      "band": "Slim",
-      "summary": "Not much of a rainbow setup right now."
+      "score": 22,
+      "band": "Low",
+      "summary": "A small rainbow chance if breaks in the clouds line up."
     },
     {
       "date": "2026-11-30",
-      "score": 33,
-      "band": "Low",
-      "summary": "A small rainbow chance if breaks in the clouds line up."
+      "score": 45,
+      "band": "Medium",
+      "summary": "A decent post-shower rainbow setup."
+    },
+    {
+      "date": "2026-12-01",
+      "score": 0,
+      "band": "Slim",
+      "summary": "Not much of a rainbow setup right now."
     }
   ]
 }

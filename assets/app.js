@@ -1,9 +1,11 @@
 import { richmondDay, forecastCondition, weatherIcon } from './weather-shared.js';
 import { renderHourlyStrip, initOutdoorPlanner } from './weather-planner.js';
 import { initDesk, renderRain, renderForecastDays } from './desk-ui.js';
-import { initAccuracyChart } from './accuracy-chart.js';
+import { initAccuracyChart } from './accuracy-chart.js?v=15';
 import { PROVIDERS } from './insights-model.js';
 const providerName = name => PROVIDERS[name] || name;
+import { metricValues } from './accuracy-model.js';
+import { renderSpread, renderMia } from './weather-extras.js?v=15';
 initDesk();
 const updateChart = initAccuracyChart(document.getElementById('chartWrap'));
 async function fetchJson(p) {
@@ -183,7 +185,7 @@ function renderLatest(container, latestScore) {
       ])
     ]),
     el("p", { class: "muted" }, [
-      `Observed high/low: ${observed.highF ?? "—"}° / ${observed.lowF ?? "—"}° • Max wind: ${observed.maxWindMph ?? "—"} mph • Precip: ${observed.precipOccurred == null ? "—" : observed.precipOccurred ? "Yes" : "No"}`
+      `Observed high/low: ${observed.highF ?? "—"}° / ${observed.lowF ?? "—"}° • Max wind: ${latestScore.observationVersion >= 2 ? observed.maxWindMph ?? "—" : "unverified"} mph • Precip: ${latestScore.observationVersion < 2 || !latestScore.observationVersion ? "unverified" : observed.precipOccurred == null ? "—" : observed.precipOccurred ? "Yes" : "No"}`
     ])
   ]);
 
@@ -206,16 +208,17 @@ function renderLatest(container, latestScore) {
   for (const s of latestScore.scores || []) {
     const p = s.predicted || {};
     const e = s.errors || {};
+    const metrics = metricValues(s, latestScore);
     tbody.append(
       el("tr", {}, [
         el("td", {}, [providerName(s.provider)]),
         el("td", {}, [`${p.highF ?? "—"}° / ${p.lowF ?? "—"}°`]),
         el("td", {}, [p.windMph == null ? "—" : `${p.windMph} mph`]),
-        el("td", {}, [typeof p.precipProbability === "number" ? `${p.precipProbability}%` : (p.precipExpected ? "Yes" : "No")]),
-        el("td", {}, [e.overallAbsF == null ? "—" : `${e.overallAbsF.toFixed(1)}°`]),
-        el("td", {}, [e.windAbsMph == null ? "—" : `${e.windAbsMph.toFixed(1)} mph`]),
+        el("td", {}, [typeof p.precipProbability === "number" ? `${p.precipProbability}%` : (typeof p.precipExpected === "boolean" ? p.precipExpected ? "Yes" : "No" : "—")]),
+        el("td", {}, [metrics.temperature == null ? "—" : `${metrics.temperature.toFixed(1)}°`]),
+        el("td", {}, [metrics.wind == null ? "—" : `${metrics.wind.toFixed(1)} mph`]),
         el("td", {}, [
-          e.precipEventMiss == null ? "—" : (e.precipEventMiss === 0 ? "Hit" : "Miss")
+          metrics.rain == null ? "—" : (metrics.rain === 100 ? "Hit" : "Miss")
         ])
       ])
     );
@@ -448,53 +451,49 @@ function renderTodayHero(container, mergedDays) {
   container.replaceChildren(wrap);
 }
 
+const metricDescriptions = {
+  temperature: {unit:'°F',label:'Temperature error',description:'Mean absolute error of daily high and low. Lower is better.'},
+  wind: {unit:' mph',label:'Wind error',description:'Absolute error of daily maximum sustained wind. Lower is better.'},
+  rain: {unit:'%',label:'Wet-day accuracy',description:'Correct rain/snow occurrence predictions. Higher is better; this is not probability accuracy.'}
+};
+let accuracyData=null, liveMetric='temperature';
+function selectAccuracyMetric(metric) {
+  liveMetric=metric;
+  document.querySelectorAll('[data-accuracy-metric]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.accuracyMetric===metric)));
+  const spec=metricDescriptions[metric];
+  document.getElementById('metricNote').textContent=spec.description;
+  updateChart(accuracyData ? {series:accuracyData.series[metric]} : null,{metric,...spec});
+}
+document.querySelectorAll('[data-accuracy-metric]').forEach(button=>button.addEventListener('click',()=>selectAccuracyMetric(button.dataset.accuracyMetric)));
+function renderMetricScorecard(container, report) {
+  const table=el('table',{},[el('thead',{},[el('tr',{},['Source','Temperature · °F ↓','Wind · mph ↓','Wet days · % ↑'].map(label=>el('th',{},[label])))])]);
+  table.append(el('tbody',{},report.leaderboard.map(row=>el('tr',{},[
+    el('td',{},[providerName(row.provider)]),
+    ...['temperature','wind','rain'].map(key=>el('td',{},[row[key]?.value==null?'Awaiting verified data':`${row[key].value.toFixed(1)}${metricDescriptions[key].unit} · ${row[key].days} days`]))
+  ]))));
+  container.replaceChildren(table);
+}
 async function loadLive(meta) {
-  document.getElementById("monthlyHeading").textContent = "This month’s standings";
-  const lb = await fetchJson("./data/leaderboard.json");
-  document.getElementById("meta").textContent = `Location: ${meta.location.name} • Window: ${lb.windowDays} days • Time zone: Richmond`;
-  renderLeaderboard(document.getElementById("leaderboard"), lb);
-
-  const todayDate = meta.todayDate || null;
-  let latest = null;
-
-  if (todayDate) {
-    const richmondBase = new Date(`${todayDate}T12:00:00-04:00`);
-    for (let i = 0; i < 40; i++) {
-      const d = new Date(richmondBase);
-      d.setDate(richmondBase.getDate() - i);
-      const y = d.getFullYear();
-      const m = String(d.getMonth() + 1).padStart(2, "0");
-      const day = String(d.getDate()).padStart(2, "0");
-      const iso = `${y}-${m}-${day}`;
-      try {
-        latest = await fetchJson(`./data/scores/${iso}.json`);
-        break;
-      } catch {}
-    }
-  }
-
-  if (latest) renderLatest(document.getElementById("latest"), latest);
-  else document.getElementById("latest").textContent = "No scored days yet (wait for the action to run).";
-
-  document.getElementById("viewNote").textContent =
-    "Live accuracy compares forecast temperature, wind, and precipitation-event performance using Richmond-centered data.";
-
-  try {
-    const monthly = await fetchJson("./data/monthly_winner_live.json");
-    renderMonthlyWinner(document.getElementById("monthlyWinner"), monthly);
-  } catch {
-    document.getElementById("monthlyWinner").textContent = "Monthly standings not ready yet.";
-  }
-
-  try {
-    const chart = await fetchJson("./data/chart_live.json");
-    updateChart(chart);
-  } catch {
-    updateChart(null);
-  }
+  accuracyData=null;
+  document.querySelectorAll('[data-accuracy-metric]').forEach(button=>button.disabled=false);
+  document.getElementById('monthlyHeading').textContent='Three measures, three stories';
+  const report=await fetchJson('./data/accuracy_metrics.json');
+  accuracyData=report;
+  document.getElementById('meta').textContent=`${meta.location.name} · 30 calendar days ending ${report.latestDate || '—'}. Counts vary by source and metric; compare matching coverage before judging a winner.`;
+  renderMetricScorecard(document.getElementById('leaderboard'),report);
+  document.getElementById('monthlyWinner').replaceChildren(el('div',{class:'metric-explain'},Object.values(metricDescriptions).map(spec=>el('div',{},[el('h3',{},[spec.label]),el('p',{class:'smallMuted'},[spec.description])]))));
+  document.getElementById('viewNote').textContent='Temperature uses archived high/low errors only. Wind and wet-day scores begin with unit-checked, coverage-aware observations; older unverified records are excluded. No scores are invented for missing days.';
+  selectAccuracyMetric(liveMetric);
+  if(report.latestDate) {
+    const latest=await fetchJson(`./data/scores/${report.latestDate}.json`);
+    renderLatest(document.getElementById('latest'),latest);
+  } else document.getElementById('latest').textContent='No scored days yet.';
 }
 
 async function loadBackfill(meta) {
+  accuracyData=null;
+  document.querySelectorAll('[data-accuracy-metric]').forEach(button=>{button.disabled=button.dataset.accuracyMetric!=='temperature';button.setAttribute('aria-pressed',String(button.dataset.accuracyMetric==='temperature'));});
+  document.getElementById('metricNote').textContent=metricDescriptions.temperature.description;
   document.getElementById("monthlyHeading").textContent = "Historical comparison";
   try {
     const lb = await fetchJson("./data/leaderboard_openmeteo_year.json");
@@ -552,7 +551,7 @@ async function loadBackfill(meta) {
 
     try {
       const chart = await fetchJson("./data/chart_backfill_openmeteo_year.json");
-      updateChart(chart);
+      updateChart(chart,{metric:'temperature',...metricDescriptions.temperature});
     } catch {
       updateChart(null);
     }
@@ -590,6 +589,7 @@ async function main() {
       try { localStorage.setItem("accuracyView", "live"); } catch {}
     }
     } catch {
+      accuracyData=null;
       document.getElementById('viewNote').textContent = 'This accuracy dataset is temporarily unavailable. Try selecting it again.';
       for (const id of ['monthlyWinner','leaderboard','latest']) document.getElementById(id).textContent = 'Unavailable';
       updateChart(null);
@@ -637,6 +637,8 @@ async function refreshForecast() {
     renderTodayHero(document.getElementById('todayHero'), merged);
     renderForecastDays(document.getElementById('dailyOutlook'), merged);
     const today = merged.find(day => day.date === richmondDay());
+    renderSpread(document.getElementById('forecastSpread'), merged);
+    renderMia(document.getElementById('miaWardrobe'), today);
     renderWeatherStory(document.getElementById('weatherStory'), today ? {title:'The daily read', summary:today.conditions?.writeup || forecastCondition(today.conditions).label} : null);
     const issued = data.blend_daily?.generatedAt;
     const older = issued && Math.min(+new Date(issued), +new Date(data.conditions_daily?.generatedAt)) < Date.now() - 36 * 3600000;

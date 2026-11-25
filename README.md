@@ -57,3 +57,13 @@ Existing issued snapshots and scored history stay intact. ICON joins accuracy tr
 - **Date-correct summaries:** the daily read uses today's conditions. Rainbow Watch selects Richmond's current day and upcoming dates, with the heuristic clearly labeled as an index out of 100 rather than a probability. Missing historical precipitation remains unknown instead of being labeled dry.
 
 The shared forecast classifier/icon module is unchanged, keeping Hubert's House in sync. The frontend adds no paid services. `insights-model.js` holds tested rain-window, chart-date, and temperature-scale rules; `desk-ui.js` and `accuracy-chart.js` render their views.
+
+## Separate scores, forecast spread, and Mia's wardrobe
+
+The Accuracy lab switches between temperature (mean absolute high/low error, °F), wind (daily maximum sustained wind error, mph), and wet-day predictions (rain/snow occurrence hit rate, not probability calibration). The source scorecard reports each metric's own sample count over 30 calendar days ending on the latest scored date. Compare matching coverage before treating a source as a winner. Historical reanalysis remains temperature-only.
+
+`npm run report:accuracy` derives `data/accuracy_metrics.json` from immutable score files without changing snapshots or scores. Scheduled collection rebuilds it too. Legacy `overallAbsF` mixed temperature and wind, so the new temperature display uses `highAbsF` and `lowAbsF` directly. Older wind and wet-day measurements lack verified units/coverage and are excluded from the new metrics. New observation records are marked `observationVersion: 2`: wind respects NWS unit codes; missing precipitation stays unknown; a dry day needs readings in at least 18 distinct hours. Wet-day scores also require a new precipitation forecast covering rain, snow, and thunderstorms (`precipitationForecastVersion: 2`). Existing archived records remain untouched.
+
+The weekly blue band spans available models' daily high temperatures, with the blend drawn in gold. Missing/single-source ranges remain unshaded. Day buttons expose exact readings and retain selection on refresh; this is model disagreement, not a statistical confidence interval.
+
+Mia's daily dispatch uses Richmond's current forecast to choose a raincoat, scarf, sunglasses, or bow. Her line is stable within the day and has a waiting state when today's forecast is unavailable. All artwork is local, with no new APIs, subscriptions, or data storage.

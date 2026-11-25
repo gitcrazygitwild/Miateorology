@@ -1,0 +1,41 @@
+{
+  "precipitationForecastVersion": 2,
+  "issuedAt": "2026-11-25T00:04:52.168-05:00",
+  "issuedDate": "2026-11-25",
+  "targetDate": "2026-11-26",
+  "location": {
+    "name": "Richmond, VA",
+    "lat": 37.5407,
+    "lon": -77.436
+  },
+  "forecasts": {
+    "nws": {
+      "highF": 63,
+      "lowF": 45,
+      "windMph": 25,
+      "precipProbability": 100,
+      "precipExpected": true
+    },
+    "openMeteo": {
+      "highF": 67.4,
+      "lowF": 49.7,
+      "windMph": 62.9,
+      "precipProbability": 100,
+      "precipExpected": true
+    },
+    "metNo": {
+      "highF": 69.3,
+      "lowF": 50,
+      "windMph": 27.1,
+      "precipProbability": null,
+      "precipExpected": true
+    },
+    "dwdIcon": {
+      "highF": 61.3,
+      "lowF": 49.9,
+      "windMph": 17,
+      "precipProbability": null,
+      "precipExpected": true
+    }
+  }
+}

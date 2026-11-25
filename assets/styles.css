@@ -1114,3 +1114,27 @@ tbody tr:last-child td {
 .source-reading.dwdIcon { border-top-color: #efbd85; }
 .provider-dot.dwdIcon { background: #efbd85; }
 #iconSourceStatus { margin-top: 12px; font-size: 11px; line-height: 1.5; }
+
+/* Model spread, distinct accuracy metrics, and Mia's daily outfit. */
+.spread-heading { margin: 22px 0 6px; }
+.spread-plot { overflow-x: auto; }
+.spread-plot svg { display: block; width: 100%; min-width: 540px; }
+.spread-days, .metric-controls { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.spread-days button, .metric-controls button { border: 1px solid var(--line, #ffffff20); border-radius: 10px; padding: 9px 14px; color: #b8c7d7; background: #ffffff05; cursor: pointer; font: inherit; font-size: 12px; }
+.spread-days button[aria-pressed="true"], .metric-controls button[aria-pressed="true"] { color: #d8effb; background: #8ccff01c; border-color: #8ccff066; }
+.metric-controls button:disabled { opacity: .4; cursor: default; }
+.spread-readout { display: flex; flex-wrap: wrap; gap: 8px 16px; color: #adbdcb; font-size: 12px; padding: 10px 0 24px; }
+.spread-readout strong { flex-basis: 100%; color: #d7e4ef; }
+.metric-explain { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+.metric-explain h3 { font-size: 14px; margin-bottom: 8px; }
+.mia-dispatch-card { display: flex; align-items: center; gap: 26px; background: radial-gradient(ellipse at 10% 80%,#a7d8ad12,transparent 65%),var(--card, #192330); }
+.mia-wardrobe { width: 128px; height: 150px; flex-shrink: 0; }
+.mia-dispatch h2 { margin: 8px 0; font-size: 24px; }
+.mia-dispatch p { color: #d3dfeb; line-height: 1.6; }
+@media(max-width:600px) {
+  .metric-explain { grid-template-columns: 1fr; gap: 2px; }
+  .mia-dispatch-card { gap: 14px; align-items: flex-start; }
+  .mia-wardrobe { width: 76px; height: 90px; }
+  .mia-dispatch h2 { font-size: 19px; }
+  .spread-days button { padding: 8px 10px; }
+}
