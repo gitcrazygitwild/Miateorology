@@ -4,38 +4,63 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-11-25T00:04:52.168-05:00",
+  "generatedAt": "2026-11-25T14:57:05.619-05:00",
   "today": {
-    "date": "2026-11-24",
+    "date": "2026-11-25",
     "sources": {
       "nws": {
-        "date": "2026-11-24",
-        "summary": "Mostly Clear",
-        "precipProbability": 0,
-        "windMph": 8,
-        "rain": false,
+        "date": "2026-11-25",
+        "summary": "Cloudy",
+        "precipProbability": 100,
+        "windMph": 30,
+        "rain": true,
         "snow": false,
         "thunder": false
       },
-      "openMeteo": null,
-      "metNo": null,
-      "dwdIcon": null
+      "openMeteo": {
+        "date": "2026-11-25",
+        "summary": "Light rain",
+        "precipProbability": 89,
+        "windMph": 39.1,
+        "rain": true,
+        "snow": false,
+        "thunder": false
+      },
+      "metNo": {
+        "date": "2026-11-25",
+        "summary": "Lightrain",
+        "precipProbability": null,
+        "windMph": 17.2,
+        "rain": true,
+        "snow": false,
+        "thunder": false
+      },
+      "dwdIcon": {
+        "date": "2026-11-25",
+        "summary": "Light rain",
+        "precipProbability": null,
+        "windMph": 11.3,
+        "rain": true,
+        "snow": false,
+        "thunder": false,
+        "precipExpected": true
+      }
     },
     "consensus": {
-      "rainSignal": "off",
+      "rainSignal": "strong",
       "snowSignal": "off",
       "thunderSignal": "off",
-      "avgPrecipProbability": 0,
-      "avgWindMph": 8,
-      "windSignal": "off",
-      "summary": "Mostly quiet signal"
+      "avgPrecipProbability": 94.5,
+      "avgWindMph": 24.4,
+      "windSignal": "strong",
+      "summary": "Rain signal present"
     },
-    "writeup": "Weather looks fairly quiet."
+    "writeup": "Showers look likely with temperatures near 51° / 42° and about 95% average precipitation signal plus wind around 24 mph. A warmer turn follows the next day."
   },
   "next7Summary": {
-    "rainDays": 5,
+    "rainDays": 4,
     "snowDays": 0,
     "thunderDays": 0,
-    "windyDays": 6
+    "windyDays": 7
   }
 }
