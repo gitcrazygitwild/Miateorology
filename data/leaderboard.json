@@ -1,34 +1,34 @@
 {
   "windowDays": 30,
-  "asOf": "2026-11-24T15:40:15.741-05:00",
+  "asOf": "2026-11-25T00:04:52.168-05:00",
   "leaderboard": [
     {
       "provider": "openMeteo",
       "daysScored": 30,
-      "meanOverallAbsF": 9.7,
-      "meanWindAbsMph": 24,
-      "precipHitRate": 96.7
+      "meanOverallAbsF": 9.3,
+      "meanWindAbsMph": 23.3,
+      "precipHitRate": 96.6
     },
     {
       "provider": "dwdIcon",
-      "daysScored": 6,
-      "meanOverallAbsF": 12.2,
-      "meanWindAbsMph": 32,
+      "daysScored": 7,
+      "meanOverallAbsF": 10.7,
+      "meanWindAbsMph": 28.5,
       "precipHitRate": 83.3
     },
     {
       "provider": "metNo",
       "daysScored": 30,
-      "meanOverallAbsF": 13.3,
-      "meanWindAbsMph": 33.4,
-      "precipHitRate": 93.3
+      "meanOverallAbsF": 12.7,
+      "meanWindAbsMph": 32,
+      "precipHitRate": 93.1
     },
     {
       "provider": "nws",
       "daysScored": 30,
-      "meanOverallAbsF": 13.7,
-      "meanWindAbsMph": 34.6,
-      "precipHitRate": 93.3
+      "meanOverallAbsF": 13.2,
+      "meanWindAbsMph": 33.1,
+      "precipHitRate": 93.1
     }
   ]
 }
