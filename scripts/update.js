@@ -887,6 +887,7 @@ async function main() {
 
   // Preserve the original issued forecast; never retrofit new sources into history.
   saveForecastSnapshot(forecastSnapshotPath, {
+    precipitationForecastVersion: 2,
     issuedAt: now.toISO(),
     issuedDate: issueDate,
     targetDate: tomorrow.toISODate(),
@@ -965,6 +966,7 @@ async function main() {
 
       writeJson(scoreOutPath, {
         observationVersion: 2,
+        precipitationForecastVersion: scoringSnapshot.precipitationForecastVersion || 1,
         precipitationHours: observed.precipHours,
         targetDate: yesterday.toISODate(),
         observedFromStation: stationId,

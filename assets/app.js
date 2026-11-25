@@ -1,11 +1,11 @@
 import { richmondDay, forecastCondition, weatherIcon } from './weather-shared.js';
 import { renderHourlyStrip, initOutdoorPlanner } from './weather-planner.js';
 import { initDesk, renderRain, renderForecastDays } from './desk-ui.js';
-import { initAccuracyChart } from './accuracy-chart.js';
+import { initAccuracyChart } from './accuracy-chart.js?v=15';
 import { PROVIDERS } from './insights-model.js';
 const providerName = name => PROVIDERS[name] || name;
 import { metricValues } from './accuracy-model.js';
-import { renderSpread, renderMia } from './weather-extras.js';
+import { renderSpread, renderMia } from './weather-extras.js?v=15';
 initDesk();
 const updateChart = initAccuracyChart(document.getElementById('chartWrap'));
 async function fetchJson(p) {

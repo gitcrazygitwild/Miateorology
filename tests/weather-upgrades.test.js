@@ -7,7 +7,7 @@ import {forecastSpread,miaWardrobe} from '../assets/weather-extras-model.js';
 test('temperature scores exclude wind and legacy wind/rain remain unverified',()=>{
   const score={errors:{highAbsF:4,lowAbsF:2,windAbsMph:90,overallAbsF:32},predicted:{precipExpected:true}};
   assert.deepEqual(metricValues(score),{temperature:3,wind:null,rain:null});
-  assert.deepEqual(metricValues(score,{observationVersion:2,observed:{precipOccurred:true}}),{temperature:3,wind:90,rain:100});
+  assert.deepEqual(metricValues(score,{observationVersion:2,precipitationForecastVersion:2,observed:{precipOccurred:true}}),{temperature:3,wind:90,rain:100});
   assert.equal(metricValues({errors:{highAbsF:0,lowAbsF:null}}).temperature,null);
   assert.equal(metricValues({errors:{highAbsF:0,lowAbsF:0}}).temperature,0);
 });

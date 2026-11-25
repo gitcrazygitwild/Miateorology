@@ -7,7 +7,7 @@ export function metricValues(score, day = {}) {
     temperature: valid(errors.highAbsF) && valid(errors.lowAbsF) ? (errors.highAbsF+errors.lowAbsF)/2 : null,
     // Legacy observations did not retain verified wind units or precipitation coverage.
     wind: day.observationVersion >= 2 && valid(errors.windAbsMph) ? errors.windAbsMph : null,
-    rain: day.observationVersion >= 2 && typeof day.observed?.precipOccurred === 'boolean' && typeof score?.predicted?.precipExpected === 'boolean'
+    rain: day.observationVersion >= 2 && day.precipitationForecastVersion >= 2 && typeof day.observed?.precipOccurred === 'boolean' && typeof score?.predicted?.precipExpected === 'boolean'
       ? Number(day.observed.precipOccurred === score.predicted.precipExpected)*100 : null
   };
 }
