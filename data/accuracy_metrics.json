@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-25T14:57:05.619-05:00",
-  "latestDate": "2026-11-24",
+  "generatedAt": "2026-11-26T14:37:50.876-05:00",
+  "latestDate": "2026-11-25",
   "windowDays": 30,
   "series": {
     "temperature": {
@@ -885,6 +885,10 @@
         {
           "date": "2026-11-24",
           "value": 2.5
+        },
+        {
+          "date": "2026-11-25",
+          "value": 10.6
         }
       ],
       "openMeteo": [
@@ -1767,6 +1771,10 @@
         {
           "date": "2026-11-24",
           "value": 1.25
+        },
+        {
+          "date": "2026-11-25",
+          "value": 3.5
         }
       ],
       "metNo": [
@@ -2649,6 +2657,10 @@
         {
           "date": "2026-11-24",
           "value": 1.5999999999999999
+        },
+        {
+          "date": "2026-11-25",
+          "value": 2
         }
       ],
       "dwdIcon": [
@@ -2679,6 +2691,10 @@
         {
           "date": "2026-11-24",
           "value": 1.8
+        },
+        {
+          "date": "2026-11-25",
+          "value": 0.25
         }
       ]
     },
@@ -2687,24 +2703,40 @@
         {
           "date": "2026-11-24",
           "value": 3.3
+        },
+        {
+          "date": "2026-11-25",
+          "value": 8.9
         }
       ],
       "openMeteo": [
         {
           "date": "2026-11-24",
           "value": 12.8
+        },
+        {
+          "date": "2026-11-25",
+          "value": 19.5
         }
       ],
       "metNo": [
         {
           "date": "2026-11-24",
           "value": 4.4
+        },
+        {
+          "date": "2026-11-25",
+          "value": 0.2
         }
       ],
       "dwdIcon": [
         {
           "date": "2026-11-24",
           "value": 8
+        },
+        {
+          "date": "2026-11-25",
+          "value": 6.6
         }
       ]
     },
@@ -2719,12 +2751,12 @@
     {
       "provider": "nws",
       "temperature": {
-        "value": 3.1653846153846152,
+        "value": 3.503846153846154,
         "days": 26
       },
       "wind": {
-        "value": 3.3,
-        "days": 1
+        "value": 6.1,
+        "days": 2
       },
       "rain": {
         "value": null,
@@ -2734,12 +2766,12 @@
     {
       "provider": "openMeteo",
       "temperature": {
-        "value": 2.2884615384615388,
+        "value": 2.3615384615384616,
         "days": 26
       },
       "wind": {
-        "value": 12.8,
-        "days": 1
+        "value": 16.15,
+        "days": 2
       },
       "rain": {
         "value": null,
@@ -2749,12 +2781,12 @@
     {
       "provider": "metNo",
       "temperature": {
-        "value": 3.007692307692307,
+        "value": 2.9788461538461535,
         "days": 26
       },
       "wind": {
-        "value": 4.4,
-        "days": 1
+        "value": 2.3000000000000003,
+        "days": 2
       },
       "rain": {
         "value": null,
@@ -2764,12 +2796,12 @@
     {
       "provider": "dwdIcon",
       "temperature": {
-        "value": 2.25,
-        "days": 7
+        "value": 2,
+        "days": 8
       },
       "wind": {
-        "value": 8,
-        "days": 1
+        "value": 7.3,
+        "days": 2
       },
       "rain": {
         "value": null,

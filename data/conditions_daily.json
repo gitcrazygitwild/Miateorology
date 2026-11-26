@@ -4,68 +4,16 @@
     "lat": 37.5407,
     "lon": -77.436
   },
-  "generatedAt": "2026-11-25T14:57:05.619-05:00",
+  "generatedAt": "2026-11-26T14:37:50.876-05:00",
   "days": [
-    {
-      "date": "2026-11-25",
-      "sources": {
-        "nws": {
-          "date": "2026-11-25",
-          "summary": "Cloudy",
-          "precipProbability": 100,
-          "windMph": 30,
-          "rain": true,
-          "snow": false,
-          "thunder": false
-        },
-        "openMeteo": {
-          "date": "2026-11-25",
-          "summary": "Light rain",
-          "precipProbability": 89,
-          "windMph": 39.1,
-          "rain": true,
-          "snow": false,
-          "thunder": false
-        },
-        "metNo": {
-          "date": "2026-11-25",
-          "summary": "Lightrain",
-          "precipProbability": null,
-          "windMph": 17.2,
-          "rain": true,
-          "snow": false,
-          "thunder": false
-        },
-        "dwdIcon": {
-          "date": "2026-11-25",
-          "summary": "Light rain",
-          "precipProbability": null,
-          "windMph": 11.3,
-          "rain": true,
-          "snow": false,
-          "thunder": false,
-          "precipExpected": true
-        }
-      },
-      "consensus": {
-        "rainSignal": "strong",
-        "snowSignal": "off",
-        "thunderSignal": "off",
-        "avgPrecipProbability": 94.5,
-        "avgWindMph": 24.4,
-        "windSignal": "strong",
-        "summary": "Rain signal present"
-      },
-      "writeup": "Showers look likely with temperatures near 51° / 42° and about 95% average precipitation signal plus wind around 24 mph. A warmer turn follows the next day."
-    },
     {
       "date": "2026-11-26",
       "sources": {
         "nws": {
           "date": "2026-11-26",
-          "summary": "Showers And Thunderstorms",
-          "precipProbability": 100,
-          "windMph": 29,
+          "summary": "Chance Showers And Thunderstorms",
+          "precipProbability": 43,
+          "windMph": 17,
           "rain": true,
           "snow": false,
           "thunder": true
@@ -74,25 +22,25 @@
           "date": "2026-11-26",
           "summary": "Heavy rain",
           "precipProbability": 100,
-          "windMph": 58.2,
+          "windMph": 55.3,
           "rain": true,
           "snow": false,
           "thunder": false
         },
         "metNo": {
           "date": "2026-11-26",
-          "summary": "Heavyrain",
+          "summary": "Cloudy",
           "precipProbability": null,
-          "windMph": 23.7,
-          "rain": true,
+          "windMph": 15.2,
+          "rain": false,
           "snow": false,
           "thunder": false
         },
         "dwdIcon": {
           "date": "2026-11-26",
-          "summary": "Heavy rain showers",
+          "summary": "Rain showers",
           "precipProbability": null,
-          "windMph": 17.3,
+          "windMph": 22.4,
           "rain": true,
           "snow": false,
           "thunder": false,
@@ -103,12 +51,12 @@
         "rainSignal": "strong",
         "snowSignal": "off",
         "thunderSignal": "weak",
-        "avgPrecipProbability": 100,
-        "avgWindMph": 32.1,
+        "avgPrecipProbability": 71.5,
+        "avgWindMph": 27.5,
         "windSignal": "strong",
         "summary": "Rain signal present"
       },
-      "writeup": "Showers look likely with temperatures near 65° / 47° and about 100% average precipitation signal plus wind around 32 mph."
+      "writeup": "Showers look likely with temperatures near 64° / 48° and about 72% average precipitation signal plus wind around 28 mph."
     },
     {
       "date": "2026-11-27",
@@ -116,7 +64,7 @@
         "nws": {
           "date": "2026-11-27",
           "summary": "Partly Sunny",
-          "precipProbability": 2,
+          "precipProbability": 7,
           "windMph": 18,
           "rain": false,
           "snow": false,
@@ -125,17 +73,17 @@
         "openMeteo": {
           "date": "2026-11-27",
           "summary": "Overcast",
-          "precipProbability": 4,
-          "windMph": 46.1,
+          "precipProbability": 5,
+          "windMph": 40,
           "rain": false,
           "snow": false,
           "thunder": false
         },
         "metNo": {
           "date": "2026-11-27",
-          "summary": "Cloudy",
+          "summary": "Partlycloudy Night",
           "precipProbability": null,
-          "windMph": 19.5,
+          "windMph": 20.1,
           "rain": false,
           "snow": false,
           "thunder": false
@@ -144,7 +92,7 @@
           "date": "2026-11-27",
           "summary": "Overcast",
           "precipProbability": null,
-          "windMph": 13.2,
+          "windMph": 14,
           "rain": false,
           "snow": false,
           "thunder": false,
@@ -155,12 +103,12 @@
         "rainSignal": "off",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 3,
-        "avgWindMph": 24.2,
+        "avgPrecipProbability": 6,
+        "avgWindMph": 23,
         "windSignal": "strong",
         "summary": "Mostly quiet signal"
       },
-      "writeup": "It looks breezy to windy with temperatures near 55° / 43° plus wind around 24 mph."
+      "writeup": "It looks breezy to windy with temperatures near 55° / 42° plus wind around 23 mph."
     },
     {
       "date": "2026-11-28",
@@ -177,8 +125,8 @@
         "openMeteo": {
           "date": "2026-11-28",
           "summary": "Overcast",
-          "precipProbability": 0,
-          "windMph": 27.3,
+          "precipProbability": 3,
+          "windMph": 29.8,
           "rain": false,
           "snow": false,
           "thunder": false
@@ -187,16 +135,16 @@
           "date": "2026-11-28",
           "summary": "Partlycloudy Night",
           "precipProbability": null,
-          "windMph": 11.4,
+          "windMph": 12.1,
           "rain": false,
           "snow": false,
           "thunder": false
         },
         "dwdIcon": {
           "date": "2026-11-28",
-          "summary": "Mainly clear",
+          "summary": "Overcast",
           "precipProbability": null,
-          "windMph": 8.1,
+          "windMph": 9.3,
           "rain": false,
           "snow": false,
           "thunder": false,
@@ -207,12 +155,12 @@
         "rainSignal": "off",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 0,
-        "avgWindMph": 14.7,
+        "avgPrecipProbability": 1.5,
+        "avgWindMph": 15.8,
         "windSignal": "medium",
         "summary": "Mostly quiet signal"
       },
-      "writeup": "It looks breezy to windy with temperatures near 59° / 42°."
+      "writeup": "It looks breezy to windy with temperatures near 58° / 41° plus wind around 16 mph."
     },
     {
       "date": "2026-11-29",
@@ -220,8 +168,8 @@
         "nws": {
           "date": "2026-11-29",
           "summary": "Mostly Sunny",
-          "precipProbability": 73,
-          "windMph": 13,
+          "precipProbability": 89,
+          "windMph": 14,
           "rain": true,
           "snow": false,
           "thunder": false
@@ -229,17 +177,17 @@
         "openMeteo": {
           "date": "2026-11-29",
           "summary": "Overcast",
-          "precipProbability": 50,
-          "windMph": 32.2,
+          "precipProbability": 63,
+          "windMph": 37.4,
           "rain": false,
           "snow": false,
           "thunder": false
         },
         "metNo": {
           "date": "2026-11-29",
-          "summary": "Partlycloudy Night",
+          "summary": "Fair Night",
           "precipProbability": null,
-          "windMph": 9.8,
+          "windMph": 10.3,
           "rain": true,
           "snow": false,
           "thunder": false
@@ -248,7 +196,7 @@
           "date": "2026-11-29",
           "summary": "Overcast",
           "precipProbability": null,
-          "windMph": 5.4,
+          "windMph": 8.1,
           "rain": false,
           "snow": false,
           "thunder": false,
@@ -259,30 +207,30 @@
         "rainSignal": "medium",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 61.5,
-        "avgWindMph": 15.1,
+        "avgPrecipProbability": 76,
+        "avgWindMph": 17.5,
         "windSignal": "strong",
         "summary": "Rain signal present"
       },
-      "writeup": "Showers look likely with temperatures near 62° / 42° and about 62% average precipitation signal plus wind around 15 mph."
+      "writeup": "Showers look likely with temperatures near 60° / 43° and about 76% average precipitation signal plus wind around 18 mph."
     },
     {
       "date": "2026-11-30",
       "sources": {
         "nws": {
           "date": "2026-11-30",
-          "summary": "Rain Showers Likely then Partly Sunny",
-          "precipProbability": 70,
-          "windMph": 14,
+          "summary": "Rain Showers then Sunny",
+          "precipProbability": 89,
+          "windMph": 15,
           "rain": true,
           "snow": false,
           "thunder": false
         },
         "openMeteo": {
           "date": "2026-11-30",
-          "summary": "Light rain",
-          "precipProbability": 50,
-          "windMph": 45.6,
+          "summary": "Heavy rain",
+          "precipProbability": 69,
+          "windMph": 50.6,
           "rain": true,
           "snow": false,
           "thunder": false
@@ -291,16 +239,16 @@
           "date": "2026-11-30",
           "summary": "Lightrain",
           "precipProbability": null,
-          "windMph": 11.2,
+          "windMph": 13.6,
           "rain": true,
           "snow": false,
           "thunder": false
         },
         "dwdIcon": {
           "date": "2026-11-30",
-          "summary": "Light rain",
+          "summary": "Rain",
           "precipProbability": null,
-          "windMph": 10.5,
+          "windMph": 14.1,
           "rain": true,
           "snow": false,
           "thunder": false,
@@ -311,20 +259,20 @@
         "rainSignal": "strong",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 60,
-        "avgWindMph": 20.3,
+        "avgPrecipProbability": 79,
+        "avgWindMph": 23.3,
         "windSignal": "strong",
         "summary": "Rain signal present"
       },
-      "writeup": "Showers look likely with temperatures near 61° / 43° and about 60% average precipitation signal plus wind around 20 mph."
+      "writeup": "Showers look likely with temperatures near 59° / 40° and about 79% average precipitation signal plus wind around 23 mph."
     },
     {
       "date": "2026-12-01",
       "sources": {
         "nws": {
           "date": "2026-12-01",
-          "summary": "Mostly Sunny",
-          "precipProbability": 11,
+          "summary": "Sunny",
+          "precipProbability": 8,
           "windMph": 3,
           "rain": false,
           "snow": false,
@@ -333,8 +281,8 @@
         "openMeteo": {
           "date": "2026-12-01",
           "summary": "Overcast",
-          "precipProbability": 5,
-          "windMph": 24.4,
+          "precipProbability": 4,
+          "windMph": 12.5,
           "rain": false,
           "snow": false,
           "thunder": false
@@ -343,7 +291,7 @@
           "date": "2026-12-01",
           "summary": "Clearsky Night",
           "precipProbability": null,
-          "windMph": 6.3,
+          "windMph": 5.8,
           "rain": false,
           "snow": false,
           "thunder": false
@@ -352,7 +300,7 @@
           "date": "2026-12-01",
           "summary": "Overcast",
           "precipProbability": null,
-          "windMph": 6.4,
+          "windMph": 4.5,
           "rain": false,
           "snow": false,
           "thunder": false,
@@ -363,12 +311,64 @@
         "rainSignal": "off",
         "snowSignal": "off",
         "thunderSignal": "off",
-        "avgPrecipProbability": 8,
-        "avgWindMph": 10,
+        "avgPrecipProbability": 6,
+        "avgWindMph": 6.5,
+        "windSignal": "weak",
+        "summary": "Mostly quiet signal"
+      },
+      "writeup": "Weather looks fairly quiet with temperatures near 52° / 35°."
+    },
+    {
+      "date": "2026-12-02",
+      "sources": {
+        "nws": {
+          "date": "2026-12-02",
+          "summary": "Sunny",
+          "precipProbability": 8,
+          "windMph": 3,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "openMeteo": {
+          "date": "2026-12-02",
+          "summary": "Overcast",
+          "precipProbability": 7,
+          "windMph": 22.1,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "metNo": {
+          "date": "2026-12-02",
+          "summary": "Cloudy",
+          "precipProbability": null,
+          "windMph": 3.6,
+          "rain": false,
+          "snow": false,
+          "thunder": false
+        },
+        "dwdIcon": {
+          "date": "2026-12-02",
+          "summary": "Overcast",
+          "precipProbability": null,
+          "windMph": 2.6,
+          "rain": false,
+          "snow": false,
+          "thunder": false,
+          "precipExpected": false
+        }
+      },
+      "consensus": {
+        "rainSignal": "off",
+        "snowSignal": "off",
+        "thunderSignal": "off",
+        "avgPrecipProbability": 7.5,
+        "avgWindMph": 7.8,
         "windSignal": "medium",
         "summary": "Mostly quiet signal"
       },
-      "writeup": "It looks breezy to windy with temperatures near 53° / 37°."
+      "writeup": "It looks breezy to windy with temperatures near 56° / 36°."
     }
   ]
 }
